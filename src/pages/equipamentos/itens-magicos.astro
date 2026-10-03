@@ -13,6 +13,7 @@ import {
 
 const weaponEnchantments = progressiveEnchantments.filter((item) => item.appliesTo === 'Arma');
 const powerItemEnchantments = progressiveEnchantments.filter((item) => item.appliesTo === 'Item de Poder');
+const romanRank = ['','I','II','III','IV','V'];
 
 const groupByCost = (powers: typeof armorMagicPowers) =>
   [1,2,3,4].map((cost) => ({ cost, powers: powers.filter((power) => power.cost === cost) }))
@@ -112,7 +113,7 @@ const groupByCost = (powers: typeof armorMagicPowers) =>
           <div class="enchant-levels">
             {enchant.levels.map((level) => (
               <div class="enchant-level">
-                <div class="slot-rank"><span>{'I'.repeat(level.slots)}</span><small>{level.slots} {level.slots === 1 ? 'slot' : 'slots'}</small></div>
+                <div class="slot-rank"><span>{romanRank[level.slots]}</span><small>{level.slots} {level.slots === 1 ? 'slot' : 'slots'}</small></div>
                 <p>{level.effect}</p>
               </div>
             ))}
@@ -189,7 +190,7 @@ const groupByCost = (powers: typeof armorMagicPowers) =>
           <div class="enchant-levels">
             {enchant.levels.map((level) => (
               <div class="enchant-level">
-                <div class="slot-rank"><span>{'I'.repeat(level.slots)}</span><small>{level.slots} {level.slots === 1 ? 'slot' : 'slots'}</small></div>
+                <div class="slot-rank"><span>{romanRank[level.slots]}</span><small>{level.slots} {level.slots === 1 ? 'slot' : 'slots'}</small></div>
                 <p>{level.effect}</p>
               </div>
             ))}
