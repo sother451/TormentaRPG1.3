@@ -34,3 +34,5 @@
 @media(max-width:760px){.combat-local-nav{position:static}.combat-steps,.formula-grid,.combat-topic-grid,.action-grid{grid-template-columns:1fr}.combat-topic.wide{grid-column:auto}}
 
 .combat-section-intro{color:var(--muted);margin:0 0 14px}
+
+.action-points-columns{align-items:start}.action-point-prose{padding:18px;background:var(--surface);border:1px solid var(--border);border-radius:14px}.action-point-prose p{margin:.72rem 0 0;color:#ddcfbf}.action-point-prose p:first-child{margin-top:0}.action-example{position:relative;padding-left:1.05rem}.action-example::before{content:"•";position:absolute;left:0;color:var(--accent2)}.action-use{padding:10px 12px;border-left:2px solid rgba(215,182,106,.42);background:rgba(255,255,255,.02);border-radius:0 8px 8px 0}.action-point-table-wrap{margin-top:18px}.action-point-table{min-width:620px}.action-point-table td:not(:first-child){font-weight:700;color:var(--gold)}
