@@ -31,6 +31,7 @@ export interface ClassTalent {
 }
 
 export interface ClassDetail {
+  kind?: 'basic' | 'prestige';
   slug: string;
   name: string;
   family: string;
@@ -38,6 +39,7 @@ export interface ClassDetail {
   sourceTitle: string;
   status: 'complete' | 'wip' | 'incomplete_source';
   editorialNotes: string[];
+  requirements?: string[];
   basics: ClassBasics;
   progression: ClassProgression;
   sections: ClassSection[];
