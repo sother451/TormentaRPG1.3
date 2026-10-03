@@ -28,12 +28,21 @@ export const alterationsBySpellName = new Map(
   spellAlterations.map((entry) => [normalizeSpellName(entry.name), entry])
 );
 
+const alterationAliases: Record<string,string> = {
+  'detectar o mal bem caos ordem': 'detectar mal bem caos ordem',
+  'espirito animal i': 'espirito animal',
+  'invocar monstro i': 'invocar monstro',
+  'magia curinga i': 'magia curinga'
+};
+
 export const newSpellById = new Map(newSpells.map((spell) => [spell.id, spell]));
 
 export const allSpellCount = baseSpells.length + newSpells.length;
 
 export function getSpellAlteration(name: string) {
-  return alterationsBySpellName.get(normalizeSpellName(name));
+  const normalized = normalizeSpellName(name);
+  return alterationsBySpellName.get(normalized)
+    ?? alterationsBySpellName.get(alterationAliases[normalized] ?? '');
 }
 
 export function isNewSpell(value: BaseSpell | NewSpell): value is NewSpell {
