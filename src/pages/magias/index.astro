@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import RuleText from '../../components/RuleText.astro';
 import { baseSpellCatalog, baseSpells, allSpellCount, getSpellAlteration } from '../../data/magias';
 import { magicRules, spellAlterations, newSpells } from '../../data/magias-t13';
 import '../../styles/spells.css';
@@ -69,7 +70,7 @@ const alterationsByLevel = levelOptions.map((level) => ({ level, entries: spellA
       {magicRules.map((rule) => (
         <article>
           <h3>{rule.title}</h3>
-          {rule.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+          {rule.paragraphs.map((paragraph) => <RuleText text={paragraph} />)}
         </article>
       ))}
     </div>
