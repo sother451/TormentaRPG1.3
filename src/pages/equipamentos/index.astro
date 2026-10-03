@@ -1,11 +1,31 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import SectionLanding from '../../components/SectionLanding.astro';
+
+const base = import.meta.env.BASE_URL;
+const href = (path: string) => `${base}${path.replace(/^\/+/, '')}`;
+
+const sections = [
+  { title: 'Regras Gerais', href: '/equipamentos/geral/', description: 'Carga, moedas, CA, RD e PV de objetos.' },
+  { title: 'Armas e Munições', href: '/equipamentos/armas/', description: 'Armas simples, marciais, exóticas, alquímicas, de cerco e munições.' },
+  { title: 'Armaduras e Materiais', href: '/equipamentos/armaduras/', description: 'Armaduras, escudos, propriedades e materiais especiais.' },
+  { title: 'Navios', href: '/equipamentos/navios/', description: 'Pilotagem, combate naval, embarcações e melhorias.' },
+  { title: 'Itens Mágicos', href: '/equipamentos/itens-magicos/', description: 'Identificação, uso, limites, categorias e encantamentos.' }
+];
 ---
 <BaseLayout title="Equipamentos" activePath="/equipamentos/">
-  <SectionLanding title="Equipamentos" description="A seção de equipamentos será dividida conforme as fontes já existentes no Tormenta 1.3." items={[
-    { title: 'Itens e Serviços', description: 'Carga, riquezas, moedas, serviços e propriedades gerais.' },
-    { title: 'Armas e Armaduras', description: 'Planilha estruturada de armas, munições, armaduras, materiais e propriedades.' },
-    { title: 'Itens Mágicos', description: 'Identificação, uso, limites, poderes e slots de encantamentos.' }
-  ]} />
+  <section class="section-hero">
+    <p class="eyebrow">Itens, armas e proteção</p>
+    <h1>Equipamentos</h1>
+    <p class="lede">As regras de Equipamento do Tormenta 1.3 estão sendo organizadas por função para consulta rápida, preservando a separação das fontes originais do projeto.</p>
+  </section>
+
+  <section class="equipment-grid">
+    {sections.map((section) => (
+      <a class="equipment-card" href={href(section.href)}>
+        <h2>{section.title}</h2>
+        <p>{section.description}</p>
+        <span>Abrir seção →</span>
+      </a>
+    ))}
+  </section>
 </BaseLayout>
