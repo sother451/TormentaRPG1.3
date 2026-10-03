@@ -1,9 +1,11 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import EquipmentBack from '../../components/EquipmentBack.astro';
 import '../../styles/equipment.css';
 import { shipBasics, shipRules, ships, shipUpgrades } from '../../data/equipamentos/geral';
 ---
 <BaseLayout title="Navios" activePath="/equipamentos/">
+  <EquipmentBack current="Navios" />
   <section class="section-hero">
     <p class="eyebrow">Equipamentos</p>
     <h1>Seu Próprio Navio</h1>
