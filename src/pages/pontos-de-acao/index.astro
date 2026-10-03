@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { actionPoints } from '../../data/condicoes';
+import '../../styles/conditions.css';
+---
+<BaseLayout title="Pontos de Ação" activePath="/pontos-de-acao/">
+  <section class="section-hero">
+    <p class="eyebrow">Escudo do Mestre</p>
+    <h1>Pontos de Ação</h1>
+    <p class="lede">Regras para ganhar e gastar Pontos de Ação, preservadas do mesmo documento que reúne as Condições.</p>
+  </section>
+
+  <nav class="local-nav" aria-label="Nesta página">
+    <a href="#ganhando">Ganhando Pontos</a>
+    <a href="#usando">Usando Pontos</a>
+    <a href="#recuperacao">Tabela por Nível</a>
+  </nav>
+
+  <section id="ganhando" class="rule-section">
+    <div class="section-heading"><div><p class="eyebrow">Aquisição</p><h2>Ganhando Pontos de Ação</h2></div></div>
+    <div class="action-point-prose">
+      {actionPoints.gaining.map((paragraph,index) => (
+        <p class:list={[index>=5 && 'action-example']}>{paragraph}</p>
+      ))}
+    </div>
+  </section>
+
+  <section id="usando" class="rule-section">
+    <div class="section-heading"><div><p class="eyebrow">Benefícios</p><h2>Usando Pontos de Ação</h2></div></div>
+    <div class="action-point-prose action-point-uses">
+      {actionPoints.using.map((paragraph,index) => (
+        index===0 ? <p>{paragraph}</p> : <p class="action-use">{paragraph}</p>
+      ))}
+    </div>
+  </section>
+
+  <section id="recuperacao" class="rule-section">
+    <div class="section-heading"><div><p class="eyebrow">Escala por nível</p><h2>Dado Extra, PV e PM</h2></div></div>
+    <div class="table-wrap">
+      <table class="rules-table action-point-table">
+        <thead><tr>{actionPoints.recoveryTable.headers.map((header)=><th>{header}</th>)}</tr></thead>
+        <tbody>
+          {actionPoints.recoveryTable.rows.map((row)=><tr>{row.map((cell)=><td>{cell}</td>)}</tr>)}
+        </tbody>
+      </table>
+    </div>
+  </section>
+</BaseLayout>
