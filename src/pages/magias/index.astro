@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionLanding from '../../components/SectionLanding.astro';
+---
+<BaseLayout title="Magias" activePath="/magias/">
+  <SectionLanding title="Magias" description="Regras gerais de conjuração, descritores, escolas, concentração, preparação e alterações de magias." items={[
+    { title: 'Regras Gerais', description: 'Conjuração, descritores, escolas, componentes e custo de XP.' },
+    { title: 'Concentração e Preparação', description: 'Regras de concentração, cura, substituição e preparação.' },
+    { title: 'Alterações de Magias', description: 'Mudanças organizadas por nível.' },
+    { title: 'Novas Magias', description: 'Magias novas adicionadas pelo projeto Tormenta 1.3.' }
+  ]} />
+</BaseLayout>
