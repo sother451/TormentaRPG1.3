@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import RuleText from '../../components/RuleText.astro';
 import { skills, type SkillEntry } from '../../data/pericias';
 
 export function getStaticPaths() {
@@ -45,7 +46,7 @@ const href = (path: string) => `${base}${path.replace(/^\/+/, '')}`;
         {skill.blocks.map((block) => (
           <article class="skill-use">
             {block.title && <h3>{block.title}</h3>}
-            {block.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+            {block.paragraphs.map((paragraph) => <RuleText text={paragraph} />)}
             {block.table && (
               <div class="table-wrap skill-use-table-wrap">
                 <table class="rules-table">
