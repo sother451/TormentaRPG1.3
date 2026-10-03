@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { skills, type SkillEntry } from '../../data/pericias';
+
+export function getStaticPaths() {
+  return skills.map((skill) => ({ params: { slug: skill.slug }, props: { skill } }));
+}
+
+interface Props { skill: SkillEntry; }
+const { skill } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const href = (path: string) => `${base}${path.replace(/^\/+/, '')}`;
+---
+<BaseLayout title={skill.name} activePath="/pericias/">
+  <div class="breadcrumbs"><a href={href('/pericias/')}>Perícias</a> / {skill.name}</div>
+
+  <section class="section-hero">
+    <p class="eyebrow">Perícia</p>
+    <h1>{skill.name}</h1>
+    {skill.sourceNotes.map((note) => <div class="notice">{note}</div>)}
+  </section>
+
+  <section class="skill-facts" aria-label="Resumo da perícia">
+    <article>
+      <span>Habilidade-chave</span>
+      <strong>{skill.ability ?? 'Não indicada na tabela'}</strong>
+    </article>
+    <article>
+      <span>Somente treinada?</span>
+      <strong>{skill.trainedOnly === null ? 'Não indicado' : skill.trainedOnly ? 'Sim' : 'Não'}</strong>
+    </article>
+    <article>
+      <span>Penalidade de armadura?</span>
+      <strong>{skill.armorPenalty === null ? 'Não indicado' : skill.armorPenalty ? 'Sim' : 'Não'}</strong>
+    </article>
+  </section>
+
+  <section class="rule-section">
+    <div class="section-heading">
+      <div><p class="eyebrow">Aplicações</p><h2>Usos da Perícia</h2></div>
+    </div>
+
+    {skill.blocks.length > 0 ? (
+      <div class="skill-use-list">
+        {skill.blocks.map((block) => (
+          <article class="skill-use">
+            {block.title && <h3>{block.title}</h3>}
+            {block.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+          </article>
+        ))}
+      </div>
+    ) : (
+      <div class="notice">O documento atual não apresenta uma seção de usos para esta perícia.</div>
+    )}
+  </section>
+</BaseLayout>
