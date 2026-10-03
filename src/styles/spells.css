@@ -1,0 +1,63 @@
+.spell-local-nav{position:sticky;top:82px;z-index:8;background:rgba(23,19,17,.94);backdrop-filter:blur(14px)}
+.spell-stats{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.spell-stats span{padding:8px 11px;border:1px solid var(--border);border-radius:999px;background:rgba(255,255,255,.025);color:var(--muted);font-size:.78rem}
+.spell-stats strong{color:var(--gold)}
+.magic-rules-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.magic-rules-grid article{padding:18px;background:var(--surface);border:1px solid var(--border);border-radius:14px}
+.magic-rules-grid h3{color:var(--gold);margin-bottom:8px}
+.magic-rules-grid p{margin:.6rem 0 0;color:#ddcfbf}
+.alteration-levels{display:grid;gap:28px}
+.alteration-levels>section>h3{margin-bottom:10px;color:var(--accent2)}
+.alteration-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.alteration-grid article{padding:15px 16px;background:var(--surface);border:1px solid var(--border);border-radius:13px}
+.alteration-grid h4{margin:0 0 7px;color:var(--gold);font:700 .95rem Cinzel,Georgia,serif}
+.alteration-grid p{margin:0;color:#ddcfbf}
+.new-spell-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.new-spell-card{display:flex;flex-direction:column;gap:10px;padding:17px 18px;background:linear-gradient(135deg,rgba(200,91,66,.08),rgba(215,182,106,.04)),var(--surface);border:1px solid var(--border);border-radius:14px;text-decoration:none}
+.new-spell-card:hover{border-color:rgba(200,91,66,.65);transform:translateY(-2px)}
+.new-spell-card span{color:var(--accent2);font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em}
+.new-spell-card h3{margin:3px 0 0;color:var(--gold)}
+.new-spell-card p{margin:0;color:#ddcfbf}
+.new-spell-card small{margin-top:auto;color:var(--muted)}
+.spell-filter-panel{grid-template-columns:minmax(260px,1.2fr) repeat(5,minmax(145px,.45fr))}
+.spell-result-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:18px 0 12px;color:var(--muted)}
+.spell-result-bar p{margin:0}.spell-result-bar strong{color:var(--gold)}
+.spell-result-bar label{display:flex;align-items:center;gap:8px;font-size:.78rem}
+.spell-result-bar select{min-height:36px;border:1px solid var(--border);border-radius:9px;background:#0f0d0c;color:var(--text);padding:0 10px}
+.spell-favorite-filter{padding:8px 11px;border:1px solid var(--border);border-radius:999px;background:transparent;color:var(--muted);cursor:pointer}
+.spell-favorite-filter.active{border-color:rgba(215,182,106,.55);background:rgba(215,182,106,.08);color:var(--gold)}
+.spell-card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.spell-card{position:relative;min-height:230px;background:var(--surface);border:1px solid var(--border);border-radius:15px;overflow:hidden}
+.spell-card:hover{border-color:rgba(200,91,66,.65);transform:translateY(-2px);transition:.18s ease}
+.spell-card[hidden]{display:none}
+.spell-card-top{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:11px 13px;border-bottom:1px solid var(--border);background:rgba(255,255,255,.02)}
+.spell-card-top>span{color:var(--muted);font-size:.68rem;text-transform:uppercase;letter-spacing:.05em}
+.spell-star{display:grid;place-items:center;width:30px;height:30px;border:0;background:transparent;color:var(--muted);font-size:1.1rem;cursor:pointer}
+.spell-star.selected{color:var(--gold)}
+.spell-card>a{display:flex;flex-direction:column;gap:9px;min-height:184px;padding:14px 16px;text-decoration:none}
+.spell-card h3{margin:0;color:var(--gold);font-size:1.04rem}
+.spell-level-line{margin:0;color:var(--accent2);font-size:.72rem;font-weight:700}
+.spell-excerpt{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;margin:0;color:#ddcfbf;font-size:.82rem}
+.spell-card small{color:var(--muted)}
+.spell-card .card-link{margin-top:auto}
+.spell-detail-hero{max-width:none}
+.spell-detail-badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.spell-detail-badges span{padding:6px 9px;border:1px solid var(--border);border-radius:999px;background:rgba(255,255,255,.025);color:var(--muted);font-size:.72rem}
+.spell-alteration-callout{margin:22px 0 34px;padding:20px;background:linear-gradient(135deg,rgba(200,91,66,.12),rgba(215,182,106,.05));border:1px solid rgba(200,91,66,.45);border-radius:16px}
+.spell-alteration-callout>span{display:block;color:var(--accent2);font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em}
+.spell-alteration-callout h2{margin:5px 0 8px;color:var(--gold);font-size:1.25rem}
+.spell-alteration-callout p{margin:0;color:#ead9c8}
+.spell-field-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.spell-field-grid div{padding:13px 15px;background:var(--surface);border:1px solid var(--border);border-radius:12px}
+.spell-field-grid dt{color:var(--muted);font-size:.68rem;text-transform:uppercase;letter-spacing:.07em}
+.spell-field-grid dd{margin:5px 0 0;color:var(--text)}
+.spell-description{max-width:90ch;padding:20px;background:var(--surface);border:1px solid var(--border);border-radius:15px}
+.spell-description p{margin:.7rem 0 0;color:#ddcfbf;white-space:pre-line}
+.spell-description p:first-child{margin-top:0}
+.spell-source-footer{display:grid;gap:8px;margin-top:30px;padding:18px;border:1px solid var(--border);border-radius:14px;background:rgba(255,255,255,.02)}
+.spell-source-footer span{display:block;color:var(--muted);font-size:.68rem;text-transform:uppercase;letter-spacing:.08em}
+.spell-source-footer strong{color:var(--gold)}
+.spell-source-footer p{margin:0;color:var(--muted);font-size:.82rem}
+@media(max-width:1180px){.spell-filter-panel{grid-template-columns:repeat(3,minmax(0,1fr))}.spell-card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:820px){.spell-local-nav{position:static}.magic-rules-grid,.alteration-grid,.new-spell-grid,.spell-card-grid,.spell-field-grid{grid-template-columns:1fr}.spell-filter-panel{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.spell-filter-panel{grid-template-columns:1fr}.spell-result-bar{align-items:flex-start;flex-direction:column}}
