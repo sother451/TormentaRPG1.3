@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { races, type RaceEntry } from '../../data/racas';
+
+export function getStaticPaths() {
+  return races.map((race) => ({ params: { slug: race.slug }, props: { race } }));
+}
+
+interface Props { race: RaceEntry; }
+const { race } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const href = (path: string) => `${base}${path.replace(/^\/+/, '')}`;
+---
+<BaseLayout title={race.name} activePath="/racas/">
+  <div class="breadcrumbs"><a href={href('/racas/')}>Raças</a> / {race.name}</div>
+
+  <section class="section-hero race-detail-hero">
+    <p class="eyebrow">Raça</p>
+    <h1>{race.name}</h1>
+    {race.abilityRule ? (
+      <div class="ability-rule">
+        <span>Ajustes de habilidade</span>
+        <p>{race.abilityRule}</p>
+      </div>
+    ) : (
+      <div class="notice">A fonte desta raça não apresenta uma linha separada de ajustes de habilidade. O compêndio mantém essa ausência sem preencher por inferência.</div>
+    )}
+  </section>
+
+  <section class="race-facts" aria-label="Resumo racial">
+    {race.size && <article><span>Tamanho</span><strong>{race.size.replace(/^Tamanho\s*/i, '').replace(/\.$/,'')}</strong></article>}
+    {race.movement && <article><span>Deslocamento</span><strong>{race.movement}</strong></article>}
+    {race.vision && <article><span>Visão</span><strong>{race.vision}</strong></article>}
+    <article><span>Traços</span><strong>{race.traits.length}</strong></article>
+  </section>
+
+  <section class="rule-section">
+    <div class="section-heading">
+      <div><p class="eyebrow">Regras raciais</p><h2>Características</h2></div>
+    </div>
+    <div class="race-traits">
+      {race.traits.map((trait, index) => (
+        <article class="race-trait">
+          <span class="trait-number">{String(index + 1).padStart(2, '0')}</span>
+          <p>{trait}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
