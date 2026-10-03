@@ -46,6 +46,20 @@ const href = (path: string) => `${base}${path.replace(/^\/+/, '')}`;
           <article class="skill-use">
             {block.title && <h3>{block.title}</h3>}
             {block.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+            {block.table && (
+              <div class="table-wrap skill-use-table-wrap">
+                <table class="rules-table">
+                  <thead>
+                    <tr>{block.table.headers.map((header) => <th>{header}</th>)}</tr>
+                  </thead>
+                  <tbody>
+                    {block.table.rows.map((row) => (
+                      <tr>{row.map((cell) => <td>{cell}</td>)}</tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
           </article>
         ))}
       </div>
