@@ -1,7 +1,7 @@
 ---
-import BaseLayout from '../../../../layouts/BaseLayout.astro';
-import { talents, talentGroups, type TalentEntry } from '../../../../data/talentos';
-import '../../../../styles/talents.css';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { talents, talentGroups, type TalentEntry } from '../../../data/talentos';
+import '../../../styles/talents.css';
 
 export function getStaticPaths() {
   return talents.map((talent) => ({
