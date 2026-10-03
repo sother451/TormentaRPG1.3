@@ -31,7 +31,6 @@ const href = (path: string) => `${base}${path.replace(/^\/+/, '')}`;
     {race.size && <article><span>Tamanho</span><strong>{race.size.replace(/^Tamanho\s*/i, '').replace(/\.$/,'')}</strong></article>}
     {race.movement && <article><span>Deslocamento</span><strong>{race.movement}</strong></article>}
     {race.vision && <article><span>Visão</span><strong>{race.vision}</strong></article>}
-    <article><span>Traços</span><strong>{race.traits.length}</strong></article>
   </section>
 
   <section class="rule-section">
