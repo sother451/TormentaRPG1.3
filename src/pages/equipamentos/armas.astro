@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import EquipmentBack from '../../components/EquipmentBack.astro';
 import '../../styles/equipment.css';
 import {
   weaponIntro, weaponTypes, weaponProperties, weaponSizeRules, weaponSizeTable,
@@ -9,6 +10,7 @@ import {
 const categories = [...new Set(weapons.map((weapon) => weapon.category))];
 ---
 <BaseLayout title="Armas e Munições" activePath="/equipamentos/">
+  <EquipmentBack current="Armas e Munições" />
   <section class="section-hero">
     <p class="eyebrow">Equipamentos</p>
     <h1>Armas e Munições</h1>
