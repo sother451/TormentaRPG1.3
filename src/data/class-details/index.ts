@@ -24,6 +24,20 @@ import { classDetail as magoGeneralista } from './mago-generalista';
 import { classDetail as paladino } from './paladino';
 import { classDetail as artifice } from './artifice';
 
+import { classDetail as algozDaTormenta } from './algoz-da-tormenta';
+
+import { classDetail as cavaleiroDaMorte } from './cavaleiro-da-morte';
+
+import { classDetail as medicoDeSalistick } from './medico-de-salistick';
+
+import { classDetail as alquimistaDrogadora } from './alquimista-drogadora';
+
+import { classDetail as bruxaDaTormenta } from './bruxa-da-tormenta';
+
+import { classDetail as mestreDasBonecas } from './mestre-das-bonecas';
+
+import { classDetail as cavaleiroDoCorvo } from './cavaleiro-do-corvo';
+
 export const classDetails: ClassDetail[] = [
   ranger,
   cavaleiro,
@@ -48,6 +62,13 @@ export const classDetails: ClassDetail[] = [
   magoGeneralista,
   paladino,
   artifice,
+  algozDaTormenta,
+  cavaleiroDaMorte,
+  medicoDeSalistick,
+  alquimistaDrogadora,
+  bruxaDaTormenta,
+  mestreDasBonecas,
+  cavaleiroDoCorvo,
 ];
 
 export const classDetailsBySlug = Object.fromEntries(classDetails.map((entry) => [entry.slug, entry])) as Record<string, ClassDetail>;
