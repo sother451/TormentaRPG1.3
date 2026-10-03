@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import RuleText from '../../components/RuleText.astro';
 import { classEntries, type ClassEntry } from '../../data/classes';
 import { classDetails, type ClassDetail } from '../../data/class-details/index';
 import '../../styles/classes.css';
@@ -124,7 +125,7 @@ const orphanTalents = detail.classTalents.filter((talent) => !talent.prerequisit
         section.level === 1 ? (
           <div class="class-system-divider" id={section.title ? section.title.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'') : undefined}>
             {section.title && <h3>{section.title}</h3>}
-            {section.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+            {section.paragraphs.map((paragraph) => <RuleText text={paragraph} />)}
             {section.tables.map((table) => (
               <div class="table-wrap class-inline-table">
                 <table class="rules-table">
@@ -137,7 +138,7 @@ const orphanTalents = detail.classTalents.filter((talent) => !talent.prerequisit
         ) : (
           <article class="class-feature-card">
             {section.title && <h3>{section.title}</h3>}
-            {section.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+            {section.paragraphs.map((paragraph) => <RuleText text={paragraph} />)}
             {section.tables.map((table) => (
               <div class="table-wrap class-inline-table">
                 <table class="rules-table">
@@ -174,7 +175,7 @@ const orphanTalents = detail.classTalents.filter((talent) => !talent.prerequisit
                   <h4>{talent.name}</h4>
                   {talent.prerequisite && <span>{talent.prerequisite}</span>}
                 </header>
-                {talent.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+                {talent.paragraphs.map((paragraph) => <RuleText text={paragraph} />)}
               </article>
             ))}
           </div>
@@ -189,7 +190,7 @@ const orphanTalents = detail.classTalents.filter((talent) => !talent.prerequisit
           {orphanTalents.map((talent) => (
             <article class="class-talent-card" id={talent.id}>
               <header><h4>{talent.name}</h4>{talent.prerequisite && <span>{talent.prerequisite}</span>}</header>
-              {talent.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+              {talent.paragraphs.map((paragraph) => <RuleText text={paragraph} />)}
             </article>
           ))}
         </div>
