@@ -20,7 +20,6 @@ import { classDetail as necromante } from './necromante';
 import { classDetail as cronomante } from './cronomante';
 import { classDetail as geomante } from './geomante-naturalista';
 import { classDetail as numeromante } from './numeromante';
-import { classDetail as magoGeneralista } from './mago-generalista';
 import { classDetail as paladino } from './paladino';
 import { classDetail as artifice } from './artifice';
 
@@ -59,7 +58,6 @@ export const classDetails: ClassDetail[] = [
   cronomante,
   geomante,
   numeromante,
-  magoGeneralista,
   paladino,
   artifice,
   algozDaTormenta,
