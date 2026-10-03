@@ -374,9 +374,4 @@ export const newSpells: NewSpell[] = [
     ]
   }
 ];
-export const unmatchedAlterationNames = [
-  "Detectar Mal/Bem/Caos/Ordem",
-  "Espírito Animal",
-  "Invocar Monstro",
-  "Magia Curinga"
-];
+export const unmatchedAlterationNames: string[] = [];
