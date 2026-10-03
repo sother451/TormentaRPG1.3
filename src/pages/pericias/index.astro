@@ -79,7 +79,9 @@ const abilityOptions = [...new Set(skills.map((skill) => skill.ability).filter(B
             <span>{skill.ability ?? 'Habilidade não indicada'}</span>
             {skill.trainedOnly === true && <span>Treinada</span>}
           </div>
-          <p>{skill.blocks.length > 0 ? `${skill.blocks.length} ${skill.blocks.length === 1 ? 'uso possível' : 'usos possíveis'}` : 'Sem usos descritos na fonte'}</p>
+          <p>{skill.blocks.filter((block) => block.title).length > 0
+            ? `${skill.blocks.filter((block) => block.title).length} ${skill.blocks.filter((block) => block.title).length === 1 ? 'uso possível' : 'usos possíveis'}`
+            : 'Sem usos descritos na fonte'}</p>
           <span class="card-link">Abrir perícia →</span>
         </a>
       ))}
