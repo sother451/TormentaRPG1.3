@@ -1,0 +1,33 @@
+---
+interface Item {
+  title: string;
+  description: string;
+}
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  description: string;
+  items?: Item[];
+  notice?: string;
+}
+
+const { eyebrow = 'Tormenta 1.3', title, description, items = [], notice } = Astro.props;
+---
+<section class="section-hero">
+  <p class="eyebrow">{eyebrow}</p>
+  <h1>{title}</h1>
+  <p class="lede">{description}</p>
+  {notice && <div class="notice">{notice}</div>}
+</section>
+
+{items.length > 0 && (
+  <section class="card-grid" aria-label={`Conteúdo de ${title}`}>
+    {items.map((item) => (
+      <article class="content-card">
+        <h2>{item.title}</h2>
+        <p>{item.description}</p>
+      </article>
+    ))}
+  </section>
+)}
