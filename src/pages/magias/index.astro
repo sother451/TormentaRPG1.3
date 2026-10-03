@@ -1,12 +1,276 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import SectionLanding from '../../components/SectionLanding.astro';
+import { baseSpellCatalog, baseSpells, allSpellCount, getSpellAlteration } from '../../data/magias';
+import { magicRules, spellAlterations, newSpells } from '../../data/magias-t13';
+import '../../styles/spells.css';
+
+const base = import.meta.env.BASE_URL;
+const href = (path: string) => `${base}${path.replace(/^\/+/, '')}`;
+
+const levelOptions = Array.from({ length: 10 }, (_, index) => index);
+const classFilter = baseSpellCatalog.filters.find((filter) => filter.id === 'classes');
+const descriptorFilter = baseSpellCatalog.filters.find((filter) => filter.id === 'descritor');
+
+const baseCards = baseSpells.map((spell) => ({
+  id: spell.id,
+  name: spell.name,
+  levels: spell.levels,
+  subtitle: spell.subtitle,
+  source: spell.source,
+  description: spell.description,
+  tags: spell.tags,
+  status: getSpellAlteration(spell.name) ? 'alterada' : 'base',
+  tradition: spell.tags.includes('mago') && spell.tags.includes('clerigo') ? 'ambas' : spell.tags.includes('mago') ? 'arcana' : spell.tags.includes('clerigo') ? 'divina' : 'especial'
+}));
+
+const newCards = newSpells.map((spell) => ({
+  id: spell.id,
+  name: spell.name,
+  levels: [...new Set(spell.lists.map((list) => list.level))],
+  subtitle: `${spell.school} · Nova magia Tormenta 1.3`,
+  source: 'Tormenta 1.3',
+  description: spell.description,
+  tags: [
+    ...spell.lists.map((list) => list.tradition === 'Arcano' ? 'mago' : 'clerigo'),
+    spell.school.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+  ],
+  status: 'nova',
+  tradition: spell.lists.some((list) => list.tradition === 'Arcano') && spell.lists.some((list) => list.tradition === 'Divino')
+    ? 'ambas'
+    : spell.lists.some((list) => list.tradition === 'Arcano') ? 'arcana' : 'divina'
+}));
+
+const catalogCards = [...newCards, ...baseCards].sort((a,b) => a.name.localeCompare(b.name,'pt-BR'));
+const alterationsByLevel = levelOptions.map((level) => ({ level, entries: spellAlterations.filter((entry) => entry.level === level) })).filter((group) => group.entries.length);
 ---
 <BaseLayout title="Magias" activePath="/magias/">
-  <SectionLanding title="Magias" description="Regras gerais de conjuração, descritores, escolas, concentração, preparação e alterações de magias." items={[
-    { title: 'Regras Gerais', description: 'Conjuração, descritores, escolas, componentes e custo de XP.' },
-    { title: 'Concentração e Preparação', description: 'Regras de concentração, cura, substituição e preparação.' },
-    { title: 'Alterações de Magias', description: 'Mudanças organizadas por nível.' },
-    { title: 'Novas Magias', description: 'Magias novas adicionadas pelo projeto Tormenta 1.3.' }
-  ]} />
+  <section class="section-hero">
+    <p class="eyebrow">Biblioteca arcana e divina</p>
+    <h1>Magias</h1>
+    <p class="lede">O catálogo-base reúne {baseSpells.length} magias do Grimório TRPG. As regras, alterações e novas magias do Tormenta 1.3 são aplicadas como uma camada própria, sem substituir silenciosamente a fonte-base.</p>
+    <div class="spell-stats">
+      <span><strong>{baseSpells.length}</strong> magias-base</span>
+      <span><strong>{spellAlterations.length}</strong> alterações 1.3</span>
+      <span><strong>{newSpells.length}</strong> novas magias</span>
+      <span><strong>{allSpellCount}</strong> entradas no catálogo</span>
+    </div>
+  </section>
+
+  <nav class="local-nav spell-local-nav" aria-label="Nesta página">
+    <a href="#regras">Regras 1.3</a>
+    <a href="#alteracoes">Alterações</a>
+    <a href="#novas">Novas Magias</a>
+    <a href="#catalogo">Catálogo</a>
+  </nav>
+
+  <section id="regras" class="rule-section">
+    <div class="section-heading"><div><p class="eyebrow">Tormenta 1.3</p><h2>Regras de Magia</h2></div></div>
+    <div class="magic-rules-grid">
+      {magicRules.map((rule) => (
+        <article>
+          <h3>{rule.title}</h3>
+          {rule.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section id="alteracoes" class="rule-section">
+    <div class="section-heading">
+      <div><p class="eyebrow">Camada Tormenta 1.3</p><h2>Alterações de Magias</h2></div>
+      <p>{spellAlterations.length} alterações</p>
+    </div>
+    <div class="alteration-levels">
+      {alterationsByLevel.map((group) => (
+        <section>
+          <h3>Nível {group.level}</h3>
+          <div class="alteration-grid">
+            {group.entries.map((entry) => (
+              <article>
+                <h4>{entry.name}</h4>
+                <p>{entry.text}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+  </section>
+
+  <section id="novas" class="rule-section">
+    <div class="section-heading">
+      <div><p class="eyebrow">Exclusivas da revisão</p><h2>Novas Magias</h2></div>
+      <p>{newSpells.length} magias</p>
+    </div>
+    <div class="new-spell-grid">
+      {newSpells.map((spell) => (
+        <a class="new-spell-card" href={href(`/magias/${spell.id}/`)}>
+          <div>
+            <span>{spell.lists.map((list) => `${list.tradition} ${list.level}`).join(' · ')}</span>
+            <h3>{spell.name}</h3>
+          </div>
+          <p>{spell.description}</p>
+          <small>{spell.school} · {spell.action} · {spell.range}</small>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section id="catalogo" class="rule-section">
+    <div class="section-heading">
+      <div><p class="eyebrow">Consulta</p><h2>Catálogo de Magias</h2></div>
+      <button id="saved-only" class="spell-favorite-filter" type="button" aria-pressed="false">☆ Meu Grimório <span id="saved-count">0</span></button>
+    </div>
+
+    <section class="filter-panel spell-filter-panel" aria-label="Filtros de magias">
+      <label class="search-field">
+        <span>Buscar magia ou efeito</span>
+        <input id="spell-search" type="search" placeholder="Ex.: fogo, invisibilidade, cura..." autocomplete="off" />
+      </label>
+
+      <label class="select-field">
+        <span>Nível</span>
+        <select id="spell-level"><option value="all">Todos</option>{levelOptions.map((level)=><option value={String(level)}>{level}</option>)}</select>
+      </label>
+
+      <label class="select-field">
+        <span>Procedência</span>
+        <select id="spell-tradition">
+          <option value="all">Todas</option>
+          <option value="arcana">Arcana</option>
+          <option value="divina">Divina</option>
+          <option value="ambas">Arcana e Divina</option>
+          <option value="especial">Especial</option>
+        </select>
+      </label>
+
+      <label class="select-field">
+        <span>Classe</span>
+        <select id="spell-class"><option value="all">Todas</option>{classFilter?.options.map((option)=><option value={option.value}>{option.label}</option>)}</select>
+      </label>
+
+      <label class="select-field">
+        <span>Descritor</span>
+        <select id="spell-descriptor"><option value="all">Todos</option>{descriptorFilter?.options.map((option)=><option value={option.value}>{option.label}</option>)}</select>
+      </label>
+
+      <label class="select-field">
+        <span>Tormenta 1.3</span>
+        <select id="spell-status">
+          <option value="all">Todas</option>
+          <option value="alterada">Alteradas</option>
+          <option value="nova">Novas</option>
+          <option value="base">Sem alteração registrada</option>
+        </select>
+      </label>
+    </section>
+
+    <div class="spell-result-bar">
+      <p><strong id="spell-count">{catalogCards.length}</strong> magias encontradas</p>
+      <label>Ordenar
+        <select id="spell-sort">
+          <option value="name">Nome A–Z</option>
+          <option value="level">Menor nível</option>
+          <option value="level-desc">Maior nível</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="spell-card-grid" id="spell-grid">
+      {catalogCards.map((spell) => (
+        <article
+          class="spell-card"
+          data-id={spell.id}
+          data-name={spell.name}
+          data-search={[spell.name,spell.subtitle,spell.source,spell.description,...spell.tags].join(' ').toLowerCase()}
+          data-levels={spell.levels.join(',')}
+          data-tradition={spell.tradition}
+          data-tags={spell.tags.join(',')}
+          data-status={spell.status}
+          data-min-level={Math.min(...spell.levels)}
+        >
+          <div class="spell-card-top">
+            <span>{spell.status === 'nova' ? 'Nova · Tormenta 1.3' : spell.status === 'alterada' ? 'Alterada · Tormenta 1.3' : spell.subtitle}</span>
+            <button class="spell-star" type="button" data-save={spell.id} aria-label={`Salvar ${spell.name}`}>☆</button>
+          </div>
+          <a href={href(`/magias/${spell.id}/`)}>
+            <h3>{spell.name}</h3>
+            <p class="spell-level-line">Nível {spell.levels.join(' / ')} · {spell.tradition === 'ambas' ? 'Arcana e Divina' : spell.tradition[0].toUpperCase()+spell.tradition.slice(1)}</p>
+            <p class="spell-excerpt">{spell.description}</p>
+            <small>{spell.source}</small>
+            <span class="card-link">Consultar magia →</span>
+          </a>
+        </article>
+      ))}
+    </div>
+
+    <p class="empty-state" id="spell-empty" hidden>Nenhuma magia corresponde aos filtros atuais.</p>
+  </section>
+
+  <script is:inline>
+    (() => {
+      const search=document.getElementById('spell-search');
+      const level=document.getElementById('spell-level');
+      const tradition=document.getElementById('spell-tradition');
+      const classFilter=document.getElementById('spell-class');
+      const descriptor=document.getElementById('spell-descriptor');
+      const status=document.getElementById('spell-status');
+      const sort=document.getElementById('spell-sort');
+      const grid=document.getElementById('spell-grid');
+      const cards=[...document.querySelectorAll('.spell-card')];
+      const count=document.getElementById('spell-count');
+      const empty=document.getElementById('spell-empty');
+      const savedOnly=document.getElementById('saved-only');
+      const savedCount=document.getElementById('saved-count');
+      const normalize=(v)=>v.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+      let favorites=new Set();
+      try{const saved=JSON.parse(localStorage.getItem('tormenta13-spell-favorites')||'[]');if(Array.isArray(saved))favorites=new Set(saved);}catch{}
+
+      const refreshStars=()=>{
+        document.querySelectorAll('[data-save]').forEach((button)=>{
+          const selected=favorites.has(button.dataset.save);
+          button.textContent=selected?'★':'☆';
+          button.classList.toggle('selected',selected);
+        });
+        savedCount.textContent=String(favorites.size);
+      };
+
+      const apply=()=>{
+        const q=normalize(search.value.trim());
+        const savedMode=savedOnly.getAttribute('aria-pressed')==='true';
+        let visible=0;
+        cards.forEach((card)=>{
+          const levels=(card.dataset.levels||'').split(',');
+          const tags=(card.dataset.tags||'').split(',');
+          const matches=
+            (!q||normalize(card.dataset.search||'').includes(q)) &&
+            (level.value==='all'||levels.includes(level.value)) &&
+            (tradition.value==='all'||card.dataset.tradition===tradition.value||(tradition.value==='arcana'&&card.dataset.tradition==='ambas')||(tradition.value==='divina'&&card.dataset.tradition==='ambas')) &&
+            (classFilter.value==='all'||tags.includes(classFilter.value)) &&
+            (descriptor.value==='all'||tags.includes(descriptor.value)) &&
+            (status.value==='all'||card.dataset.status===status.value) &&
+            (!savedMode||favorites.has(card.dataset.id));
+          card.hidden=!matches;if(matches)visible++;
+        });
+        count.textContent=String(visible);empty.hidden=visible!==0;
+        const shown=cards.filter(card=>!card.hidden);
+        shown.sort((a,b)=>{
+          if(sort.value==='name')return (a.dataset.name||'').localeCompare(b.dataset.name||'','pt-BR');
+          const d=Number(a.dataset.minLevel)-Number(b.dataset.minLevel);
+          return (sort.value==='level-desc'?-d:d)||((a.dataset.name||'').localeCompare(b.dataset.name||'','pt-BR'));
+        }).forEach(card=>grid.appendChild(card));
+      };
+
+      [search,level,tradition,classFilter,descriptor,status,sort].forEach((control)=>control.addEventListener(control===search?'input':'change',apply));
+      savedOnly.addEventListener('click',()=>{const next=savedOnly.getAttribute('aria-pressed')!=='true';savedOnly.setAttribute('aria-pressed',String(next));savedOnly.classList.toggle('active',next);apply();});
+      document.querySelectorAll('[data-save]').forEach((button)=>button.addEventListener('click',(event)=>{
+        event.preventDefault();event.stopPropagation();
+        const id=button.dataset.save;
+        favorites.has(id)?favorites.delete(id):favorites.add(id);
+        try{localStorage.setItem('tormenta13-spell-favorites',JSON.stringify([...favorites]));}catch{}
+        refreshStars();apply();
+      }));
+      refreshStars();apply();
+    })();
+  </script>
 </BaseLayout>
