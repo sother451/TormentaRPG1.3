@@ -9,8 +9,12 @@ export interface CombatTable {
 }
 
 export const combat = {
-  "overview": [
-    "Um combate obedece os seguintes passos: Passo 1: cada personagem faz um teste de Iniciativa. Passo 2: o mestre determina quais personagens estão cientes de seus inimigos. Aqueles que não percebem a presença de inimigos começam o combate surpreendidos. Um personagem surpreendido não age na primeira rodada, e está desprevenido. Passo 3: todos os personagens têm seu turno na ordem da Iniciativa (com exceção daqueles que estiverem surpreendidos, que não agem na primeira rodada). Passo 4: quando todos os personagens tiverem seu turno, a rodada termina. Uma outra rodada se inicia, com todos os personagens agindo novamente, na mesma ordem. Mesmo aqueles que estavam surpresos agora podem agir."
+  "overviewIntro": "Um combate obedece os seguintes passos:",
+  "overviewSteps": [
+    "Cada personagem faz um teste de Iniciativa.",
+    "O mestre determina quais personagens estão cientes de seus inimigos. Aqueles que não percebem a presença de inimigos começam o combate surpreendidos. Um personagem surpreendido não age na primeira rodada, e está desprevenido.",
+    "Todos os personagens têm seu turno na ordem da Iniciativa (com exceção daqueles que estiverem surpreendidos, que não agem na primeira rodada).",
+    "Quando todos os personagens tiverem seu turno, a rodada termina. Uma outra rodada se inicia, com todos os personagens agindo novamente, na mesma ordem. Mesmo aqueles que estavam surpresos agora podem agir."
   ],
   "attack": [
     "Quando você ataca, faz uma jogada de ataque, isto é, rola um d20 e soma seu bônus de ataque. Se o resultado é igual ou maior que a classe de armadura do alvo, você acerta e causa dano.",
