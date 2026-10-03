@@ -1,13 +1,133 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import SectionLanding from '../../components/SectionLanding.astro';
+import {
+  abilities,
+  abilityModifierTable,
+  personagemIntro,
+  characterLevelBenefits,
+  multiclassRules,
+  abilityRules,
+  stackingIntro,
+  stackingRules,
+  temporaryLevelRules
+} from '../../data/personagem';
+import { glossary } from '../../data/glossario';
 ---
 <BaseLayout title="Personagem" activePath="/personagem/">
-  <SectionLanding title="Personagem" description="Regras gerais usadas na construção e evolução de personagens." items={[
-    { title: 'Habilidade e Modificador', description: 'Valores de habilidade, modificadores e aplicações.' },
-    { title: 'Benefícios por Nível', description: 'Progressão geral de personagem.' },
-    { title: 'Multiclasse', description: 'Regras para personagens com mais de uma classe.' },
-    { title: 'Acúmulo de Bônus', description: 'Fontes, sobreposição e exceções.' },
-    { title: 'Níveis Temporários', description: 'Níveis positivos, negativos e perda de níveis.' }
-  ]} />
+  <section class="section-hero">
+    <p class="eyebrow">Regras gerais</p>
+    <h1>Personagem</h1>
+    <p class="lede">Habilidades, benefícios por nível, multiclasse, acúmulo de bônus e níveis temporários conforme o documento Personagem do Tormenta 1.3.</p>
+  </section>
+
+  <nav class="local-nav" aria-label="Nesta página">
+    <a href="#habilidades">Habilidades</a>
+    <a href="#beneficios">Benefícios por nível</a>
+    <a href="#multiclasse">Multiclasse</a>
+    <a href="#regras-habilidades">Regras de habilidades</a>
+    <a href="#acumulo">Acúmulo de bônus</a>
+    <a href="#niveis-temporarios">Níveis temporários</a>
+  </nav>
+
+  <section id="habilidades" class="rule-section">
+    <div class="section-heading"><div><p class="eyebrow">Base do personagem</p><h2>Habilidade e Modificador</h2></div></div>
+    <div class="prose">
+      {personagemIntro.map((paragraph) => <p>{paragraph}</p>)}
+    </div>
+
+    <div class="two-column">
+      <div>
+        <h3 class="subheading">Tabela de modificadores</h3>
+        <div class="table-wrap">
+          <table class="rules-table">
+            <thead><tr><th>Valor</th><th>Modificador</th></tr></thead>
+            <tbody>
+              {abilityModifierTable.map((row) => <tr><td>{row.value}</td><td>{row.modifier}</td></tr>)}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div>
+        <h3 class="subheading">As seis habilidades</h3>
+        <div class="definition-list one-column">
+          {abilities.map((ability) => (
+            <article id={ability.key}>
+              <h3>{ability.name} <span class="abbr">({ability.abbreviation})</span></h3>
+              <p>{ability.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="beneficios" class="rule-section">
+    <div class="section-heading"><div><p class="eyebrow">Progressão geral</p><h2>Benefícios por Nível de Personagem</h2></div></div>
+    <div class="definition-list">
+      {characterLevelBenefits.map((block) => (
+        <article>
+          <h3>{block.title}</h3>
+          {block.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section id="multiclasse" class="rule-section">
+    <div class="section-heading"><div><p class="eyebrow">Mais de uma classe</p><h2>Multiclasse</h2></div></div>
+    <div class="definition-list">
+      {multiclassRules.map((block) => (
+        <article>
+          <h3>{block.title}</h3>
+          {block.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section id="regras-habilidades" class="rule-section">
+    <div class="section-heading"><div><p class="eyebrow">Limites e aplicação</p><h2>Habilidades</h2></div></div>
+    <div class="definition-list">
+      {abilityRules.map((block) => (
+        <article>
+          <h3>{block.title}</h3>
+          {block.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section id="acumulo" class="rule-section">
+    <div class="section-heading"><div><p class="eyebrow">Fontes diferentes</p><h2>Acúmulo de Bônus</h2></div></div>
+    <div class="notice">{stackingIntro}</div>
+    <div class="definition-list stacking-list">
+      {stackingRules.map((block) => (
+        <article>
+          <h3>{block.title}</h3>
+          {block.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section id="niveis-temporarios" class="rule-section">
+    <div class="section-heading"><div><p class="eyebrow">Positivos, negativos e perda</p><h2>Níveis Temporários</h2></div></div>
+    <div class="definition-list">
+      {temporaryLevelRules.map((block) => (
+        <article>
+          <h3>{block.title}</h3>
+          {block.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="rule-section">
+    <div class="section-heading"><div><p class="eyebrow">Referência rápida</p><h2>Legenda</h2></div></div>
+    <div class="glossary-grid">
+      {glossary.map((item) => (
+        <div class="glossary-item"><strong>{item.abbreviation}</strong><span>{item.meaning}</span></div>
+      ))}
+    </div>
+  </section>
 </BaseLayout>
