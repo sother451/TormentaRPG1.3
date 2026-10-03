@@ -24,3 +24,55 @@
 @media(max-width:700px){.equipment-grid,.material-grid,.ship-grid,.equipment-formulas{grid-template-columns:1fr}.equipment-filter-panel,.armor-filter-panel{grid-template-columns:1fr}}
 
 .combat-prose{max-width:92ch;padding:18px;background:var(--surface);border:1px solid var(--border);border-radius:14px}.combat-prose p{margin:.6rem 0 0;color:#ddcfbf}.combat-prose p:first-child{margin-top:0}
+
+.section-copy{max-width:88ch;color:var(--muted);margin:0 0 18px}
+.section-count{align-self:end;color:var(--muted);font-size:.82rem}
+.magic-rule-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.magic-rule-grid article{padding:18px;background:var(--surface);border:1px solid var(--border);border-radius:14px}
+.magic-rule-grid h3{color:var(--gold);margin-bottom:8px}
+.magic-rule-grid p{margin:0;color:#ddcfbf}
+.magic-tier-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.magic-tier-card{padding:20px;background:linear-gradient(135deg,rgba(215,182,106,.08),rgba(200,91,66,.05)),var(--surface);border:1px solid var(--border);border-radius:15px}
+.magic-tier-card span{display:block;color:var(--accent2);font-size:.75rem;text-transform:uppercase;letter-spacing:.1em}
+.magic-tier-card strong{display:block;margin-top:6px;color:var(--gold);font:700 1.55rem Cinzel,Georgia,serif}
+.magic-tier-card p{margin:4px 0 0;color:var(--muted)}
+.slot-rule-panel{display:grid;grid-template-columns:minmax(0,1fr) 150px;gap:14px;align-items:stretch;padding:18px;background:var(--surface);border:1px solid var(--border);border-radius:15px}
+.slot-rule-panel h3{color:var(--gold);margin-bottom:8px}
+.slot-rule-panel p{margin:0;color:#ddcfbf}
+.slot-cap{display:grid;place-items:center;align-content:center;padding:14px;border-radius:12px;background:rgba(215,182,106,.07);border:1px solid rgba(215,182,106,.22)}
+.slot-cap span,.slot-cap small{color:var(--muted);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em}
+.slot-cap strong{color:var(--gold);font:700 2rem Cinzel,Georgia,serif}
+.magic-system-example{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}
+.magic-system-example>div{padding:16px 18px;background:rgba(255,255,255,.025);border:1px dashed var(--border);border-radius:13px}
+.example-label{display:block;color:var(--accent2);font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.magic-system-example strong{display:block;margin-top:5px;color:var(--text)}
+.magic-system-example p{margin:6px 0 0;color:var(--muted)}
+.progressive-enchant-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.progressive-enchant-card{overflow:hidden;background:var(--surface);border:1px solid var(--border);border-radius:16px}
+.progressive-enchant-card>header{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;padding:17px 18px;border-bottom:1px solid var(--border);background:linear-gradient(135deg,rgba(200,91,66,.09),transparent)}
+.progressive-enchant-card h3{margin:3px 0 0;color:var(--gold);font-size:1.1rem}
+.magic-kind{color:var(--muted);font-size:.68rem;text-transform:uppercase;letter-spacing:.08em}
+.range-badge{padding:5px 9px;border:1px solid rgba(215,182,106,.35);border-radius:999px;color:var(--gold);font-weight:800;font-size:.75rem}
+.enchant-intro{margin:0;padding:14px 18px;color:#ddcfbf;border-bottom:1px solid var(--border)}
+.enchant-levels{display:grid}
+.enchant-level{display:grid;grid-template-columns:76px minmax(0,1fr);gap:12px;padding:13px 18px;border-bottom:1px solid rgba(58,46,40,.75)}
+.enchant-level:last-child{border-bottom:0}
+.enchant-level p{margin:0;color:#ddcfbf}
+.slot-rank{display:flex;flex-direction:column;gap:2px}
+.slot-rank span{color:var(--accent2);font-weight:800;letter-spacing:.04em}
+.slot-rank small{color:var(--muted);font-size:.68rem}
+.fixed-cost-group{margin-top:24px}
+.fixed-cost-group>h3,.subsection-title{margin-bottom:12px;color:var(--accent2)}
+.fixed-title{margin-top:30px}
+.fixed-power-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.fixed-power-card{padding:16px 17px;background:var(--surface);border:1px solid var(--border);border-radius:14px}
+.fixed-power-card>header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px}
+.fixed-power-card h4{margin:0;color:var(--gold);font:700 .95rem Cinzel,Georgia,serif}
+.fixed-power-card>header>span{display:grid;place-items:center;min-width:36px;height:28px;padding:0 8px;border-radius:999px;background:rgba(200,91,66,.12);border:1px solid rgba(200,91,66,.4);color:var(--accent2);font-weight:800;font-size:.75rem}
+.fixed-power-card>p{margin:0;color:#ddcfbf}
+.tier-effects{display:grid;gap:7px;margin-top:12px;padding-top:12px;border-top:1px solid var(--border)}
+.tier-effects>div{display:grid;grid-template-columns:56px minmax(0,1fr);gap:9px}
+.tier-effects strong{color:var(--accent2);font-size:.72rem;text-transform:uppercase}
+.tier-effects p{margin:0;color:var(--muted);font-size:.84rem}
+@media(max-width:900px){.magic-rule-grid,.progressive-enchant-grid,.fixed-power-grid,.magic-system-example{grid-template-columns:1fr}}
+@media(max-width:700px){.magic-tier-grid{grid-template-columns:1fr}.slot-rule-panel{grid-template-columns:1fr}.slot-cap{min-height:110px}.enchant-level{grid-template-columns:62px minmax(0,1fr)}}
