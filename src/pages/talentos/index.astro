@@ -1,29 +1,154 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { talents, talentGroups } from '../../data/talentos';
+import '../../styles/talents.css';
 
-const groups = [
-  ['Talentos de Combate', 71],
-  ['Talentos de Perícia', 26],
-  ['Talentos de Magia', 17],
-  ['Metamágicos', 14],
-  ['Talentos de Destino', 24],
-  ['Talentos de Poder Concedido', 100],
-  ['Talentos da Tormenta', 27],
-  ['Talentos Raciais', 51],
-  ['Talentos Moreau', 12]
-];
+const base = import.meta.env.BASE_URL;
+const href = (path: string) => `${base}${path.replace(/^\/+/, '')}`;
 ---
 <BaseLayout title="Talentos" activePath="/talentos/">
   <section class="section-hero">
     <p class="eyebrow">Biblioteca geral</p>
     <h1>Talentos</h1>
-    <p class="lede">A organização segue os grupos que já existem no documento de Talentos do Tormenta 1.3.</p>
-    <div class="notice"><strong>Talentos de Classe não entram nesta biblioteca.</strong> Eles aparecem dentro da página da própria classe, evitando misturar opções que outras classes não podem escolher.</div>
+    <p class="lede">Os 342 talentos gerais do documento Tormenta 1.3, organizados exatamente pelos nove grupos da fonte.</p>
+    <div class="notice"><strong>Talentos de Classe não entram nesta biblioteca.</strong> Eles permanecem dentro da página da própria classe.</div>
   </section>
 
-  <section class="card-grid">
-    {groups.map(([name, count]) => (
-      <article class="content-card"><h2>{name}</h2><p><strong>{count}</strong> entradas mapeadas na fonte.</p></article>
+  <section class="talent-group-summary" aria-label="Grupos de talentos">
+    {talentGroups.map((group) => (
+      <button class="talent-group-card" type="button" data-group-jump={group.slug}>
+        <span>{group.count}</span>
+        <strong>{group.name}</strong>
+      </button>
     ))}
   </section>
+
+  <section class="filter-panel talent-filter-panel" aria-label="Filtros de talentos">
+    <label class="search-field">
+      <span>Buscar talento, pré-requisito ou texto</span>
+      <input id="talent-search" type="search" placeholder="Ex.: escudo, Carisma 14, crítico..." autocomplete="off" />
+    </label>
+
+    <label class="select-field">
+      <span>Grupo</span>
+      <select id="talent-group">
+        <option value="all">Todos os grupos</option>
+        {talentGroups.map((group) => <option value={group.slug}>{group.name}</option>)}
+      </select>
+    </label>
+
+    <label class="select-field">
+      <span>Pré-requisito</span>
+      <select id="talent-prerequisite">
+        <option value="all">Todos</option>
+        <option value="yes">Possui pré-requisito</option>
+        <option value="no">Sem pré-requisito indicado</option>
+      </select>
+    </label>
+
+    <p class="results-count"><strong id="talent-count">{talents.length}</strong> talentos exibidos</p>
+  </section>
+
+  <section id="talent-results" class="talent-list">
+    {talentGroups.map((group) => {
+      const groupTalents = talents.filter((talent) => talent.groupSlug === group.slug);
+      return (
+        <section class="talent-group-section" data-group-section={group.slug}>
+          <div class="section-heading talent-group-heading">
+            <div>
+              <p class="eyebrow">Grupo</p>
+              <h2>{group.name}</h2>
+            </div>
+            <p><span class="group-visible-count">{groupTalents.length}</span> / {groupTalents.length}</p>
+          </div>
+
+          <div class="talent-card-grid">
+            {groupTalents.map((talent) => (
+              <a
+                class="talent-card"
+                href={href(`/talentos/${talent.groupSlug}/${talent.id.replace(`${talent.groupSlug}-`, '')}/`)}
+                data-search={[
+                  talent.name,
+                  talent.group,
+                  ...talent.prerequisites,
+                  ...talent.costs,
+                  ...talent.blocks.map((block) => block.text)
+                ].join(' ').toLowerCase()}
+                data-group={talent.groupSlug}
+                data-prerequisite={talent.prerequisites.length > 0 ? 'yes' : 'no'}
+              >
+                <div class="talent-card-head">
+                  <h3>{talent.name}</h3>
+                  {talent.costs.length > 0 && <span class="talent-cost">{talent.costs.join(' · ')}</span>}
+                </div>
+                {talent.prerequisites.length > 0 ? (
+                  <p class="talent-prereq"><strong>Pré-requisito:</strong> {talent.prerequisites.join(' · ')}</p>
+                ) : (
+                  <p class="talent-prereq muted">Sem pré-requisito indicado.</p>
+                )}
+                <span class="card-link">Abrir talento →</span>
+              </a>
+            ))}
+          </div>
+        </section>
+      );
+    })}
+  </section>
+
+  <p class="empty-state" id="talent-empty" hidden>Nenhum talento corresponde aos filtros atuais.</p>
+
+  <script is:inline>
+    (() => {
+      const input = document.getElementById('talent-search');
+      const groupSelect = document.getElementById('talent-group');
+      const prerequisiteSelect = document.getElementById('talent-prerequisite');
+      const cards = [...document.querySelectorAll('.talent-card')];
+      const sections = [...document.querySelectorAll('.talent-group-section')];
+      const count = document.getElementById('talent-count');
+      const empty = document.getElementById('talent-empty');
+
+      const normalize = (value) => value
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase();
+
+      const apply = () => {
+        const query = normalize(input.value.trim());
+        const group = groupSelect.value;
+        const prerequisite = prerequisiteSelect.value;
+        let visible = 0;
+
+        cards.forEach((card) => {
+          const matchesText = !query || normalize(card.dataset.search || '').includes(query);
+          const matchesGroup = group === 'all' || card.dataset.group === group;
+          const matchesPrerequisite = prerequisite === 'all' || card.dataset.prerequisite === prerequisite;
+          const show = matchesText && matchesGroup && matchesPrerequisite;
+          card.hidden = !show;
+          if (show) visible += 1;
+        });
+
+        sections.forEach((section) => {
+          const visibleCards = [...section.querySelectorAll('.talent-card')].filter((card) => !card.hidden);
+          const counter = section.querySelector('.group-visible-count');
+          if (counter) counter.textContent = String(visibleCards.length);
+          section.hidden = visibleCards.length === 0;
+        });
+
+        count.textContent = String(visible);
+        empty.hidden = visible !== 0;
+      };
+
+      input.addEventListener('input', apply);
+      groupSelect.addEventListener('change', apply);
+      prerequisiteSelect.addEventListener('change', apply);
+
+      document.querySelectorAll('[data-group-jump]').forEach((button) => {
+        button.addEventListener('click', () => {
+          groupSelect.value = button.dataset.groupJump;
+          apply();
+          document.querySelector(`[data-group-section="${button.dataset.groupJump}"]`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+    })();
+  </script>
 </BaseLayout>
