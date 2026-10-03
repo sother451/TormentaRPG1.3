@@ -252,7 +252,7 @@ export const races: RaceEntry[] = [
     "slug": "goblin",
     "name": "Goblin",
     "abilityRule": "Escolha entre: +4,+2 e -2, ou, +2 e +2. Distribua em habilidades a sua escolha. Você não pode escolher a mesma habilidade duas vezes.",
-    "size": "Tamanho Pequeno: Goblins recebem classe de armadura +1, +1 nas jogadas de ataque e +4 em testes d...",
+    "size": "Tamanho Pequeno: Goblins recebem classe de armadura +1, +1 nas jogadas de ataque e +4 em testes de Furtividade, mas precisam us...",
     "movement": "Deslocamento 9m.",
     "vision": "Visão no Escuro",
     "traits": [
@@ -374,13 +374,12 @@ export const races: RaceEntry[] = [
   {
     "slug": "medusa",
     "name": "Medusa",
-    "abilityRule": null,
+    "abilityRule": "Escolha entre: +4,+2 e -2, ou, +2 e +2. Distribua em habilidades a sua escolha. Você não pode escolher a mesma habilidade duas vezes.",
     "size": "Tamanho Médio.",
     "movement": "Deslocamento 9m.",
     "vision": "Visão no Escuro",
     "traits": [
       "Tipo monstro. Medusas não são consideradas humanoides.",
-      "Escolha entre: +4,+2 e -2, ou, +2 e +2. Distribua em habilidades a sua escolha. Você não pode escolher a mesma habilidade duas vezes.",
       "Tamanho Médio.",
       "Deslocamento 9m.",
       "Visão no Escuro. Medusas enxergam no escuro a até 18 metros, mas apenas em preto e branco. Medusas ignoram a camuflagem (incluindo camuflagem total) por escuridão.",
@@ -639,7 +638,7 @@ export const races: RaceEntry[] = [
     "slug": "sprite",
     "name": "Sprite",
     "abilityRule": "Escolha entre: +4,+2 e -2, ou, +2 e +2. Distribua em habilidades a sua escolha. Você não pode escolher a mesma habilidade duas vezes.",
-    "size": "Tamanho Mínimo, Sprites recebem classe de armadura +2, +2 nas jogadas de ataque e +8 em testes de...",
+    "size": "Tamanho Mínimo, Sprites recebem classe de armadura +2, +2 nas jogadas de ataque e +8 em testes de Furtividade, mas precisam usa...",
     "movement": "Deslocamento 3m, voo 12m com boa capacidade de manobra.",
     "vision": null,
     "traits": [
