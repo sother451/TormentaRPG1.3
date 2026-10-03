@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import RuleText from '../../components/RuleText.astro';
 import { talents, talentGroups } from '../../data/talentos';
 import '../../styles/talents.css';
 
@@ -86,7 +87,7 @@ import '../../styles/talents.css';
                   {talent.blocks.map((block) => (
                     block.kind === 'subheading'
                       ? <h4>{block.text}</h4>
-                      : <p>{block.text}</p>
+                      : <RuleText text={block.text} />
                   ))}
                 </div>
               </article>
