@@ -1,10 +1,61 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import SectionLanding from '../../components/SectionLanding.astro';
+import { conditions } from '../../data/condicoes';
+import '../../styles/conditions.css';
+
+const base = import.meta.env.BASE_URL;
+const href = (path:string) => `${base}${path.replace(/^\/+/, '')}`;
 ---
 <BaseLayout title="Condições" activePath="/condicoes/">
-  <SectionLanding title="Condições" description="24 condições estão mapeadas na fonte atual, junto das regras de Pontos de Ação." items={[
-    { title: 'Condições', description: 'Abalado, Agarrado, Apavorado, Atordoado e demais condições do sistema.' },
-    { title: 'Pontos de Ação', description: 'Como ganhar, gastar e recuperar recursos por faixa de nível.' }
-  ]} />
+  <section class="section-hero">
+    <p class="eyebrow">Escudo do Mestre</p>
+    <h1>Condições</h1>
+    <p class="lede">As 24 condições reunidas no documento do Tormenta 1.3, organizadas para consulta rápida durante o jogo.</p>
+    <div class="notice">O mesmo documento também contém as regras de <a href={href('/pontos-de-acao/')}>Pontos de Ação</a>, que foram separadas em uma página própria.</div>
+  </section>
+
+  <section class="filter-panel condition-filter-panel" aria-label="Buscar condições">
+    <label class="search-field">
+      <span>Buscar condição ou efeito</span>
+      <input id="condition-search" type="search" placeholder="Ex.: cego, -4 na CA, deslocamento..." autocomplete="off" />
+    </label>
+    <p class="results-count"><strong id="condition-count">{conditions.length}</strong> condições exibidas</p>
+  </section>
+
+  <section class="condition-grid" id="condition-grid">
+    {conditions.map((condition) => (
+      <article
+        class="condition-card"
+        id={condition.id}
+        data-search={[condition.name,condition.description].join(' ').toLowerCase()}
+      >
+        <div class="condition-card-head">
+          <h2>{condition.name}</h2>
+          <a href={`#${condition.id}`} aria-label={`Link para ${condition.name}`}>#</a>
+        </div>
+        <p>{condition.description}</p>
+      </article>
+    ))}
+  </section>
+
+  <p class="empty-state" id="condition-empty" hidden>Nenhuma condição corresponde à busca.</p>
+
+  <script is:inline>
+    (() => {
+      const input=document.getElementById('condition-search');
+      const cards=[...document.querySelectorAll('.condition-card')];
+      const count=document.getElementById('condition-count');
+      const empty=document.getElementById('condition-empty');
+      const normalize=(v)=>v.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+      const apply=()=>{
+        const q=normalize(input.value.trim());let visible=0;
+        cards.forEach((card)=>{
+          const show=!q||normalize(card.dataset.search||'').includes(q);
+          card.hidden=!show;if(show)visible++;
+        });
+        count.textContent=String(visible);empty.hidden=visible!==0;
+      };
+      input.addEventListener('input',apply);
+    })();
+  </script>
 </BaseLayout>
