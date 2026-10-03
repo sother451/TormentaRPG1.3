@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import '../../styles/equipment.css';
 import {
   weaponIntro, weaponTypes, weaponProperties, weaponSizeRules, weaponSizeTable,
-  weapons, ammunition, technologicalWeapons, technologicalWarning
+  weapons, ammunition, technologicalWeapons, technologicalWarning, specificWeaponRule
 } from '../../data/equipamentos/armas';
 
 const categories = [...new Set(weapons.map((weapon) => weapon.category))];
@@ -38,6 +38,8 @@ const categories = [...new Set(weapons.map((weapon) => weapon.category))];
 
   <section id="lista" class="rule-section">
     <div class="section-heading"><div><p class="eyebrow">Consulta</p><h2>Lista de Armas</h2></div></div>
+
+    <div class="notice">{specificWeaponRule}</div>
 
     <section class="filter-panel equipment-filter-panel">
       <label class="search-field">
