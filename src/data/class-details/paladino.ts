@@ -258,9 +258,15 @@ export const classDetail = {
       "prerequisite": "4º Nível de Paladino",
       "prerequisiteLevel": 4,
       "paragraphs": [
-        "Como uma Ação Padrão e um uso de “Impor de Mãos”  você ergue uma barreira sobre si que dura 1 minuto, a barreira lhe concede PV Temporários igual seu Nível nesta classe + seu modificador de Carisma. No 8º nível o escudo recebe um bônus fixo de +5, No 16º nível o escudo passa a ser igual a 5 + Duas vezes seu Nível nesta classe + Duas vezes seu modificador de Carisma.",
-        "Julgamento",
-        "Pré-requisito: 8º Nível de Paladino",
+        "Como uma Ação Padrão e um uso de “Impor de Mãos”  você ergue uma barreira sobre si que dura 1 minuto, a barreira lhe concede PV Temporários igual seu Nível nesta classe + seu modificador de Carisma. No 8º nível o escudo recebe um bônus fixo de +5, No 16º nível o escudo passa a ser igual a 5 + Duas vezes seu Nível nesta classe + Duas vezes seu modificador de Carisma."
+      ]
+    },
+    {
+      "id": "talento-julgamento",
+      "name": "Julgamento",
+      "prerequisite": "8º Nível de Paladino",
+      "prerequisiteLevel": 8,
+      "paragraphs": [
         "A habilidade “Impor de Mãos” tem seu alcance aumentado para 9 Metros e passa a adicionar seu Modificador de Carisma a sua Cura ou Dano. Quando você usa:",
         "Curar Pelas Mãos: Escolha também uma segunda criatura, ela recupera a mesma quantidade de pontos de vida que a primeira.",
         "Ferir Pelas Mãos: Os dados da habilidade se tornam D10. Além disso, se utilizar a habilidade para Curar um Morto-Vivo, pode utilizar a habilidade como uma ação de Movimento."
@@ -281,9 +287,15 @@ export const classDetail = {
       "prerequisite": "8º Nível de Paladino",
       "prerequisiteLevel": 8,
       "paragraphs": [
-        "Se estiver empunhando uma Arma com Duas Mãos, sua habilidade “Golpe Divino” gera um efeito de dissipar magia maior no alvo. Considere que seu nível de conjurador é seu nível nesta classe.",
-        "Soar de Sinos",
-        "Pré-requisito: 12º Nível de Paladino",
+        "Se estiver empunhando uma Arma com Duas Mãos, sua habilidade “Golpe Divino” gera um efeito de dissipar magia maior no alvo. Considere que seu nível de conjurador é seu nível nesta classe."
+      ]
+    },
+    {
+      "id": "talento-soar-de-sinos",
+      "name": "Soar de Sinos",
+      "prerequisite": "12º Nível de Paladino",
+      "prerequisiteLevel": 12,
+      "paragraphs": [
         "Como ação Livre e um uso de “Golpe Divino”, você escolhe uma criatura que possa ver e esteja a até 18 metros. Durante a rodada seguinte após o uso desta habilidade, seus ataques contra a criatura recebem +3 em Jogadas de Ataque e Dano. Estes valores se acumulam com os benefícios de Golpe Divino e Poder Sagrado."
       ]
     },
@@ -302,9 +314,15 @@ export const classDetail = {
       "prerequisite": "12º Nível de Paladino",
       "prerequisiteLevel": 12,
       "paragraphs": [
-        "Como uma ação padrão, você pode fazer um teste de Vontade oposto contra um conjurador arcano a até 9m. Caso seja bem-sucedido, o Paladino rola os mesmos dados que rolaria para a habilidade cura pelas mãos. O oponente perde PMs iguais a metade do número rolado. Usar esta habilidade gasta um uso diário da habilidade “Impor de Mãos”.",
-        "Aura de Sacrifício",
-        "Pré-requisito: 16º Nível de Paladino",
+        "Como uma ação padrão, você pode fazer um teste de Vontade oposto contra um conjurador arcano a até 9m. Caso seja bem-sucedido, o Paladino rola os mesmos dados que rolaria para a habilidade cura pelas mãos. O oponente perde PMs iguais a metade do número rolado. Usar esta habilidade gasta um uso diário da habilidade “Impor de Mãos”."
+      ]
+    },
+    {
+      "id": "talento-aura-de-sacrificio",
+      "name": "Aura de Sacrifício",
+      "prerequisite": "16º Nível de Paladino",
+      "prerequisiteLevel": 16,
+      "paragraphs": [
         "Quando um Aliado a até 3 metros de você sofrer qualquer tipo de dano, você pode como reação transferir o dano para si mesmo."
       ]
     },
@@ -323,9 +341,15 @@ export const classDetail = {
       "prerequisite": "16º Nível de Paladino",
       "prerequisiteLevel": 16,
       "paragraphs": [
-        "Quando um Aliado a até 3 metros for reduzido a 0 ou menos PVs você pode como sua reação utilizar a habilidade “Impor de Mãos\" nele. Independente de seu caminho, esta habilidade sempre cura o alvo.",
-        "Seraphim",
-        "Pré-requisito: 20º Nível de Paladino",
+        "Quando um Aliado a até 3 metros for reduzido a 0 ou menos PVs você pode como sua reação utilizar a habilidade “Impor de Mãos\" nele. Independente de seu caminho, esta habilidade sempre cura o alvo."
+      ]
+    },
+    {
+      "id": "talento-seraphim",
+      "name": "Seraphim",
+      "prerequisite": "20º Nível de Paladino",
+      "prerequisiteLevel": 20,
+      "paragraphs": [
         "Ao ativar “Poder Sagrado” da habilidade “Armamentos da Fé” você convoca os Poderes de seu Deus. Enquanto “Poder Sagrado” durar a margem de Ameaça e Multiplicador de todos seus Ataques aumenta em +2 e o bônus em Ataque e Dano garantido pela habilidade aumenta para +8. Além disso recebe imunidade a dano de habilidade, acertos críticos e golpes de misericórdia."
       ]
     },
