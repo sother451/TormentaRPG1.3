@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionLanding from '../../components/SectionLanding.astro';
+---
+<BaseLayout title="Personagem" activePath="/personagem/">
+  <SectionLanding title="Personagem" description="Regras gerais usadas na construção e evolução de personagens." items={[
+    { title: 'Habilidade e Modificador', description: 'Valores de habilidade, modificadores e aplicações.' },
+    { title: 'Benefícios por Nível', description: 'Progressão geral de personagem.' },
+    { title: 'Multiclasse', description: 'Regras para personagens com mais de uma classe.' },
+    { title: 'Acúmulo de Bônus', description: 'Fontes, sobreposição e exceções.' },
+    { title: 'Níveis Temporários', description: 'Níveis positivos, negativos e perda de níveis.' }
+  ]} />
+</BaseLayout>
