@@ -19,7 +19,9 @@
 .new-spell-card h3{margin:3px 0 0;color:var(--gold)}
 .new-spell-card p{margin:0;color:#ddcfbf}
 .new-spell-card small{margin-top:auto;color:var(--muted)}
-.spell-filter-panel{grid-template-columns:minmax(260px,1.2fr) repeat(5,minmax(145px,.45fr))}
+.spell-filter-panel{width:100%;grid-template-columns:repeat(3,minmax(0,1fr));align-items:end;overflow:visible}
+.spell-filter-panel>*{min-width:0}
+.spell-filter-panel .search-field{grid-column:span 2}
 .spell-result-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:18px 0 12px;color:var(--muted)}
 .spell-result-bar p{margin:0}.spell-result-bar strong{color:var(--gold)}
 .spell-result-bar label{display:flex;align-items:center;gap:8px;font-size:.78rem}
@@ -58,6 +60,6 @@
 .spell-source-footer span{display:block;color:var(--muted);font-size:.68rem;text-transform:uppercase;letter-spacing:.08em}
 .spell-source-footer strong{color:var(--gold)}
 .spell-source-footer p{margin:0;color:var(--muted);font-size:.82rem}
-@media(max-width:1180px){.spell-filter-panel{grid-template-columns:repeat(3,minmax(0,1fr))}.spell-card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:1180px){.spell-filter-panel{grid-template-columns:repeat(2,minmax(0,1fr))}.spell-filter-panel .search-field{grid-column:1/-1}.spell-card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:820px){.spell-local-nav{position:static}.magic-rules-grid,.alteration-grid,.new-spell-grid,.spell-card-grid,.spell-field-grid{grid-template-columns:1fr}.spell-filter-panel{grid-template-columns:1fr 1fr}}
 @media(max-width:620px){.spell-filter-panel{grid-template-columns:1fr}.spell-result-bar{align-items:flex-start;flex-direction:column}}
