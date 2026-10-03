@@ -76,3 +76,5 @@
 .tier-effects p{margin:0;color:var(--muted);font-size:.84rem}
 @media(max-width:900px){.magic-rule-grid,.progressive-enchant-grid,.fixed-power-grid,.magic-system-example{grid-template-columns:1fr}}
 @media(max-width:700px){.magic-tier-grid{grid-template-columns:1fr}.slot-rule-panel{grid-template-columns:1fr}.slot-cap{min-height:110px}.enchant-level{grid-template-columns:62px minmax(0,1fr)}}
+
+.material-price-table-wrap{margin-bottom:18px}.material-price-table{min-width:980px}.material-price-table td:not(:first-child){white-space:nowrap}.material-explanations{margin-top:0}.equipment-breadcrumbs{margin-bottom:22px}
