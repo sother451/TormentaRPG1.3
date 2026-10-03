@@ -29,11 +29,9 @@ const href = (path: string) => `${base}${path.replace(/^\/+/, '')}`;
               <small>{entry.family}</small>
               <h2>{entry.name}</h2>
               <p>{entry.systems.slice(0, 3).join(' · ')}</p>
-              <div class="class-meta">
-                <span class="pill">BBA {entry.bba}</span>
-                <span class="pill">PV {entry.pvInitial} + Con</span>
-                {entry.status && entry.status !== 'mapeada' && <span class="pill">revisar fonte</span>}
-              </div>
+              {entry.status && entry.status !== 'mapeada' && (
+                <div class="class-meta"><span class="pill">revisar fonte</span></div>
+              )}
             </a>
           ))}
         </div>
@@ -54,7 +52,6 @@ const href = (path: string) => `${base}${path.replace(/^\/+/, '')}`;
           <p>{entry.requirements?.join(' · ') || 'Requisitos na página da classe.'}</p>
           <div class="class-meta">
             <span class="pill">{entry.progression.rows.length} níveis</span>
-            {entry.status !== 'complete' && <span class="pill">{entry.status === 'wip' ? 'WIP' : 'fonte incompleta'}</span>}
           </div>
         </a>
       ))}
