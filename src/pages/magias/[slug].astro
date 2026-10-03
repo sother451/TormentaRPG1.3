@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { baseSpells, getSpellAlteration, type BaseSpell } from '../../data/magias';
+import { newSpells, type NewSpell } from '../../data/magias-t13';
+import '../../styles/spells.css';
+
+type SpellPage =
+  | { kind:'base'; spell:BaseSpell }
+  | { kind:'new'; spell:NewSpell };
+
+export function getStaticPaths() {
+  return [
+    ...baseSpells.map((spell) => ({ params:{slug:spell.id}, props:{page:{kind:'base',spell} as SpellPage} })),
+    ...newSpells.map((spell) => ({ params:{slug:spell.id}, props:{page:{kind:'new',spell} as SpellPage} }))
+  ];
+}
+
+interface Props { page: SpellPage; }
+const { page } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const href = (path:string) => `${base}${path.replace(/^\/+/, '')}`;
+const alteration = page.kind === 'base' ? getSpellAlteration(page.spell.name) : undefined;
+const fields = page.kind === 'base'
+  ? Object.entries(page.spell.fields)
+  : [
+      ['Escola',page.spell.school],['Tempo de Execução',page.spell.action],['Alcance',page.spell.range],
+      ['Alvo ou Efeito',page.spell.effect],['Duração',page.spell.duration],['Teste de Resistência',page.spell.resistance]
+    ];
+const levels = page.kind === 'base' ? page.spell.levels : [...new Set(page.spell.lists.map((list)=>list.level))];
+---
+<BaseLayout title={page.spell.name} activePath="/magias/">
+  <div class="breadcrumbs"><a href={href('/magias/')}>Magias</a> / {page.spell.name}</div>
+
+  <section class="section-hero spell-detail-hero">
+    <p class="eyebrow">{page.kind === 'new' ? 'Nova Magia · Tormenta 1.3' : alteration ? 'Alterada no Tormenta 1.3' : 'Catálogo-base'}</p>
+    <h1>{page.spell.name}</h1>
+    <div class="spell-detail-badges">
+      <span>Nível {levels.join(' / ')}</span>
+      {page.kind === 'base' && <span>{page.spell.subtitle}</span>}
+      {page.kind === 'new' && page.spell.lists.map((list)=><span>{list.tradition} {list.level}</span>)}
+    </div>
+  </section>
+
+  {alteration && (
+    <section class="spell-alteration-callout">
+      <span>Regra Tormenta 1.3</span>
+      <h2>Alteração desta magia</h2>
+      <p>{alteration.text}</p>
+    </section>
+  )}
+
+  <section class="rule-section">
+    <div class="section-heading"><div><p class="eyebrow">Ficha</p><h2>Dados da Magia</h2></div></div>
+    <dl class="spell-field-grid">
+      {fields.map(([key,value]) => <div><dt>{key}</dt><dd>{value}</dd></div>)}
+    </dl>
+  </section>
+
+  <section class="rule-section">
+    <div class="section-heading"><div><p class="eyebrow">Descrição</p><h2>Efeito</h2></div></div>
+    <div class="spell-description">
+      {(page.kind === 'base' ? page.spell.description : page.spell.description).split(/\n\s*\n/).map((paragraph)=><p>{paragraph}</p>)}
+    </div>
+  </section>
+
+  <section class="spell-source-footer">
+    {page.kind === 'base' ? (
+      <>
+        <div><span>Fonte do catálogo-base</span><strong>{page.spell.source || 'Não informada'}</strong></div>
+        <p>Os dados-base foram importados do Grimório TRPG. Quando existe uma alteração no documento Tormenta 1.3, ela é exibida separadamente acima e prevalece para esta revisão.</p>
+      </>
+    ) : (
+      <>
+        <div><span>Fonte</span><strong>Documento Magias — Tormenta 1.3</strong></div>
+        <p>Esta magia foi adicionada diretamente pela revisão Tormenta 1.3.</p>
+      </>
+    )}
+  </section>
+</BaseLayout>
