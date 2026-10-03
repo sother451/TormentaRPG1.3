@@ -101,7 +101,7 @@ const orphanTalents = detail.classTalents.filter((talent) => !talent.prerequisit
   </section>
 
   <section id="progressao" class="rule-section">
-    <div class="section-heading"><div><p class="eyebrow">Níveis 1–20</p><h2>Progressão</h2></div></div>
+    <div class="section-heading"><div><p class="eyebrow">{detail.kind === 'prestige' ? 'Níveis 1–10' : 'Níveis 1–20'}</p><h2>Progressão</h2></div></div>
     <div class="table-wrap class-progression-wrap">
       <table class="rules-table class-progression-table">
         <thead>
