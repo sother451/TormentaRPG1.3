@@ -34,7 +34,7 @@ export const classEntries: ClassEntry[] = [
   { slug:'numeromante', name:'Numeromante', family:'Mago', bba:'Baixo', pvInitial:8, pvPerLevel:2, systems:['Dado Numeromântico','Alterar a Equação','Multiplicar Metamagia'] },
   { slug:'monge', name:'Monge', family:'Monge', bba:'Completo', pvInitial:16, pvPerLevel:4, systems:['Sentir o Chi','Foco Espiritual','Andar nas Nuvens','Dano Desarmado'] },
   { slug:'paladino', name:'Paladino', family:'Paladino', bba:'Completo', pvInitial:20, pvPerLevel:5, systems:['Golpe Divino','Impor de Mãos','Armamentos da Fé','Montaria Sagrada','Imposição Celestial'] },
-  { slug:'ranger', name:'Ranger', family:'Ranger', bba:'Completo', pvInitial:16, pvPerLevel:4, systems:['Lista de Presas','Escolas de Ranger','Técnicas de Ranger','Companheiro Animal'], status:'revisar', note:'A seção de talentos de Ranger será importada após uma revisão adicional dos títulos na fonte.' },
+  { slug:'ranger', name:'Ranger', family:'Ranger', bba:'Completo', pvInitial:16, pvPerLevel:4, systems:['Lista de Presas','Escolas de Ranger','Técnicas de Ranger','Companheiro Animal'] },
   { slug:'artifice', name:'Artífice', family:'Artífice', bba:'Intermediário', pvInitial:12, pvPerLevel:3, systems:['Chave Sônica','Infundir Magias','Criação de Itens','Companheiro Autômato'] }
 ];
 
