@@ -49,7 +49,7 @@
 .card-link{margin-top:auto;color:var(--accent2);font-weight:700;font-size:.82rem}.empty-state{padding:26px;text-align:center;color:var(--muted);background:var(--surface);border:1px dashed var(--border);border-radius:16px}
 .ability-rule{margin-top:22px;padding:16px 18px;background:linear-gradient(135deg,rgba(200,91,66,.11),rgba(215,182,106,.06));border:1px solid var(--border);border-radius:14px}
 .ability-rule span{display:block;color:var(--accent2);font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em}.ability-rule p{margin:5px 0 0;color:var(--text)}
-.race-facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:20px 0 34px}.race-facts article{padding:14px;background:var(--surface);border:1px solid var(--border);border-radius:12px}.race-facts span{display:block;color:var(--muted);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em}.race-facts strong{display:block;margin-top:5px;color:var(--gold);font-size:.88rem}
+.race-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:20px 0 34px}.race-facts article{padding:14px;background:var(--surface);border:1px solid var(--border);border-radius:12px}.race-facts span{display:block;color:var(--muted);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em}.race-facts strong{display:block;margin-top:5px;color:var(--gold);font-size:.88rem}
 .race-traits{display:grid;gap:10px}.race-trait{display:grid;grid-template-columns:38px minmax(0,1fr);gap:12px;align-items:start;padding:14px 16px;background:var(--surface);border:1px solid var(--border);border-radius:12px}.race-trait p{margin:0;color:#ddcfbf}.trait-number{display:grid;place-items:center;min-height:28px;border-radius:8px;background:rgba(215,182,106,.08);color:var(--gold);font-size:.7rem;font-weight:700}
 @media(max-width:900px){.filter-panel{grid-template-columns:1fr}.race-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.race-facts{grid-template-columns:repeat(2,minmax(0,1fr))}.results-count{white-space:normal}}
 @media(max-width:620px){.race-grid{grid-template-columns:1fr}.race-facts{grid-template-columns:1fr}.filter-actions{overflow-x:auto;flex-wrap:nowrap}.filter-chip{white-space:nowrap}}
@@ -85,3 +85,5 @@
 
 .skill-use-table-wrap{margin-top:14px}
 .skill-use-table-wrap .rules-table td:last-child{font-weight:400}
+
+.rule-text{display:grid;gap:.72rem}.rule-text p{margin:0!important}.rule-text strong{color:var(--text);font-weight:700}.rule-text-bullet{position:relative;padding-left:1.05rem}.rule-text-bullet::before{content:"•";position:absolute;left:0;color:var(--accent2)}
