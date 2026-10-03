@@ -29,6 +29,15 @@ import { glossary } from '../../data/glossario';
     <a href="#niveis-temporarios">Níveis temporários</a>
   </nav>
 
+  <section class="rule-section">
+    <div class="section-heading"><div><p class="eyebrow">Referência rápida</p><h2>Legenda</h2></div></div>
+    <div class="glossary-grid">
+      {glossary.map((item) => (
+        <div class="glossary-item"><strong>{item.abbreviation}</strong><span>{item.meaning}</span></div>
+      ))}
+    </div>
+  </section>
+
   <section id="habilidades" class="rule-section">
     <div class="section-heading"><div><p class="eyebrow">Base do personagem</p><h2>Habilidade e Modificador</h2></div></div>
     <div class="prose">
@@ -122,12 +131,4 @@ import { glossary } from '../../data/glossario';
     </div>
   </section>
 
-  <section class="rule-section">
-    <div class="section-heading"><div><p class="eyebrow">Referência rápida</p><h2>Legenda</h2></div></div>
-    <div class="glossary-grid">
-      {glossary.map((item) => (
-        <div class="glossary-item"><strong>{item.abbreviation}</strong><span>{item.meaning}</span></div>
-      ))}
-    </div>
-  </section>
 </BaseLayout>
