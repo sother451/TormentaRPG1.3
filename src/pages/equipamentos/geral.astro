@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { generalEquipment } from '../../data/equipamentos/geral';
+
+const tables = [
+  { title: 'Estado do objeto', table: generalEquipment.objectStateTable },
+  { title: 'Material', table: generalEquipment.objectMaterialTable },
+  { title: 'Tipo de equipamento', table: generalEquipment.objectTypeTable }
+];
+---
+<BaseLayout title="Equipamentos — Regras Gerais" activePath="/equipamentos/">
+  <section class="section-hero">
+    <p class="eyebrow">Equipamentos</p>
+    <h1>Regras Gerais</h1>
+    <p class="lede">Carga, riquezas, moedas e estatísticas usadas para objetos e equipamentos.</p>
+  </section>
+
+  <nav class="local-nav" aria-label="Nesta página">
+    <a href="#carga">Carga</a>
+    <a href="#moedas">Riquezas e Moedas</a>
+    <a href="#objetos">Estatísticas de Equipamentos</a>
+  </nav>
+
+  <section id="carga" class="rule-section">
+    <div class="section-heading"><div><p class="eyebrow">Peso transportado</p><h2>Carga</h2></div></div>
+    <div class="combat-prose">
+      {generalEquipment.load.map((p) => <p>{p}</p>)}
+    </div>
+    <div class="formula-grid equipment-formulas">
+      <article><span>Sem penalidade</span><strong>Força × 3 kg</strong></article>
+      <article><span>Peso máximo</span><strong>Força × 10 kg</strong></article>
+      <article><span>Acima do limite sem penalidade</span><strong>–2 em perícias indicadas e –3m de deslocamento</strong></article>
+    </div>
+  </section>
+
+  <section id="moedas" class="rule-section">
+    <div class="section-heading"><div><p class="eyebrow">Economia</p><h2>Riquezas e Moedas</h2></div></div>
+    <div class="combat-prose">{generalEquipment.currencyIntro.map((p) => <p>{p}</p>)}</div>
+    <div class="table-wrap equipment-table">
+      <table class="rules-table">
+        <thead><tr>{generalEquipment.currencyTable.headers.map((h) => <th>{h}</th>)}</tr></thead>
+        <tbody>{generalEquipment.currencyTable.rows.map((row) => <tr>{row.map((cell) => <td>{cell}</td>)}</tr>)}</tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="objetos" class="rule-section">
+    <div class="section-heading"><div><p class="eyebrow">Quebrando objetos</p><h2>CA, RD e PV</h2></div></div>
+    <div class="combat-prose">{generalEquipment.objectStatsIntro.map((p) => <p>{p}</p>)}</div>
+
+    <div class="equipment-table-grid">
+      {tables.map(({title, table}) => (
+        <section>
+          <h3>{title}</h3>
+          <div class="table-wrap">
+            <table class="rules-table">
+              <thead><tr>{table.headers.map((h) => <th>{h}</th>)}</tr></thead>
+              <tbody>{table.rows.map((row) => <tr>{row.map((cell) => <td>{cell}</td>)}</tr>)}</tbody>
+            </table>
+          </div>
+        </section>
+      ))}
+    </div>
+
+    <div class="notice-stack">
+      {generalEquipment.objectStatsNotes.map((note) => <div class="notice">{note}</div>)}
+    </div>
+  </section>
+</BaseLayout>
