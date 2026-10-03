@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import RuleText from '../../components/RuleText.astro';
 import { generalSkillRules, skills } from '../../data/pericias';
 
 const base = import.meta.env.BASE_URL;
@@ -26,7 +27,7 @@ const abilityOptions = [...new Set(skills.map((skill) => skill.ability).filter(B
       {generalSkillRules.map((rule) => (
         <article class="skill-rule-card">
           <h3>{rule.title}</h3>
-          {rule.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+          {rule.paragraphs.map((paragraph) => <RuleText text={paragraph} />)}
         </article>
       ))}
     </div>
@@ -48,7 +49,6 @@ const abilityOptions = [...new Set(skills.map((skill) => skill.ability).filter(B
         <select id="skill-ability">
           <option value="all">Todas</option>
           {abilityOptions.map((ability) => <option value={ability}>{ability}</option>)}
-          <option value="unknown">Não indicada na tabela</option>
         </select>
       </label>
 
@@ -78,9 +78,8 @@ const abilityOptions = [...new Set(skills.map((skill) => skill.ability).filter(B
           <div class="skill-meta">
             <span>{skill.ability ?? 'Habilidade não indicada'}</span>
             {skill.trainedOnly === true && <span>Treinada</span>}
-            {skill.armorPenalty === true && <span>Armadura</span>}
           </div>
-          <p>{skill.blocks.length > 0 ? `${skill.blocks.length} ${skill.blocks.length === 1 ? 'bloco de uso' : 'blocos de uso'}` : 'Sem descrição detalhada na fonte'}</p>
+          <p>{skill.blocks.length > 0 ? `${skill.blocks.length} ${skill.blocks.length === 1 ? 'uso possível' : 'usos possíveis'}` : 'Sem usos descritos na fonte'}</p>
           <span class="card-link">Abrir perícia →</span>
         </a>
       ))}
