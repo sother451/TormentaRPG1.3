@@ -1,6 +1,10 @@
 export interface SkillBlock {
   title: string | null;
   paragraphs: string[];
+  table?: {
+    headers: string[];
+    rows: string[][];
+  };
 }
 
 export interface SkillEntry {
@@ -746,10 +750,49 @@ export const skills: SkillEntry[] = [
     "ability": "Carisma",
     "trainedOnly": false,
     "armorPenalty": false,
-    "blocks": [],
-    "sourceNotes": [
-      "Esta perícia aparece na tabela-resumo da fonte, mas não possui uma seção de descrição detalhada no documento."
-    ]
+    "blocks": [
+      {
+        "title": "Jogos de azar",
+        "paragraphs": [
+          "Use esta perícia para ganhar dinheiro com jogos de azar. Para resolver uma noite de jogatina, pague 1d10 TO, faça um teste de perícia e consulte a tabela abaixo para determinar quanto você ganha.",
+          "O mestre pode variar o valor da aposta básica. De 1d3 TO, para uma taverna suja do porto, frequentada por marujos e estivadores, a 1d10 x 1.000 TO, para um bordel de luxo na capital do Reinado!",
+          "Jogatina é uma perícia de classe para bardos, ladinos e swashbucklers."
+        ],
+        "table": {
+          "headers": ["Resultado do Teste", "Ganho"],
+          "rows": [
+            ["9 ou menos", "Nenhum."],
+            ["10 a 14", "Metade da aposta."],
+            ["15 a 19", "Valor da aposta (você “empata”)."],
+            ["20 a 29", "Dobro da aposta."],
+            ["30 a 39", "Triplo da aposta."],
+            ["40 ou mais", "Quíntuplo da aposta."]
+          ]
+        }
+      },
+      {
+        "title": "Wyrt",
+        "paragraphs": [
+          "O Wyrt é um dos jogos de azar mais conhecidos do Reinado — mas não um dos mais jogados, pelo menos abertamente. Originário de Ahlen, o Wyrt é ilegal a todos que não sejam nobres, embora cassinos e tavernas discretas ofereçam mesas clandestinas para quem puder pagar.",
+          "O Wyrt é jogado com cartas e dados. Assim, depende em iguais partes de estratégia e sorte. No entanto, em Ahlen a trapaça faz parte do jogo quase tanto quanto as regras. “Roubar” sem ser apanhado é uma habilidade tão valorizada quanto dominar as táticas em si. Embora não exista uma descrição detalhada das regras do Wyrt, o mestre pode introduzi-lo (assim como outros jogos de azar) com uma simulação simplificada.",
+          "Para entrar em uma mesa de Wyrt, um jogador deve primeiro cobrir a aposta. O valor varia de 1 TO, para mesas casuais, a 10.000 TO, para mesas exclusivas da elite de Valkaria. A aposta de uma mesa típica em uma taverna clandestina é 1d6x10 TO.",
+          "Cada jogador faz um teste de Jogatina, que representa tanto sua habilidade com as cartas quanto sua sorte nos dados. O jogador com o maior resultado vence e fica com todo o valor apostado. Antes do teste de Jogatina, os jogadores podem blefar ou trapacear, para aumentar suas chances."
+        ]
+      },
+      {
+        "title": "Blefe",
+        "paragraphs": [
+          "Um jogador pode blefar com um teste de Enganação (CD 20). Se for bem-sucedido, recebe um bônus de +2 no teste de Jogatina, com +2 adicional para cada 5 pontos pelos quais o resultado do teste de Enganação exceder a CD (+4 com resultado 25, +6 com resultado 30 e assim por diante). Se falhar por 5 ou mais, acaba revelando parte de sua estratégia e sofre uma penalidade de –4 no teste de Jogatina."
+        ]
+      },
+      {
+        "title": "Trapaça",
+        "paragraphs": [
+          "Um jogador pode trapacear com um teste de Ladinagem (CD 20). Se for bem-sucedido, recebe um bônus de +10 no teste de Jogatina. Os outros jogadores podem fazer testes de Percepção (CD igual ao resultado do teste de Ladinagem). Um jogador bem-sucedido nota a trapaça — o que normalmente faz com que o jogo termine e uma briga comece."
+        ]
+      }
+    ],
+    "sourceNotes": []
   },
   {
     "slug": "ladinagem",
@@ -800,10 +843,16 @@ export const skills: SkillEntry[] = [
   {
     "slug": "meditacao",
     "name": "Meditação",
-    "ability": null,
-    "trainedOnly": null,
-    "armorPenalty": null,
+    "ability": "Sabedoria",
+    "trainedOnly": true,
+    "armorPenalty": false,
     "blocks": [
+      {
+        "title": null,
+        "paragraphs": [
+          "Você treinou sua mente para obter domínio sobre seu próprio corpo e destravar capacidades extraordinárias. Meditação é uma perícia de classe para clérigos, lutadores, monges, ninjas, samurais e samaritanos."
+        ]
+      },
       {
         "title": "Força de vontade (CD 20)",
         "paragraphs": [
@@ -829,9 +878,7 @@ export const skills: SkillEntry[] = [
         ]
       }
     ],
-    "sourceNotes": [
-      "Esta perícia possui descrição detalhada na fonte, mas não aparece na tabela-resumo de perícias."
-    ]
+    "sourceNotes": []
   },
   {
     "slug": "obter-informacao",
