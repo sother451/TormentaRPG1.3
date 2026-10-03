@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import EquipmentBack from '../../components/EquipmentBack.astro';
 import '../../styles/equipment.css';
 import { armorRules, armorProperties, armors, specialMaterials } from '../../data/equipamentos/armaduras';
 
@@ -10,6 +11,7 @@ const materialCostLabels = [
 ] as const;
 ---
 <BaseLayout title="Armaduras e Materiais" activePath="/equipamentos/">
+  <EquipmentBack current="Armaduras, Escudos e Materiais" />
   <section class="section-hero">
     <p class="eyebrow">Equipamentos</p>
     <h1>Armaduras, Escudos e Materiais</h1>
