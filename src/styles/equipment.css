@@ -1,0 +1,24 @@
+
+.equipment-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.equipment-card{display:flex;flex-direction:column;gap:10px;min-height:180px;padding:20px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);text-decoration:none}
+.equipment-card:hover{border-color:rgba(200,91,66,.65);transform:translateY(-2px);transition:.18s ease}
+.equipment-card p{margin:0;color:var(--muted)}.equipment-card span{margin-top:auto;color:var(--accent2);font-weight:700;font-size:.82rem}
+.equipment-formulas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:14px}
+.equipment-formulas article{padding:15px;background:linear-gradient(135deg,rgba(200,91,66,.08),rgba(215,182,106,.04)),var(--surface);border:1px solid var(--border);border-radius:13px}
+.equipment-formulas span{display:block;color:var(--muted);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em}
+.equipment-formulas strong{display:block;margin-top:5px;color:var(--gold);font-size:.9rem}
+.equipment-table{margin-top:14px}.equipment-table-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:16px}
+.equipment-table-grid h3{margin-bottom:10px;color:var(--gold)}.notice-stack{display:grid;gap:8px;margin-top:14px}
+.equipment-columns{margin-top:14px}.equipment-filter-panel{grid-template-columns:minmax(240px,1fr) minmax(170px,.4fr) minmax(170px,.4fr) auto}
+.weapon-table-wrap{max-height:70vh}.equipment-list-table{min-width:980px}.equipment-list-table thead{position:sticky;top:0;z-index:2;background:var(--surface2)}
+.weapon-row[hidden],.armor-row[hidden]{display:none}.tech-warning{font-weight:700;text-transform:uppercase;letter-spacing:.02em}
+.armor-filter-panel{grid-template-columns:minmax(240px,1fr) minmax(200px,.5fr) auto}
+.material-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.material-card{padding:18px;background:var(--surface);border:1px solid var(--border);border-radius:14px}
+.material-card h3{color:var(--gold);margin-bottom:8px}.material-card p{margin:0;color:#ddcfbf}
+.material-costs{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.material-costs span{display:flex;flex-direction:column;gap:2px;padding:7px 9px;border:1px solid var(--border);border-radius:9px;color:var(--muted);font-size:.72rem}.material-costs strong{color:var(--accent2);font-size:.68rem;text-transform:uppercase}
+.ship-rule-list{display:grid;gap:10px}.ship-rule-list article{padding:15px 17px;background:var(--surface);border:1px solid var(--border);border-radius:13px}.ship-rule-list p{margin:0;color:#ddcfbf}
+.ship-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.ship-card{padding:18px;background:var(--surface);border:1px solid var(--border);border-radius:14px}.ship-card h3{color:var(--gold);margin-bottom:8px}.ship-card p{margin:0;color:#ddcfbf}
+.equipment-list-table td:last-child{font-weight:400}
+@media(max-width:1000px){.equipment-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.equipment-table-grid{grid-template-columns:1fr}.equipment-filter-panel{grid-template-columns:1fr 1fr}.armor-filter-panel{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.equipment-grid,.material-grid,.ship-grid,.equipment-formulas{grid-template-columns:1fr}.equipment-filter-panel,.armor-filter-panel{grid-template-columns:1fr}}
