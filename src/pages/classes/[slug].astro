@@ -48,36 +48,55 @@ const orphanTalents = detail.classTalents.filter((talent) => !talent.prerequisit
     <a href="#visao-geral">Visão Geral</a>
     <a href="#progressao">Progressão</a>
     <a href="#habilidades">Habilidades e Sistemas</a>
-    <a href="#talentos">Talentos de Classe</a>
+    {detail.classTalents.length > 0 && <a href="#talentos">Talentos de Classe</a>}
   </nav>
 
   <section id="visao-geral" class="rule-section">
     <div class="section-heading"><div><p class="eyebrow">Classe</p><h2>Visão Geral</h2></div></div>
 
-    <div class="class-basics-grid">
-      <article>
-        <span>Pontos de Vida</span>
-        <p>{detail.basics.hitPoints ?? 'Não indicado na fonte.'}</p>
-      </article>
-      <article>
-        <span>Perícias Treinadas</span>
-        <p>{detail.basics.trainedSkills ?? 'Não indicado na fonte.'}</p>
-      </article>
-      <article>
-        <span>Perícias de Classe</span>
-        <p>{detail.basics.classSkills ?? 'Não indicado na fonte.'}</p>
-      </article>
-      <article>
-        <span>Talentos Adicionais</span>
-        <p>{detail.basics.bonusTalents ?? 'Não indicado na fonte.'}</p>
-      </article>
-    </div>
+    {detail.kind === 'prestige' ? (
+      <>
+        <div class="class-basics-grid prestige-basics">
+          <article>
+            <span>Pontos de Vida</span>
+            <p>{detail.basics.hitPoints ?? 'Não indicado na fonte.'}</p>
+          </article>
+          <article>
+            <span>Requisitos</span>
+            {detail.requirements && detail.requirements.length > 0
+              ? detail.requirements.map((requirement) => <p>{requirement}</p>)
+              : <p>Não indicados na fonte.</p>}
+          </article>
+        </div>
+      </>
+    ) : (
+      <>
+        <div class="class-basics-grid">
+          <article>
+            <span>Pontos de Vida</span>
+            <p>{detail.basics.hitPoints ?? 'Não indicado na fonte.'}</p>
+          </article>
+          <article>
+            <span>Perícias Treinadas</span>
+            <p>{detail.basics.trainedSkills ?? 'Não indicado na fonte.'}</p>
+          </article>
+          <article>
+            <span>Perícias de Classe</span>
+            <p>{detail.basics.classSkills ?? 'Não indicado na fonte.'}</p>
+          </article>
+          <article>
+            <span>Talentos Adicionais</span>
+            <p>{detail.basics.bonusTalents ?? 'Não indicado na fonte.'}</p>
+          </article>
+        </div>
 
-    {entry && (
-      <div class="class-quick-facts">
-        <span><strong>BBA:</strong> {entry.bba}</span>
-        <span><strong>Sistemas mapeados:</strong> {entry.systems.join(' · ')}</span>
-      </div>
+        {entry && (
+          <div class="class-quick-facts">
+            <span><strong>BBA:</strong> {entry.bba}</span>
+            <span><strong>Sistemas mapeados:</strong> {entry.systems.join(' · ')}</span>
+          </div>
+        )}
+      </>
     )}
   </section>
 
@@ -133,6 +152,7 @@ const orphanTalents = detail.classTalents.filter((talent) => !talent.prerequisit
     </div>
   </section>
 
+  {detail.classTalents.length > 0 && (
   <section id="talentos" class="rule-section">
     <div class="section-heading">
       <div><p class="eyebrow">Exclusivos</p><h2>Talentos de {detail.name}</h2></div>
@@ -176,4 +196,5 @@ const orphanTalents = detail.classTalents.filter((talent) => !talent.prerequisit
       </section>
     )}
   </section>
+  )}
 </BaseLayout>
