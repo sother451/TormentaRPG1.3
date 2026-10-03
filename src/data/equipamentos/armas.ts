@@ -1269,4 +1269,5 @@ export const technologicalWeapons = [
     "type": "Perfuração"
   }
 ];
+export const specificWeaponRule = "Itens Alquimicos e Armas de Cerco não são considerados como Armas para talentos, não podendo ser escolhidos para talentos ou Habilidades de Classe";
 export const technologicalWarning = "ESTAS ARMAS NÃO FORAM E NÃO SERÃO BALANCEADAS, USE AS A SUA CONTA E RISCO COM AUTORIZAÇÃO DE SEU NARRADOR";
