@@ -32,3 +32,5 @@
 .size-table{min-width:760px}
 @media(max-width:1050px){.combat-steps{grid-template-columns:repeat(2,minmax(0,1fr))}.formula-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:760px){.combat-local-nav{position:static}.combat-steps,.formula-grid,.combat-topic-grid,.action-grid{grid-template-columns:1fr}.combat-topic.wide{grid-column:auto}}
+
+.combat-section-intro{color:var(--muted);margin:0 0 14px}
