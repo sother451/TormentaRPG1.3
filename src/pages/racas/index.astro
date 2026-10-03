@@ -1,7 +1,87 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import SectionLanding from '../../components/SectionLanding.astro';
+import { races } from '../../data/racas';
+
+const base = import.meta.env.BASE_URL;
+const href = (path: string) => `${base}${path.replace(/^\/+/, '')}`;
 ---
 <BaseLayout title="Raças" activePath="/racas/">
-  <SectionLanding title="Raças" description="A fonte Tormenta 1.3 atualmente reúne 40 raças. A listagem individual será importada em cartões pesquisáveis na próxima etapa." notice="A arquitetura já prevê filtros e páginas individuais; o texto das raças ainda não foi convertido para o formato do site." />
+  <section class="section-hero">
+    <p class="eyebrow">40 opções mapeadas</p>
+    <h1>Raças</h1>
+    <p class="lede">Todas as raças presentes no documento de Raças do Tormenta 1.3, convertidas para páginas individuais sem adicionar regras externas à fonte.</p>
+  </section>
+
+  <section class="filter-panel" aria-label="Filtros de raças">
+    <label class="search-field">
+      <span>Buscar raça ou característica</span>
+      <input id="race-search" type="search" placeholder="Ex.: elfo, visão no escuro, voo..." autocomplete="off" />
+    </label>
+    <div class="filter-actions" role="group" aria-label="Filtrar por visão">
+      <button class="filter-chip is-selected" type="button" data-filter="all">Todas</button>
+      <button class="filter-chip" type="button" data-filter="escuro">Visão no Escuro</button>
+      <button class="filter-chip" type="button" data-filter="penumbra">Visão na Penumbra</button>
+    </div>
+    <p class="results-count"><strong id="race-count">{races.length}</strong> raças exibidas</p>
+  </section>
+
+  <section class="race-grid" id="race-grid">
+    {races.map((race) => (
+      <a
+        class="race-card"
+        href={href(`/racas/${race.slug}/`)}
+        data-name={race.name.toLowerCase()}
+        data-search={[race.name, race.abilityRule ?? '', ...race.traits].join(' ').toLowerCase()}
+        data-vision={race.vision?.toLowerCase().includes('escuro') ? 'escuro' : race.vision?.toLowerCase().includes('penumbra') ? 'penumbra' : 'none'}
+      >
+        <div class="race-card-head">
+          <h2>{race.name}</h2>
+          {race.vision && <span class="pill">{race.vision}</span>}
+        </div>
+        {race.size && <p class="race-summary">{race.size}</p>}
+        {race.abilityRule && <p class="race-ability">{race.abilityRule}</p>}
+        <span class="card-link">Abrir raça →</span>
+      </a>
+    ))}
+  </section>
+
+  <p class="empty-state" id="race-empty" hidden>Nenhuma raça corresponde aos filtros atuais.</p>
+
+  <script is:inline>
+    (() => {
+      const input = document.getElementById('race-search');
+      const cards = [...document.querySelectorAll('.race-card')];
+      const chips = [...document.querySelectorAll('.filter-chip')];
+      const count = document.getElementById('race-count');
+      const empty = document.getElementById('race-empty');
+      let filter = 'all';
+
+      const normalize = (value) => value
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase();
+
+      const apply = () => {
+        const query = normalize(input.value.trim());
+        let visible = 0;
+        cards.forEach((card) => {
+          const haystack = normalize(card.dataset.search || '');
+          const matchesQuery = !query || haystack.includes(query);
+          const matchesFilter = filter === 'all' || card.dataset.vision === filter;
+          const show = matchesQuery && matchesFilter;
+          card.hidden = !show;
+          if (show) visible += 1;
+        });
+        count.textContent = String(visible);
+        empty.hidden = visible !== 0;
+      };
+
+      input.addEventListener('input', apply);
+      chips.forEach((chip) => chip.addEventListener('click', () => {
+        filter = chip.dataset.filter;
+        chips.forEach((item) => item.classList.toggle('is-selected', item === chip));
+        apply();
+      }));
+    })();
+  </script>
 </BaseLayout>
