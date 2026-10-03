@@ -10,7 +10,7 @@ export interface WeaponEntry {
 }
 export const weaponIntro = [
   "TODA ARMA REQUER O USO DE NO MINIMO UMA MÃO PARA ATACAR. ESTE FATO PODE SER SOBESCRITO POR OUTRAS PROPRIEDADES QUE A ARMA POSSA OU NÃO TER",
-  "Tipos"
+  "Um personagem atacando com uma arma que ele não saiba usar sofre -4 na jogada de ataque."
 ];
 export const weaponTypes = [
   {
