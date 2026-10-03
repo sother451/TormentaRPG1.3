@@ -1,0 +1,34 @@
+---
+interface Props {
+  text: string;
+  class?: string;
+}
+
+const { text, class: className } = Astro.props;
+const lines = text
+  .split(/\n+/)
+  .map((line) => line.trim())
+  .filter(Boolean);
+
+const parseLine = (line: string) => {
+  const bullet = /^\*\s*/.test(line);
+  const clean = line.replace(/^\*\s*/, '');
+  const colon = clean.indexOf(':');
+  const canEmphasize = colon > 0 && colon <= 64;
+  return {
+    bullet,
+    label: canEmphasize ? clean.slice(0, colon).trim() : null,
+    body: canEmphasize ? clean.slice(colon + 1).trim() : clean
+  };
+};
+---
+<div class:list={['rule-text', className]}>
+  {lines.map((line) => {
+    const parsed = parseLine(line);
+    return (
+      <p class:list={[parsed.bullet && 'rule-text-bullet']}>
+        {parsed.label ? <><strong>{parsed.label}:</strong> {parsed.body}</> : parsed.body}
+      </p>
+    );
+  })}
+</div>
