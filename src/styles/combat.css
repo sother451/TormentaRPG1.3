@@ -1,0 +1,34 @@
+
+.combat-local-nav{position:sticky;top:82px;z-index:9;background:rgba(23,19,17,.94);backdrop-filter:blur(14px)}
+.combat-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.combat-steps article{display:grid;grid-template-columns:36px 1fr;gap:10px;align-items:start;padding:16px;background:var(--surface);border:1px solid var(--border);border-radius:14px}
+.combat-steps span{display:grid;place-items:center;width:32px;height:32px;border-radius:9px;background:rgba(215,182,106,.08);color:var(--gold);font-weight:800;font-size:.78rem}
+.combat-steps p{margin:0;color:var(--muted)}
+.formula-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:16px}
+.formula-grid article{padding:15px;background:linear-gradient(135deg,rgba(200,91,66,.08),rgba(215,182,106,.04)),var(--surface);border:1px solid var(--border);border-radius:13px}
+.formula-grid span{display:block;color:var(--muted);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em}
+.formula-grid strong{display:block;margin-top:5px;color:var(--gold);font-size:.92rem}
+.combat-topic-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.combat-topic{padding:18px;background:var(--surface);border:1px solid var(--border);border-radius:14px}
+.combat-topic.wide{grid-column:1/-1}
+.combat-topic h3{color:var(--gold);margin-bottom:10px}
+.combat-topic p,.combat-prose p,.action-card p,.action-economy p{margin:.6rem 0 0;color:#ddcfbf}
+.rule-bullet{padding-left:1.1rem;position:relative}
+.rule-bullet::before{content:"•";position:absolute;left:0;color:var(--accent2)}
+.combat-prose{max-width:92ch;padding:18px;background:var(--surface);border:1px solid var(--border);border-radius:14px}
+.action-economy{margin-top:14px;padding:16px 18px;background:rgba(215,182,106,.05);border:1px solid rgba(215,182,106,.24);border-radius:14px}
+.action-nav{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 8px}
+.action-nav a{padding:7px 10px;border:1px solid var(--border);border-radius:999px;color:var(--muted);text-decoration:none;font-size:.78rem}
+.action-nav a:hover{color:var(--text);border-color:rgba(200,91,66,.65)}
+.action-group{scroll-margin-top:150px;margin-top:26px}
+.action-group>h3{margin-bottom:12px;color:var(--accent2)}
+.action-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.action-grid.one-column{grid-template-columns:1fr}
+.action-card{padding:15px 16px;background:var(--surface);border:1px solid var(--border);border-radius:13px}
+.action-card h4{margin:0;color:var(--gold);font:700 .95rem Cinzel,Georgia,serif}
+.combat-two-column{margin-top:18px}
+.combat-tables{margin-top:18px}
+.combat-tables .rules-table td:last-child,.size-table td:last-child{font-weight:400}
+.size-table{min-width:760px}
+@media(max-width:1050px){.combat-steps{grid-template-columns:repeat(2,minmax(0,1fr))}.formula-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.combat-local-nav{position:static}.combat-steps,.formula-grid,.combat-topic-grid,.action-grid{grid-template-columns:1fr}.combat-topic.wide{grid-column:auto}}
