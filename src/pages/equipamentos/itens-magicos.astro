@@ -1,12 +1,221 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import '../../styles/equipment.css';
+import {
+  magicItemRules,
+  magicItemTiers,
+  enchantmentSlotRule,
+  progressiveEnchantments,
+  armorMagicPowers,
+  shieldMagicPowers,
+  powerItemMagicPowers
+} from '../../data/equipamentos/itens-magicos';
+
+const weaponEnchantments = progressiveEnchantments.filter((item) => item.appliesTo === 'Arma');
+const powerItemEnchantments = progressiveEnchantments.filter((item) => item.appliesTo === 'Item de Poder');
+
+const groupByCost = (powers: typeof armorMagicPowers) =>
+  [1,2,3,4].map((cost) => ({ cost, powers: powers.filter((power) => power.cost === cost) }))
+    .filter((group) => group.powers.length > 0);
 ---
 <BaseLayout title="Itens Mágicos" activePath="/equipamentos/">
   <section class="section-hero">
     <p class="eyebrow">Equipamentos</p>
     <h1>Itens Mágicos</h1>
-    <p class="lede">A fonte de Itens Mágicos já está mapeada e será a próxima parte da conversão de Equipamentos.</p>
-    <div class="notice">Esta página está reservada para identificação, utilização, limites, destruição, categorias, slots e encantamentos. O conteúdo ainda não foi importado para evitar misturar uma conversão parcial com dados finalizados.</div>
+    <p class="lede">A seção separa dois sistemas diferentes: encantamentos progressivos, cujo efeito cresce conforme a quantidade de slots investidos, e poderes de custo fixo, que consomem uma quantidade determinada da capacidade mágica do item.</p>
+  </section>
+
+  <nav class="local-nav" aria-label="Nesta página">
+    <a href="#regras">Regras Gerais</a>
+    <a href="#categorias">Categorias</a>
+    <a href="#slots">Slots</a>
+    <a href="#armas">Armas</a>
+    <a href="#armaduras">Armaduras</a>
+    <a href="#escudos">Escudos</a>
+    <a href="#itens-de-poder">Itens de Poder</a>
+  </nav>
+
+  <section id="regras" class="rule-section">
+    <div class="section-heading"><div><p class="eyebrow">Fundamentos</p><h2>Regras Gerais</h2></div></div>
+
+    <div class="magic-rule-grid">
+      <article><h3>Itens Mágicos</h3><p>{magicItemRules.intro}</p></article>
+      <article><h3>Identificando</h3><p>{magicItemRules.identification}</p></article>
+      <article><h3>Utilizando</h3><p>{magicItemRules.use}</p></article>
+      <article><h3>Limites</h3><p>{magicItemRules.limits}</p></article>
+      <article><h3>Destruindo</h3><p>{magicItemRules.destruction}</p></article>
+      <article><h3>Ativação</h3><p>{magicItemRules.command}</p></article>
+    </div>
+
+    <div class="notice">{magicItemRules.masterpiece}</div>
+    <div class="notice">{magicItemRules.shields}</div>
+    <div class="notice">{magicItemRules.powerItems}</div>
+  </section>
+
+  <section id="categorias" class="rule-section">
+    <div class="section-heading"><div><p class="eyebrow">Bônus total do item</p><h2>Categoria do Item Mágico</h2></div></div>
+    <p class="section-copy">A categoria é determinada pelo bônus mágico total do item. Ela é independente do custo individual de um poder e é usada para CDs, resistência, RD, PV e efeitos que escalam entre item menor, médio e maior.</p>
+
+    <div class="magic-tier-grid">
+      {magicItemTiers.map((tier) => (
+        <article class="magic-tier-card">
+          <span>Item {tier.tier}</span>
+          <strong>+{tier.minBonus} a +{tier.maxBonus}</strong>
+          <p>CD {tier.cd}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section id="slots" class="rule-section">
+    <div class="section-heading"><div><p class="eyebrow">Capacidade mágica</p><h2>Slots de Encantamentos</h2></div></div>
+
+    <div class="slot-rule-panel">
+      <div>
+        <h3>1 ponto de bônus mágico = 1 slot</h3>
+        <p>{enchantmentSlotRule.text}</p>
+      </div>
+      <div class="slot-cap"><span>Máximo</span><strong>{enchantmentSlotRule.maxSlots}</strong><small>slots por item</small></div>
+    </div>
+
+    <div class="notice">{enchantmentSlotRule.extraBonus}</div>
+
+    <div class="magic-system-example">
+      <div>
+        <span class="example-label">Exemplo de encantamento progressivo</span>
+        <strong>Adaga +3 — Afiado III</strong>
+        <p>Afiado III ocupa 3 slots e concede os efeitos dos níveis I, II e III. A mesma adaga com Afiado II ocuparia somente 2 slots e não teria o efeito do terceiro nível.</p>
+      </div>
+      <div>
+        <span class="example-label">Exemplo de poder de custo fixo</span>
+        <strong>Poder +2</strong>
+        <p>Um poder marcado como custo +2 consome 2 slots da capacidade do item. Se o próprio poder possuir linhas de Item Médio ou Item Maior, esses efeitos dependem da categoria total do item, e não de pagar o poder novamente.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="armas" class="rule-section">
+    <div class="section-heading">
+      <div><p class="eyebrow">Progressão por investimento</p><h2>Encantamentos de Armas</h2></div>
+      <span class="section-count">{weaponEnchantments.length} encantamentos</span>
+    </div>
+    <p class="section-copy">Estes encantamentos podem receber de I a V. O algarismo indica quantos slots são consumidos e até qual estágio do encantamento está ativo.</p>
+
+    <div class="progressive-enchant-grid">
+      {weaponEnchantments.map((enchant) => (
+        <article class="progressive-enchant-card" id={enchant.id}>
+          <header>
+            <div><span class="magic-kind">{enchant.appliesTo}</span><h3>{enchant.name}</h3></div>
+            <span class="range-badge">I–V</span>
+          </header>
+          {enchant.intro && <p class="enchant-intro">{enchant.intro}</p>}
+          <div class="enchant-levels">
+            {enchant.levels.map((level) => (
+              <div class="enchant-level">
+                <div class="slot-rank"><span>{'I'.repeat(level.slots)}</span><small>{level.slots} {level.slots === 1 ? 'slot' : 'slots'}</small></div>
+                <p>{level.effect}</p>
+              </div>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section id="armaduras" class="rule-section">
+    <div class="section-heading">
+      <div><p class="eyebrow">Custo fixo</p><h2>Poderes de Armaduras</h2></div>
+      <span class="section-count">{armorMagicPowers.length} poderes</span>
+    </div>
+    <p class="section-copy">O custo indicado consome a capacidade mágica do item uma única vez. Quando houver efeito para Item Médio ou Item Maior, a melhoria é determinada pela categoria total da armadura.</p>
+
+    {groupByCost(armorMagicPowers).map((group) => (
+      <section class="fixed-cost-group">
+        <h3>Custo +{group.cost}</h3>
+        <div class="fixed-power-grid">
+          {group.powers.map((power) => (
+            <article class="fixed-power-card">
+              <header><h4>{power.name}</h4><span>+{power.cost}</span></header>
+              <p>{power.effect}</p>
+              {(power.mediumEffect || power.majorEffect) && (
+                <div class="tier-effects">
+                  {power.mediumEffect && <div><strong>Médio</strong><p>{power.mediumEffect}</p></div>}
+                  {power.majorEffect && <div><strong>Maior</strong><p>{power.majorEffect}</p></div>}
+                </div>
+              )}
+            </article>
+          ))}
+        </div>
+      </section>
+    ))}
+  </section>
+
+  <section id="escudos" class="rule-section">
+    <div class="section-heading">
+      <div><p class="eyebrow">Custo fixo</p><h2>Poderes de Escudos</h2></div>
+      <span class="section-count">{shieldMagicPowers.length} poderes</span>
+    </div>
+    <div class="notice">Escudos também podem receber encantamentos da seção de Armas, conforme a regra geral dos itens mágicos.</div>
+
+    {groupByCost(shieldMagicPowers).map((group) => (
+      <section class="fixed-cost-group">
+        <h3>Custo +{group.cost}</h3>
+        <div class="fixed-power-grid">
+          {group.powers.map((power) => (
+            <article class="fixed-power-card">
+              <header><h4>{power.name}</h4><span>+{power.cost}</span></header>
+              <p>{power.effect}</p>
+              {(power.mediumEffect || power.majorEffect) && (
+                <div class="tier-effects">
+                  {power.mediumEffect && <div><strong>Médio</strong><p>{power.mediumEffect}</p></div>}
+                  {power.majorEffect && <div><strong>Maior</strong><p>{power.majorEffect}</p></div>}
+                </div>
+              )}
+            </article>
+          ))}
+        </div>
+      </section>
+    ))}
+  </section>
+
+  <section id="itens-de-poder" class="rule-section">
+    <div class="section-heading"><div><p class="eyebrow">Varinhas, cajados, orbes, cetros e símbolos</p><h2>Itens de Poder</h2></div></div>
+
+    <h3 class="subsection-title">Encantamentos Progressivos</h3>
+    <div class="progressive-enchant-grid">
+      {powerItemEnchantments.map((enchant) => (
+        <article class="progressive-enchant-card" id={enchant.id}>
+          <header><div><span class="magic-kind">{enchant.appliesTo}</span><h3>{enchant.name}</h3></div><span class="range-badge">I–V</span></header>
+          <div class="enchant-levels">
+            {enchant.levels.map((level) => (
+              <div class="enchant-level">
+                <div class="slot-rank"><span>{'I'.repeat(level.slots)}</span><small>{level.slots} {level.slots === 1 ? 'slot' : 'slots'}</small></div>
+                <p>{level.effect}</p>
+              </div>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <h3 class="subsection-title fixed-title">Poderes de Custo Fixo</h3>
+    <div class="fixed-power-grid">
+      {powerItemMagicPowers.map((power) => (
+        <article class="fixed-power-card">
+          <header><h4>{power.name}</h4><span>+{power.cost}</span></header>
+          <p>{power.effect}</p>
+          {(power.mediumEffect || power.majorEffect) && (
+            <div class="tier-effects">
+              {power.mediumEffect && <div><strong>Médio</strong><p>{power.mediumEffect}</p></div>}
+              {power.majorEffect && <div><strong>Maior</strong><p>{power.majorEffect}</p></div>}
+            </div>
+          )}
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="rule-section">
+    <div class="notice">A fonte ainda contém entradas marcadas como “Removido” (como Esmagamento e Portal). Elas não são apresentadas como opções disponíveis no compêndio.</div>
   </section>
 </BaseLayout>
