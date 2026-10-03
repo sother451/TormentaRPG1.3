@@ -5,10 +5,14 @@ import '../../styles/equipment.css';
 import { armorRules, armorProperties, armors, specialMaterials } from '../../data/equipamentos/armaduras';
 
 const categories = [...new Set(armors.map((item) => item.category))];
-const materialCostLabels = [
-  ['weapon','Arma'],['lightArmor','Armadura Leve'],['mediumArmor','Armadura Média'],
-  ['heavyArmor','Armadura Pesada'],['lightShield','Escudo Leve'],['heavyShield','Escudo Pesado']
-] as const;
+const parsedMaterials = specialMaterials.map((material) => {
+  const dot = material.description.indexOf('.');
+  return {
+    ...material,
+    name: dot > 0 ? material.description.slice(0, dot) : 'Material',
+    explanation: dot > 0 ? material.description.slice(dot + 1).trim() : material.description
+  };
+});
 ---
 <BaseLayout title="Armaduras e Materiais" activePath="/equipamentos/">
   <EquipmentBack current="Armaduras, Escudos e Materiais" />
@@ -58,23 +62,42 @@ const materialCostLabels = [
 
   <section id="materiais" class="rule-section">
     <div class="section-heading"><div><p class="eyebrow">Construção especial</p><h2>Materiais Especiais</h2></div></div>
-    <div class="material-grid">
-      {specialMaterials.map((material) => {
-        const dot = material.description.indexOf('.');
-        const name = dot > 0 ? material.description.slice(0,dot) : 'Material';
-        const description = dot > 0 ? material.description.slice(dot+1).trim() : material.description;
-        return (
-          <article class="material-card">
-            <h3>{name}</h3>
-            <p>{description}</p>
-            <div class="material-costs">
-              {materialCostLabels.map(([key,label]) => material.costs[key] && material.costs[key] !== '-' ? (
-                <span><strong>{label}</strong>{material.costs[key]}</span>
-              ) : null)}
-            </div>
-          </article>
-        );
-      })}
+    <div class="table-wrap material-price-table-wrap">
+      <table class="rules-table material-price-table">
+        <thead>
+          <tr>
+            <th>Material</th>
+            <th>Arma</th>
+            <th>Armadura Leve</th>
+            <th>Armadura Média</th>
+            <th>Armadura Pesada</th>
+            <th>Escudo Leve</th>
+            <th>Escudo Pesado</th>
+          </tr>
+        </thead>
+        <tbody>
+          {parsedMaterials.map((material) => (
+            <tr>
+              <td><strong>{material.name}</strong></td>
+              <td>{material.costs.weapon || '—'}</td>
+              <td>{material.costs.lightArmor || '—'}</td>
+              <td>{material.costs.mediumArmor || '—'}</td>
+              <td>{material.costs.heavyArmor || '—'}</td>
+              <td>{material.costs.lightShield || '—'}</td>
+              <td>{material.costs.heavyShield || '—'}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="material-grid material-explanations">
+      {parsedMaterials.map((material) => (
+        <article class="material-card">
+          <h3>{material.name}</h3>
+          <p>{material.explanation}</p>
+        </article>
+      ))}
     </div>
   </section>
 
