@@ -8,7 +8,7 @@
 .talent-group-section{scroll-margin-top:110px}
 .talent-group-section[hidden]{display:none}
 .talent-group-heading{margin-bottom:12px}
-.talent-card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.talent-card-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .talent-card{display:flex;flex-direction:column;gap:10px;padding:17px 18px;background:var(--surface);border:1px solid var(--border);border-radius:14px}
 .talent-card:hover{border-color:rgba(200,91,66,.45)}
 .talent-card[hidden]{display:none}
@@ -34,6 +34,6 @@
 .talent-body p:first-child{margin-top:0}
 .talent-detail-footer{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-top:30px;padding-top:18px;border-top:1px solid var(--border);color:var(--muted);font-size:.8rem}
 .talent-detail-footer a{color:var(--accent2);text-decoration:none;font-weight:700}
-@media(max-width:1050px){.talent-filter-panel{grid-template-columns:1fr 1fr}.talent-card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:1050px){.talent-filter-panel{grid-template-columns:1fr 1fr}}
 @media(max-width:800px){.talent-group-summary{grid-template-columns:repeat(2,minmax(0,1fr))}.talent-detail-meta{grid-template-columns:1fr}}
 @media(max-width:650px){.talent-filter-panel,.talent-card-grid,.talent-group-summary{grid-template-columns:1fr}.talent-detail-footer{flex-direction:column;align-items:flex-start}}
