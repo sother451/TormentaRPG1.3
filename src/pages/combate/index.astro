@@ -36,11 +36,12 @@ const renderParagraph = (text: string) => text;
 
   <section id="fluxo" class="rule-section">
     <div class="section-heading"><div><p class="eyebrow">Passo a passo</p><h2>Como funciona o Combate?</h2></div></div>
+    <p class="combat-section-intro">{combat.overviewIntro}</p>
     <div class="combat-steps">
-      {combat.overview.map((paragraph, index) => (
+      {combat.overviewSteps.map((paragraph, index) => (
         <article>
           <span>{String(index + 1).padStart(2, '0')}</span>
-          <p>{paragraph.replace(/^Passo\s+\d+:\s*/i, '')}</p>
+          <p>{paragraph}</p>
         </article>
       ))}
     </div>
