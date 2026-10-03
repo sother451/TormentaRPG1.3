@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import EquipmentBack from '../../components/EquipmentBack.astro';
 import '../../styles/equipment.css';
 import {
   magicItemRules,
@@ -20,6 +21,7 @@ const groupByCost = (powers: typeof armorMagicPowers) =>
     .filter((group) => group.powers.length > 0);
 ---
 <BaseLayout title="Itens Mágicos" activePath="/equipamentos/">
+  <EquipmentBack current="Itens Mágicos" />
   <section class="section-hero">
     <p class="eyebrow">Equipamentos</p>
     <h1>Itens Mágicos</h1>
