@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import EquipmentBack from '../../components/EquipmentBack.astro';
 import '../../styles/equipment.css';
 import { generalEquipment } from '../../data/equipamentos/geral';
 
@@ -10,6 +11,7 @@ const tables = [
 ];
 ---
 <BaseLayout title="Equipamentos — Regras Gerais" activePath="/equipamentos/">
+  <EquipmentBack current="Regras Gerais" />
   <section class="section-hero">
     <p class="eyebrow">Equipamentos</p>
     <h1>Regras Gerais</h1>
