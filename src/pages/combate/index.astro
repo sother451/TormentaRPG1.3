@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionLanding from '../../components/SectionLanding.astro';
+---
+<BaseLayout title="Combate" activePath="/combate/">
+  <SectionLanding title="Combate" description="Regras centrais de ataques, dano, CA, resistências, ações, movimento e situações especiais." items={[
+    { title: 'Ataques e Dano', description: 'Jogadas de ataque, dano, dano de habilidade e acertos críticos.' },
+    { title: 'Defesas', description: 'Classe de armadura, testes de resistência, RD e resistências.' },
+    { title: 'Rodada de Combate', description: 'Iniciativa, ações padrão, movimento, completas, livres e reações.' },
+    { title: 'Situações Especiais', description: 'Ataques de oportunidade, tamanhos e combate montado.' }
+  ]} />
+</BaseLayout>
