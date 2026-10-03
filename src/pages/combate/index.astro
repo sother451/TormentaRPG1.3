@@ -1,12 +1,218 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import SectionLanding from '../../components/SectionLanding.astro';
+import { combat } from '../../data/combate';
+
+const actionGroups = [
+  { id: 'acao-padrao', title: 'Ação Padrão', blocks: combat.standardActions },
+  { id: 'acao-movimento', title: 'Ação de Movimento', blocks: combat.moveActions },
+  { id: 'acoes-completas', title: 'Ações Completas', blocks: combat.fullActions },
+  { id: 'acoes-livres', title: 'Ações Livres', blocks: combat.freeActions },
+  { id: 'reacoes', title: 'Reações', blocks: combat.reactions }
+];
+
+const renderParagraph = (text: string) => text;
 ---
 <BaseLayout title="Combate" activePath="/combate/">
-  <SectionLanding title="Combate" description="Regras centrais de ataques, dano, CA, resistências, ações, movimento e situações especiais." items={[
-    { title: 'Ataques e Dano', description: 'Jogadas de ataque, dano, dano de habilidade e acertos críticos.' },
-    { title: 'Defesas', description: 'Classe de armadura, testes de resistência, RD e resistências.' },
-    { title: 'Rodada de Combate', description: 'Iniciativa, ações padrão, movimento, completas, livres e reações.' },
-    { title: 'Situações Especiais', description: 'Ataques de oportunidade, tamanhos e combate montado.' }
-  ]} />
+  <section class="section-hero">
+    <p class="eyebrow">Regras de conflito</p>
+    <h1>Combate</h1>
+    <p class="lede">Jogadas de ataque, dano, defesas, ações, manobras, ferimentos, movimentação e situações especiais conforme o documento de Combate do Tormenta 1.3.</p>
+  </section>
+
+  <nav class="local-nav combat-local-nav" aria-label="Nesta página">
+    <a href="#fluxo">Fluxo</a>
+    <a href="#ataques">Ataques e dano</a>
+    <a href="#defesas">Defesas</a>
+    <a href="#iniciativa">Iniciativa</a>
+    <a href="#rodada">Rodada e ações</a>
+    <a href="#ferimentos">Ferimentos</a>
+    <a href="#movimentacao">Movimentação</a>
+    <a href="#oportunidade">Ataques de oportunidade</a>
+    <a href="#condicoes-especiais">Condições especiais</a>
+    <a href="#tamanhos">Tamanhos</a>
+    <a href="#montado">Combate montado</a>
+  </nav>
+
+  <section id="fluxo" class="rule-section">
+    <div class="section-heading"><div><p class="eyebrow">Passo a passo</p><h2>Como funciona o Combate?</h2></div></div>
+    <div class="combat-steps">
+      {combat.overview.map((paragraph, index) => (
+        <article>
+          <span>{String(index + 1).padStart(2, '0')}</span>
+          <p>{paragraph.replace(/^Passo\s+\d+:\s*/i, '')}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section id="ataques" class="rule-section">
+    <div class="section-heading"><div><p class="eyebrow">Ofensiva</p><h2>Ataques e Dano</h2></div></div>
+
+    <div class="formula-grid">
+      <article><span>Ataque corpo-a-corpo ou arremesso</span><strong>1d20 + Nível + Mod. For</strong></article>
+      <article><span>Ataque à distância</span><strong>1d20 + Nível + Mod. Des</strong></article>
+      <article><span>Ataque de toque</span><strong>1d20 + Nível + Mod. Conjuração</strong></article>
+      <article><span>Dano corpo-a-corpo ou arremesso</span><strong>Arma + MdN + Mod. For</strong></article>
+      <article><span>Dano com arma de disparo</span><strong>Arma + MdN + Mod. Des</strong></article>
+    </div>
+
+    <div class="combat-topic-grid">
+      <article class="combat-topic">
+        <h3>Jogada de Ataque</h3>
+        {combat.attack.map((paragraph) => <p class:list={[paragraph.startsWith('* ') && 'rule-bullet']}>{renderParagraph(paragraph)}</p>)}
+      </article>
+      <article class="combat-topic">
+        <h3>Dano</h3>
+        {combat.damage.map((paragraph) => <p class:list={[paragraph.startsWith('* ') && 'rule-bullet']}>{renderParagraph(paragraph)}</p>)}
+      </article>
+      <article class="combat-topic">
+        <h3>Dano de Habilidade</h3>
+        {combat.abilityDamage.map((paragraph) => <p>{paragraph}</p>)}
+      </article>
+      <article class="combat-topic">
+        <h3>Acerto Crítico</h3>
+        {combat.critical.map((paragraph) => <p>{paragraph}</p>)}
+      </article>
+    </div>
+  </section>
+
+  <section id="defesas" class="rule-section">
+    <div class="section-heading"><div><p class="eyebrow">Sobrevivência</p><h2>Defesas e Resistências</h2></div></div>
+
+    <div class="formula-grid">
+      <article><span>Classe de Armadura</span><strong>10 + MdN + Mod. Des + armadura + escudo</strong></article>
+      <article><span>Teste de Resistência</span><strong>1d20 + MdN + Mod. de Habilidade</strong></article>
+      <article><span>CD padrão de habilidades</span><strong>10 + MdN + Mod. relevante</strong></article>
+    </div>
+
+    <div class="combat-topic-grid">
+      <article class="combat-topic"><h3>Classe de Armadura — CA</h3>{combat.armorClass.map((p) => <p>{p}</p>)}</article>
+      <article class="combat-topic"><h3>Pontos de Vida — PV</h3>{combat.hitPoints.map((p) => <p>{p}</p>)}</article>
+      <article class="combat-topic"><h3>Cura Acelerada</h3>{combat.fastHealing.map((p) => <p>{p}</p>)}</article>
+      <article class="combat-topic wide"><h3>Testes de Resistência</h3>{combat.saves.map((p) => <p class:list={[p.startsWith('* ') && 'rule-bullet']}>{p}</p>)}</article>
+      <article class="combat-topic wide"><h3>Redução e Resistência</h3>{combat.reductionResistance.map((p) => <p>{p}</p>)}</article>
+      <article class="combat-topic"><h3>Vulnerabilidade a Energia</h3>{combat.vulnerability.map((p) => <p>{p}</p>)}</article>
+      <article class="combat-topic"><h3>Sacrifício / Custo</h3>{combat.sacrifice.map((p) => <p class:list={[p.startsWith('* ') && 'rule-bullet']}>{p}</p>)}</article>
+    </div>
+  </section>
+
+  <section id="iniciativa" class="rule-section">
+    <div class="section-heading"><div><p class="eyebrow">Ordem do conflito</p><h2>Iniciativa</h2></div></div>
+    <div class="combat-prose">
+      {combat.initiative.map((paragraph) => <p class:list={[paragraph.startsWith('* ') && 'rule-bullet']}>{paragraph}</p>)}
+    </div>
+  </section>
+
+  <section id="rodada" class="rule-section">
+    <div class="section-heading"><div><p class="eyebrow">Economia de ações</p><h2>A Rodada de Combate</h2></div></div>
+    <div class="combat-prose">{combat.roundIntro.map((paragraph) => <p>{paragraph}</p>)}</div>
+
+    <div class="action-economy">
+      {combat.actionTypes.map((paragraph) => <p class:list={[paragraph.startsWith('* ') && 'rule-bullet']}>{paragraph}</p>)}
+    </div>
+
+    <nav class="action-nav" aria-label="Tipos de ação">
+      {actionGroups.map((group) => <a href={`#${group.id}`}>{group.title}</a>)}
+    </nav>
+
+    {actionGroups.map((group) => (
+      <section id={group.id} class="action-group">
+        <h3>{group.title}</h3>
+        <div class="action-grid">
+          {group.blocks.map((block) => (
+            <article class="action-card">
+              {block.title && <h4>{block.title}</h4>}
+              {block.paragraphs.map((paragraph) => <p class:list={[paragraph.startsWith('* ') && 'rule-bullet']}>{paragraph}</p>)}
+            </article>
+          ))}
+        </div>
+      </section>
+    ))}
+  </section>
+
+  <section id="ferimentos" class="rule-section">
+    <div class="section-heading"><div><p class="eyebrow">Queda e recuperação</p><h2>Ferimentos e Morte</h2></div></div>
+    <div class="combat-prose">{combat.wounds.map((paragraph) => <p>{paragraph}</p>)}</div>
+
+    <div class="two-column combat-two-column">
+      <div>
+        <h3 class="subheading">Cura</h3>
+        <div class="action-grid one-column">
+          {combat.healing.map((block) => (
+            <article class="action-card">
+              {block.title && <h4>{block.title}</h4>}
+              {block.paragraphs.map((p) => <p>{p}</p>)}
+            </article>
+          ))}
+        </div>
+      </div>
+      <div>
+        <h3 class="subheading">Dano Não-Letal</h3>
+        <div class="combat-topic">{combat.nonlethal.map((p) => <p>{p}</p>)}</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="movimentacao" class="rule-section">
+    <div class="section-heading"><div><p class="eyebrow">Posicionamento</p><h2>Movimentação</h2></div></div>
+    <div class="action-grid">
+      {combat.movement.map((block) => (
+        <article class="action-card">
+          {block.title && <h4>{block.title}</h4>}
+          {block.paragraphs.map((p) => <p>{p}</p>)}
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section id="oportunidade" class="rule-section">
+    <div class="section-heading"><div><p class="eyebrow">Área ameaçada</p><h2>Ataques de Oportunidade</h2></div></div>
+    <div class="combat-prose">
+      {combat.opportunity.map((paragraph) => <p class:list={[paragraph.startsWith('* ') && 'rule-bullet']}>{paragraph}</p>)}
+    </div>
+  </section>
+
+  <section id="condicoes-especiais" class="rule-section">
+    <div class="section-heading"><div><p class="eyebrow">Modificadores de cena</p><h2>Condições Especiais</h2></div></div>
+    <div class="action-grid">
+      {combat.specialConditions.map((block) => (
+        <article class="action-card">
+          {block.title && <h4>{block.title}</h4>}
+          {block.paragraphs.map((p) => <p>{p}</p>)}
+        </article>
+      ))}
+    </div>
+
+    <div class="two-column combat-tables">
+      <div class="table-wrap">
+        <table class="rules-table">
+          <thead><tr>{combat.attackerTable.headers.map((h) => <th>{h}</th>)}</tr></thead>
+          <tbody>{combat.attackerTable.rows.map((row) => <tr>{row.map((cell) => <td>{cell}</td>)}</tr>)}</tbody>
+        </table>
+      </div>
+      <div class="table-wrap">
+        <table class="rules-table">
+          <thead><tr>{combat.targetTable.headers.map((h) => <th>{h}</th>)}</tr></thead>
+          <tbody>{combat.targetTable.rows.map((row) => <tr>{row.map((cell) => <td>{cell}</td>)}</tr>)}</tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="tamanhos" class="rule-section">
+    <div class="section-heading"><div><p class="eyebrow">Escala</p><h2>Seres Maiores ou Menores</h2></div></div>
+    <div class="combat-prose">{combat.sizes.intro.map((p) => <p>{p}</p>)}</div>
+    <div class="table-wrap">
+      <table class="rules-table size-table">
+        <thead><tr>{combat.sizes.headers.map((h) => <th>{h}</th>)}</tr></thead>
+        <tbody>{combat.sizes.rows.map((row) => <tr>{row.map((cell) => <td>{cell}</td>)}</tr>)}</tbody>
+      </table>
+    </div>
+    {combat.sizes.footer.map((p) => <div class="notice">{p}</div>)}
+  </section>
+
+  <section id="montado" class="rule-section">
+    <div class="section-heading"><div><p class="eyebrow">Montarias</p><h2>Combate Montado</h2></div></div>
+    <div class="combat-prose">{combat.mounted.map((paragraph) => <p>{paragraph}</p>)}</div>
+  </section>
 </BaseLayout>
