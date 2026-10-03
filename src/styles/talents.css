@@ -9,8 +9,8 @@
 .talent-group-section[hidden]{display:none}
 .talent-group-heading{margin-bottom:12px}
 .talent-card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-.talent-card{display:flex;flex-direction:column;gap:10px;min-height:175px;padding:16px 17px;background:var(--surface);border:1px solid var(--border);border-radius:14px;text-decoration:none}
-.talent-card:hover{border-color:rgba(200,91,66,.65);transform:translateY(-2px);transition:.18s ease}
+.talent-card{display:flex;flex-direction:column;gap:10px;padding:17px 18px;background:var(--surface);border:1px solid var(--border);border-radius:14px}
+.talent-card:hover{border-color:rgba(200,91,66,.45)}
 .talent-card[hidden]{display:none}
 .talent-card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
 .talent-card h3{margin:0;color:var(--gold);font-size:1rem}
@@ -18,7 +18,9 @@
 .talent-prereq{margin:0;color:var(--muted);font-size:.8rem}
 .talent-prereq strong{color:var(--text)}
 .talent-prereq.muted{opacity:.75}
-.talent-card .card-link{margin-top:auto}
+.talent-card-body{display:grid;gap:.6rem;padding-top:3px}
+.talent-card-body p{margin:0;color:#ddcfbf;font-size:.84rem}
+.talent-card-body h4{margin:7px 0 0;color:var(--accent2);font:700 .82rem Cinzel,Georgia,serif}
 .talent-detail-hero{max-width:none}
 .talent-detail-meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:22px}
 .talent-detail-meta article{padding:14px 15px;background:var(--surface);border:1px solid var(--border);border-radius:12px}
