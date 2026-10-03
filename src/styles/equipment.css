@@ -22,3 +22,5 @@
 .equipment-list-table td:last-child{font-weight:400}
 @media(max-width:1000px){.equipment-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.equipment-table-grid{grid-template-columns:1fr}.equipment-filter-panel{grid-template-columns:1fr 1fr}.armor-filter-panel{grid-template-columns:1fr 1fr}}
 @media(max-width:700px){.equipment-grid,.material-grid,.ship-grid,.equipment-formulas{grid-template-columns:1fr}.equipment-filter-panel,.armor-filter-panel{grid-template-columns:1fr}}
+
+.combat-prose{max-width:92ch;padding:18px;background:var(--surface);border:1px solid var(--border);border-radius:14px}.combat-prose p{margin:.6rem 0 0;color:#ddcfbf}.combat-prose p:first-child{margin-top:0}
