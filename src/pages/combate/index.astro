@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import RuleText from '../../components/RuleText.astro';
 import { combat } from '../../data/combate';
 import { actionPoints } from '../../data/condicoes';
 import '../../styles/combat.css';
@@ -126,7 +127,7 @@ const renderParagraph = (text: string) => text;
           {group.blocks.map((block) => (
             <article class="action-card">
               {block.title && <h4>{block.title}</h4>}
-              {block.paragraphs.map((paragraph) => <p class:list={[paragraph.startsWith('* ') && 'rule-bullet']}>{paragraph}</p>)}
+              {block.paragraphs.map((paragraph) => <RuleText text={paragraph} />)}
             </article>
           ))}
         </div>
@@ -145,7 +146,7 @@ const renderParagraph = (text: string) => text;
           {combat.healing.map((block) => (
             <article class="action-card">
               {block.title && <h4>{block.title}</h4>}
-              {block.paragraphs.map((p) => <p>{p}</p>)}
+              {block.paragraphs.map((p) => <RuleText text={p} />)}
             </article>
           ))}
         </div>
@@ -163,7 +164,7 @@ const renderParagraph = (text: string) => text;
       {combat.movement.map((block) => (
         <article class="action-card">
           {block.title && <h4>{block.title}</h4>}
-          {block.paragraphs.map((p) => <p>{p}</p>)}
+          {block.paragraphs.map((p) => <RuleText text={p} />)}
         </article>
       ))}
     </div>
@@ -182,7 +183,7 @@ const renderParagraph = (text: string) => text;
       {combat.specialConditions.map((block) => (
         <article class="action-card">
           {block.title && <h4>{block.title}</h4>}
-          {block.paragraphs.map((p) => <p>{p}</p>)}
+          {block.paragraphs.map((p) => <RuleText text={p} />)}
         </article>
       ))}
     </div>
