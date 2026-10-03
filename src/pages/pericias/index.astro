@@ -1,11 +1,141 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import SectionLanding from '../../components/SectionLanding.astro';
+import { generalSkillRules, skills } from '../../data/pericias';
+
+const base = import.meta.env.BASE_URL;
+const href = (path: string) => `${base}${path.replace(/^\/+/, '')}`;
+const abilityOptions = [...new Set(skills.map((skill) => skill.ability).filter(Boolean))] as string[];
 ---
 <BaseLayout title="Perícias" activePath="/pericias/">
-  <SectionLanding title="Perícias" description="Regras de treinamento, graduações, testes e as 20 perícias do Tormenta 1.3." items={[
-    { title: 'Treinamento e Graduações', description: 'Perícias de classe, de outra classe, treinadas e não treinadas.' },
-    { title: 'Uso de Perícias', description: 'Testes opostos, CDs, novas tentativas, ajuda e condições.' },
-    { title: 'Lista de Perícias', description: '20 perícias mapeadas e prontas para importação individual.' }
-  ]} />
+  <section class="section-hero">
+    <p class="eyebrow">Regras e usos</p>
+    <h1>Perícias</h1>
+    <p class="lede">Regras gerais de treinamento e testes, seguidas pelas perícias descritas no documento do Tormenta 1.3.</p>
+    <div class="notice">
+      A fonte possui uma pequena divergência interna: <strong>Jogatina</strong> aparece na tabela-resumo, mas não tem descrição detalhada; <strong>Meditação</strong> possui descrição detalhada, mas não aparece nessa tabela. O compêndio mantém ambas e sinaliza a diferença nas páginas correspondentes.
+    </div>
+  </section>
+
+  <nav class="local-nav" aria-label="Nesta página">
+    <a href="#regras-gerais">Regras gerais</a>
+    <a href="#lista-pericias">Lista de perícias</a>
+  </nav>
+
+  <section id="regras-gerais" class="rule-section">
+    <div class="section-heading">
+      <div><p class="eyebrow">Como usar</p><h2>Regras gerais de Perícias</h2></div>
+    </div>
+    <div class="skill-rules-grid">
+      {generalSkillRules.map((rule) => (
+        <article class="skill-rule-card">
+          <h3>{rule.title}</h3>
+          {rule.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section id="lista-pericias" class="rule-section">
+    <div class="section-heading">
+      <div><p class="eyebrow">Consulta rápida</p><h2>Lista de Perícias</h2></div>
+    </div>
+
+    <section class="filter-panel skill-filter-panel" aria-label="Filtros de perícias">
+      <label class="search-field">
+        <span>Buscar perícia ou uso</span>
+        <input id="skill-search" type="search" placeholder="Ex.: furtividade, rastrear, veneno..." autocomplete="off" />
+      </label>
+
+      <label class="select-field">
+        <span>Habilidade-chave</span>
+        <select id="skill-ability">
+          <option value="all">Todas</option>
+          {abilityOptions.map((ability) => <option value={ability}>{ability}</option>)}
+          <option value="unknown">Não indicada na tabela</option>
+        </select>
+      </label>
+
+      <div class="filter-actions skill-toggle-group" role="group" aria-label="Características da perícia">
+        <button class="filter-chip is-selected" type="button" data-kind="all">Todas</button>
+        <button class="filter-chip" type="button" data-kind="trained">Somente treinadas</button>
+        <button class="filter-chip" type="button" data-kind="armor">Penalidade de armadura</button>
+      </div>
+
+      <p class="results-count"><strong id="skill-count">{skills.length}</strong> entradas exibidas</p>
+    </section>
+
+    <section class="skill-grid" id="skill-grid">
+      {skills.map((skill) => (
+        <a
+          class="skill-card"
+          href={href(`/pericias/${skill.slug}/`)}
+          data-search={[skill.name, skill.ability ?? '', ...skill.blocks.flatMap((block) => [block.title ?? '', ...block.paragraphs])].join(' ').toLowerCase()}
+          data-ability={skill.ability ?? 'unknown'}
+          data-trained={skill.trainedOnly === true ? 'yes' : 'no'}
+          data-armor={skill.armorPenalty === true ? 'yes' : 'no'}
+        >
+          <div class="skill-card-head">
+            <h3>{skill.name}</h3>
+            {skill.sourceNotes.length > 0 && <span class="source-flag" title="Há uma diferença na fonte">!</span>}
+          </div>
+          <div class="skill-meta">
+            <span>{skill.ability ?? 'Habilidade não indicada'}</span>
+            {skill.trainedOnly === true && <span>Treinada</span>}
+            {skill.armorPenalty === true && <span>Armadura</span>}
+          </div>
+          <p>{skill.blocks.length > 0 ? `${skill.blocks.length} ${skill.blocks.length === 1 ? 'bloco de uso' : 'blocos de uso'}` : 'Sem descrição detalhada na fonte'}</p>
+          <span class="card-link">Abrir perícia →</span>
+        </a>
+      ))}
+    </section>
+
+    <p class="empty-state" id="skill-empty" hidden>Nenhuma perícia corresponde aos filtros atuais.</p>
+  </section>
+
+  <script is:inline>
+    (() => {
+      const input = document.getElementById('skill-search');
+      const ability = document.getElementById('skill-ability');
+      const cards = [...document.querySelectorAll('.skill-card')];
+      const chips = [...document.querySelectorAll('.skill-toggle-group .filter-chip')];
+      const count = document.getElementById('skill-count');
+      const empty = document.getElementById('skill-empty');
+      let kind = 'all';
+
+      const normalize = (value) => value
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase();
+
+      const apply = () => {
+        const query = normalize(input.value.trim());
+        const selectedAbility = ability.value;
+        let visible = 0;
+
+        cards.forEach((card) => {
+          const matchesText = !query || normalize(card.dataset.search || '').includes(query);
+          const matchesAbility = selectedAbility === 'all' || card.dataset.ability === selectedAbility;
+          const matchesKind =
+            kind === 'all' ||
+            (kind === 'trained' && card.dataset.trained === 'yes') ||
+            (kind === 'armor' && card.dataset.armor === 'yes');
+
+          const show = matchesText && matchesAbility && matchesKind;
+          card.hidden = !show;
+          if (show) visible += 1;
+        });
+
+        count.textContent = String(visible);
+        empty.hidden = visible !== 0;
+      };
+
+      input.addEventListener('input', apply);
+      ability.addEventListener('change', apply);
+      chips.forEach((chip) => chip.addEventListener('click', () => {
+        kind = chip.dataset.kind;
+        chips.forEach((item) => item.classList.toggle('is-selected', item === chip));
+        apply();
+      }));
+    })();
+  </script>
 </BaseLayout>
