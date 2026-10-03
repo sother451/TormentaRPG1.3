@@ -26,7 +26,6 @@ export const classEntries: ClassEntry[] = [
   { slug:'samurai', name:'Samurai', family:'Guerreiro', bba:'Completo', pvInitial:20, pvPerLevel:5, systems:['Armas Ancestrais','Bushido','Grito de Kiai','Mente sobre o Corpo'] },
   { slug:'ladino', name:'Ladino', family:'Ladino', bba:'Intermediário', pvInitial:12, pvPerLevel:3, systems:['Ataque Furtivo','Armadilhas','Negócios do Submundo'] },
   { slug:'ninja', name:'Ninja', family:'Ladino', bba:'Intermediário', pvInitial:12, pvPerLevel:3, systems:['Truques Ninja','Passo Ninja','Golpe Ninja'] },
-  { slug:'mago-generalista', name:'Mago Generalista', family:'Mago', bba:'Baixo', pvInitial:8, pvPerLevel:2, systems:['Item de Poder'], status:'fonte-incompleta', note:'O documento atual ainda contém marcadores “??” e trechos copiados do Cronomante. O site não completa isso por inferência.' },
   { slug:'cavaleiro-arcano', name:'Cavaleiro Arcano', family:'Mago', bba:'Completo', pvInitial:16, pvPerLevel:4, systems:['A Arte da Cópia','Zauberei','Zadavat'] },
   { slug:'cronomante', name:'Cronomante', family:'Mago', bba:'Baixo', pvInitial:8, pvPerLevel:2, systems:['Velocidade do Pensamento','Celeridade Arcana','Manipulação Temporal'] },
   { slug:'geomante-naturalista', name:'Geomante (Naturalista)', family:'Mago', bba:'Baixo', pvInitial:8, pvPerLevel:2, systems:['Servo Elemental','1001 Formas','Forma Pura'] },
