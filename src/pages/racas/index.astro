@@ -36,7 +36,6 @@ const href = (path: string) => `${base}${path.replace(/^\/+/, '')}`;
       >
         <div class="race-card-head">
           <h2>{race.name}</h2>
-          {race.vision && <span class="pill">{race.vision}</span>}
         </div>
         {race.size && <p class="race-summary">{race.size}</p>}
         {race.abilityRule && <p class="race-ability">{race.abilityRule}</p>}
