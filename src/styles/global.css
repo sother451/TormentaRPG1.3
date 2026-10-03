@@ -82,3 +82,6 @@
 .skill-use p{margin:.6rem 0 0;color:#ddcfbf}
 @media(max-width:1050px){.skill-filter-panel{grid-template-columns:1fr 1fr}.skill-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:760px){.skill-rules-grid,.skill-grid,.skill-facts{grid-template-columns:1fr}.skill-filter-panel{grid-template-columns:1fr}}
+
+.skill-use-table-wrap{margin-top:14px}
+.skill-use-table-wrap .rules-table td:last-child{font-weight:400}
