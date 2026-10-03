@@ -258,6 +258,192 @@ export const classDetail = {
         "Você recebe um talento adicional que deve ser escolhido entre os talentos de classe do 20º Nível do Artífice, você nunca pode ter mais de um dos talentos de 20º nível da classe."
       ],
       "tables": []
+    },
+    {
+      "title": "Companheiro Autômato",
+      "level": 1,
+      "paragraphs": [],
+      "tables": []
+    },
+    {
+      "title": "Núcleo",
+      "level": 3,
+      "paragraphs": [
+        "Este é o motor central do autômato, que o alimenta com energia mágica. O núcleo contém uma ou mais gemas contendo a essência de um elemental vivo. Um autómato recebe BBA 1/Nível e 6 PV por nível, porém não recebe talentos. Quando um autômato chega a zero PV, seu núcleo é destruído e precisa ser substituído."
+      ],
+      "tables": []
+    },
+    {
+      "title": "Chassi",
+      "level": 3,
+      "paragraphs": [
+        "Este é o corpo do autômato, o que define sua forma e tamanho. Sua postura (bípede ou quadrúpede) e tamanho determinam seus PV extras, valores iniciais de Força e Destreza, dano, deslocamento e custo de construção. Autômatos recebem ajustes normais conforme a tabela Tamanho de Criaturas. A forma e tamanho do chassi também atuam como pré-requisitos para instalar modificações.",
+        "Você pode transferir um núcleo para um novo chassi, e vice-versa. O procedimento requer um dia de trabalho por nível do autômato. Não é possível transferir um núcleo para um chassi com mais modificações instaladas que o dobro do nível do núcleo. Transferir uma modificação de um chassi para outro custa um quinto do preço e leva um dia de trabalho.",
+        "PV Extras: um autômato recém-criado recebe pontos de vida adicionais conforme o tamanho do chassi.",
+        "Perícias: o autômato possui 2 perícias treinadas. Ele não pode ser treinado em perícias baseadas em Inteligência ou Carisma.",
+        "Força, Destreza: os valores iniciais de Força e Destreza de um autômato são determinados pelo tamanho do chassi.",
+        "Constituição: autômatos têm valor nulo de Constituição.",
+        "Inteligência, Sabedoria, Carisma: autômatos recém-criados têm Int 3, Sab 10, Car 3.",
+        "Arma Natural: Um autômato tem dois ataques de pancada, e pode utilizar ambos na mesma rodada.",
+        "Armadura Natural: um autômato tem CA+2. Algumas modificações aumentam esse valor de armadura.",
+        "Outras habilidades: um autômato é imune a atordoamento, dano de habilidade, dano não letal, doença, encantamento, enjoo, fadiga, paralisia, necromancia, sono e veneno. Não precisa respirar, se alimentar e dormir. Não recupera pontos de vida com descanso ou curas mágicas, mas pode ser consertado. Consertar um autómato requer um teste de Conhecimento (engenharia) com CD igual a 15 + nível do autômato, e uma hora de trabalho para cada 5 PV restaurados."
+      ],
+      "tables": [
+        {
+          "headers": [
+            "Chassi Bípede",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "rows": [
+            [
+              "Tamanho",
+              "Força, Destreza",
+              "PV Extra",
+              "Dano de Arma Natural",
+              "Desl.",
+              "Custo"
+            ],
+            [
+              "Pequeno",
+              "For 10, Des 16",
+              "12",
+              "1d4",
+              "6m",
+              "2.000 TO"
+            ],
+            [
+              "Médio",
+              "For 16, Des 14",
+              "24",
+              "1d6",
+              "9m",
+              "4.500 TO"
+            ],
+            [
+              "Grande (Alto)",
+              "For 24, Des 12",
+              "36",
+              "1d8",
+              "12m",
+              "12.500 TO"
+            ],
+            [
+              "Enorme (Alto)",
+              "For 30, Des 10",
+              "48",
+              "2d6",
+              "12m",
+              "25.000 TO"
+            ]
+          ]
+        },
+        {
+          "headers": [
+            "Chassi Quádrupede",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "rows": [
+            [
+              "Tamanho",
+              "Força, Destreza",
+              "PV Extra",
+              "Dano de Arma Natural",
+              "Desl.",
+              "Custo"
+            ],
+            [
+              "Pequeno",
+              "For 6, Des 18",
+              "12",
+              "1d4",
+              "9m",
+              "2.000 TO"
+            ],
+            [
+              "Médio",
+              "For 12, Des 16",
+              "24",
+              "1d6",
+              "12m",
+              "4.500 TO"
+            ],
+            [
+              "Grande (Comprido)",
+              "For 22, Des 14",
+              "36",
+              "1d8",
+              "15m",
+              "12.500 TO"
+            ],
+            [
+              "Enorme (Comprido)",
+              "For 28, Des 12",
+              "48",
+              "2d6",
+              "15m",
+              "25.000 TO"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Modificadores",
+      "level": 3,
+      "paragraphs": [
+        "Quase todos os autômatos trazem, em seu chassi, uma ou mais modificações para melhor desempenhar suas tarefas. O número máximo de modificações permitidas é igual a 1 + 1 ⁄ 2 do nível do núcleo. Instalar uma modificação requer um dia de trabalho para cada 3.000 TO de custo. Um autômato precisa cumprir todos os pré-requisitos para ter uma modificação instalada. Cada modificação só pode ser instalada uma vez, a menos que sua descrição diga o contrário."
+      ],
+      "tables": []
+    },
+    {
+      "title": "Modificações Passivas",
+      "level": 4,
+      "paragraphs": [
+        "Os efeitos destas modificações estão sempre ativos, a menos que sua descrição diga o contrário.",
+        "Ascensão: o autômato recebe deslocamento de voo e natação 12m. Pré-requisito: núcleo nível 9 ou maior. 11.250 TO.",
+        "Blindagem: o corpo do autômato é reforçado com placas metálicas que aumentam o bônus de armadura natural. CA +3 (1.000 TO), CA+4 (4.000 TO), CA+5 (9.000 TO), CA+6 (16.000 TO).",
+        "Combatente: o autômato sabe usar armas simples e marciais. Pré-requisito: chassi bípede. 750 TO.",
+        "Compartimento de Carga: o construto tem um compartimento mágico com as mesmas propriedades de uma mochila de carga, mas comportando até 250kg. A um comando, o autômato pode expelir qualquer item como uma ação livre. 2.500 TO.",
+        "Corpo Maciço: por sua construção sólida, o autômato recebe redução de dano 10/Aço Rubi. 9.000 TO.",
+        "Corpo Resiliente: O Autômato recebe +2 de HP por nível. Esta modificação pode ser adquirida até 2 vezes. 4.000 TO.",
+        "Disparador: o autômato é equipado com uma arma de ataque à distância com alcance e dano iguais a uma besta leve. A arma pode carregar até 20 virotes ou 5 itens de arremesso como frascos de ácido, fogo alquímico e até granadas. Recarregar a arma é uma ação completa. 750 TO.",
+        "Escudo Arcano: cria um disco de força invisível à frente do autômato, provendo CA+4 e imunidade a mísseis mágicos. Pré-requisito: núcleo nível 5. 3.750 TO.",
+        "Escudo Áureo: o chassi é tratado para resistir a dano por energia, recebendo resistência a ácido, fogo, frio, elétrico e sônico 10 (4.000 TO), 20 (9.000 TO) ou 30 (25.000 TO).",
+        "Esmagador: o dano das armas naturais do autômato aumenta em uma categoria de tamanho. Esta modificação pode ser adquirida até 2 vezes. 250 TO.",
+        "Iluminação: um conjunto de faróis mágicos no construto ilumina toda a área em volta a até 18m, ou como um único holofote com 1,5m de raio a até 120m. 250 TO.",
+        "Máquina Viva: o chassi contém partes orgânicas integradas, que permitem ao autômato recuperar pontos de vida com magias de cura e descanso. Um autômato com essa modificação perde suas imunidades à doença, enjoo, fadiga, necromancia, sono e veneno. 16.500 TO.",
+        "Rodas: o autômato tem rodas em vez de pés ou patas, aumentando seu deslocamento terrestre em +9m. 3.750 TO.",
+        "Runas Defensivas: o chassi contém runas que concedem bônus em testes de resistência. +2 (4.000 TO), +4 (9.000 TO), +6 (25.000 TO).",
+        "Talentoso: o autômato recebe um talento de combate que cumpra os pré-requisitos. Esta modificação pode ser adquirida até 2 vezes. Pré-requisito: núcleo nível 6 ou maior. 12.000 TO."
+      ],
+      "tables": []
+    },
+    {
+      "title": "Modificações Ativas",
+      "level": 4,
+      "paragraphs": [
+        "Estas modificações usam energia do núcleo para sua ativação. Todas podem ser usadas um número de vezes por dia igual a 2 + nível do núcleo. Todas também exigem uma ação padrão, a menos que sua descrição diga o contrário.",
+        "Canhão Arcano: instala um poderoso canhão mágico capaz de disparar um raio de pura energia arcana, causando 8d10 pontos de dano de essência em uma explosão em linha de 30m a partir do autômato (Reflexos CD 10 + Nível de seu Núcleo). Cada disparo exige uma ação completa. Após cada disparo o canhão precisa de 1d4+1 rodadas para recarregar. Pré-requisito: núcleo nível 9 ou maior. 11.350 TO.",
+        "Detecção Mágica: um conjunto de sensores especiais reproduz o efeito de uma entre as seguintes magias, escolhida na instalação: detectar animais, detectar armadilhas, detectar magia, detectar mortos-vivos, detectar portas secretas. Custo: 1.250 TO.",
+        "Eletrificar: como uma reação, o autômato descarrega uma poderosa carga elétrica, causando 3d8 + Nível de seu Núcleo pontos de dano de eletricidade a qualquer criatura tocando-o (incluindo ataques corpo-a-corpo). Pré-requisito: núcleo nível 3 ou maior. 1.500 TO.",
+        "Garra Extensora: o autômato pode disparar uma garra presa a um sistema de cabos, para tentar agarrar uma criatura ou objeto. Em termos de regras, ela funciona como uma rede, que o autômato sabe usar e pode ser recarregada como uma ação completa. 750 TO.",
+        "Modo Armadura: o autômato pode se transformar em uma armadura própria para um usuário de mesmo tamanho ou menor. Nesta condição o autômato não pode realizar ações (exceto voltar ao normal), tornando-se um equipamento. O usuário é considerado sob cobertura total, pode usar as armas naturais do autômato, e recebe todas as suas melhorias. O autômato ainda pode ser alvo de ataques e magias, sofrendo dano normalmente. Remover a armadura exige uma ação livre do autômato. O modo armadura pode ser mantido durante 1 minuto para cada ativação. Se o autômato é destruído, o usuário precisa de um teste de Força (CD 15) para se libertar. Pré-requisito: chassi bípede Médio ou maior. 4.000 TO (Médio), 8.000 TO (Grande), 12.000 TO (Enorme).",
+        "Modo Escudo: o autômato pode se transformar em um escudo próprio para um usuário uma categoria de tamanho maior. Nesta condição o autômato não pode realizar ações (exceto voltar ao normal), tornando-se um equipamento. Retornar ao modo normal exige uma ação livre. O usuário empunhando o escudo recebe seu bônus por armadura natural e as modificações blindagem, corpo maciço, escudo arcano e polimento protetivo, se houver. 1.000 TO.",
+        "Modo Veículo: o autômato pode se transformar em um veículo com capacidade para um único passageiro de mesmo tamanho, ou 2 passageiros que sejam uma categoria menores, ou 4 passageiros que sejam 2 categorias menores, e assim por diante. Desta forma o construto tem acesso apenas a suas modificações passivas. Mudar de forma exige uma ação livre (e expulsa qualquer passageiro). 3.750 TO.",
+        "Porta-Varinhas: um suporte especial no autômato pode acomodar uma varinha mágica. Uma vez por rodada, o usuário pode ativar e usar essa varinha como se estivesse empunhando, como uma ação livre (ataques de toque à distância usam a Destreza do autômato, em vez da sua). Cada ativação consome um uso da modificação por nível da magia na varinha. Os PMs da varinha são gastos normalmente. Pré-requisito: núcleo nível 5 ou maior. 3.750 TO.",
+        "Pulso Estridente: o autômato emana um pulso sônico que afeta todas as criaturas vivas a até 6m. Cada alvo faz um teste de Fortitude (CD 10 + Nível de seu Núcleo) ou fica atordoado por 1d4+1 rodadas. Pré-requisito: núcleo nível 3 ou maior. 1.500 TO.",
+        "Punho Voador: o autômato pode disparar um de seus punhos como um míssil, fazendo um ataque à distância com sua arma natural, com distância 9m. O punho retorna imediatamente após o ataque. Pré-requisito: chassi bípede. 750 TO.",
+        "Raio Inferno: o autômato pode disparar um raio quente como ferro em brasa, como um ataque de toque à distância (alcance 30m) e dano 4d6+Nível de seu Núcleo de fogo. Pré-requisito: núcleo nível 3 ou maior. 1.500 TO."
+      ],
+      "tables": []
     }
   ],
   "classTalents": [
