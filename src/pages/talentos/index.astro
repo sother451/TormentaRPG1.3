@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const groups = [
+  ['Talentos de Combate', 71],
+  ['Talentos de Perícia', 26],
+  ['Talentos de Magia', 17],
+  ['Metamágicos', 14],
+  ['Talentos de Destino', 24],
+  ['Talentos de Poder Concedido', 100],
+  ['Talentos da Tormenta', 27],
+  ['Talentos Raciais', 51],
+  ['Talentos Moreau', 12]
+];
+---
+<BaseLayout title="Talentos" activePath="/talentos/">
+  <section class="section-hero">
+    <p class="eyebrow">Biblioteca geral</p>
+    <h1>Talentos</h1>
+    <p class="lede">A organização segue os grupos que já existem no documento de Talentos do Tormenta 1.3.</p>
+    <div class="notice"><strong>Talentos de Classe não entram nesta biblioteca.</strong> Eles aparecem dentro da página da própria classe, evitando misturar opções que outras classes não podem escolher.</div>
+  </section>
+
+  <section class="card-grid">
+    {groups.map(([name, count]) => (
+      <article class="content-card"><h2>{name}</h2><p><strong>{count}</strong> entradas mapeadas na fonte.</p></article>
+    ))}
+  </section>
+</BaseLayout>
