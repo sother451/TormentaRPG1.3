@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { shipBasics, shipRules, ships, shipUpgrades } from '../../data/equipamentos/geral';
+---
+<BaseLayout title="Navios" activePath="/equipamentos/">
+  <section class="section-hero">
+    <p class="eyebrow">Equipamentos</p>
+    <h1>Seu Próprio Navio</h1>
+    <p class="lede">Regras de embarcações, pilotagem, combate naval, modelos de navios e melhorias.</p>
+  </section>
+
+  <nav class="local-nav" aria-label="Nesta página">
+    <a href="#basico">Estatísticas</a>
+    <a href="#pilotagem">Pilotagem e Combate</a>
+    <a href="#embarcacoes">Embarcações</a>
+    <a href="#melhorias">Melhorias</a>
+  </nav>
+
+  <section id="basico" class="rule-section">
+    <div class="section-heading"><div><p class="eyebrow">Fundamentos</p><h2>Estatísticas de Navios</h2></div></div>
+    <div class="combat-prose">{shipBasics.map((p)=><p>{p}</p>)}</div>
+  </section>
+
+  <section id="pilotagem" class="rule-section">
+    <div class="section-heading"><div><p class="eyebrow">Operação</p><h2>Pilotagem e Combate</h2></div></div>
+    <div class="ship-rule-list">{shipRules.map((p)=><article><p>{p}</p></article>)}</div>
+  </section>
+
+  <section id="embarcacoes" class="rule-section">
+    <div class="section-heading"><div><p class="eyebrow">Modelos</p><h2>Embarcações</h2></div></div>
+    <div class="ship-grid">{ships.map((ship)=><article class="ship-card"><h3>{ship.name}</h3><p>{ship.text}</p></article>)}</div>
+  </section>
+
+  <section id="melhorias" class="rule-section">
+    <div class="section-heading"><div><p class="eyebrow">Personalização</p><h2>Melhorias para Navios</h2></div></div>
+    <div class="ship-grid">{shipUpgrades.map((upgrade)=><article class="ship-card"><h3>{upgrade.name}</h3><p>{upgrade.text}</p></article>)}</div>
+  </section>
+</BaseLayout>
