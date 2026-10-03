@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import '../../styles/equipment.css';
 import { armorRules, armorProperties, armors, specialMaterials } from '../../data/equipamentos/armaduras';
 
 const categories = [...new Set(armors.map((item) => item.category))];
