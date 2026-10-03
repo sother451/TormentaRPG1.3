@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { combat } from '../../data/combate';
+import { actionPoints } from '../../data/condicoes';
 import '../../styles/combat.css';
 
 const actionGroups = [
@@ -32,6 +33,7 @@ const renderParagraph = (text: string) => text;
     <a href="#condicoes-especiais">Condições especiais</a>
     <a href="#tamanhos">Tamanhos</a>
     <a href="#montado">Combate montado</a>
+    <a href="#pontos-de-acao">Pontos de Ação</a>
   </nav>
 
   <section id="fluxo" class="rule-section">
@@ -217,4 +219,35 @@ const renderParagraph = (text: string) => text;
     <div class="section-heading"><div><p class="eyebrow">Montarias</p><h2>Combate Montado</h2></div></div>
     <div class="combat-prose">{combat.mounted.map((paragraph) => <p>{paragraph}</p>)}</div>
   </section>
+  <section id="pontos-de-acao" class="rule-section">
+    <div class="section-heading"><div><p class="eyebrow">Recurso heroico</p><h2>Pontos de Ação</h2></div></div>
+
+    <div class="two-column combat-two-column action-points-columns">
+      <div>
+        <h3 class="subheading">Ganhando Pontos de Ação</h3>
+        <div class="action-point-prose">
+          {actionPoints.gaining.map((paragraph, index) => (
+            <p class:list={[index >= 5 && 'action-example']}>{paragraph}</p>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <h3 class="subheading">Usando Pontos de Ação</h3>
+        <div class="action-point-prose action-point-uses">
+          {actionPoints.using.map((paragraph, index) => (
+            index === 0 ? <p>{paragraph}</p> : <p class="action-use">{paragraph}</p>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <div class="table-wrap action-point-table-wrap">
+      <table class="rules-table action-point-table">
+        <thead><tr>{actionPoints.recoveryTable.headers.map((header) => <th>{header}</th>)}</tr></thead>
+        <tbody>{actionPoints.recoveryTable.rows.map((row) => <tr>{row.map((cell) => <td>{cell}</td>)}</tr>)}</tbody>
+      </table>
+    </div>
+  </section>
+
 </BaseLayout>
