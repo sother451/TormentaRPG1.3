@@ -3,8 +3,6 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { talents, talentGroups } from '../../data/talentos';
 import '../../styles/talents.css';
 
-const base = import.meta.env.BASE_URL;
-const href = (path: string) => `${base}${path.replace(/^\/+/, '')}`;
 ---
 <BaseLayout title="Talentos" activePath="/talentos/">
   <section class="section-hero">
@@ -64,9 +62,9 @@ const href = (path: string) => `${base}${path.replace(/^\/+/, '')}`;
 
           <div class="talent-card-grid">
             {groupTalents.map((talent) => (
-              <a
+              <article
                 class="talent-card"
-                href={href(`/talentos/${talent.groupSlug}/${talent.id.replace(`${talent.groupSlug}-`, '')}/`)}
+                id={talent.id}
                 data-search={[
                   talent.name,
                   talent.group,
@@ -81,13 +79,17 @@ const href = (path: string) => `${base}${path.replace(/^\/+/, '')}`;
                   <h3>{talent.name}</h3>
                   {talent.costs.length > 0 && <span class="talent-cost">{talent.costs.join(' · ')}</span>}
                 </div>
-                {talent.prerequisites.length > 0 ? (
+                {talent.prerequisites.length > 0 && (
                   <p class="talent-prereq"><strong>Pré-requisito:</strong> {talent.prerequisites.join(' · ')}</p>
-                ) : (
-                  <p class="talent-prereq muted">Sem pré-requisito indicado.</p>
                 )}
-                <span class="card-link">Abrir talento →</span>
-              </a>
+                <div class="talent-card-body">
+                  {talent.blocks.map((block) => (
+                    block.kind === 'subheading'
+                      ? <h4>{block.text}</h4>
+                      : <p>{block.text}</p>
+                  ))}
+                </div>
+              </article>
             ))}
           </div>
         </section>
