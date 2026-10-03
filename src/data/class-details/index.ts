@@ -1,4 +1,5 @@
 import type { ClassDetail } from './schema';
+export type { ClassDetail } from './schema';
 import { classDetail as ranger } from './ranger';
 import { classDetail as cavaleiro } from './cavaleiro';
 import { classDetail as monge } from './monge';
