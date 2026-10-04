@@ -41,6 +41,22 @@ if (Array.isArray(data.sections) && data.sections.some(item => !item?.title || !
 if (Array.isArray(data.classTalents) && data.classTalents.some(item => !item?.name || !Array.isArray(item.paragraphs) || !item.paragraphs.join('').trim())) {
   errors.push('há talento sem nome ou descrição');
 }
+
+const allowedTalentLevels = [4, 8, 12, 16];
+if (data.kind === 'basic' && Array.isArray(data.classTalents)) {
+  if (data.classTalents.length === 0) errors.push('classe base sem Talentos de Classe');
+  if (data.classTalents.some(item => !allowedTalentLevels.includes(Number(item.prerequisiteLevel)))) {
+    errors.push('Talentos de Classe só podem usar os patamares 4, 8, 12 ou 16');
+  }
+  for (const level of allowedTalentLevels) {
+    if (!data.classTalents.some(item => Number(item.prerequisiteLevel) === level)) {
+      errors.push(`classe base sem Talento de Classe de ${level}º nível`);
+    }
+  }
+}
+if (data.kind === 'prestige' && Array.isArray(data.classTalents) && data.classTalents.length > 0) {
+  errors.push('classes de prestígio não podem possuir Talentos de Classe');
+}
 if (errors.length) throw new Error('Submissão rejeitada: ' + errors.join('; '));
 
 const slug = slugify(data.name);
@@ -58,6 +74,26 @@ data.author = String(data.author).trim();
 data.submittedBy = issueAuthor;
 
 data.progression.headers = ['Nível','BBA','Habilidades'];
+
+if (data.kind === 'prestige') {
+  data.classTalents = [];
+} else {
+  const className = String(data.name).trim();
+  data.classTalents = data.classTalents.map((talent, index) => {
+    const level = Number(talent.prerequisiteLevel);
+    const extra = String(talent.prerequisite || '')
+      .replace(/^\d+º\s+Nível\s+de\s+.+?(?:\.\s*|$)/i, '')
+      .trim();
+    return {
+      ...talent,
+      id: talent.id || `talento-${slugify(talent.name || `talento-${index + 1}`)}-${index + 1}`,
+      prerequisiteLevel: level,
+      prerequisite: extra
+        ? `${level}º Nível de ${className}. ${extra}`
+        : `${level}º Nível de ${className}.`
+    };
+  });
+}
 
 const targetDir = path.join(process.cwd(), 'src/data/homebrew/classes');
 fs.mkdirSync(targetDir, { recursive: true });
