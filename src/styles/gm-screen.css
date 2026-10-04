@@ -1,0 +1,54 @@
+
+.gm-hero .notice{max-width:90ch}
+.gm-toolbar{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:end;margin-bottom:16px;padding:16px;background:var(--surface);border:1px solid var(--border);border-radius:16px}
+.gm-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;padding:8px;background:rgba(255,255,255,.025);border:1px solid var(--border);border-radius:14px;position:sticky;top:82px;z-index:10;backdrop-filter:blur(14px)}
+.gm-tab{min-height:38px;padding:0 13px;border:1px solid transparent;border-radius:10px;background:transparent;color:var(--muted);font:700 .82rem Inter,sans-serif;cursor:pointer}
+.gm-tab:hover,.gm-tab.is-active{color:var(--text);border-color:rgba(200,91,66,.55);background:rgba(200,91,66,.12)}
+.gm-panel[hidden]{display:none!important}
+.gm-overview-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.gm-tool-card,.gm-reference-block,.gm-condition-card,.gm-skill-card{background:var(--surface);border:1px solid var(--border);border-radius:14px}
+.gm-tool-card,.gm-reference-block,.gm-condition-card{padding:18px}
+.gm-tool-card h3,.gm-reference-block h3,.gm-condition-card h3{color:var(--gold);margin-bottom:10px}
+.gm-tool-card p,.gm-reference-block p,.gm-condition-card p{color:var(--muted)}
+.gm-calculator-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0}
+.gm-calculator-grid label,.gm-level-picker{display:grid;gap:6px;color:var(--muted);font-size:.78rem;font-weight:700}
+.gm-calculator-grid input{width:100%;min-height:40px;border:1px solid var(--border);border-radius:9px;background:#0f0d0c;color:var(--text);padding:0 11px;font:inherit}
+.gm-result-box{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:14px}
+.gm-result-box span{padding:10px 12px;background:rgba(215,182,106,.06);border:1px solid rgba(215,182,106,.14);border-radius:10px;color:var(--muted)}
+.gm-result-box strong{display:block;color:var(--gold);font:700 1.2rem Cinzel,serif}
+.gm-ap-result{grid-template-columns:repeat(3,minmax(0,1fr))}
+.gm-level-picker input[type="range"]{width:100%}
+.gm-compact-list p{margin:.45rem 0}
+.gm-rule-prose p{margin:.55rem 0}
+.gm-table-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-bottom:14px}
+.gm-action-groups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.gm-details-list{display:grid;gap:8px}
+.gm-details-list details,.gm-skill-card{overflow:hidden}
+.gm-details-list summary,.gm-skill-card summary{display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;list-style:none;padding:13px 14px;color:var(--text);font-weight:700}
+.gm-details-list summary::-webkit-details-marker,.gm-skill-card summary::-webkit-details-marker{display:none}
+.gm-details-list details[open] summary,.gm-skill-card[open] summary{border-bottom:1px solid var(--border);background:rgba(255,255,255,.025)}
+.gm-details-body{padding:14px 16px}
+.gm-details-body p{margin:.55rem 0;color:var(--muted)}
+.gm-general-rules{margin-bottom:18px}
+.gm-skill-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.gm-skill-card summary small{display:block;margin-top:3px;color:var(--muted);font-weight:500;font-size:.76rem}
+.gm-summary-mark{display:grid;place-items:center;width:26px;height:26px;border:1px solid var(--border);border-radius:50%;color:var(--accent2)}
+.gm-skill-card[open] .gm-summary-mark{transform:rotate(45deg)}
+.gm-skill-block+.gm-skill-block{margin-top:16px;padding-top:16px;border-top:1px solid var(--border)}
+.gm-skill-block h4{margin:0 0 8px;color:var(--gold);font-family:Cinzel,Georgia,serif}
+.gm-condition-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.gm-condition-card p{margin:0}
+.gm-empty{margin-top:18px}
+[data-shield-item][hidden]{display:none!important}
+@media(max-width:900px){
+  .gm-toolbar{grid-template-columns:1fr}
+  .gm-tabs{top:128px;overflow-x:auto;flex-wrap:nowrap}
+  .gm-tab{white-space:nowrap}
+  .gm-overview-grid,.gm-table-grid,.gm-action-groups,.gm-skill-grid{grid-template-columns:1fr}
+  .gm-condition-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:620px){
+  .gm-tabs{top:145px}
+  .gm-condition-grid{grid-template-columns:1fr}
+  .gm-calculator-grid,.gm-result-box,.gm-ap-result{grid-template-columns:1fr}
+}
