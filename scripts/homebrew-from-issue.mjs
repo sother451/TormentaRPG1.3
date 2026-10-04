@@ -42,16 +42,15 @@ if (Array.isArray(data.classTalents) && data.classTalents.some(item => !item?.na
   errors.push('há talento sem nome ou descrição');
 }
 
-const allowedTalentLevels = [4, 8, 12, 16];
+const allowedTalentLevels = [4, 8, 12, 16, 20];
 if (data.kind === 'basic' && Array.isArray(data.classTalents)) {
-  if (data.classTalents.length === 0) errors.push('classe base sem Talentos de Classe');
+  if (data.classTalents.length !== 15) errors.push('classe base deve possuir exatamente 15 Talentos de Classe');
   if (data.classTalents.some(item => !allowedTalentLevels.includes(Number(item.prerequisiteLevel)))) {
-    errors.push('Talentos de Classe só podem usar os patamares 4, 8, 12 ou 16');
+    errors.push('Talentos de Classe só podem usar os patamares 4, 8, 12, 16 ou 20');
   }
   for (const level of allowedTalentLevels) {
-    if (!data.classTalents.some(item => Number(item.prerequisiteLevel) === level)) {
-      errors.push(`classe base sem Talento de Classe de ${level}º nível`);
-    }
+    const talentsAtLevel = data.classTalents.filter(item => Number(item.prerequisiteLevel) === level);
+    if (talentsAtLevel.length !== 3) errors.push(`o patamar de ${level}º nível deve possuir exatamente 3 Talentos de Classe`);
   }
 }
 if (data.kind === 'prestige' && Array.isArray(data.classTalents) && data.classTalents.length > 0) {
