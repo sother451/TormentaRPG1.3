@@ -404,7 +404,6 @@ const catalogSearchText = (item: (typeof magicCatalog)[number]) => [
       const grid = document.getElementById('magic-catalog-grid');
       const cards = [...document.querySelectorAll('.magic-catalog-card')];
       const visibleCount = document.getElementById('magic-catalog-visible');
-      const totalCount = document.getElementById('magic-catalog-count');
       const empty = document.getElementById('magic-catalog-empty');
 
       if (!search || !type || !system || !cost || !sort || !grid) return;
@@ -431,7 +430,6 @@ const catalogSearchText = (item: (typeof magicCatalog)[number]) => [
         });
 
         visibleCount.textContent = String(visible);
-        totalCount.textContent = String(visible);
         empty.hidden = visible !== 0;
 
         cards
