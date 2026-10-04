@@ -29,7 +29,7 @@ const orphanTalents = detail.classTalents.filter((talent) => !talent.prerequisit
 <BaseLayout title={detail.name} activePath="/classes/">
   <Breadcrumbs items={[
     { label: 'Classes', href: '/classes/' },
-    { label: detail.origin === 'homebrew' ? 'Homebrew' : detail.family },
+    { label: detail.family },
     { label: detail.name }
   ]} />
 
