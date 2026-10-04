@@ -1,5 +1,6 @@
 import type { ClassDetail } from './schema';
 import { homebrewClassDetails } from '../homebrew';
+import { officialEditorClassDetails } from '../official';
 export type { ClassDetail } from './schema';
 import { classDetail as ranger } from './ranger';
 import { classDetail as cavaleiro } from './cavaleiro';
@@ -68,6 +69,7 @@ export const classDetails: ClassDetail[] = [
   bruxaDaTormenta,
   mestreDasBonecas,
   cavaleiroDoCorvo,
+  ...officialEditorClassDetails,
   ...homebrewClassDetails,
 ];
 
