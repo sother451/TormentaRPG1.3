@@ -17,10 +17,12 @@ export interface ClassContentTable {
 
 export interface ClassSection {
   title: string | null;
-  level: number;
+  level?: number;
   paragraphs: string[];
   tables: ClassContentTable[];
 }
+
+export type ClassBbaType = 'full' | 'half' | 'three-quarters';
 
 export interface ClassTalent {
   id: string;
@@ -37,6 +39,7 @@ export interface ClassDetail {
   origin?: ClassOrigin;
   author?: string;
   reviewIssue?: number;
+  bbaType?: ClassBbaType;
   slug: string;
   name: string;
   family: string;
