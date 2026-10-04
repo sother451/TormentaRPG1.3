@@ -7,6 +7,7 @@ import {
   magicItemTiers,
   enchantmentSlotRule,
   progressiveEnchantments,
+  fixedMagicPowers,
   armorMagicPowers,
   shieldMagicPowers,
   powerItemMagicPowers
@@ -19,6 +20,52 @@ const romanRank = ['','I','II','III','IV','V'];
 const groupByCost = (powers: typeof armorMagicPowers) =>
   [1,2,3,4].map((cost) => ({ cost, powers: powers.filter((power) => power.cost === cost) }))
     .filter((group) => group.powers.length > 0);
+
+
+const magicCatalog = [
+  ...progressiveEnchantments.map((item) => ({
+    id: item.id,
+    name: item.name,
+    system: 'progressivo' as const,
+    systemLabel: 'Encantamento progressivo',
+    appliesTo: item.appliesTo,
+    costLabel: '1–5 slots',
+    costs: '1,2,3,4,5',
+    sortCost: 1,
+    intro: item.intro ?? '',
+    effect: '',
+    mediumEffect: '',
+    majorEffect: '',
+    levels: item.levels
+  })),
+  ...fixedMagicPowers.map((item) => ({
+    id: item.id,
+    name: item.name,
+    system: 'fixo' as const,
+    systemLabel: 'Poder de custo fixo',
+    appliesTo: item.appliesTo,
+    costLabel: `+${item.cost} ${item.cost === 1 ? 'slot' : 'slots'}`,
+    costs: String(item.cost),
+    sortCost: item.cost,
+    intro: '',
+    effect: item.effect,
+    mediumEffect: item.mediumEffect ?? '',
+    majorEffect: item.majorEffect ?? '',
+    levels: []
+  }))
+].sort((a, b) => a.name.localeCompare(b.name, 'pt-BR'));
+
+const catalogSearchText = (item: (typeof magicCatalog)[number]) => [
+  item.name,
+  item.systemLabel,
+  item.appliesTo,
+  item.costLabel,
+  item.intro,
+  item.effect,
+  item.mediumEffect,
+  item.majorEffect,
+  ...item.levels.map((level) => level.effect)
+].join(' ').toLowerCase();
 ---
 <BaseLayout title="Itens Mágicos" activePath="/equipamentos/">
   <EquipmentBack current="Itens Mágicos" />
@@ -32,6 +79,7 @@ const groupByCost = (powers: typeof armorMagicPowers) =>
     <a href="#regras">Regras Gerais</a>
     <a href="#categorias">Categorias</a>
     <a href="#slots">Slots</a>
+    <a href="#lista-itens-magicos">Lista de Itens Mágicos</a>
     <a href="#armas">Armas</a>
     <a href="#armaduras">Armaduras</a>
     <a href="#escudos">Escudos</a>
@@ -95,6 +143,130 @@ const groupByCost = (powers: typeof armorMagicPowers) =>
         <p>Um poder marcado como custo +2 consome 2 slots da capacidade do item. Se o próprio poder possuir linhas de Item Médio ou Item Maior, esses efeitos dependem da categoria total do item, e não de pagar o poder novamente.</p>
       </div>
     </div>
+  </section>
+
+  <section id="lista-itens-magicos" class="rule-section">
+    <div class="section-heading">
+      <div><p class="eyebrow">Consulta rápida</p><h2>Lista de Itens Mágicos</h2></div>
+      <span class="section-count"><strong id="magic-catalog-count">{magicCatalog.length}</strong> opções</span>
+    </div>
+
+    <p class="section-copy">Pesquise encantamentos e poderes mágicos pelo nome, efeito, tipo de item ou custo. Os cards abaixo mostram o conteúdo completo da opção sem exigir uma página separada.</p>
+
+    <div class="notice magic-catalog-note">
+      A fonte desta revisão define o custo destes poderes em <strong>slots</strong>, não apresenta um preço geral em moedas para cada entrada. O encantamento Primal é a exceção explícita: quando aplicado a armas, custa 500 moedas de ouro adicionais.
+    </div>
+
+    <section class="filter-panel magic-catalog-filter" aria-label="Filtros da lista de itens mágicos">
+      <label class="search-field">
+        <span>Buscar item, encantamento ou efeito</span>
+        <input id="magic-catalog-search" type="search" placeholder="Ex.: fortificação, fogo, CA, magia..." autocomplete="off" />
+      </label>
+
+      <label class="select-field">
+        <span>Aplicação</span>
+        <select id="magic-catalog-type">
+          <option value="all">Todas</option>
+          <option value="arma">Armas</option>
+          <option value="armadura">Armaduras</option>
+          <option value="escudo">Escudos</option>
+          <option value="item de poder">Itens de Poder</option>
+        </select>
+      </label>
+
+      <label class="select-field">
+        <span>Sistema</span>
+        <select id="magic-catalog-system">
+          <option value="all">Todos</option>
+          <option value="progressivo">Progressivo</option>
+          <option value="fixo">Custo fixo</option>
+        </select>
+      </label>
+
+      <label class="select-field">
+        <span>Custo</span>
+        <select id="magic-catalog-cost">
+          <option value="all">Todos</option>
+          <option value="1">1 slot</option>
+          <option value="2">2 slots</option>
+          <option value="3">3 slots</option>
+          <option value="4">4 slots</option>
+          <option value="5">5 slots</option>
+        </select>
+      </label>
+    </section>
+
+    <div class="magic-catalog-result-bar">
+      <p><strong id="magic-catalog-visible">{magicCatalog.length}</strong> opções encontradas</p>
+      <label>Ordenar
+        <select id="magic-catalog-sort">
+          <option value="name">Nome A–Z</option>
+          <option value="cost">Menor custo</option>
+          <option value="cost-desc">Maior custo</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="magic-catalog-grid" id="magic-catalog-grid">
+      {magicCatalog.map((item) => (
+        <article
+          class="magic-catalog-card"
+          data-name={item.name}
+          data-search={catalogSearchText(item)}
+          data-type={item.appliesTo.toLowerCase()}
+          data-system={item.system}
+          data-costs={item.costs}
+          data-sort-cost={String(item.sortCost)}
+        >
+          <header class="magic-catalog-card-head">
+            <div>
+              <span>{item.systemLabel}</span>
+              <h3>{item.name}</h3>
+            </div>
+            <strong>{item.costLabel}</strong>
+          </header>
+
+          <div class="magic-catalog-meta">
+            <span>{item.appliesTo}</span>
+            {item.id === 'primal' && <span>+500 TO em armas</span>}
+          </div>
+
+          {item.intro && <p class="magic-catalog-intro">{item.intro}</p>}
+
+          {item.system === 'progressivo' ? (
+            <div class="magic-catalog-effects">
+              {item.levels.map((level) => (
+                <div>
+                  <strong>{level.slots} {level.slots === 1 ? 'slot' : 'slots'}</strong>
+                  <p>{level.effect}</p>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div class="magic-catalog-effects">
+              <div>
+                <strong>Efeito</strong>
+                <p>{item.effect}</p>
+              </div>
+              {item.mediumEffect && (
+                <div>
+                  <strong>Item Médio</strong>
+                  <p>{item.mediumEffect}</p>
+                </div>
+              )}
+              {item.majorEffect && (
+                <div>
+                  <strong>Item Maior</strong>
+                  <p>{item.majorEffect}</p>
+                </div>
+              )}
+            </div>
+          )}
+        </article>
+      ))}
+    </div>
+
+    <p class="empty-state" id="magic-catalog-empty" hidden>Nenhuma opção corresponde aos filtros atuais.</p>
   </section>
 
   <section id="armas" class="rule-section">
@@ -221,4 +393,63 @@ const groupByCost = (powers: typeof armorMagicPowers) =>
   <section class="rule-section">
     <div class="notice">A fonte ainda contém entradas marcadas como “Removido” (como Esmagamento e Portal). Elas não são apresentadas como opções disponíveis no compêndio.</div>
   </section>
+
+  <script is:inline>
+    (() => {
+      const search = document.getElementById('magic-catalog-search');
+      const type = document.getElementById('magic-catalog-type');
+      const system = document.getElementById('magic-catalog-system');
+      const cost = document.getElementById('magic-catalog-cost');
+      const sort = document.getElementById('magic-catalog-sort');
+      const grid = document.getElementById('magic-catalog-grid');
+      const cards = [...document.querySelectorAll('.magic-catalog-card')];
+      const visibleCount = document.getElementById('magic-catalog-visible');
+      const totalCount = document.getElementById('magic-catalog-count');
+      const empty = document.getElementById('magic-catalog-empty');
+
+      if (!search || !type || !system || !cost || !sort || !grid) return;
+
+      const normalize = (value) => String(value || '')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase();
+
+      const apply = () => {
+        const query = normalize(search.value.trim());
+        let visible = 0;
+
+        cards.forEach((card) => {
+          const costs = (card.dataset.costs || '').split(',');
+          const matches =
+            (!query || normalize(card.dataset.search).includes(query)) &&
+            (type.value === 'all' || normalize(card.dataset.type).includes(normalize(type.value))) &&
+            (system.value === 'all' || card.dataset.system === system.value) &&
+            (cost.value === 'all' || costs.includes(cost.value));
+
+          card.hidden = !matches;
+          if (matches) visible += 1;
+        });
+
+        visibleCount.textContent = String(visible);
+        totalCount.textContent = String(visible);
+        empty.hidden = visible !== 0;
+
+        cards
+          .filter((card) => !card.hidden)
+          .sort((a, b) => {
+            if (sort.value === 'name') {
+              return (a.dataset.name || '').localeCompare(b.dataset.name || '', 'pt-BR');
+            }
+            const difference = Number(a.dataset.sortCost || 0) - Number(b.dataset.sortCost || 0);
+            const ordered = sort.value === 'cost-desc' ? -difference : difference;
+            return ordered || (a.dataset.name || '').localeCompare(b.dataset.name || '', 'pt-BR');
+          })
+          .forEach((card) => grid.appendChild(card));
+      };
+
+      search.addEventListener('input', apply);
+      [type, system, cost, sort].forEach((control) => control.addEventListener('change', apply));
+      apply();
+    })();
+  </script>
 </BaseLayout>
