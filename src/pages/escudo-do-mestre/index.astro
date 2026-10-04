@@ -1,0 +1,408 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import RuleText from '../../components/RuleText.astro';
+import { combat } from '../../data/combate';
+import { generalSkillRules, skills } from '../../data/pericias';
+import { actionPoints, conditions } from '../../data/condicoes';
+import '../../styles/gm-screen.css';
+
+const actionGroups = [
+  { title: 'Ações padrão', blocks: combat.standardActions },
+  { title: 'Ações de movimento', blocks: combat.moveActions },
+  { title: 'Ações completas', blocks: combat.fullActions },
+  { title: 'Ações livres', blocks: combat.freeActions },
+  { title: 'Reações', blocks: combat.reactions }
+];
+
+const actionPointBands = actionPoints.recoveryTable.rows.map((row, index) => ({
+  min: index * 4 + 1,
+  max: (index + 1) * 4,
+  level: row[0],
+  extraDie: row[1],
+  hp: row[2],
+  mp: row[3]
+}));
+
+const skillSearchText = (skill: (typeof skills)[number]) => [
+  skill.name,
+  skill.ability ?? '',
+  skill.trainedOnly ? 'treinada' : '',
+  skill.armorPenalty ? 'armadura penalidade' : '',
+  ...skill.blocks.flatMap((block) => [
+    block.title ?? '',
+    ...block.paragraphs,
+    ...(block.table?.headers ?? []),
+    ...(block.table?.rows.flat() ?? [])
+  ])
+].join(' ').toLowerCase();
+
+const combatSearchText = [
+  ...combat.actionTypes,
+  ...combat.standardActions.flatMap((block) => [block.title ?? '', ...block.paragraphs]),
+  ...combat.moveActions.flatMap((block) => [block.title ?? '', ...block.paragraphs]),
+  ...combat.fullActions.flatMap((block) => [block.title ?? '', ...block.paragraphs]),
+  ...combat.freeActions.flatMap((block) => [block.title ?? '', ...block.paragraphs]),
+  ...combat.reactions.flatMap((block) => [block.title ?? '', ...block.paragraphs]),
+  ...combat.attackerTable.headers,
+  ...combat.attackerTable.rows.flat(),
+  ...combat.targetTable.headers,
+  ...combat.targetTable.rows.flat()
+].join(' ').toLowerCase();
+---
+<BaseLayout title="Escudo do Mestre" activePath="/escudo-do-mestre/">
+  <section class="section-hero gm-hero">
+    <p class="eyebrow">Referência rápida · Tormenta RPG 1.3</p>
+    <h1>Escudo do Mestre</h1>
+    <p class="lede">Uma tela autocontida para consulta durante a sessão. O conteúdo abaixo usa apenas regras já consolidadas no Tormenta 1.3 e não redireciona para outras páginas.</p>
+    <div class="notice">
+      Primeira versão: Combate, Perícias, Condições e Pontos de Ação. Exploração, objetos e experiência serão adicionados somente depois de auditados na fonte 1.3.
+    </div>
+  </section>
+
+  <section class="gm-toolbar" aria-label="Ferramentas do Escudo do Mestre">
+    <label class="search-field gm-search">
+      <span>Busca global no escudo</span>
+      <input id="gm-search" type="search" placeholder="Ex.: agarrado, furtividade, ataque, ponto de ação..." autocomplete="off" />
+    </label>
+    <p class="results-count"><strong id="gm-result-count">0</strong> referências encontradas</p>
+  </section>
+
+  <nav class="gm-tabs" aria-label="Seções do Escudo do Mestre">
+    <button type="button" class="gm-tab is-active" data-gm-tab="overview">Visão geral</button>
+    <button type="button" class="gm-tab" data-gm-tab="combat">Combate</button>
+    <button type="button" class="gm-tab" data-gm-tab="skills">Perícias</button>
+    <button type="button" class="gm-tab" data-gm-tab="conditions">Condições</button>
+    <button type="button" class="gm-tab" data-gm-tab="action-points">Pontos de Ação</button>
+  </nav>
+
+  <section class="gm-panel" data-shield-panel="overview">
+    <div class="section-heading">
+      <div><p class="eyebrow">Mesa em andamento</p><h2>Consulta imediata</h2></div>
+    </div>
+
+    <div class="gm-overview-grid">
+      <article class="gm-tool-card" data-shield-item data-search="cd dificuldade metade nivel habilidade resistencia fórmula padrão">
+        <h3>Calculadora de CD padrão</h3>
+        <p>Para habilidades de classe, talentos e habilidades raciais: <strong>10 + MdN + modificador relevante</strong>.</p>
+        <div class="gm-calculator-grid">
+          <label>
+            <span>Nível</span>
+            <input id="gm-level" type="number" min="1" max="20" value="1" inputmode="numeric" />
+          </label>
+          <label>
+            <span>Modificador</span>
+            <input id="gm-modifier" type="number" min="-20" max="30" value="0" inputmode="numeric" />
+          </label>
+        </div>
+        <div class="gm-result-box">
+          <span>MdN <strong id="gm-half-level">0</strong></span>
+          <span>CD <strong id="gm-standard-dc">10</strong></span>
+        </div>
+      </article>
+
+      <article class="gm-tool-card" data-shield-item data-search="ponto ação recuperação pv pm dado extra nível">
+        <h3>Ponto de Ação por nível</h3>
+        <p>Escolha o nível para consultar o dado extra e a recuperação correspondente.</p>
+        <label class="gm-level-picker">
+          <span>Nível do personagem</span>
+          <input id="gm-ap-level" type="range" min="1" max="20" value="1" />
+          <strong id="gm-ap-level-label">1º nível</strong>
+        </label>
+        <div class="gm-result-box gm-ap-result">
+          <span>Dado extra <strong id="gm-ap-die">1d4</strong></span>
+          <span>PV <strong id="gm-ap-hp">3d8 + 2</strong></span>
+          <span>PM <strong id="gm-ap-mp">1d4+1</strong></span>
+        </div>
+        <div id="gm-ap-bands" hidden>
+          {actionPointBands.map((band) => (
+            <span
+              data-min={band.min}
+              data-max={band.max}
+              data-level={band.level}
+              data-die={band.extraDie}
+              data-hp={band.hp}
+              data-mp={band.mp}
+            ></span>
+          ))}
+        </div>
+      </article>
+
+      <article class="gm-tool-card gm-turn-card" data-shield-item data-search="turno rodada ação padrão movimento completa livre reação">
+        <h3>No seu turno</h3>
+        <div class="gm-compact-list">
+          {combat.actionTypes.slice(0, 4).map((paragraph) => <p>{paragraph}</p>)}
+        </div>
+      </article>
+
+      <article class="gm-tool-card" data-shield-item data-search="condições quantidade lista vinte quatro 24">
+        <h3>Condições</h3>
+        <p><strong>{conditions.length}</strong> condições do Tormenta 1.3 disponíveis neste escudo, todas com o efeito descrito no próprio painel.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="gm-panel" data-shield-panel="combat" hidden>
+    <div class="section-heading">
+      <div><p class="eyebrow">Rodada e modificadores</p><h2>Combate</h2></div>
+    </div>
+
+    <article class="gm-reference-block" data-shield-item data-search={combatSearchText}>
+      <h3>Economia de ações</h3>
+      <div class="gm-rule-prose">
+        {combat.actionTypes.map((paragraph) => <RuleText text={paragraph} />)}
+      </div>
+    </article>
+
+    <div class="gm-table-grid">
+      <article class="gm-reference-block" data-shield-item data-search={combat.attackerTable.rows.flat().join(' ').toLowerCase()}>
+        <h3>Modificadores do atacante</h3>
+        <div class="table-wrap">
+          <table class="rules-table">
+            <thead><tr>{combat.attackerTable.headers.map((header) => <th>{header}</th>)}</tr></thead>
+            <tbody>{combat.attackerTable.rows.map((row) => <tr>{row.map((cell) => <td>{cell}</td>)}</tr>)}</tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="gm-reference-block" data-shield-item data-search={combat.targetTable.rows.flat().join(' ').toLowerCase()}>
+        <h3>Modificadores do defensor</h3>
+        <div class="table-wrap">
+          <table class="rules-table">
+            <thead><tr>{combat.targetTable.headers.map((header) => <th>{header}</th>)}</tr></thead>
+            <tbody>{combat.targetTable.rows.map((row) => <tr>{row.map((cell) => <td>{cell}</td>)}</tr>)}</tbody>
+          </table>
+        </div>
+      </article>
+    </div>
+
+    <div class="gm-action-groups">
+      {actionGroups.map((group) => (
+        <article
+          class="gm-reference-block"
+          data-shield-item
+          data-search={[group.title, ...group.blocks.flatMap((block) => [block.title ?? '', ...block.paragraphs])].join(' ').toLowerCase()}
+        >
+          <h3>{group.title}</h3>
+          <div class="gm-details-list">
+            {group.blocks.map((block) => (
+              <details>
+                <summary>{block.title ?? group.title}</summary>
+                <div class="gm-details-body">
+                  {block.paragraphs.map((paragraph) => <RuleText text={paragraph} />)}
+                </div>
+              </details>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="gm-panel" data-shield-panel="skills" hidden>
+    <div class="section-heading">
+      <div><p class="eyebrow">CDs, usos e testes</p><h2>Perícias</h2></div>
+    </div>
+
+    <div class="gm-details-list gm-general-rules">
+      {generalSkillRules.map((rule) => (
+        <details
+          class="gm-reference-block"
+          data-shield-item
+          data-search={[rule.title, ...rule.paragraphs].join(' ').toLowerCase()}
+        >
+          <summary>{rule.title}</summary>
+          <div class="gm-details-body">
+            {rule.paragraphs.map((paragraph) => <RuleText text={paragraph} />)}
+          </div>
+        </details>
+      ))}
+    </div>
+
+    <div class="gm-skill-grid">
+      {skills.map((skill) => (
+        <details
+          class="gm-skill-card"
+          data-shield-item
+          data-search={skillSearchText(skill)}
+        >
+          <summary>
+            <span>
+              <strong>{skill.name}</strong>
+              <small>{skill.ability ?? 'Habilidade não indicada'}{skill.trainedOnly ? ' · Treinada' : ''}{skill.armorPenalty ? ' · Armadura' : ''}</small>
+            </span>
+            <span class="gm-summary-mark">+</span>
+          </summary>
+          <div class="gm-details-body">
+            {skill.blocks.map((block) => (
+              <section class="gm-skill-block">
+                {block.title && <h4>{block.title}</h4>}
+                {block.paragraphs.map((paragraph) => <RuleText text={paragraph} />)}
+                {block.table && (
+                  <div class="table-wrap">
+                    <table class="rules-table">
+                      <thead><tr>{block.table.headers.map((header) => <th>{header}</th>)}</tr></thead>
+                      <tbody>{block.table.rows.map((row) => <tr>{row.map((cell) => <td>{cell}</td>)}</tr>)}</tbody>
+                    </table>
+                  </div>
+                )}
+              </section>
+            ))}
+          </div>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <section class="gm-panel" data-shield-panel="conditions" hidden>
+    <div class="section-heading">
+      <div><p class="eyebrow">Estados prejudiciais</p><h2>Condições</h2></div>
+    </div>
+    <div class="gm-condition-grid">
+      {conditions.map((condition) => (
+        <article
+          class="gm-condition-card"
+          data-shield-item
+          data-search={[condition.name, condition.description].join(' ').toLowerCase()}
+        >
+          <h3>{condition.name}</h3>
+          <p>{condition.description}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="gm-panel" data-shield-panel="action-points" hidden>
+    <div class="section-heading">
+      <div><p class="eyebrow">Recurso heroico</p><h2>Pontos de Ação</h2></div>
+    </div>
+
+    <div class="gm-table-grid">
+      <article class="gm-reference-block" data-shield-item data-search={actionPoints.gaining.join(' ').toLowerCase()}>
+        <h3>Ganhando Pontos de Ação</h3>
+        <div class="gm-rule-prose">
+          {actionPoints.gaining.map((paragraph) => <RuleText text={paragraph} />)}
+        </div>
+      </article>
+
+      <article class="gm-reference-block" data-shield-item data-search={actionPoints.using.join(' ').toLowerCase()}>
+        <h3>Usando Pontos de Ação</h3>
+        <div class="gm-rule-prose">
+          {actionPoints.using.map((paragraph) => <RuleText text={paragraph} />)}
+        </div>
+      </article>
+    </div>
+
+    <article class="gm-reference-block" data-shield-item data-search={actionPoints.recoveryTable.rows.flat().join(' ').toLowerCase()}>
+      <h3>Dado extra e recuperação</h3>
+      <div class="table-wrap">
+        <table class="rules-table">
+          <thead><tr>{actionPoints.recoveryTable.headers.map((header) => <th>{header}</th>)}</tr></thead>
+          <tbody>{actionPoints.recoveryTable.rows.map((row) => <tr>{row.map((cell) => <td>{cell}</td>)}</tr>)}</tbody>
+        </table>
+      </div>
+    </article>
+  </section>
+
+  <p class="empty-state gm-empty" id="gm-empty" hidden>Nenhuma referência do escudo corresponde à busca atual.</p>
+
+  <script is:inline>
+    (() => {
+      const search = document.getElementById('gm-search');
+      const count = document.getElementById('gm-result-count');
+      const empty = document.getElementById('gm-empty');
+      const tabs = [...document.querySelectorAll('[data-gm-tab]')];
+      const panels = [...document.querySelectorAll('[data-shield-panel]')];
+      const items = [...document.querySelectorAll('[data-shield-item]')];
+      let activeTab = 'overview';
+
+      const normalize = (value) => String(value || '')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase();
+
+      const showActiveTab = () => {
+        panels.forEach((panel) => {
+          panel.hidden = panel.dataset.shieldPanel !== activeTab;
+        });
+        tabs.forEach((tab) => tab.classList.toggle('is-active', tab.dataset.gmTab === activeTab));
+        count.textContent = '0';
+        empty.hidden = true;
+        items.forEach((item) => item.hidden = false);
+      };
+
+      const applySearch = () => {
+        const query = normalize(search.value.trim());
+        if (!query) {
+          showActiveTab();
+          return;
+        }
+
+        let visible = 0;
+        panels.forEach((panel) => panel.hidden = false);
+
+        items.forEach((item) => {
+          const match = normalize(item.dataset.search).includes(query);
+          item.hidden = !match;
+          if (match) {
+            visible += 1;
+            if (item.tagName === 'DETAILS') item.open = true;
+          }
+        });
+
+        panels.forEach((panel) => {
+          const hasVisible = [...panel.querySelectorAll('[data-shield-item]')].some((item) => !item.hidden);
+          panel.hidden = !hasVisible;
+        });
+
+        count.textContent = String(visible);
+        empty.hidden = visible !== 0;
+      };
+
+      tabs.forEach((tab) => tab.addEventListener('click', () => {
+        activeTab = tab.dataset.gmTab;
+        search.value = '';
+        showActiveTab();
+      }));
+
+      search.addEventListener('input', applySearch);
+      showActiveTab();
+
+      const levelInput = document.getElementById('gm-level');
+      const modifierInput = document.getElementById('gm-modifier');
+      const halfLevel = document.getElementById('gm-half-level');
+      const standardDc = document.getElementById('gm-standard-dc');
+
+      const updateDc = () => {
+        const level = Math.max(1, Math.min(20, Number(levelInput.value) || 1));
+        const modifier = Number(modifierInput.value) || 0;
+        const half = Math.floor(level / 2);
+        halfLevel.textContent = String(half);
+        standardDc.textContent = String(10 + half + modifier);
+      };
+
+      levelInput.addEventListener('input', updateDc);
+      modifierInput.addEventListener('input', updateDc);
+      updateDc();
+
+      const apLevel = document.getElementById('gm-ap-level');
+      const apLevelLabel = document.getElementById('gm-ap-level-label');
+      const apDie = document.getElementById('gm-ap-die');
+      const apHp = document.getElementById('gm-ap-hp');
+      const apMp = document.getElementById('gm-ap-mp');
+      const apBands = [...document.querySelectorAll('#gm-ap-bands [data-min]')];
+
+      const updateActionPointBand = () => {
+        const level = Number(apLevel.value) || 1;
+        const band = apBands.find((item) => level >= Number(item.dataset.min) && level <= Number(item.dataset.max));
+        apLevelLabel.textContent = level + 'º nível';
+        if (!band) return;
+        apDie.textContent = band.dataset.die || '—';
+        apHp.textContent = band.dataset.hp || '—';
+        apMp.textContent = band.dataset.mp || '—';
+      };
+
+      apLevel.addEventListener('input', updateActionPointBand);
+      updateActionPointBand();
+    })();
+  </script>
+</BaseLayout>
