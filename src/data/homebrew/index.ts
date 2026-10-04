@@ -9,6 +9,6 @@ export const homebrewClassDetails: ClassDetail[] = Object.values(modules)
   .map((entry) => ({
     ...entry,
     origin: 'homebrew' as const,
-    family: 'Homebrew'
+    family: entry.kind === 'prestige' ? 'Homebrew de Prestígio' : 'Homebrew'
   }))
   .sort((a, b) => a.name.localeCompare(b.name, 'pt-BR'));
