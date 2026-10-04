@@ -28,20 +28,33 @@ const talentLevels = [4, 8, 12, 16, 20];
 const orphanTalents = detail.classTalents.filter((talent) => !talent.prerequisiteLevel || !talentLevels.includes(talent.prerequisiteLevel));
 ---
 <BaseLayout title={detail.name} activePath="/classes/">
-  <div class="breadcrumbs"><a href={href('/classes/')}>Classes</a> / {detail.family} / {detail.name}</div>
+  <div class="breadcrumbs"><a href={href('/classes/')}>Classes</a> / {detail.origin === 'homebrew' ? 'Homebrew' : detail.family} / {detail.name}</div>
 
   <section class="section-hero class-detail-hero">
     <div class="class-head">
       <div>
-        <p class="eyebrow">{detail.family}</p>
+        <p class="eyebrow">{detail.origin === 'homebrew' ? 'Homebrew · Conteúdo da Comunidade' : detail.family}</p>
         <h1>{detail.name}</h1>
-        <p class="class-source-title">Fonte: {detail.sourceTitle}</p>
+        <p class="class-source-title">
+          {detail.origin === 'homebrew'
+            ? `Autor: ${detail.author ?? 'não informado'}`
+            : `Fonte: ${detail.sourceTitle}`}
+        </p>
       </div>
-      <span class:list={['status-badge', detail.status !== 'complete' && 'warn']}>
-        {detail.status === 'incomplete_source' ? 'Fonte incompleta' : detail.status === 'wip' ? 'WIP' : 'Convertida'}
+      <span class:list={['status-badge', detail.status !== 'complete' && 'warn', detail.origin === 'homebrew' && 'homebrew']}>
+        {detail.origin === 'homebrew'
+          ? 'Homebrew'
+          : detail.status === 'incomplete_source'
+            ? 'Fonte incompleta'
+            : detail.status === 'wip'
+              ? 'WIP'
+              : 'Convertida'}
       </span>
     </div>
 
+    {detail.origin === 'homebrew' && (
+      <div class="notice">Esta classe é <strong>Homebrew</strong>: foi criada pela comunidade, revisada antes da publicação e não faz parte das classes originais do Tormenta 1.3.</div>
+    )}
     {detail.editorialNotes.map((note) => <div class="notice">{note}</div>)}
   </section>
 
