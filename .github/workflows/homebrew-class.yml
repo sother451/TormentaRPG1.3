@@ -1,4 +1,4 @@
-name: Aprovar Classe Homebrew
+name: Aprovar Classe
 
 on:
   issue_comment:
@@ -22,7 +22,7 @@ jobs:
         with:
           ref: main
 
-      - name: Preparar classe Homebrew
+      - name: Preparar classe
         run: node scripts/homebrew-from-issue.mjs
         env:
           ISSUE_BODY: ${{ github.event.issue.body }}
@@ -38,8 +38,9 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -b "$BRANCH"
-          git add src/data/homebrew/classes
-          git commit -m "homebrew: adicionar classe da issue #${{ github.event.issue.number }}"
+          git add src/data/homebrew/classes 2>/dev/null || true
+          git add src/data/official/classes 2>/dev/null || true
+          git commit -m "classes: adicionar classe aprovada da issue #${{ github.event.issue.number }}"
           git push origin "$BRANCH"
 
       - name: Abrir Pull Request
@@ -48,7 +49,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          URL=$(gh pr create             --base main             --head "${{ steps.branch.outputs.branch }}"             --title "Homebrew: ${{ github.event.issue.title }}"             --body "Classe Homebrew aprovada para revisão final.\n\nOrigem: #${{ github.event.issue.number }}\n\nO merge deste PR publica a classe na família **Homebrew**, separada das classes originais.")
+          URL=$(gh pr create             --base main             --head "${{ steps.branch.outputs.branch }}"             --title "Homebrew: ${{ github.event.issue.title }}"             --body "Classe aprovada para revisão final.\n\nOrigem: #${{ github.event.issue.number }}\n\nO merge deste PR publica a classe na família indicada pelo JSON revisado.")
           echo "url=$URL" >> "$GITHUB_OUTPUT"
 
       - name: Comentar na submissão
