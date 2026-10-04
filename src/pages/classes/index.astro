@@ -3,16 +3,20 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { classEntries, classFamilies } from '../../data/classes';
 import { classDetails } from '../../data/class-details/index';
 
-const prestigeClasses = classDetails.filter((entry) => entry.kind === 'prestige');
+const prestigeClasses = classDetails.filter((entry) => entry.kind === 'prestige' && entry.origin !== 'homebrew');
+const homebrewClasses = classDetails.filter((entry) => entry.origin === 'homebrew');
 
 const base = import.meta.env.BASE_URL;
 const href = (path: string) => `${base}${path.replace(/^\/+/, '')}`;
 ---
 <BaseLayout title="Classes" activePath="/classes/">
   <section class="section-hero">
-    <p class="eyebrow">Classes básicas, variações e prestígio</p>
+    <p class="eyebrow">Classes básicas, variações, prestígio e comunidade</p>
     <h1>Classes</h1>
     <p class="lede">Cada página reúne a própria progressão, sistemas exclusivos e talentos de classe. Talentos exclusivos não são misturados à biblioteca geral de Talentos.</p>
+    <div class="hero-actions">
+      <a class="button" href={href('/criar-classe/')}>Criar classe Homebrew</a>
+    </div>
   </section>
 
   {classFamilies.map((family) => {
@@ -56,5 +60,41 @@ const href = (path: string) => `${base}${path.replace(/^\/+/, '')}`;
         </a>
       ))}
     </div>
+  </section>
+
+  <section class="family-block homebrew-block">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Conteúdo da comunidade</p>
+        <h2>Homebrew</h2>
+      </div>
+      <p>{homebrewClasses.length} {homebrewClasses.length === 1 ? 'classe aprovada' : 'classes aprovadas'}</p>
+    </div>
+
+    <div class="homebrew-intro">
+      <div>
+        <strong>Família separada das classes originais</strong>
+        <p>Classes criadas pelo editor público entram sempre como <b>Homebrew</b>. Elas só aparecem aqui depois de revisão e aprovação no GitHub.</p>
+      </div>
+      <a class="button primary" href={href('/criar-classe/')}>Criar uma classe</a>
+    </div>
+
+    {homebrewClasses.length > 0 ? (
+      <div class="class-grid">
+        {homebrewClasses.map((entry) => (
+          <a class="class-card homebrew-card" href={href(`/classes/${entry.slug}/`)}>
+            <small>Homebrew</small>
+            <h2>{entry.name}</h2>
+            <p>{entry.author ? `por ${entry.author}` : 'Autor não informado'}</p>
+            <div class="class-meta">
+              <span class="pill">{entry.kind === 'prestige' ? 'Classe de Prestígio' : 'Classe'}</span>
+              <span class="pill">{entry.progression.rows.length} níveis</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    ) : (
+      <div class="notice">Ainda não há classes Homebrew aprovadas. Use o editor para enviar a primeira proposta.</div>
+    )}
   </section>
 </BaseLayout>
