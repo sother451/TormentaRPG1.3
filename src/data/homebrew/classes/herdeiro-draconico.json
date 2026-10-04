@@ -1,0 +1,346 @@
+{
+  "kind": "basic",
+  "origin": "homebrew",
+  "bbaType": "full",
+  "slug": "herdeiro-draconico",
+  "name": "HERDEIRO DRACÔNICO",
+  "family": "Homebrew",
+  "author": "Sother",
+  "sourceDocId": "github-issue-1",
+  "sourceTitle": "Homebrew da comunidade",
+  "status": "complete",
+  "editorialNotes": [],
+  "basics": {
+    "hitPoints": "um Herdeiro Dracônico começa com 16 pontos de vida (+ Mod. de Con) e ganha 4 PV (+mod. Con) por nível seguinte.",
+    "trainedSkills": "Conhecimento (Arcano) e outras 4 + mod. de Inteligência.",
+    "classSkills": "Atletismo (For), Conhecimento (Int), Diplomacia (Car), Iniciativa (Des), Intimidação (Car), Intuição (Sab), Ofício  (int), Percepção (Sab), Sobrevivência (Sab)",
+    "bonusTalents": "Resistência Aprimorada (Fortitude, Vontade)"
+  },
+  "progression": {
+    "headers": [
+      "Nível",
+      "BBA",
+      "Habilidades"
+    ],
+    "rows": [
+      [
+        "1º",
+        "+1",
+        "Sangue Ancestral, Arsenal Ancestral, Sentidos Ancestrais, Magias"
+      ],
+      [
+        "2º",
+        "+2",
+        "Escamas"
+      ],
+      [
+        "3º",
+        "+3",
+        "Sopro, Fluxo Ancestral"
+      ],
+      [
+        "4º",
+        "+4",
+        ""
+      ],
+      [
+        "5º",
+        "+5",
+        "Ascensão, Fluxo Ancestral"
+      ],
+      [
+        "6º",
+        "+6",
+        "Escamas"
+      ],
+      [
+        "7º",
+        "+7",
+        "Arsenal Ancestral, Fluxo Ancestral"
+      ],
+      [
+        "8º",
+        "+8",
+        ""
+      ],
+      [
+        "9º",
+        "+9",
+        "Ascensão, Sentidos Ancestrais"
+      ],
+      [
+        "10º",
+        "+10",
+        "Ascensão, Escamas"
+      ],
+      [
+        "11º",
+        "+11",
+        "Arsenal Ancestral"
+      ],
+      [
+        "12º",
+        "+12",
+        ""
+      ],
+      [
+        "13º",
+        "+13",
+        "Ascensão"
+      ],
+      [
+        "14º",
+        "+14",
+        "Sopro, Escamas"
+      ],
+      [
+        "15º",
+        "+15",
+        "Majestade Dracônica"
+      ],
+      [
+        "16º",
+        "+16",
+        ""
+      ],
+      [
+        "17º",
+        "+17",
+        "Ascensão, Sentidos Ancestrais"
+      ],
+      [
+        "18º",
+        "+18",
+        "Arsenal Ancestral, Escamas"
+      ],
+      [
+        "19º",
+        "+19",
+        "Fluxo Perfeito"
+      ],
+      [
+        "20º",
+        "+20",
+        "Apoteose Dracônica"
+      ]
+    ]
+  },
+  "sections": [
+    {
+      "title": "Sangue Ancestral",
+      "paragraphs": [
+        "O sangue de um verdadeiro dragão desperta em seu corpo. Pequenas alterações tornam-se permanentes, como olhos reptilianos, escamas dispersas, presas, chifres ou outras características semelhantes.\n\nNo 1º nível, escolha a natureza de seu sangue entre fogo, frio, ácido, eletricidade, necrótico ou sagrado. Essa escolha define a natureza de sua linhagem e não pode ser alterada.\nSempre que uma habilidade desta classe se referir à energia ou ao descritor escolhido em Sangue Ancestral, utilize a natureza escolhida aqui.\n\nVocê não pode aprender a utilizar armaduras. Caso adquira níveis em outra classe ou talentos que lhe concedam habilidade para utilizá-las, esta habilidade sobrescreve seus efeitos.\n\nSeu tipo muda para Monstro.\n\nVocê não pode possuir o talento Alma do Dragão. Caso já possua esse talento ao adquirir um nível nesta classe, deve substituí-lo por outro talento válido do mesmo grupo para o qual cumpra os pré-requisitos."
+      ],
+      "tables": []
+    },
+    {
+      "title": "Arsenal Ancestral",
+      "paragraphs": [
+        "Sua transformação manifesta armas naturais permanentes. Para uma criatura Média, você recebe:\n\n - Duas garras, que causam 1d4 de dano de corte;\n - Uma mordida, que causa 1d6 de dano de perfuração;\n - Uma cauda, que causa 1d6 de dano de esmagamento.\n\nNo 7º nível, suas armas naturais passam a ser consideradas armas mágicas menores para atravessar RD.\n\nNo 11º nível, passam a ser consideradas armas mágicas de aura média. Além disso, o dano das garras aumenta para 1d8, e o dano da mordida e da cauda aumenta para 1d10.\n\nNo 18º nível, suas armas naturais atingem sua forma madura. O dano das garras aumenta para 1d12, e o dano da mordida e da cauda aumenta para 2d8."
+      ],
+      "tables": []
+    },
+    {
+      "title": "Sentidos Ancestrais",
+      "paragraphs": [
+        "Seus sentidos começam a adquirir a precisão de um dragão. No 1º nível, você recebe visão no escuro.\n\nNo 9º nível, recebe percepção às cegas 9m.\n\nNo 17º nível, você fica permanentemente sob o efeito de visão da verdade. Você enxerga através de escuridão normal e mágica, invisibilidade, ilusões e transmutações, percebendo a forma real de criaturas e objetos transformados.\nEste efeito não atravessa objetos sólidos e não elimina camuflagem causada por efeitos mundanos, como um disfarce comum."
+      ],
+      "tables": []
+    },
+    {
+      "title": "Magias",
+      "paragraphs": [
+        "Tipo e níveis de magia: você pode lançar magias Arcanas de nível 0 (truques) e 1º nível. A cada três níveis de Herdeiro Dracônico seguintes, você pode lançar magias um nível acima: no 4º nível pode lançar magias de 2º nível, no 7º nível você pode lançar magias de 3º nível e assim por diante até o 16º nível, quando você pode lançar magias de 6º nível.\n\nHabilidade-chave: sua habilidade para lançar magias é Carisma.\n\nMagias Conhecidas: você conhece 4 magias Arcanas de nível 0, e também um número de magias de 1º nível igual a 1 + seu modificador de Carisma. Cada vez que avançar de nível, você aprende duas novas magias de qualquer nível que possa lançar.\n\nPontos de Magia: você tem um número de pontos de magia (PM) igual a 1 + modificador de Carisma. Cada vez que avança de nível, recebe 2 PM.\n\nPreparação de Magia: você precisa preparar suas magias com antecedência. A cada dia deve Meditar durante uma hora, e então escolher um número igual a Metade do Nível + MdC de magias para preparar. Essas magias podem ser conjuradas livremente durante o dia com os PMs do conjurador, podendo receber efeitos de talentos metamágicos e habilidades de classe."
+      ],
+      "tables": []
+    },
+    {
+      "title": "Escamas",
+      "paragraphs": [
+        "A partir do 2º nível, escamas espessas começam a cobrir seu corpo, concedendo +2 de CA.\n\nNo 6º nível, o bônus de CA aumenta para +3 e você recebe RD 2.\n\nNo 10º nível, o bônus de CA aumenta para +4, sua RD aumenta para 3 e você recebe RE 5 contra o tipo de energia escolhido em Sangue Ancestral.\n\nNo 14º nível, o bônus de CA aumenta para +5, sua RD aumenta para 4, sua RE aumenta para 10 e você recebe Fortificação 25%. Quando sofre um acerto crítico, há 25% de chance de que ele seja anulado e tratado como um ataque normal.\n\nNo 18º nível, o bônus de CA aumenta para +6, sua RD aumenta para 5, sua RE aumenta para 15 e sua Fortificação aumenta para 50%."
+      ],
+      "tables": []
+    },
+    {
+      "title": "Sopro",
+      "paragraphs": [
+        "A partir do 3º nível, você pode liberar a energia acumulada em seu sangue. Como uma ação padrão, desfere um sopro que causa 1d6 pontos de dano por nível nesta classe.\n\nA forma do sopro depende da natureza escolhida em Sangue Ancestral:\nFogo, Frio ou Necrótico: cone de 9m.\nÁcido, Eletricidade ou Sagrado: linha de 18m.\n\nUm teste de Reflexos (CD 10 + MdN + Mod. Con) reduz o dano à metade.\nVocê pode utilizar esta habilidade um número de vezes por dia igual ao seu modificador de Constituição, mínimo 1.\n\nExistem duas formas de utilizar seu Sopro. Um Sopro Pleno é o uso normal desta habilidade: consome uma utilização diária e causa seu dano total. Um Sopro Ressonante é gerado por habilidades de Fluxo Ancestral: não consome utilizações diárias e causa metade da quantidade de dados de um Sopro Pleno, arredondada para baixo, mínimo 1 dado. Ambos utilizam a mesma CD, energia, área e alcance e são considerados Sopro para efeitos das habilidades e talentos desta classe.\n\nNo 14º nível, o dado de dano de seu Sopro aumenta de d6 para d8. Além disso, o cone aumenta para 18m e a linha para 36m.\n\nVocê só pode utilizar Sopro uma vez por turno, independentemente de sua forma ou da habilidade que permita utilizá-lo."
+      ],
+      "tables": []
+    },
+    {
+      "title": "Fluxo Ancestral",
+      "paragraphs": [
+        "Seu corpo, sua essência e sua magia passam a responder uns aos outros. Conforme avança nesta classe, você aprende a encadear essas manifestações.\n\nÍmpeto (3º nível). Uma vez por rodada, quando realiza uma ação padrão para atacar e acerta uma criatura com uma arma natural de Arsenal Ancestral, você pode substituir o ataque adicional concedido pela regra de Armas Naturais por um \nSopro Ressonante. Você pode gastar uma utilização diária de Sopro para utilizar um Sopro Pleno em seu lugar. \n\nEco Elemental (5º nível). Quando seu Sopro causa dano a pelo menos uma criatura, sua energia permanece ressoando em você até o final de seu próximo turno.\nA próxima magia que você conjurar durante esse período e que possua o mesmo descritor da energia escolhida em Sangue Ancestral custa 1 PM a menos, até o mínimo de 1 PM. Após conjurar essa magia, o Eco Elemental é consumido.\n\nArcano Encarnado (7º nível). Uma vez por rodada, quando você conjura uma magia que possua o mesmo descritor da energia escolhida em Sangue Ancestral, pode realizar imediatamente um ataque com uma arma natural de Arsenal Ancestral como parte da mesma ação. (O ataque realizado através desta habilidade não pode ativar Ímpeto.)\nAo conjurar uma magia com esse descritor, você não provoca ataques de oportunidade pela conjuração e não fica desprevenido em consequência dela."
+      ],
+      "tables": []
+    },
+    {
+      "title": "Ascensão",
+      "paragraphs": [
+        "Conforme sua herança amadurece, seu corpo e sua essência mágica tornam-se progressivamente mais próximos aos de um verdadeiro dragão.\n\nNo 5º nível, você recebe +2 em Força e +2 em Constituição.\n\nNo 9º nível, você recebe +2 em Carisma. Além disso, recebe +1 na CD de magias que possuam o mesmo descritor da energia escolhida em Sangue Ancestral.\n\nNo 10º nível, sua transformação manifesta um par de asas funcionais e você recebe deslocamento de voo 18m.\n\nNo 13º nível, os bônus de Força e Constituição aumentam para +4. Além disso, suas magias com o descritor correspondente causam +1 ponto de dano por nível da magia.\n\nNo 17º nível, seu bônus de Carisma aumenta para +4, o bônus na CD dessas magias aumenta para +2 e o bônus de dano aumenta para +2 pontos por nível da magia."
+      ],
+      "tables": []
+    },
+    {
+      "title": "Majestade Dracônica",
+      "paragraphs": [
+        "No 15º nível, sua herança se torna impossível de ignorar. A presença de um verdadeiro dragão parece emanar de você, despertando temor ou reverência naqueles ao seu redor.\n\nComo uma ação padrão, escolha Temor ou Reverência. Todas as criaturas à sua escolha a até 18m que possam percebê-lo devem realizar um teste de Vontade (CD 10 + MdN + Mod. Car).\n\n - Temor. Criaturas que falharem ficam abaladas por 1 minuto.\n\n - Reverência. Criaturas que falharem no teste, ou que escolham falhar voluntariamente, tornam-se Prestativas em relação a você.\n\nUma criatura tornada Prestativa por esta habilidade não está sob seu controle e não realiza ações manifestamente suicidas ou completamente contrárias às suas convicções. Caso você ou seus aliados realizem uma ação hostil contra ela, este efeito termina imediatamente.Uma criatura que obtenha sucesso no teste de Vontade fica imune à Majestade Dracônica pelo resto do dia.\n\nReverência Dracônica. Kobolds reconhecem instintivamente sua natureza dracônica e o tratam como tratariam um verdadeiro dragão para efeitos sociais. Kobolds que não sejam diretamente hostis a você possuem atitude inicial Amigável e podem escolher falhar automaticamente contra Reverência. Kobolds hostis sofrem –5 em seus testes de Vontade contra Majestade Dracônica."
+      ],
+      "tables": []
+    },
+    {
+      "title": "Fluxo Perfeito",
+      "paragraphs": [
+        "No 19º nível, você domina completamente o fluxo entre corpo, essência e magia.\n\nQuando conjura uma magia que consome Eco Elemental e acerta o ataque concedido por Arcano Encarnado, você pode, caso ainda não tenha utilizado naquela rodada o ataque extra concedido pela regra de Armas Naturais, substituir esse ataque extra por um Sopro Ressonante, como parte da mesma ação.\n\nEste Sopro pode ativar Eco Elemental normalmente.\n\nVocê pode gastar uma utilização diária de Sopro para utilizar um Sopro Pleno no lugar do Sopro Ressonante."
+      ],
+      "tables": []
+    },
+    {
+      "title": "Apoteose Dracônica",
+      "paragraphs": [
+        "No 20º nível, você recebe um talento adicional, que deve ser escolhido entre os talentos de 20º nível de Herdeiro Dracônico. Você nunca pode possuir mais de um talento de 20º nível desta classe."
+      ],
+      "tables": []
+    }
+  ],
+  "classTalents": [
+    {
+      "id": "talento-couraca-ancestral-1",
+      "name": "Couraça Ancestral",
+      "prerequisite": "4º Nível de HERDEIRO DRACÔNICO.",
+      "prerequisiteLevel": 4,
+      "paragraphs": [
+        "Sua habilidade Escamas evolui além do normal. O bônus de CA concedido por ela aumenta em +1. Quando passar a conceder RD e RE, esses valores aumentam em +1 de RD e +5 de RE, respectivamente.\nQuando Escamas passar a conceder fortificação 50%, você se torna imune a acertos críticos."
+      ]
+    },
+    {
+      "id": "talento-vigor-ancestral-2",
+      "name": "Vigor Ancestral",
+      "prerequisite": "4º Nível de HERDEIRO DRACÔNICO.",
+      "prerequisiteLevel": 4,
+      "paragraphs": [
+        "Uma vez por combate, na primeira vez em que sofrer dano e ficar com metade ou menos de seus pontos de vida máximos, você recebe uma quantidade de PV temporários igual ao seu nível nesta classe + seu modificador de Constituição.\nEsses PV temporários duram até o fim do combate."
+      ]
+    },
+    {
+      "id": "talento-tenacidade-ancestral-3",
+      "name": "Tenacidade Ancestral",
+      "prerequisite": "4º Nível de HERDEIRO DRACÔNICO.",
+      "prerequisiteLevel": 4,
+      "paragraphs": [
+        "Uma vez por dia, após falhar em um teste de Fortitude, Reflexos ou Vontade, você pode repetir esse teste. Você deve aceitar o resultado da segunda rolagem.\nNo 12º nível, pode utilizar esta habilidade duas vezes por dia e, no 20º nível, três vezes por dia."
+      ]
+    },
+    {
+      "id": "talento-instinto-predatorio-4",
+      "name": "Instinto Predatório",
+      "prerequisite": "8º Nível de HERDEIRO DRACÔNICO.",
+      "prerequisiteLevel": 8,
+      "paragraphs": [
+        "Uma vez por rodada, quando você acerta uma criatura com sua Cauda, pode iniciar uma manobra de agarrar contra ela como parte do mesmo ataque."
+      ]
+    },
+    {
+      "id": "talento-exalacao-moldada-5",
+      "name": "Exalação Moldada",
+      "prerequisite": "8º Nível de HERDEIRO DRACÔNICO.",
+      "prerequisiteLevel": 8,
+      "paragraphs": [
+        "Ao utilizar seu Sopro, você pode substituir sua área normal por uma das formas abaixo:\n\nExplosão: uma explosão de 3m de raio centrada em um ponto a até 18m de você. No 14º nível, o alcance aumenta para 36m e o raio da explosão aumenta para 6m.\n\nRajada: uma única criatura dentro do alcance normal de seu Sopro é afetada.\nO dano, a CD e as demais propriedades do Sopro permanecem inalterados. Esta habilidade pode ser utilizada tanto com Sopro Pleno quanto com Sopro Ressonante."
+      ]
+    },
+    {
+      "id": "talento-predacao-arcana-6",
+      "name": "Predação Arcana",
+      "prerequisite": "8º Nível de HERDEIRO DRACÔNICO.",
+      "prerequisiteLevel": 8,
+      "paragraphs": [
+        "Quando realiza o ataque concedido por Arcano Encarnado, ele causa um número de dados adicionais de dano igual à metade do ciclo da magia conjurada, arredondado para baixo, mínimo 1 dado.\nCada dado adicional é igual ao dado de dano da arma natural utilizada e causa dano do mesmo tipo da energia escolhida em Sangue Ancestral.\n\nExemplo: se Arcano Encarnado for ativado por uma magia de 6º ciclo e você usar uma mordida que cause 2d8, Predação Arcana acrescenta +3d8 da energia de Sangue Ancestral."
+      ]
+    },
+    {
+      "id": "talento-predador-supremo-7",
+      "name": "Predador Supremo",
+      "prerequisite": "12º Nível de HERDEIRO DRACÔNICO.",
+      "prerequisiteLevel": 12,
+      "paragraphs": [
+        "A margem de ameaça das armas naturais concedidas por Arsenal Ancestral aumenta em 1, e seu multiplicador de crítico aumenta em 1."
+      ]
+    },
+    {
+      "id": "talento-sopro-concentrado-8",
+      "name": "Sopro Concentrado",
+      "prerequisite": "12º Nível de HERDEIRO DRACÔNICO.",
+      "prerequisiteLevel": 12,
+      "paragraphs": [
+        "Ao utilizar um Sopro Pleno, você pode concentrar toda a sua energia em uma única criatura dentro do alcance normal do Sopro, em vez de atingir sua área.\n\nQuando utilizado desta forma, a quantidade de dados de dano do Sopro aumenta em 50%, arredondada para baixo.\n\nO alvo ainda pode realizar normalmente o teste de Reflexos para reduzir o dano à metade.\n\n\nCaso possua Exalação Moldada, você pode aplicar os efeitos de Sopro Concentrado ao utilizar a opção Rajada."
+      ]
+    },
+    {
+      "id": "talento-magia-ancestral-9",
+      "name": "Magia Ancestral",
+      "prerequisite": "12º Nível de HERDEIRO DRACÔNICO.",
+      "prerequisiteLevel": 12,
+      "paragraphs": [
+        "Quando você conjura uma magia que cause dano e possua um dos descritores correspondentes à natureza escolhida em Sangue Ancestral, adicione seu modificador de Carisma ao dano da magia."
+      ]
+    },
+    {
+      "id": "talento-egide-draconica-10",
+      "name": "Égide Dracônica",
+      "prerequisite": "16º Nível de HERDEIRO DRACÔNICO.",
+      "prerequisiteLevel": 16,
+      "paragraphs": [
+        "Sua presença protege aqueles que lutam ao seu lado. Aliados a até 9m de você recebem RD igual ao bônus de CA concedido por sua habilidade Escamas.\nVocê não recebe este benefício."
+      ]
+    },
+    {
+      "id": "talento-marca-do-predador-11",
+      "name": "Marca do Predador",
+      "prerequisite": "16º Nível de HERDEIRO DRACÔNICO.",
+      "prerequisiteLevel": 16,
+      "paragraphs": [
+        "Quando seu Sopro causa dano a uma criatura, ela fica marcada até o início de seu próximo turno.\nDurante esse período, a primeira vez que cada aliado acertar a criatura marcada com uma arma ou arma natural, o ataque causa dois dados adicionais de dano do mesmo tipo de dado da arma utilizada.\nVocê não recebe este benefício."
+      ]
+    },
+    {
+      "id": "talento-convergencia-draconica-12",
+      "name": "Convergência Dracônica",
+      "prerequisite": "16º Nível de HERDEIRO DRACÔNICO.",
+      "prerequisiteLevel": 16,
+      "paragraphs": [
+        "Sua essência dracônica se projeta sobre aqueles ao seu redor. Você e seus aliados a até 9m recebem +2 em testes de Resistência.\nAlém disso, seus aliados dentro dessa área recebem a mesma RE concedida por sua habilidade Escamas, contra a energia escolhida em Sangue Ancestral.\nVocê não se beneficia do bônus de RE."
+      ]
+    },
+    {
+      "id": "talento-ascensao-ancestral-13",
+      "name": "Ascensão Ancestral",
+      "prerequisite": "20º Nível de HERDEIRO DRACÔNICO.",
+      "prerequisiteLevel": 20,
+      "paragraphs": [
+        "Sua transformação finalmente alcança a forma de um verdadeiro dragão. \n\nComo uma ação de movimento, você pode assumir sua forma dracônica ou retornar à sua forma normal.\n\nEnquanto estiver em sua forma dracônica, seu tamanho aumenta em três categorias, até o máximo de Colossal.\n\nVocê recebe +4 em Força e +4 em Constituição enquanto permanecer nesta forma.\n\nAlém disso, o bônus de CA concedido por Escamas aumenta em +4, você se torna imune a sono e paralisia, e as armas naturais concedidas por Arsenal Ancestral passam a ser consideradas armas mágicas de aura poderosa para atravessar RD.\n\nVocê pode permanecer nesta forma por tempo indeterminado."
+      ]
+    },
+    {
+      "id": "talento-coracao-primordial-14",
+      "name": "Coração Primordial",
+      "prerequisite": "20º Nível de HERDEIRO DRACÔNICO.",
+      "prerequisiteLevel": 20,
+      "paragraphs": [
+        "A energia de sua linhagem atinge sua forma absoluta. Você se torna imune à energia escolhida em Sangue Ancestral.\nO dado de dano de seu Sopro aumenta para d12, e o dano causado por ele ignora Resistência a Energia.\n\nCriaturas imunes à energia escolhida em Sangue Ancestral ainda podem ser feridas por seu Sopro. Contra essas criaturas, a imunidade reduz o dano do Sopro à metade, em vez de anulá-lo. Essa redução é aplicada após o teste de Reflexos.\n\nAlém disso, seu Sopro Pleno não possui mais limite de utilizações diárias. Sempre que uma habilidade permitir que você gaste uma utilização diária de Sopro para utilizar um Sopro Pleno, você pode fazê-lo sem custo."
+      ]
+    },
+    {
+      "id": "talento-mente-ancestral-15",
+      "name": "Mente Ancestral",
+      "prerequisite": "20º Nível de HERDEIRO DRACÔNICO.",
+      "prerequisiteLevel": 20,
+      "paragraphs": [
+        "Sua herança desperta todo o potencial arcano presente no sangue dos verdadeiros dragões.\n\nSeu Carisma aumenta em +4 e você recebe 2 PM adicionais por nível nesta classe.\nUma vez por rodada, quando conjurar uma magia que possua um dos descritores correspondentes à natureza escolhida em Sangue Ancestral, você pode aplicar a ela um talento metamágico que conheça cujo custo adicional seja de até 3 PM, sem pagar esse custo adicional.\n\nAlém disso, você aprende a magia exclusiva Reverberação Ancestral. Esta magia está sempre preparada e não conta em seu limite de magias conhecidas ou preparadas.\n\nReverberação Ancestral\n - Arcana 6\n - Execução: ação de movimento\n - Alcance: pessoal\n - Alvo: você\n - Duração: 1 minuto\n - Limitação: 1/dia\n\nSua magia passa a deixar reverberações da energia ancestral de sua linhagem.\nUma vez por rodada, quando você conjura uma magia que cause dano e possua um dos descritores correspondentes à natureza escolhida em Sangue Ancestral, você pode criar uma reverberação dessa magia.\n\nNo início de seu próximo turno, a reverberação manifesta-se novamente sobre os mesmos alvos ou na mesma área da magia original. Cada criatura afetada sofre dano igual à metade do dano que sofreu da magia original, arredondado para baixo.\n\nA reverberação possui o mesmo tipo de dano e os mesmos descritores da magia que a originou, mas não reproduz quaisquer outros efeitos da magia. O dano da reverberação é aplicado diretamente, sem um novo teste de resistência.\nA reverberação não consome PM, não é considerada uma nova conjuração e não ativa habilidades ou talentos desencadeados pela conjuração de uma magia."
+      ]
+    }
+  ],
+  "reviewIssue": 1,
+  "submittedBy": "sother451"
+}
