@@ -63,12 +63,11 @@ import '../../styles/class-editor.css';
       <section class="editor-section" id="class-talents-section">
         <div class="editor-section-head">
           <span>05</span><div><p class="eyebrow">Exclusivos da Classe Base</p><h2>Talentos de Classe</h2></div>
-          <button class="button editor-add" id="add-talent" type="button">+ Talento</button>
         </div>
         <div class="editor-guidance">
-          Classes Base devem possuir Talentos de Classe distribuídos pelos patamares de <strong>4º, 8º, 12º e 16º nível</strong>. Esses são os únicos níveis disponíveis para esta categoria.
+          A estrutura já vem pronta com <strong>15 Talentos de Classe</strong>: 3 opções no 4º, 8º, 12º, 16º e 20º nível. Basta preencher nome, pré-requisitos extras e descrição.
         </div>
-        <div id="talent-list" class="editor-repeat-list"></div>
+        <div id="talent-list" class="talent-tier-list"></div>
       </section>
 
       <section class="editor-section" id="prestige-no-talents" hidden>
@@ -131,17 +130,13 @@ import '../../styles/class-editor.css';
 
   <template id="talent-template">
     <article class="editor-repeat-card talent-item">
-      <header><strong>Talento de Classe</strong><button type="button" class="remove-item">Remover</button></header>
+      <header>
+        <strong data-talent-label>Talento de Classe</strong>
+        <span class="talent-fixed-level" data-talent-level-label></span>
+      </header>
+      <input data-field="level" type="hidden" />
       <div class="editor-grid talent-grid">
-        <label>Patamar
-          <select data-field="level">
-            <option value="4">4º nível</option>
-            <option value="8">8º nível</option>
-            <option value="12">12º nível</option>
-            <option value="16">16º nível</option>
-          </select>
-        </label>
-        <label>Nome<input data-field="name" maxlength="100" placeholder="Nome do talento" /></label>
+        <label class="wide">Nome<input data-field="name" maxlength="100" placeholder="Nome do talento" /></label>
         <label class="wide">Outros pré-requisitos (opcional)<input data-field="extraPrerequisite" placeholder="Ex.: Constituição 15, outro talento..." /></label>
         <label class="wide">Descrição<textarea data-field="description" rows="5" placeholder="Descrição completa do talento"></textarea></label>
       </div>
@@ -200,20 +195,38 @@ import '../../styles/class-editor.css';
         refreshPreview();
       }
 
-      function addTalent(data = {}) {
-        if (kind.value === 'prestige') return;
+      function createTalentSlot(level, position, data = {}) {
         const node = talentTemplate.content.cloneNode(true);
         const card = node.querySelector('.talent-item');
-        const allowedLevels = [4, 8, 12, 16];
-        const requestedLevel = Number(data.prerequisiteLevel || data.level || 4);
-        card.querySelector('[data-field="level"]').value = String(allowedLevels.includes(requestedLevel) ? requestedLevel : 4);
+        card.dataset.talentLevel = String(level);
+        card.dataset.talentPosition = String(position);
+        card.querySelector('[data-field="level"]').value = String(level);
+        card.querySelector('[data-talent-label]').textContent = `Opção ${position}`;
+        card.querySelector('[data-talent-level-label]').textContent = `${level}º nível`;
         card.querySelector('[data-field="name"]').value = data.name || '';
-        const classLevelPrefix = /^\d+º\s+Nível\s+de\s+.+?(?:\.|$)/i;
+        const classLevelPrefix = /^\d+º\s+Nível\s+de\s+.+?(?:\.\s*|$)/i;
         const oldPrerequisite = data.prerequisite || '';
         card.querySelector('[data-field="extraPrerequisite"]').value = oldPrerequisite.replace(classLevelPrefix, '').trim();
         card.querySelector('[data-field="description"]').value = data.description || data.paragraphs?.join('\n\n') || '';
-        wireRepeatCard(card);
-        talentList.appendChild(node);
+        card.querySelectorAll('input,textarea').forEach(input => input.addEventListener('input', refreshPreview));
+        return node;
+      }
+
+      function initializeTalentSlots(savedTalents = []) {
+        talentList.innerHTML = '';
+        if (kind.value === 'prestige') return;
+        const levels = [4, 8, 12, 16, 20];
+        for (const level of levels) {
+          const group = document.createElement('section');
+          group.className = 'talent-tier-group';
+          group.innerHTML = `<div class="talent-tier-heading"><span>Patamar</span><h3>${level}º nível</h3><small>3 opções</small></div><div class="talent-tier-cards"></div>`;
+          const cards = group.querySelector('.talent-tier-cards');
+          const matches = savedTalents.filter(item => Number(item.prerequisiteLevel) === level);
+          for (let position = 1; position <= 3; position++) {
+            cards.appendChild(createTalentSlot(level, position, matches[position - 1] || {}));
+          }
+          talentList.appendChild(group);
+        }
         refreshPreview();
       }
 
@@ -237,7 +250,7 @@ import '../../styles/class-editor.css';
         if (kind.value === 'prestige') return [];
         const className = form.elements.name.value.trim() || '[Nome da Classe]';
         return [...talentList.querySelectorAll('.talent-item')].map(card => {
-          const prerequisiteLevel = Number(card.querySelector('[data-field="level"]').value || 4);
+          const prerequisiteLevel = Number(card.querySelector('[data-field="level"]').value);
           const extra = card.querySelector('[data-field="extraPrerequisite"]').value.trim();
           const classRequirement = `${prerequisiteLevel}º Nível de ${className}.`;
           return {
@@ -246,7 +259,7 @@ import '../../styles/class-editor.css';
             prerequisite: extra ? `${classRequirement} ${extra}` : classRequirement,
             description: card.querySelector('[data-field="description"]').value.trim()
           };
-        }).filter(item => item.name || item.description);
+        });
       }
 
       function getProgression() {
@@ -311,15 +324,14 @@ import '../../styles/class-editor.css';
         if (data.sections.some(section => !section.title || !section.paragraphs[0])) errors.push('Toda habilidade adicionada precisa de nome e descrição.');
         if (data.classTalents.some(talent => !talent.name || !talent.paragraphs[0])) errors.push('Todo talento adicionado precisa de nome e descrição.');
         if (data.kind === 'basic') {
-          const allowedTalentLevels = [4, 8, 12, 16];
-          if (data.classTalents.length === 0) errors.push('Classes Base precisam possuir Talentos de Classe.');
+          const allowedTalentLevels = [4, 8, 12, 16, 20];
+          if (data.classTalents.length !== 15) errors.push('Classes Base devem possuir exatamente 15 Talentos de Classe.');
           if (data.classTalents.some(talent => !allowedTalentLevels.includes(talent.prerequisiteLevel))) {
-            errors.push('Talentos de Classe só podem pertencer aos patamares 4º, 8º, 12º ou 16º.');
+            errors.push('Talentos de Classe só podem pertencer aos patamares 4º, 8º, 12º, 16º ou 20º.');
           }
           for (const level of allowedTalentLevels) {
-            if (!data.classTalents.some(talent => talent.prerequisiteLevel === level)) {
-              errors.push(`Adicione ao menos um Talento de Classe do ${level}º nível.`);
-            }
+            const talentsAtLevel = data.classTalents.filter(talent => talent.prerequisiteLevel === level);
+            if (talentsAtLevel.length !== 3) errors.push(`O patamar de ${level}º nível deve possuir exatamente 3 Talentos de Classe.`);
           }
         }
         if (data.kind === 'prestige') {
@@ -364,9 +376,8 @@ import '../../styles/class-editor.css';
         form.elements.requirements.value = (data.requirements || []).join('\n');
         toggleKind(data.progression?.rows);
         featureList.innerHTML = '';
-        talentList.innerHTML = '';
         (data.sections || []).forEach(item => addFeature(item));
-        if (kind.value === 'basic') (data.classTalents || []).forEach(item => addTalent(item));
+        initializeTalentSlots(kind.value === 'basic' ? (data.classTalents || []) : []);
         refreshPreview();
       }
 
@@ -377,11 +388,12 @@ import '../../styles/class-editor.css';
         document.getElementById('prestige-no-talents').hidden = !prestige;
         document.getElementById('preview-talents-section').hidden = prestige;
         buildProgression(savedRows);
+        if (prestige) talentList.innerHTML = '';
+        else if (talentList.querySelectorAll('.talent-item').length !== 15) initializeTalentSlots();
         refreshPreview();
       }
 
       document.getElementById('add-feature').addEventListener('click', () => addFeature());
-      document.getElementById('add-talent').addEventListener('click', () => addTalent());
       kind.addEventListener('change', () => toggleKind(getProgression()));
       form.querySelectorAll('input,textarea,select').forEach(input => input.addEventListener('input', refreshPreview));
 
@@ -435,10 +447,7 @@ import '../../styles/class-editor.css';
 
       buildProgression();
       addFeature();
-      addTalent({ level: 4 });
-      addTalent({ level: 8 });
-      addTalent({ level: 12 });
-      addTalent({ level: 16 });
+      initializeTalentSlots();
       toggleKind(getProgression());
       refreshPreview();
     })();
