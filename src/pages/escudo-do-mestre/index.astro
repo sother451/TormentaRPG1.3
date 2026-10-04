@@ -79,18 +79,6 @@ const skillSearchText = (skill: (typeof skills)[number]) => [
   ])
 ].join(' ').toLowerCase();
 
-const combatSearchText = [
-  ...combat.actionTypes,
-  ...combat.standardActions.flatMap((block) => [block.title ?? '', ...block.paragraphs]),
-  ...combat.moveActions.flatMap((block) => [block.title ?? '', ...block.paragraphs]),
-  ...combat.fullActions.flatMap((block) => [block.title ?? '', ...block.paragraphs]),
-  ...combat.freeActions.flatMap((block) => [block.title ?? '', ...block.paragraphs]),
-  ...combat.reactions.flatMap((block) => [block.title ?? '', ...block.paragraphs]),
-  ...combat.attackerTable.headers,
-  ...combat.attackerTable.rows.flat(),
-  ...combat.targetTable.headers,
-  ...combat.targetTable.rows.flat()
-].join(' ').toLowerCase();
 ---
 <BaseLayout title="Escudo do Mestre" activePath="/escudo-do-mestre/">
   <section class="section-hero gm-hero">
@@ -170,9 +158,12 @@ const combatSearchText = [
 
       <article class="gm-tool-card gm-turn-card" data-shield-item data-search="turno rodada ação padrão movimento completa livre reação">
         <h3>No seu turno</h3>
-        <div class="gm-compact-list">
-          {combat.actionTypes.slice(0, 4).map((paragraph) => <p>{paragraph}</p>)}
-        </div>
+        <ul class="gm-bullet-list">
+          <li>1 ação padrão + 1 ação de movimento.</li>
+          <li>Ou 2 ações de movimento.</li>
+          <li>Ou 1 ação completa.</li>
+          <li>Ações livres à vontade e 1 reação por rodada.</li>
+        </ul>
       </article>
 
       <article class="gm-tool-card" data-shield-item data-search="condições quantidade lista vinte quatro 24">
@@ -280,7 +271,7 @@ const combatSearchText = [
         </div>
       </article>
 
-      <article class="gm-reference-block" data-shield-item data-search="perícias habilidade treinada armadura lista">
+      <article class="gm-reference-block" data-shield-item data-search={skills.map(skillSearchText).join(' ')}>
         <h3>Perícias</h3>
         <div class="gm-skill-index">
           {skills.map((skill) => (
