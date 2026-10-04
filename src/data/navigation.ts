@@ -8,5 +8,6 @@ export const navigation = [
   { label: 'Classes', href: '/classes/' },
   { label: 'Talentos', href: '/talentos/' },
   { label: 'Magias', href: '/magias/' },
-  { label: 'Condições', href: '/condicoes/' }
+  { label: 'Condições', href: '/condicoes/' },
+  { label: 'Escudo do Mestre', href: '/escudo-do-mestre/' }
 ] as const;
