@@ -329,7 +329,7 @@ import '../../styles/class-editor.css';
 
       document.getElementById('add-feature').addEventListener('click', () => addFeature());
       document.getElementById('add-talent').addEventListener('click', () => addTalent());
-      kind.addEventListener('change', () => toggleKind());
+      kind.addEventListener('change', () => toggleKind(getProgression()));
       form.querySelectorAll('input,textarea,select').forEach(input => input.addEventListener('input', refreshPreview));
 
       document.getElementById('save-draft').addEventListener('click', () => {
