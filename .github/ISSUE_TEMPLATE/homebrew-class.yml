@@ -6,6 +6,9 @@ body:
     attributes:
       value: |
         Obrigado pela contribuição. Classes enviadas por este formulário são sempre tratadas como **Homebrew** e ficam separadas das classes originais do Tormenta 1.3.
+
+        **Classe Base:** 20 níveis e Talentos de Classe apenas nos patamares 4º, 8º, 12º e 16º.
+        **Classe de Prestígio:** 10 níveis e sem Talentos de Classe.
   - type: input
     id: author
     attributes:
@@ -19,6 +22,15 @@ body:
     attributes:
       label: Nome da classe
       placeholder: Discípulo do Dragão
+    validations:
+      required: true
+  - type: dropdown
+    id: class_type
+    attributes:
+      label: Tipo de classe
+      options:
+        - Classe Base — 20 níveis
+        - Classe de Prestígio — 10 níveis
     validations:
       required: true
   - type: textarea
