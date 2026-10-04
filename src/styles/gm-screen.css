@@ -52,3 +52,13 @@
   .gm-condition-grid{grid-template-columns:1fr}
   .gm-calculator-grid,.gm-result-box,.gm-ap-result{grid-template-columns:1fr}
 }
+
+.gm-damage-inputs{grid-template-columns:repeat(3,minmax(0,1fr))}
+.gm-damage-inputs select{width:100%;min-height:40px;border:1px solid var(--border);border-radius:9px;background:#0f0d0c;color:var(--text);padding:0 11px;font:inherit}
+.gm-damage-expression{margin:.2rem 0 0;color:var(--muted)}
+.gm-damage-expression strong{color:var(--gold);font-family:Cinzel,Georgia,serif}
+.gm-damage-results{grid-template-columns:repeat(3,minmax(0,1fr))}
+.gm-ap-overview-table{margin-top:14px}
+@media(max-width:620px){
+  .gm-damage-inputs,.gm-damage-results{grid-template-columns:1fr}
+}
