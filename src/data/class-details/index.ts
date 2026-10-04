@@ -1,4 +1,5 @@
 import type { ClassDetail } from './schema';
+import { homebrewClassDetails } from '../homebrew';
 export type { ClassDetail } from './schema';
 import { classDetail as ranger } from './ranger';
 import { classDetail as cavaleiro } from './cavaleiro';
@@ -67,6 +68,7 @@ export const classDetails: ClassDetail[] = [
   bruxaDaTormenta,
   mestreDasBonecas,
   cavaleiroDoCorvo,
+  ...homebrewClassDetails,
 ];
 
 export const classDetailsBySlug = Object.fromEntries(classDetails.map((entry) => [entry.slug, entry])) as Record<string, ClassDetail>;
