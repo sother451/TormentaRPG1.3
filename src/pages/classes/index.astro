@@ -3,11 +3,45 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { classEntries, classFamilies } from '../../data/classes';
 import { classDetails } from '../../data/class-details/index';
 
-const prestigeClasses = classDetails.filter((entry) => entry.kind === 'prestige' && entry.origin !== 'homebrew');
-const homebrewClasses = classDetails.filter((entry) => entry.origin === 'homebrew');
+const knownSlugs = new Set(classEntries.map((entry) => entry.slug));
+const officialEditorClasses = classDetails.filter(
+  (entry) => entry.origin === 'tormenta-1.3' && !knownSlugs.has(entry.slug)
+);
+
+const familyNames = [...new Set([
+  ...classFamilies,
+  ...officialEditorClasses
+    .filter((entry) => entry.family !== 'Classes de Prestígio')
+    .map((entry) => entry.family)
+])];
+
+const prestigeClasses = classDetails.filter(
+  (entry) => entry.kind === 'prestige' &&
+    entry.origin !== 'homebrew' &&
+    entry.family === 'Classes de Prestígio'
+);
+
+const homebrewBasicClasses = classDetails.filter(
+  (entry) => entry.origin === 'homebrew' && entry.kind !== 'prestige'
+);
+
+const homebrewPrestigeClasses = classDetails.filter(
+  (entry) => entry.origin === 'homebrew' && entry.kind === 'prestige'
+);
 
 const base = import.meta.env.BASE_URL;
 const href = (path: string) => `${base}${path.replace(/^\/+/, '')}`;
+
+const bbaLabel = (type?: string) => ({
+  full: 'BBA cheio',
+  half: 'BBA 1/2',
+  'three-quarters': 'BBA 3/4'
+}[type ?? ''] ?? null);
+
+const detailSummary = (entry: (typeof classDetails)[number]) => {
+  const titles = entry.sections.map((section) => section.title).filter(Boolean).slice(0, 3);
+  return titles.length ? titles.join(' · ') : 'Classe oficial adicionada pelo editor.';
+};
 ---
 <BaseLayout title="Classes" activePath="/classes/">
   <section class="section-hero">
@@ -15,18 +49,24 @@ const href = (path: string) => `${base}${path.replace(/^\/+/, '')}`;
     <h1>Classes</h1>
     <p class="lede">Cada página reúne a própria progressão, sistemas exclusivos e talentos de classe. Talentos exclusivos não são misturados à biblioteca geral de Talentos.</p>
     <div class="hero-actions">
-      <a class="button" href={href('/criar-classe/')}>Criar classe Homebrew</a>
+      <a class="button" href={href('/criar-classe/')}>Criar classe</a>
     </div>
   </section>
 
-  {classFamilies.map((family) => {
+  {familyNames.map((family) => {
     const entries = classEntries.filter((entry) => entry.family === family);
+    const addedOfficial = officialEditorClasses.filter(
+      (entry) => entry.family === family && entry.family !== 'Classes de Prestígio'
+    );
+    const total = entries.length + addedOfficial.length;
+
     return (
       <section class="family-block">
         <div class="section-heading">
           <div><p class="eyebrow">Família</p><h2>{family}</h2></div>
-          <p>{entries.length} {entries.length === 1 ? 'página' : 'páginas'}</p>
+          <p>{total} {total === 1 ? 'página' : 'páginas'}</p>
         </div>
+
         <div class="class-grid">
           {entries.map((entry) => (
             <a class="class-card" href={href(`/classes/${entry.slug}/`)}>
@@ -36,6 +76,18 @@ const href = (path: string) => `${base}${path.replace(/^\/+/, '')}`;
               {entry.status && entry.status !== 'mapeada' && (
                 <div class="class-meta"><span class="pill">revisar fonte</span></div>
               )}
+            </a>
+          ))}
+
+          {addedOfficial.map((entry) => (
+            <a class="class-card" href={href(`/classes/${entry.slug}/`)}>
+              <small>{entry.family}</small>
+              <h2>{entry.name}</h2>
+              <p>{detailSummary(entry)}</p>
+              <div class="class-meta">
+                <span class="pill">{entry.kind === 'prestige' ? 'Classe de Prestígio' : 'Classe Base'}</span>
+                {bbaLabel(entry.bbaType) && <span class="pill">{bbaLabel(entry.bbaType)}</span>}
+              </div>
             </a>
           ))}
         </div>
@@ -56,6 +108,7 @@ const href = (path: string) => `${base}${path.replace(/^\/+/, '')}`;
           <p>{entry.requirements?.join(' · ') || 'Requisitos na página da classe.'}</p>
           <div class="class-meta">
             <span class="pill">{entry.progression.rows.length} níveis</span>
+            {bbaLabel(entry.bbaType) && <span class="pill">{bbaLabel(entry.bbaType)}</span>}
           </div>
         </a>
       ))}
@@ -68,33 +121,71 @@ const href = (path: string) => `${base}${path.replace(/^\/+/, '')}`;
         <p class="eyebrow">Conteúdo da comunidade</p>
         <h2>Homebrew</h2>
       </div>
-      <p>{homebrewClasses.length} {homebrewClasses.length === 1 ? 'classe aprovada' : 'classes aprovadas'}</p>
+      <p>{homebrewBasicClasses.length} {homebrewBasicClasses.length === 1 ? 'classe aprovada' : 'classes aprovadas'}</p>
     </div>
 
     <div class="homebrew-intro">
       <div>
-        <strong>Família separada das classes originais</strong>
-        <p>Classes criadas pelo editor público entram sempre como <b>Homebrew</b>. Elas só aparecem aqui depois de revisão e aprovação no GitHub.</p>
+        <strong>Família Homebrew — 20 níveis</strong>
+        <p>Classes Base criadas como Homebrew entram nesta família após revisão e aprovação.</p>
       </div>
       <a class="button primary" href={href('/criar-classe/')}>Criar uma classe</a>
     </div>
 
-    {homebrewClasses.length > 0 ? (
+    {homebrewBasicClasses.length > 0 ? (
       <div class="class-grid">
-        {homebrewClasses.map((entry) => (
+        {homebrewBasicClasses.map((entry) => (
           <a class="class-card homebrew-card" href={href(`/classes/${entry.slug}/`)}>
             <small>Homebrew</small>
             <h2>{entry.name}</h2>
             <p>{entry.author ? `por ${entry.author}` : 'Autor não informado'}</p>
             <div class="class-meta">
-              <span class="pill">{entry.kind === 'prestige' ? 'Classe de Prestígio' : 'Classe'}</span>
+              <span class="pill">Classe Base</span>
               <span class="pill">{entry.progression.rows.length} níveis</span>
+              {bbaLabel(entry.bbaType) && <span class="pill">{bbaLabel(entry.bbaType)}</span>}
             </div>
           </a>
         ))}
       </div>
     ) : (
-      <div class="notice">Ainda não há classes Homebrew aprovadas. Use o editor para enviar a primeira proposta.</div>
+      <div class="notice">Ainda não há Classes Base Homebrew aprovadas.</div>
+    )}
+  </section>
+
+  <section class="family-block homebrew-block homebrew-prestige-block">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Conteúdo da comunidade</p>
+        <h2>Homebrew de Prestígio</h2>
+      </div>
+      <p>{homebrewPrestigeClasses.length} {homebrewPrestigeClasses.length === 1 ? 'classe aprovada' : 'classes aprovadas'}</p>
+    </div>
+
+    <div class="homebrew-intro">
+      <div>
+        <strong>Família Homebrew de Prestígio — 10 níveis</strong>
+        <p>Classes de Prestígio criadas como Homebrew entram separadamente nesta família.</p>
+      </div>
+      <a class="button" href={href('/criar-classe/')}>Criar uma classe</a>
+    </div>
+
+    {homebrewPrestigeClasses.length > 0 ? (
+      <div class="class-grid">
+        {homebrewPrestigeClasses.map((entry) => (
+          <a class="class-card homebrew-card" href={href(`/classes/${entry.slug}/`)}>
+            <small>Homebrew de Prestígio</small>
+            <h2>{entry.name}</h2>
+            <p>{entry.author ? `por ${entry.author}` : 'Autor não informado'}</p>
+            <div class="class-meta">
+              <span class="pill">Classe de Prestígio</span>
+              <span class="pill">{entry.progression.rows.length} níveis</span>
+              {bbaLabel(entry.bbaType) && <span class="pill">{bbaLabel(entry.bbaType)}</span>}
+            </div>
+          </a>
+        ))}
+      </div>
+    ) : (
+      <div class="notice">Ainda não há Classes de Prestígio Homebrew aprovadas.</div>
     )}
   </section>
 </BaseLayout>
