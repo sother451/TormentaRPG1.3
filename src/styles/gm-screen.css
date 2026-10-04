@@ -62,3 +62,41 @@
 @media(max-width:620px){
   .gm-damage-inputs,.gm-damage-results{grid-template-columns:1fr}
 }
+
+/* Compactação do Escudo do Mestre */
+.gm-general-rules{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:18px}
+.gm-compact-rule-card{padding:14px}
+.gm-compact-rule-card h3{font-size:.95rem;margin-bottom:6px}
+.gm-rule-prose p{margin:.38rem 0;font-size:.9rem;line-height:1.48}
+.gm-inline-rule-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.gm-inline-rule{padding:10px 12px;background:rgba(255,255,255,.018);border:1px solid var(--border);border-radius:10px}
+.gm-inline-rule h4{margin:0 0 5px;color:var(--gold);font-family:Cinzel,Georgia,serif;font-size:.9rem}
+.gm-inline-rule p{margin:.35rem 0;color:var(--muted);font-size:.88rem;line-height:1.45}
+.gm-skill-grid{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}
+.gm-skill-card{overflow:hidden}
+.gm-skill-head{padding:12px 14px;border-bottom:1px solid var(--border);background:rgba(255,255,255,.02)}
+.gm-skill-head strong{display:block;color:var(--gold);font-family:Cinzel,Georgia,serif}
+.gm-skill-head small{display:block;margin-top:3px;color:var(--muted);font-size:.76rem}
+.gm-details-body{padding:12px 14px}
+.gm-skill-block+.gm-skill-block{margin-top:12px;padding-top:12px}
+.gm-skill-block h4{font-size:.88rem}
+.gm-skill-block p{margin:.35rem 0;font-size:.88rem;line-height:1.45}
+.gm-action-groups{align-items:start}
+.gm-reference-block{padding:14px}
+.gm-reference-block h3{font-size:.98rem}
+.gm-table-grid{align-items:start}
+.gm-condition-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.gm-condition-card{padding:14px}
+.gm-condition-card h3{font-size:.92rem;margin-bottom:6px}
+.gm-condition-card p{font-size:.86rem;line-height:1.42}
+.rules-table th,.rules-table td{padding:8px 10px}
+@media(max-width:1000px){
+  .gm-condition-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:900px){
+  .gm-general-rules,.gm-inline-rule-list{grid-template-columns:1fr}
+  .gm-condition-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:620px){
+  .gm-condition-grid{grid-template-columns:1fr}
+}
