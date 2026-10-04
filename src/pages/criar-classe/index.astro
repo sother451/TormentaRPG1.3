@@ -1,13 +1,16 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { classFamilies } from '../../data/classes';
 import '../../styles/class-editor.css';
+
+const officialFamilies = [...new Set([...classFamilies, 'Classes de Prestígio'])];
 ---
-<BaseLayout title="Criar Classe Homebrew" activePath="/classes/">
+<BaseLayout title="Criar Classe" activePath="/classes/">
   <section class="section-hero class-editor-hero">
-    <p class="eyebrow">Conteúdo da comunidade</p>
-    <h1>Criar Classe Homebrew</h1>
-    <p class="lede">Monte uma classe pelo próprio site. Toda submissão criada aqui pertence automaticamente à família <strong>Homebrew</strong> e só entra no compêndio depois de revisão e aprovação.</p>
-    <div class="notice">O editor não altera o site diretamente. Ao terminar, ele prepara os dados para uma solicitação no GitHub. A publicação continua dependendo da aprovação do mantenedor.</div>
+    <p class="eyebrow">Editor de classes</p>
+    <h1>Criar Classe</h1>
+    <p class="lede">Monte uma Classe Base ou Classe de Prestígio. O editor aceita conteúdo <strong>Homebrew</strong> e também classes <strong>oficiais</strong> destinadas a uma família já existente.</p>
+    <div class="notice">O editor não altera o site diretamente. Ao terminar, ele prepara os dados para revisão no GitHub. A publicação continua dependendo de aprovação.</div>
   </section>
 
   <div class="class-editor-layout">
@@ -17,13 +20,26 @@ import '../../styles/class-editor.css';
         <div class="editor-grid two">
           <label>Nome da classe<input name="name" required maxlength="80" placeholder="Ex.: Discípulo do Dragão" /></label>
           <label>Autor<input name="author" required maxlength="80" placeholder="Seu nome ou apelido" /></label>
+
           <label>Tipo de classe
             <select name="kind">
               <option value="basic">Classe Base — 20 níveis</option>
               <option value="prestige">Classe de Prestígio — 10 níveis</option>
             </select>
           </label>
-          <label class="fixed-field">Família<input value="Homebrew" disabled /></label>
+
+          <label>Família
+            <select name="originChoice">
+              <option value="homebrew">Homebrew</option>
+              <option value="official">Classe oficial</option>
+            </select>
+          </label>
+
+          <label id="official-family-field" class="wide" hidden>Família oficial
+            <select name="officialFamily">
+              {officialFamilies.map((family) => <option value={family}>{family}</option>)}
+            </select>
+          </label>
         </div>
       </section>
 
@@ -31,6 +47,15 @@ import '../../styles/class-editor.css';
         <div class="editor-section-head"><span>02</span><div><p class="eyebrow">Base</p><h2>Dados Gerais</h2></div></div>
         <div class="editor-grid two">
           <label>Pontos de Vida<input name="hitPoints" required placeholder="Ex.: 20 + Constituição" /></label>
+
+          <label>Progressão de BBA
+            <select name="bbaType">
+              <option value="full">BBA cheio</option>
+              <option value="half">BBA 1/2</option>
+              <option value="three-quarters">BBA 3/4</option>
+            </select>
+          </label>
+
           <label>Perícias Treinadas<input name="trainedSkills" placeholder="Ex.: 4 + modificador de Inteligência" /></label>
           <label class="wide">Perícias de Classe<textarea name="classSkills" rows="3" placeholder="Liste as perícias de classe"></textarea></label>
           <label class="wide">Talentos Adicionais<textarea name="bonusTalents" rows="2" placeholder="Talentos recebidos ou regra equivalente"></textarea></label>
@@ -43,6 +68,9 @@ import '../../styles/class-editor.css';
           <span>03</span>
           <div><p class="eyebrow">Níveis</p><h2>Progressão</h2></div>
           <small id="level-count-label">20 níveis</small>
+        </div>
+        <div class="editor-guidance">
+          O <strong>BBA é calculado automaticamente</strong> a partir da progressão escolhida para a classe. Preencha apenas as habilidades ou progressões recebidas em cada nível.
         </div>
         <div class="table-wrap editor-progression-wrap">
           <table class="rules-table editor-progression-table">
@@ -57,6 +85,7 @@ import '../../styles/class-editor.css';
           <span>04</span><div><p class="eyebrow">Conteúdo</p><h2>Habilidades e Sistemas</h2></div>
           <button class="button editor-add" id="add-feature" type="button">+ Habilidade</button>
         </div>
+        <div class="editor-guidance">Para esta seção, informe apenas <strong>nome e descrição</strong>. O nível em que a habilidade aparece é definido na tabela de Progressão acima.</div>
         <div id="feature-list" class="editor-repeat-list"></div>
       </section>
 
@@ -91,20 +120,21 @@ import '../../styles/class-editor.css';
     <aside class="class-preview" aria-live="polite">
       <div class="preview-sticky">
         <p class="eyebrow">Prévia</p>
-        <div class="preview-homebrew-badge">Homebrew</div>
+        <div class="preview-origin-badge" id="preview-origin-badge">Homebrew</div>
         <h2 id="preview-name">Nova Classe</h2>
         <p id="preview-author">por autor</p>
 
         <div class="preview-facts">
-          <article><span>Tipo</span><strong id="preview-kind">Classe</strong></article>
-          <article><span>Família</span><strong>Homebrew</strong></article>
+          <article><span>Tipo</span><strong id="preview-kind">Classe Base</strong></article>
+          <article><span>Família</span><strong id="preview-family">Homebrew</strong></article>
+          <article><span>BBA</span><strong id="preview-bba">BBA cheio</strong></article>
           <article><span>PV</span><strong id="preview-hp">—</strong></article>
           <article><span>Níveis</span><strong id="preview-levels">20</strong></article>
         </div>
 
         <section class="preview-section">
           <h3>Habilidades</h3>
-          <div id="preview-features" class="preview-list"><p>Nenhuma habilidade adicionada.</p></div>
+          <div id="preview-features" class="preview-list preview-feature-list"><p>Nenhuma habilidade adicionada.</p></div>
         </section>
 
         <section class="preview-section" id="preview-talents-section">
@@ -112,7 +142,7 @@ import '../../styles/class-editor.css';
           <div id="preview-talents" class="preview-list"><p>Nenhum talento adicionado.</p></div>
         </section>
 
-        <div class="preview-note">Na publicação, esta classe aparecerá exclusivamente na família <strong>Homebrew</strong>, separada das classes originais.</div>
+        <div class="preview-note" id="preview-note">Classes Base Homebrew são publicadas na família <strong>Homebrew</strong>.</div>
       </div>
     </aside>
   </div>
@@ -121,8 +151,7 @@ import '../../styles/class-editor.css';
     <article class="editor-repeat-card feature-item">
       <header><strong>Habilidade</strong><button type="button" class="remove-item">Remover</button></header>
       <div class="editor-grid feature-grid">
-        <label>Nível<input data-field="level" type="number" min="1" max="20" value="1" /></label>
-        <label>Nome<input data-field="title" maxlength="100" placeholder="Nome da habilidade" /></label>
+        <label class="wide">Nome<input data-field="title" maxlength="100" placeholder="Nome da habilidade" /></label>
         <label class="wide">Descrição<textarea data-field="description" rows="5" placeholder="Descrição completa da habilidade"></textarea></label>
       </div>
     </article>
@@ -152,6 +181,9 @@ import '../../styles/class-editor.css';
       const featureTemplate = document.getElementById('feature-template');
       const talentTemplate = document.getElementById('talent-template');
       const kind = form.elements.kind;
+      const originChoice = form.elements.originChoice;
+      const officialFamily = form.elements.officialFamily;
+      const bbaType = form.elements.bbaType;
       const status = document.getElementById('editor-status');
       const draftKey = 'tormenta13-homebrew-class-draft';
 
@@ -161,6 +193,28 @@ import '../../styles/class-editor.css';
 
       const maxLevels = () => kind.value === 'prestige' ? 10 : 20;
 
+      const bbaLabel = (type) => ({
+        full: 'BBA cheio',
+        half: 'BBA 1/2',
+        'three-quarters': 'BBA 3/4'
+      }[type] || 'BBA cheio');
+
+      const bbaAtLevel = (level, type = bbaType.value) => {
+        const value = type === 'half'
+          ? Math.floor(level / 2)
+          : type === 'three-quarters'
+            ? Math.floor(level * 3 / 4)
+            : level;
+        return `+${value}`;
+      };
+
+      const resolvedFamily = () => {
+        if (originChoice.value === 'homebrew') {
+          return kind.value === 'prestige' ? 'Homebrew de Prestígio' : 'Homebrew';
+        }
+        return officialFamily.value || 'Classes de Prestígio';
+      };
+
       function buildProgression(rows) {
         const count = maxLevels();
         progressionBody.innerHTML = '';
@@ -169,14 +223,13 @@ import '../../styles/class-editor.css';
           const saved = rows?.[level - 1] || [];
           tr.innerHTML = `
             <td><strong>${level}º</strong></td>
-            <td><input data-progress="bba" aria-label="BBA do nível ${level}" value="${escapeAttr(saved[1] || '')}" placeholder="+${level}" /></td>
+            <td><strong class="editor-bba-value" data-progress="bba">${bbaAtLevel(level)}</strong></td>
             <td><input data-progress="features" aria-label="Habilidades do nível ${level}" value="${escapeAttr(saved[2] || '')}" placeholder="Habilidades obtidas neste nível" /></td>
           `;
           progressionBody.appendChild(tr);
         }
         document.getElementById('level-count-label').textContent = `${count} níveis`;
         document.getElementById('preview-levels').textContent = String(count);
-        [...form.querySelectorAll('.feature-item [data-field="level"]')].forEach(input => input.max = String(count));
       }
 
       function escapeAttr(value) {
@@ -186,8 +239,6 @@ import '../../styles/class-editor.css';
       function addFeature(data = {}) {
         const node = featureTemplate.content.cloneNode(true);
         const card = node.querySelector('.feature-item');
-        card.querySelector('[data-field="level"]').value = data.level || 1;
-        card.querySelector('[data-field="level"]').max = String(maxLevels());
         card.querySelector('[data-field="title"]').value = data.title || '';
         card.querySelector('[data-field="description"]').value = data.description || data.paragraphs?.join('\n\n') || '';
         wireRepeatCard(card);
@@ -241,7 +292,6 @@ import '../../styles/class-editor.css';
       function getFeatures() {
         return [...featureList.querySelectorAll('.feature-item')].map(card => ({
           title: card.querySelector('[data-field="title"]').value.trim(),
-          level: Number(card.querySelector('[data-field="level"]').value || 1),
           description: card.querySelector('[data-field="description"]').value.trim()
         })).filter(item => item.title || item.description);
       }
@@ -265,9 +315,16 @@ import '../../styles/class-editor.css';
       function getProgression() {
         return [...progressionBody.querySelectorAll('tr')].map((row, index) => [
           `${index + 1}º`,
-          row.querySelector('[data-progress="bba"]').value.trim(),
+          row.querySelector('[data-progress="bba"]').textContent.trim(),
           row.querySelector('[data-progress="features"]').value.trim()
         ]);
+      }
+
+      function inferBbaType(rows = []) {
+        const types = ['full', 'half', 'three-quarters'];
+        return types.find(type => rows.length > 0 && rows.every((row, index) => {
+          return String(row?.[1] || '').trim() === bbaAtLevel(index + 1, type);
+        })) || 'full';
       }
 
       function buildClass() {
@@ -276,15 +333,18 @@ import '../../styles/class-editor.css';
         const features = getFeatures();
         const talents = getTalents();
         const requirements = form.elements.requirements.value.split('\n').map(v => v.trim()).filter(Boolean);
+        const isHomebrew = originChoice.value === 'homebrew';
+
         return {
           kind: kind.value,
-          origin: 'homebrew',
+          origin: isHomebrew ? 'homebrew' : 'tormenta-1.3',
+          bbaType: bbaType.value,
           slug: slugify(name),
           name,
-          family: 'Homebrew',
+          family: resolvedFamily(),
           author,
           sourceDocId: '',
-          sourceTitle: 'Homebrew da comunidade',
+          sourceTitle: isHomebrew ? 'Homebrew da comunidade' : 'Classe oficial',
           status: 'complete',
           editorialNotes: [],
           ...(kind.value === 'prestige' ? { requirements } : {}),
@@ -300,7 +360,6 @@ import '../../styles/class-editor.css';
           },
           sections: features.map(item => ({
             title: item.title,
-            level: item.level,
             paragraphs: item.description ? [item.description] : [],
             tables: []
           })),
@@ -320,9 +379,11 @@ import '../../styles/class-editor.css';
         if (!data.author) errors.push('Informe o autor.');
         if (!data.slug) errors.push('O nome precisa gerar um identificador válido.');
         if (!data.basics.hitPoints) errors.push('Informe os Pontos de Vida.');
-        if (data.progression.rows.some(row => !row[1])) errors.push('Preencha o BBA de todos os níveis.');
+        if (!['full','half','three-quarters'].includes(data.bbaType)) errors.push('Selecione uma progressão de BBA válida.');
+        if (data.origin === 'tormenta-1.3' && !data.family) errors.push('Selecione a família da classe oficial.');
         if (data.sections.some(section => !section.title || !section.paragraphs[0])) errors.push('Toda habilidade adicionada precisa de nome e descrição.');
         if (data.classTalents.some(talent => !talent.name || !talent.paragraphs[0])) errors.push('Todo talento adicionado precisa de nome e descrição.');
+
         if (data.kind === 'basic') {
           const allowedTalentLevels = [4, 8, 12, 16, 20];
           if (data.classTalents.length !== 15) errors.push('Classes Base devem possuir exatamente 15 Talentos de Classe.');
@@ -334,6 +395,7 @@ import '../../styles/class-editor.css';
             if (talentsAtLevel.length !== 3) errors.push(`O patamar de ${level}º nível deve possuir exatamente 3 Talentos de Classe.`);
           }
         }
+
         if (data.kind === 'prestige') {
           if (!data.requirements || data.requirements.length === 0) errors.push('Classes de Prestígio precisam de ao menos um requisito.');
           if (data.classTalents.length > 0) errors.push('Classes de Prestígio não podem possuir Talentos de Classe.');
@@ -346,11 +408,17 @@ import '../../styles/class-editor.css';
         document.getElementById('preview-name').textContent = data.name || 'Nova Classe';
         document.getElementById('preview-author').textContent = data.author ? `por ${data.author}` : 'por autor';
         document.getElementById('preview-kind').textContent = data.kind === 'prestige' ? 'Classe de Prestígio' : 'Classe Base';
+        document.getElementById('preview-family').textContent = data.family;
+        document.getElementById('preview-bba').textContent = bbaLabel(data.bbaType);
         document.getElementById('preview-hp').textContent = data.basics.hitPoints || '—';
+
+        const badge = document.getElementById('preview-origin-badge');
+        badge.textContent = data.origin === 'homebrew' ? 'Homebrew' : 'Classe oficial';
+        badge.dataset.origin = data.origin === 'homebrew' ? 'homebrew' : 'official';
 
         const features = document.getElementById('preview-features');
         features.innerHTML = data.sections.length
-          ? data.sections.map(item => `<article><span>${item.level}º</span><strong>${escapeHtml(item.title || 'Sem nome')}</strong></article>`).join('')
+          ? data.sections.map(item => `<article class="preview-feature"><strong>${escapeHtml(item.title || 'Sem nome')}</strong></article>`).join('')
           : '<p>Nenhuma habilidade adicionada.</p>';
 
         const talentsSection = document.getElementById('preview-talents-section');
@@ -359,6 +427,15 @@ import '../../styles/class-editor.css';
         talents.innerHTML = data.classTalents.length
           ? data.classTalents.map(item => `<article><span>${item.prerequisiteLevel || '—'}º</span><strong>${escapeHtml(item.name || 'Sem nome')}</strong></article>`).join('')
           : '<p>Nenhum talento adicionado.</p>';
+
+        const note = document.getElementById('preview-note');
+        if (data.origin === 'homebrew') {
+          note.innerHTML = data.kind === 'prestige'
+            ? 'Classes de Prestígio Homebrew são publicadas na família <strong>Homebrew de Prestígio</strong>.'
+            : 'Classes Base Homebrew são publicadas na família <strong>Homebrew</strong>.';
+        } else {
+          note.innerHTML = `Esta classe oficial será adicionada à família <strong>${escapeHtml(data.family)}</strong> após revisão.`;
+        }
       }
 
       function escapeHtml(value) {
@@ -369,15 +446,31 @@ import '../../styles/class-editor.css';
         form.elements.name.value = data.name || '';
         form.elements.author.value = data.author || '';
         kind.value = data.kind === 'prestige' ? 'prestige' : 'basic';
+        originChoice.value = data.origin === 'homebrew' || !data.origin ? 'homebrew' : 'official';
+
+        if (originChoice.value === 'official' && data.family) {
+          const exists = [...officialFamily.options].some(option => option.value === data.family);
+          if (exists) officialFamily.value = data.family;
+        }
+
+        bbaType.value = data.bbaType || inferBbaType(data.progression?.rows || []);
         form.elements.hitPoints.value = data.basics?.hitPoints || '';
         form.elements.trainedSkills.value = data.basics?.trainedSkills || '';
         form.elements.classSkills.value = data.basics?.classSkills || '';
         form.elements.bonusTalents.value = data.basics?.bonusTalents || '';
         form.elements.requirements.value = (data.requirements || []).join('\n');
+
+        updateOrigin();
         toggleKind(data.progression?.rows);
         featureList.innerHTML = '';
         (data.sections || []).forEach(item => addFeature(item));
         initializeTalentSlots(kind.value === 'basic' ? (data.classTalents || []) : []);
+        refreshPreview();
+      }
+
+      function updateOrigin() {
+        const official = originChoice.value === 'official';
+        document.getElementById('official-family-field').hidden = !official;
         refreshPreview();
       }
 
@@ -394,7 +487,12 @@ import '../../styles/class-editor.css';
       }
 
       document.getElementById('add-feature').addEventListener('click', () => addFeature());
+
       kind.addEventListener('change', () => toggleKind(getProgression()));
+      originChoice.addEventListener('change', updateOrigin);
+      officialFamily.addEventListener('change', refreshPreview);
+      bbaType.addEventListener('change', () => buildProgression(getProgression()));
+
       form.querySelectorAll('input,textarea,select').forEach(input => input.addEventListener('input', refreshPreview));
 
       document.getElementById('save-draft').addEventListener('click', () => {
@@ -420,7 +518,9 @@ import '../../styles/class-editor.css';
         const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
-        a.href = url; a.download = `${data.slug}.json`; a.click();
+        a.href = url;
+        a.download = `${data.slug}.json`;
+        a.click();
         URL.revokeObjectURL(url);
         status.textContent = 'JSON exportado.';
       });
@@ -441,13 +541,15 @@ import '../../styles/class-editor.css';
           status.textContent = 'Não foi possível copiar automaticamente. Use “Exportar JSON” e cole o conteúdo no GitHub.';
         }
 
-        const issueUrl = `https://github.com/sother451/TormentaRPG1.3/issues/new?template=homebrew-class.yml&title=${encodeURIComponent('[Homebrew] ' + data.name)}`;
+        const prefix = data.origin === 'homebrew' ? '[Homebrew]' : '[Oficial]';
+        const issueUrl = `https://github.com/sother451/TormentaRPG1.3/issues/new?template=homebrew-class.yml&title=${encodeURIComponent(prefix + ' ' + data.name)}`;
         window.open(issueUrl, '_blank', 'noopener');
       });
 
       buildProgression();
       addFeature();
       initializeTalentSlots();
+      updateOrigin();
       toggleKind(getProgression());
       refreshPreview();
     })();
