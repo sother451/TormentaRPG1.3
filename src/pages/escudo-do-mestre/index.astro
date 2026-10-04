@@ -103,7 +103,6 @@ const skillSearchText = (skill: (typeof skills)[number]) => [
     <button type="button" class="gm-tab" data-gm-tab="combat">Combate</button>
     <button type="button" class="gm-tab" data-gm-tab="skills">Perícias</button>
     <button type="button" class="gm-tab" data-gm-tab="conditions">Condições</button>
-    <button type="button" class="gm-tab" data-gm-tab="action-points">Pontos de Ação</button>
   </nav>
 
   <section class="gm-panel" data-shield-panel="overview">
@@ -156,19 +155,18 @@ const skillSearchText = (skill: (typeof skills)[number]) => [
         </div>
       </article>
 
-      <article class="gm-tool-card gm-turn-card" data-shield-item data-search="turno rodada ação padrão movimento completa livre reação">
-        <h3>No seu turno</h3>
+      <article class="gm-tool-card" data-shield-item data-search={actionPoints.gaining.join(' ').toLowerCase()}>
+        <h3>Como ganhar Pontos de Ação</h3>
         <ul class="gm-bullet-list">
-          <li>1 ação padrão + 1 ação de movimento.</li>
-          <li>Ou 2 ações de movimento.</li>
-          <li>Ou 1 ação completa.</li>
-          <li>Ações livres à vontade e 1 reação por rodada.</li>
+          {actionPointQuick.gaining.map((item) => <li>{item}</li>)}
         </ul>
       </article>
 
-      <article class="gm-tool-card" data-shield-item data-search="condições quantidade lista vinte quatro 24">
-        <h3>Condições</h3>
-        <p><strong>{conditions.length}</strong> condições do Tormenta 1.3 disponíveis neste escudo, todas com o efeito descrito no próprio painel.</p>
+      <article class="gm-tool-card" data-shield-item data-search={actionPoints.using.join(' ').toLowerCase()}>
+        <h3>Como usar Pontos de Ação</h3>
+        <ul class="gm-bullet-list">
+          {actionPointQuick.using.map((item) => <li>{item}</li>)}
+        </ul>
       </article>
     </div>
   </section>
@@ -332,28 +330,6 @@ const skillSearchText = (skill: (typeof skills)[number]) => [
           <p>{condition.description}</p>
         </article>
       ))}
-    </div>
-  </section>
-
-  <section class="gm-panel" data-shield-panel="action-points" hidden>
-    <div class="section-heading">
-      <div><p class="eyebrow">Recurso heroico</p><h2>Pontos de Ação</h2></div>
-    </div>
-
-    <div class="gm-table-grid">
-      <article class="gm-reference-block" data-shield-item data-search={actionPoints.gaining.join(' ').toLowerCase()}>
-        <h3>Como ganhar</h3>
-        <ul class="gm-bullet-list">
-          {actionPointQuick.gaining.map((item) => <li>{item}</li>)}
-        </ul>
-      </article>
-
-      <article class="gm-reference-block" data-shield-item data-search={actionPoints.using.join(' ').toLowerCase()}>
-        <h3>Como usar</h3>
-        <ul class="gm-bullet-list">
-          {actionPointQuick.using.map((item) => <li>{item}</li>)}
-        </ul>
-      </article>
     </div>
   </section>
 
