@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import RuleText from '../../components/RuleText.astro';
-import { baseSpellCatalog, baseSpells, allSpellCount, getSpellAlteration } from '../../data/magias';
+import { baseSpellCatalog, baseSpells, allSpellCount, getSpellAlteration, rawBaseSpellCount, consolidatedSpellVariantCount } from '../../data/magias';
 import { magicRules, spellAlterations, newSpells } from '../../data/magias-t13';
 import '../../styles/spells.css';
 
@@ -48,9 +48,10 @@ const alterationsByLevel = levelOptions.map((level) => ({ level, entries: spellA
   <section class="section-hero">
     <p class="eyebrow">Biblioteca arcana e divina</p>
     <h1>Magias</h1>
-    <p class="lede">O catálogo-base reúne {baseSpells.length} magias do Grimório TRPG. As regras, alterações e novas magias do Tormenta 1.3 são aplicadas como uma camada própria, sem substituir silenciosamente a fonte-base.</p>
+    <p class="lede">O catálogo-base veio do Grimório TRPG, mas as variantes antigas que agora são reproduzidas pelas regras de aprimoramento do Tormenta 1.3 foram consolidadas na magia-base. Assim, o catálogo de consulta não exibe essas magias redundantes como entradas separadas.</p>
     <div class="spell-stats">
-      <span><strong>{baseSpells.length}</strong> magias-base</span>
+      <span><strong>{rawBaseSpellCount}</strong> magias na fonte-base</span>
+      <span><strong>{consolidatedSpellVariantCount}</strong> variantes consolidadas</span>
       <span><strong>{spellAlterations.length}</strong> alterações 1.3</span>
       <span><strong>{newSpells.length}</strong> novas magias</span>
       <span><strong>{allSpellCount}</strong> entradas no catálogo</span>
