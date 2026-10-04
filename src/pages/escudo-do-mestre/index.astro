@@ -173,14 +173,12 @@ const combatSearchText = [
           data-search={[group.title, ...group.blocks.flatMap((block) => [block.title ?? '', ...block.paragraphs])].join(' ').toLowerCase()}
         >
           <h3>{group.title}</h3>
-          <div class="gm-details-list">
+          <div class="gm-inline-rule-list">
             {group.blocks.map((block) => (
-              <details>
-                <summary>{block.title ?? group.title}</summary>
-                <div class="gm-details-body">
-                  {block.paragraphs.map((paragraph) => <RuleText text={paragraph} />)}
-                </div>
-              </details>
+              <section class="gm-inline-rule">
+                {block.title && <h4>{block.title}</h4>}
+                {block.paragraphs.map((paragraph) => <RuleText text={paragraph} />)}
+              </section>
             ))}
           </div>
         </article>
@@ -193,35 +191,32 @@ const combatSearchText = [
       <div><p class="eyebrow">CDs, usos e testes</p><h2>Perícias</h2></div>
     </div>
 
-    <div class="gm-details-list gm-general-rules">
+    <div class="gm-general-rules">
       {generalSkillRules.map((rule) => (
-        <details
-          class="gm-reference-block"
+        <article
+          class="gm-reference-block gm-compact-rule-card"
           data-shield-item
           data-search={[rule.title, ...rule.paragraphs].join(' ').toLowerCase()}
         >
-          <summary>{rule.title}</summary>
-          <div class="gm-details-body">
+          <h3>{rule.title}</h3>
+          <div class="gm-rule-prose">
             {rule.paragraphs.map((paragraph) => <RuleText text={paragraph} />)}
           </div>
-        </details>
+        </article>
       ))}
     </div>
 
     <div class="gm-skill-grid">
       {skills.map((skill) => (
-        <details
+        <article
           class="gm-skill-card"
           data-shield-item
           data-search={skillSearchText(skill)}
         >
-          <summary>
-            <span>
-              <strong>{skill.name}</strong>
-              <small>{skill.ability ?? 'Habilidade não indicada'}{skill.trainedOnly ? ' · Treinada' : ''}{skill.armorPenalty ? ' · Armadura' : ''}</small>
-            </span>
-            <span class="gm-summary-mark">+</span>
-          </summary>
+          <header class="gm-skill-head">
+            <strong>{skill.name}</strong>
+            <small>{skill.ability ?? 'Habilidade não indicada'}{skill.trainedOnly ? ' · Treinada' : ''}{skill.armorPenalty ? ' · Armadura' : ''}</small>
+          </header>
           <div class="gm-details-body">
             {skill.blocks.map((block) => (
               <section class="gm-skill-block">
@@ -238,7 +233,7 @@ const combatSearchText = [
               </section>
             ))}
           </div>
-        </details>
+        </article>
       ))}
     </div>
   </section>
@@ -282,15 +277,6 @@ const combatSearchText = [
       </article>
     </div>
 
-    <article class="gm-reference-block" data-shield-item data-search={actionPoints.recoveryTable.rows.flat().join(' ').toLowerCase()}>
-      <h3>Dado extra e recuperação</h3>
-      <div class="table-wrap">
-        <table class="rules-table">
-          <thead><tr>{actionPoints.recoveryTable.headers.map((header) => <th>{header}</th>)}</tr></thead>
-          <tbody>{actionPoints.recoveryTable.rows.map((row) => <tr>{row.map((cell) => <td>{cell}</td>)}</tr>)}</tbody>
-        </table>
-      </div>
-    </article>
   </section>
 
   <p class="empty-state gm-empty" id="gm-empty" hidden>Nenhuma referência do escudo corresponde à busca atual.</p>
@@ -333,10 +319,7 @@ const combatSearchText = [
         items.forEach((item) => {
           const match = normalize(item.dataset.search).includes(query);
           item.hidden = !match;
-          if (match) {
-            visible += 1;
-            if (item.tagName === 'DETAILS') item.open = true;
-          }
+          if (match) visible += 1;
         });
 
         panels.forEach((panel) => {
