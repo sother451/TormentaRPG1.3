@@ -1,0 +1,58 @@
+name: Aprovar Classe Homebrew
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  criar-pr:
+    if: >
+      github.event.issue.pull_request == null &&
+      startsWith(github.event.comment.body, '/aprovar-classe') &&
+      contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.comment.author_association)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Preparar classe Homebrew
+        run: node scripts/homebrew-from-issue.mjs
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
+
+      - name: Criar branch e commit
+        id: branch
+        shell: bash
+        run: |
+          BRANCH="homebrew/issue-${{ github.event.issue.number }}"
+          echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add src/data/homebrew/classes
+          git commit -m "homebrew: adicionar classe da issue #${{ github.event.issue.number }}"
+          git push origin "$BRANCH"
+
+      - name: Abrir Pull Request
+        id: pr
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          URL=$(gh pr create             --base main             --head "${{ steps.branch.outputs.branch }}"             --title "Homebrew: ${{ github.event.issue.title }}"             --body "Classe Homebrew aprovada para revisão final.\n\nOrigem: #${{ github.event.issue.number }}\n\nO merge deste PR publica a classe na família **Homebrew**, separada das classes originais.")
+          echo "url=$URL" >> "$GITHUB_OUTPUT"
+
+      - name: Comentar na submissão
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue comment ${{ github.event.issue.number }} --body "A classe passou para a revisão final em: ${{ steps.pr.outputs.url }}"
