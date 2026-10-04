@@ -1,14 +1,17 @@
-name: Enviar classe Homebrew
+name: Enviar classe para revisão
 description: Envie uma classe criada pelo editor do compêndio para revisão.
-title: "[Homebrew] "
+title: "[Classe] "
 body:
   - type: markdown
     attributes:
       value: |
-        Obrigado pela contribuição. Classes enviadas por este formulário são sempre tratadas como **Homebrew** e ficam separadas das classes originais do Tormenta 1.3.
+        Use este formulário para classes **Homebrew** ou **oficiais** cadastradas pelo editor.
 
-        **Classe Base:** 20 níveis e 15 Talentos de Classe: 3 opções em cada patamar de 4º, 8º, 12º, 16º e 20º nível.
-        **Classe de Prestígio:** 10 níveis e sem Talentos de Classe.
+        - Classe Base: 20 níveis e 15 Talentos de Classe — 3 opções em cada patamar de 4º, 8º, 12º, 16º e 20º nível.
+        - Classe de Prestígio: 10 níveis e sem Talentos de Classe.
+        - Homebrew de 20 níveis entra em **Homebrew**.
+        - Homebrew de Prestígio entra em **Homebrew de Prestígio**.
+        - Classe oficial deve usar uma família já existente no compêndio.
   - type: input
     id: author
     attributes:
@@ -22,6 +25,15 @@ body:
     attributes:
       label: Nome da classe
       placeholder: Discípulo do Dragão
+    validations:
+      required: true
+  - type: dropdown
+    id: class_origin
+    attributes:
+      label: Origem
+      options:
+        - Homebrew
+        - Classe oficial
     validations:
       required: true
   - type: dropdown
@@ -46,5 +58,5 @@ body:
     attributes:
       label: Confirmação
       options:
-        - label: Entendo que esta classe será publicada como Homebrew e poderá ser ajustada ou recusada durante a revisão.
+        - label: Entendo que a classe só será publicada após revisão e poderá ser ajustada ou recusada.
           required: true
