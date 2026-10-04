@@ -19,7 +19,53 @@ export const baseSpellCatalog = catalog as {
   spells: BaseSpell[];
 };
 
-export const baseSpells = baseSpellCatalog.spells;
+export const consolidatedSpellVariants = [
+  // A alteração 1.3 transforma versões antigas em aprimoramentos/versões da magia-base.
+  { id:'arma-elemental-em-massa', baseId:'arma-elemental' },
+  { id:'arma-magica-maior', baseId:'arma-magica' },
+  { id:'arma-magica-suprema', baseId:'arma-magica' },
+  { id:'armadura-arcana-maior', baseId:'armadura-arcana' },
+  { id:'armadura-arcana-suprema', baseId:'armadura-arcana' },
+  { id:'ataque-certeiro-maior', baseId:'ataque-certeiro' },
+  { id:'curar-ferimentos-moderados', baseId:'curar-ferimentos-leves' },
+  { id:'curar-ferimentos-graves', baseId:'curar-ferimentos-leves' },
+  { id:'curar-ferimentos-criticos', baseId:'curar-ferimentos-leves' },
+  { id:'escudo-arcano-maior', baseId:'escudo-arcano' },
+  { id:'escudo-arcano-supremo', baseId:'escudo-arcano' },
+  { id:'espirito-animal-ii', baseId:'espirito-animal-i' },
+  { id:'espirito-animal-iii', baseId:'espirito-animal-i' },
+  { id:'espirito-animal-iv', baseId:'espirito-animal-i' },
+  { id:'espirito-animal-v', baseId:'espirito-animal-i' },
+  { id:'invocar-monstro-ii', baseId:'invocar-monstro-i' },
+  { id:'invocar-monstro-iii', baseId:'invocar-monstro-i' },
+  { id:'invocar-monstro-iv', baseId:'invocar-monstro-i' },
+  { id:'invocar-monstro-v', baseId:'invocar-monstro-i' },
+  { id:'invocar-monstro-vi', baseId:'invocar-monstro-i' },
+  { id:'invocar-monstro-vii', baseId:'invocar-monstro-i' },
+  { id:'invocar-monstro-viii', baseId:'invocar-monstro-i' },
+  { id:'invocar-monstro-ix', baseId:'invocar-monstro-i' },
+  { id:'magia-curinga-ii', baseId:'magia-curinga-i' },
+  { id:'magia-curinga-iii', baseId:'magia-curinga-i' },
+  { id:'magia-curinga-iv', baseId:'magia-curinga-i' },
+  { id:'magia-curinga-v', baseId:'magia-curinga-i' },
+  { id:'magia-curinga-vi', baseId:'magia-curinga-i' },
+  { id:'magia-curinga-vii', baseId:'magia-curinga-i' },
+  { id:'magia-curinga-viii', baseId:'magia-curinga-i' },
+  { id:'infligir-ferimentos-moderados', baseId:'infligir-ferimentos-leves' },
+  { id:'infligir-ferimentos-graves', baseId:'infligir-ferimentos-leves' },
+  { id:'infligir-ferimentos-criticos', baseId:'infligir-ferimentos-leves' },
+  { id:'pedra-encantada-maior', baseId:'pedra-encantada' },
+  { id:'presa-magica-maior', baseId:'presa-magica' },
+  { id:'presa-magica-suprema', baseId:'presa-magica' },
+  { id:'choque-estatico-maior', baseId:'choque-estatico' },
+  { id:'combustao-em-massa', baseId:'combustao' }
+] as const;
+
+const consolidatedSpellIds = new Set(consolidatedSpellVariants.map((entry) => entry.id));
+
+export const rawBaseSpellCount = baseSpellCatalog.spells.length;
+export const consolidatedSpellVariantCount = consolidatedSpellVariants.length;
+export const baseSpells = baseSpellCatalog.spells.filter((spell) => !consolidatedSpellIds.has(spell.id));
 
 const normalizeSpellName = (value: string) =>
   value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
