@@ -30,8 +30,13 @@ export interface ClassTalent {
   paragraphs: string[];
 }
 
+export type ClassOrigin = 'tormenta-1.3' | 'homebrew';
+
 export interface ClassDetail {
   kind?: 'basic' | 'prestige';
+  origin?: ClassOrigin;
+  author?: string;
+  reviewIssue?: number;
   slug: string;
   name: string;
   family: string;
