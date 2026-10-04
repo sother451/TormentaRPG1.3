@@ -33,7 +33,7 @@ jobs:
         id: branch
         shell: bash
         run: |
-          BRANCH="homebrew/issue-${{ github.event.issue.number }}"
+          BRANCH="classes/issue-${{ github.event.issue.number }}"
           echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -49,7 +49,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          URL=$(gh pr create             --base main             --head "${{ steps.branch.outputs.branch }}"             --title "Homebrew: ${{ github.event.issue.title }}"             --body "Classe aprovada para revisão final.\n\nOrigem: #${{ github.event.issue.number }}\n\nO merge deste PR publica a classe na família indicada pelo JSON revisado.")
+          URL=$(gh pr create             --base main             --head "${{ steps.branch.outputs.branch }}"             --title "Classe: ${{ github.event.issue.title }}"             --body "Classe aprovada para revisão final.\n\nOrigem: #${{ github.event.issue.number }}\n\nO merge deste PR publica a classe na família indicada pelo JSON revisado.")
           echo "url=$URL" >> "$GITHUB_OUTPUT"
 
       - name: Comentar na submissão
