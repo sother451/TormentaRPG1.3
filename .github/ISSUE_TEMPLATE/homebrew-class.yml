@@ -7,7 +7,7 @@ body:
       value: |
         Obrigado pela contribuição. Classes enviadas por este formulário são sempre tratadas como **Homebrew** e ficam separadas das classes originais do Tormenta 1.3.
 
-        **Classe Base:** 20 níveis e Talentos de Classe apenas nos patamares 4º, 8º, 12º e 16º.
+        **Classe Base:** 20 níveis e 15 Talentos de Classe: 3 opções em cada patamar de 4º, 8º, 12º, 16º e 20º nível.
         **Classe de Prestígio:** 10 níveis e sem Talentos de Classe.
   - type: input
     id: author
