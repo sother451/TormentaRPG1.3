@@ -100,3 +100,38 @@
 @media(max-width:620px){
   .gm-condition-grid{grid-template-columns:1fr}
 }
+
+/* Referência rápida: menos leitura, mais informação por área */
+.gm-formula-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:14px}
+.gm-formula-card{padding:12px 13px;background:var(--surface);border:1px solid var(--border);border-radius:12px}
+.gm-formula-card span{display:block;color:var(--muted);font-size:.74rem;line-height:1.3}
+.gm-formula-card strong{display:block;margin-top:5px;color:var(--gold);font:700 .88rem Cinzel,Georgia,serif;line-height:1.35}
+.gm-quick-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:14px}
+.gm-bullet-list{margin:0;padding-left:1.05rem;color:var(--muted);font-size:.88rem;line-height:1.45}
+.gm-bullet-list li+li{margin-top:.3rem}
+.gm-action-name-list{display:flex;flex-wrap:wrap;gap:6px}
+.gm-action-name-list span,.gm-use-tags span{display:inline-flex;align-items:center;min-height:28px;padding:4px 9px;border:1px solid var(--border);border-radius:999px;background:rgba(255,255,255,.02);color:var(--muted);font-size:.76rem;line-height:1.2}
+.gm-skill-summary-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-bottom:14px}
+.gm-mini-card{padding:11px 12px;background:var(--surface);border:1px solid var(--border);border-radius:11px}
+.gm-mini-card strong{display:block;color:var(--gold);font-size:.8rem}
+.gm-mini-card span{display:block;margin-top:3px;color:var(--muted);font-size:.78rem;line-height:1.35}
+.gm-skill-index{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 14px}
+.gm-skill-index-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 8px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.055)}
+.gm-skill-index-row strong{font-size:.82rem}
+.gm-skill-index-row span{color:var(--muted);font-size:.76rem}
+.gm-skill-index-row small{grid-column:1/-1;color:var(--accent2);font-size:.68rem;min-height:.8em}
+.gm-skill-quick-card .gm-details-body{padding:10px 12px}
+.gm-use-tags{display:flex;flex-wrap:wrap;gap:5px}
+.gm-skill-quick-table{margin-top:9px}
+.gm-dc-table td:first-child,.gm-dc-table th:first-child{width:70px;text-align:center}
+@media(max-width:1050px){
+  .gm-formula-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .gm-skill-summary-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:760px){
+  .gm-quick-grid{grid-template-columns:1fr}
+  .gm-skill-index{grid-template-columns:1fr}
+}
+@media(max-width:620px){
+  .gm-formula-grid,.gm-skill-summary-grid{grid-template-columns:1fr}
+}
