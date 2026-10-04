@@ -1,0 +1,38 @@
+name: Enviar classe Homebrew
+description: Envie uma classe criada pelo editor do compêndio para revisão.
+title: "[Homebrew] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Obrigado pela contribuição. Classes enviadas por este formulário são sempre tratadas como **Homebrew** e ficam separadas das classes originais do Tormenta 1.3.
+  - type: input
+    id: author
+    attributes:
+      label: Autor
+      description: Nome ou apelido que deve aparecer no compêndio.
+      placeholder: Seu nome
+    validations:
+      required: true
+  - type: input
+    id: class_name
+    attributes:
+      label: Nome da classe
+      placeholder: Discípulo do Dragão
+    validations:
+      required: true
+  - type: textarea
+    id: class_json
+    attributes:
+      label: Dados da classe
+      description: Cole aqui o JSON copiado pelo botão "Enviar para revisão" do editor.
+      render: json
+    validations:
+      required: true
+  - type: checkboxes
+    id: agreement
+    attributes:
+      label: Confirmação
+      options:
+        - label: Entendo que esta classe será publicada como Homebrew e poderá ser ajustada ou recusada durante a revisão.
+          required: true
