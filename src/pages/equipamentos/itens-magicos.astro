@@ -212,7 +212,7 @@ const magicItemSearchText = (item: (typeof magicItemsCatalog)[number]) => [
           data-search={magicItemSearchText(item)}
           data-aura={item.auraSlug}
           data-price={item.priceValue ?? ''}
-          data-priced={item.price ? 'true' : 'false'}
+          data-priced={item.price && item.price !== 'Sem preço informado' ? 'true' : 'false'}
         >
           <header class="magic-item-card-top">
             <div>
