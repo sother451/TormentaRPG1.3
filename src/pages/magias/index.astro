@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import RuleText from '../../components/RuleText.astro';
-import { baseSpellCatalog, baseSpells, allSpellCount, getSpellAlteration, rawBaseSpellCount, consolidatedSpellVariantCount } from '../../data/magias';
+import { baseSpellCatalog, baseSpells, allSpellCount, getSpellAlteration, getSpellLevels, rawBaseSpellCount, consolidatedSpellVariantCount } from '../../data/magias';
 import { magicRules, spellAlterations, newSpells } from '../../data/magias-t13';
 import '../../styles/spells.css';
 
@@ -15,7 +15,7 @@ const descriptorFilter = baseSpellCatalog.filters.find((filter) => filter.id ===
 const baseCards = baseSpells.map((spell) => ({
   id: spell.id,
   name: spell.name,
-  levels: spell.levels,
+  levels: getSpellLevels(spell),
   subtitle: spell.subtitle,
   source: spell.source,
   description: spell.description,
