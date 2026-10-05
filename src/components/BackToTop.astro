@@ -1,0 +1,31 @@
+<button
+  id="back-to-top"
+  class="back-to-top"
+  type="button"
+  aria-label="Voltar ao topo da página"
+  title="Voltar ao topo"
+  hidden
+>
+  <span aria-hidden="true">↑</span>
+  <span class="back-to-top-label">Topo</span>
+</button>
+
+<script is:inline>
+  (() => {
+    const button = document.getElementById('back-to-top');
+    if (!button) return;
+
+    const update = () => {
+      const visible = window.scrollY > 520;
+      button.hidden = !visible;
+      button.classList.toggle('is-visible', visible);
+    };
+
+    button.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  })();
+</script>
