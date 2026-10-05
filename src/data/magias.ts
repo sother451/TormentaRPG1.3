@@ -91,6 +91,11 @@ export function getSpellAlteration(name: string) {
     ?? alterationsBySpellName.get(alterationAliases[normalized] ?? '');
 }
 
+export function getSpellLevels(spell: BaseSpell) {
+  const alteration = getSpellAlteration(spell.name);
+  return alteration?.levels?.length ? alteration.levels : spell.levels;
+}
+
 export function isNewSpell(value: BaseSpell | NewSpell): value is NewSpell {
   return 'lists' in value;
 }
