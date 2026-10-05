@@ -3,6 +3,7 @@ export interface SpellAlteration {
   name: string;
   level: number;
   text: string;
+  levels?: number[];
 }
 export interface NewSpellList {
   level: number;
@@ -239,7 +240,8 @@ export const spellAlterations: SpellAlteration[] = [
   {
     "id": "fogo-amigo",
     "name": "Fogo Amigo",
-    "level": 2,
+    "level": 5,
+    "levels": [5],
     "text": "Movida para o 5º Ciclo"
   },
   {
