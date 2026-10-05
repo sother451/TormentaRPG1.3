@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import BackToTop from '../components/BackToTop.astro';
 
 interface Props {
   title: string;
@@ -31,6 +32,7 @@ const {
       <slot />
     </main>
 
+    <BackToTop />
     <SiteFooter />
   </body>
 </html>
