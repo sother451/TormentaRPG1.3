@@ -48,11 +48,11 @@ const locate = (name: string, fromIndex: number) => {
   return match ? fromIndex + match.index : -1;
 };
 
-const starts = definitions.map((definition, index) => {
-  const previous = index === 0 ? 0 : 0;
-  const fromIndex = index === 0 ? 0 : undefined;
-  return { ...definition, start: -1, index };
-});
+const starts = definitions.map((definition, index) => ({
+  ...definition,
+  start: -1,
+  index
+}));
 
 let cursor = 0;
 for (const entry of starts) {
@@ -66,7 +66,7 @@ for (const entry of starts) {
 const extractPrice = (text: string) => {
   if (/\(sem preço\)/i.test(text)) return 'Sem preço informado';
 
-  const explicit = text.match(/(?:^|[.;]\s+|\n)Preço\s*:?[ ]*([^\n]+?)(?=(?:\s+Peso\s*:)|$)/i);
+  const explicit = text.match(/(?:^|[.;]\s+|\n)Preço\s*:?[ ]*([^\n]+?)(?=(?:\s+Peso\s*:?)|$)/i);
   if (explicit?.[1]) return explicit[1].trim().replace(/[.;]+$/, '');
 
   const possessive = text.match(/(?:Seu|O) preço (?:é|do [^.;]+ é)\s*([^.;]+(?:TO|bônus)[^.;]*)/i);
