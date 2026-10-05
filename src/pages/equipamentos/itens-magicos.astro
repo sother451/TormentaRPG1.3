@@ -12,6 +12,7 @@ import {
   shieldMagicPowers,
   powerItemMagicPowers
 } from '../../data/equipamentos/itens-magicos';
+import { magicItemsCatalog } from '../../data/equipamentos/cardapio-itens-magicos';
 
 const weaponEnchantments = progressiveEnchantments.filter((item) => item.appliesTo === 'Arma');
 const powerItemEnchantments = progressiveEnchantments.filter((item) => item.appliesTo === 'Item de Poder');
@@ -66,13 +67,21 @@ const catalogSearchText = (item: (typeof magicCatalog)[number]) => [
   item.majorEffect,
   ...item.levels.map((level) => level.effect)
 ].join(' ').toLowerCase();
+
+const magicItemSearchText = (item: (typeof magicItemsCatalog)[number]) => [
+  item.name,
+  item.aura,
+  item.price ?? '',
+  item.weight ?? '',
+  ...item.paragraphs
+].join(' ').toLowerCase();
 ---
 <BaseLayout title="Itens Mágicos" activePath="/equipamentos/">
   <EquipmentBack current="Itens Mágicos" />
   <section class="section-hero">
     <p class="eyebrow">Equipamentos</p>
     <h1>Itens Mágicos</h1>
-    <p class="lede">A seção separa dois sistemas diferentes: encantamentos progressivos, cujo efeito cresce conforme a quantidade de slots investidos, e poderes de custo fixo, que consomem uma quantidade determinada da capacidade mágica do item.</p>
+    <p class="lede">Consulte as regras de itens mágicos, o cardápio de itens prontos e os encantamentos usados para criar ou aprimorar equipamentos mágicos.</p>
   </section>
 
   <nav class="local-nav" aria-label="Nesta página">
@@ -80,6 +89,7 @@ const catalogSearchText = (item: (typeof magicCatalog)[number]) => [
     <a href="#categorias">Categorias</a>
     <a href="#slots">Slots</a>
     <a href="#lista-itens-magicos">Lista de Itens Mágicos</a>
+    <a href="#encantamentos">Encantamentos</a>
     <a href="#armas">Armas</a>
     <a href="#armaduras">Armaduras</a>
     <a href="#escudos">Escudos</a>
@@ -147,25 +157,107 @@ const catalogSearchText = (item: (typeof magicCatalog)[number]) => [
 
   <section id="lista-itens-magicos" class="rule-section">
     <div class="section-heading">
-      <div><p class="eyebrow">Consulta rápida</p><h2>Lista de Itens Mágicos</h2></div>
-      <span class="section-count"><strong id="magic-catalog-count">{magicCatalog.length}</strong> opções</span>
+      <div><p class="eyebrow">Cardápio</p><h2>Lista de Itens Mágicos</h2></div>
+      <button id="magic-item-saved-only" class="spell-favorite-filter magic-item-favorite-filter" type="button" aria-pressed="false">☆ Minha Lista <span id="magic-item-saved-count">0</span></button>
     </div>
 
-    <p class="section-copy">Pesquise encantamentos e poderes mágicos pelo nome, efeito, tipo de item ou custo. Os cards abaixo mostram o conteúdo completo da opção sem exigir uma página separada.</p>
+    <p class="section-copy">Itens mágicos prontos para consulta. A descrição completa, aura, preço e peso aparecem diretamente no card quando essas informações existem na fonte.</p>
+
+    <section class="filter-panel magic-item-filter-panel" aria-label="Filtros da lista de itens mágicos">
+      <label class="search-field">
+        <span>Buscar item ou efeito</span>
+        <input id="magic-item-search" type="search" placeholder="Ex.: invisibilidade, fogo, resistência, cajado..." autocomplete="off" />
+      </label>
+
+      <label class="select-field">
+        <span>Aura</span>
+        <select id="magic-item-aura">
+          <option value="all">Todas</option>
+          <option value="tenue">Tênue</option>
+          <option value="moderada">Moderada</option>
+          <option value="poderosa">Poderosa</option>
+          <option value="avassaladora">Avassaladora</option>
+          <option value="sem-aura">Sem Aura</option>
+        </select>
+      </label>
+
+      <label class="select-field">
+        <span>Preço</span>
+        <select id="magic-item-price-status">
+          <option value="all">Todos</option>
+          <option value="priced">Com preço informado</option>
+          <option value="unpriced">Sem preço informado</option>
+        </select>
+      </label>
+    </section>
+
+    <div class="spell-result-bar magic-item-result-bar">
+      <p><strong id="magic-item-count">{magicItemsCatalog.length}</strong> itens encontrados</p>
+      <label>Ordenar
+        <select id="magic-item-sort">
+          <option value="name">Nome A–Z</option>
+          <option value="price">Menor preço</option>
+          <option value="price-desc">Maior preço</option>
+          <option value="aura">Aura</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="magic-item-card-grid" id="magic-item-grid">
+      {magicItemsCatalog.map((item) => (
+        <article
+          class="magic-item-card"
+          data-id={item.id}
+          data-name={item.name}
+          data-search={magicItemSearchText(item)}
+          data-aura={item.auraSlug}
+          data-price={item.priceValue ?? ''}
+          data-priced={item.price ? 'true' : 'false'}
+        >
+          <header class="magic-item-card-top">
+            <div>
+              <span>Aura {item.aura}</span>
+              <h3>{item.name}</h3>
+            </div>
+            <button class="spell-star magic-item-star" type="button" data-save-item={item.id} aria-label={`Salvar ${item.name}`}>☆</button>
+          </header>
+
+          <div class="magic-item-card-meta">
+            <span><strong>Preço</strong>{item.price ?? 'Não informado'}</span>
+            {item.weight && <span><strong>Peso</strong>{item.weight}</span>}
+          </div>
+
+          <div class="magic-item-card-body">
+            {item.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <p class="empty-state" id="magic-item-empty" hidden>Nenhum item mágico corresponde aos filtros atuais.</p>
+  </section>
+
+  <section id="encantamentos" class="rule-section">
+    <div class="section-heading">
+      <div><p class="eyebrow">Criação e aprimoramento</p><h2>Encantamentos</h2></div>
+      <span class="section-count"><strong id="enchant-catalog-count">{magicCatalog.length}</strong> opções</span>
+    </div>
+
+    <p class="section-copy">Pesquise encantamentos e poderes mágicos pelo nome, efeito, aplicação ou custo. Os cards mostram cada opção completa, incluindo sua progressão ou efeito por categoria.</p>
 
     <div class="notice magic-catalog-note">
-      A fonte desta revisão define o custo destes poderes em <strong>slots</strong>, não apresenta um preço geral em moedas para cada entrada. O encantamento Primal é a exceção explícita: quando aplicado a armas, custa 500 moedas de ouro adicionais.
+      Os encantamentos abaixo usam <strong>slots</strong> como custo de construção. Isso é separado do preço dos itens prontos listados no cardápio acima. O encantamento Primal possui ainda um custo adicional explícito de 500 TO quando aplicado a armas.
     </div>
 
-    <section class="filter-panel magic-catalog-filter" aria-label="Filtros da lista de itens mágicos">
+    <section class="filter-panel magic-catalog-filter" aria-label="Filtros de encantamentos">
       <label class="search-field">
         <span>Buscar item, encantamento ou efeito</span>
-        <input id="magic-catalog-search" type="search" placeholder="Ex.: fortificação, fogo, CA, magia..." autocomplete="off" />
+        <input id="enchant-catalog-search" type="search" placeholder="Ex.: fortificação, fogo, CA, magia..." autocomplete="off" />
       </label>
 
       <label class="select-field">
         <span>Aplicação</span>
-        <select id="magic-catalog-type">
+        <select id="enchant-catalog-type">
           <option value="all">Todas</option>
           <option value="arma">Armas</option>
           <option value="armadura">Armaduras</option>
@@ -176,7 +268,7 @@ const catalogSearchText = (item: (typeof magicCatalog)[number]) => [
 
       <label class="select-field">
         <span>Sistema</span>
-        <select id="magic-catalog-system">
+        <select id="enchant-catalog-system">
           <option value="all">Todos</option>
           <option value="progressivo">Progressivo</option>
           <option value="fixo">Custo fixo</option>
@@ -185,7 +277,7 @@ const catalogSearchText = (item: (typeof magicCatalog)[number]) => [
 
       <label class="select-field">
         <span>Custo</span>
-        <select id="magic-catalog-cost">
+        <select id="enchant-catalog-cost">
           <option value="all">Todos</option>
           <option value="1">1 slot</option>
           <option value="2">2 slots</option>
@@ -197,9 +289,9 @@ const catalogSearchText = (item: (typeof magicCatalog)[number]) => [
     </section>
 
     <div class="magic-catalog-result-bar">
-      <p><strong id="magic-catalog-visible">{magicCatalog.length}</strong> opções encontradas</p>
+      <p><strong id="enchant-catalog-visible">{magicCatalog.length}</strong> opções encontradas</p>
       <label>Ordenar
-        <select id="magic-catalog-sort">
+        <select id="enchant-catalog-sort">
           <option value="name">Nome A–Z</option>
           <option value="cost">Menor custo</option>
           <option value="cost-desc">Maior custo</option>
@@ -207,7 +299,7 @@ const catalogSearchText = (item: (typeof magicCatalog)[number]) => [
       </label>
     </div>
 
-    <div class="magic-catalog-grid" id="magic-catalog-grid">
+    <div class="enchant-catalog-grid" id="enchant-catalog-grid">
       {magicCatalog.map((item) => (
         <article
           class="magic-catalog-card"
@@ -266,7 +358,7 @@ const catalogSearchText = (item: (typeof magicCatalog)[number]) => [
       ))}
     </div>
 
-    <p class="empty-state" id="magic-catalog-empty" hidden>Nenhuma opção corresponde aos filtros atuais.</p>
+    <p class="empty-state" id="enchant-catalog-empty" hidden>Nenhuma opção corresponde aos filtros atuais.</p>
   </section>
 
   <section id="armas" class="rule-section">
@@ -396,15 +488,122 @@ const catalogSearchText = (item: (typeof magicCatalog)[number]) => [
 
   <script is:inline>
     (() => {
-      const search = document.getElementById('magic-catalog-search');
-      const type = document.getElementById('magic-catalog-type');
-      const system = document.getElementById('magic-catalog-system');
-      const cost = document.getElementById('magic-catalog-cost');
-      const sort = document.getElementById('magic-catalog-sort');
-      const grid = document.getElementById('magic-catalog-grid');
-      const cards = [...document.querySelectorAll('.magic-catalog-card')];
-      const visibleCount = document.getElementById('magic-catalog-visible');
-      const empty = document.getElementById('magic-catalog-empty');
+      const search = document.getElementById('magic-item-search');
+      const aura = document.getElementById('magic-item-aura');
+      const priceStatus = document.getElementById('magic-item-price-status');
+      const sort = document.getElementById('magic-item-sort');
+      const grid = document.getElementById('magic-item-grid');
+      const cards = [...document.querySelectorAll('.magic-item-card')];
+      const count = document.getElementById('magic-item-count');
+      const empty = document.getElementById('magic-item-empty');
+      const savedOnly = document.getElementById('magic-item-saved-only');
+      const savedCount = document.getElementById('magic-item-saved-count');
+
+      if (!search || !aura || !priceStatus || !sort || !grid || !savedOnly) return;
+
+      const normalize = (value) => String(value || '')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase();
+
+      let favorites = new Set();
+      try {
+        const saved = JSON.parse(localStorage.getItem('tormenta13-magic-item-favorites') || '[]');
+        if (Array.isArray(saved)) favorites = new Set(saved);
+      } catch {}
+
+      const refreshStars = () => {
+        document.querySelectorAll('[data-save-item]').forEach((button) => {
+          const selected = favorites.has(button.dataset.saveItem);
+          button.textContent = selected ? '★' : '☆';
+          button.classList.toggle('selected', selected);
+        });
+        savedCount.textContent = String(favorites.size);
+      };
+
+      const auraOrder = ['tenue', 'moderada', 'poderosa', 'avassaladora', 'sem-aura'];
+
+      const apply = () => {
+        const query = normalize(search.value.trim());
+        const savedMode = savedOnly.getAttribute('aria-pressed') === 'true';
+        let visible = 0;
+
+        cards.forEach((card) => {
+          const hasPrice = card.dataset.priced === 'true';
+          const priceMatch =
+            priceStatus.value === 'all' ||
+            (priceStatus.value === 'priced' && hasPrice) ||
+            (priceStatus.value === 'unpriced' && !hasPrice);
+
+          const matches =
+            (!query || normalize(card.dataset.search).includes(query)) &&
+            (aura.value === 'all' || card.dataset.aura === aura.value) &&
+            priceMatch &&
+            (!savedMode || favorites.has(card.dataset.id));
+
+          card.hidden = !matches;
+          if (matches) visible += 1;
+        });
+
+        count.textContent = String(visible);
+        empty.hidden = visible !== 0;
+
+        cards
+          .filter((card) => !card.hidden)
+          .sort((a, b) => {
+            if (sort.value === 'name') {
+              return (a.dataset.name || '').localeCompare(b.dataset.name || '', 'pt-BR');
+            }
+
+            if (sort.value === 'aura') {
+              const difference = auraOrder.indexOf(a.dataset.aura || '') - auraOrder.indexOf(b.dataset.aura || '');
+              return difference || (a.dataset.name || '').localeCompare(b.dataset.name || '', 'pt-BR');
+            }
+
+            const aPrice = a.dataset.price === '' ? Number.POSITIVE_INFINITY : Number(a.dataset.price);
+            const bPrice = b.dataset.price === '' ? Number.POSITIVE_INFINITY : Number(b.dataset.price);
+            const difference = aPrice - bPrice;
+            const ordered = sort.value === 'price-desc' ? -difference : difference;
+            return ordered || (a.dataset.name || '').localeCompare(b.dataset.name || '', 'pt-BR');
+          })
+          .forEach((card) => grid.appendChild(card));
+      };
+
+      [aura, priceStatus, sort].forEach((control) => control.addEventListener('change', apply));
+      search.addEventListener('input', apply);
+      savedOnly.addEventListener('click', () => {
+        const next = savedOnly.getAttribute('aria-pressed') !== 'true';
+        savedOnly.setAttribute('aria-pressed', String(next));
+        savedOnly.classList.toggle('active', next);
+        apply();
+      });
+
+      document.querySelectorAll('[data-save-item]').forEach((button) => button.addEventListener('click', () => {
+        const id = button.dataset.saveItem;
+        favorites.has(id) ? favorites.delete(id) : favorites.add(id);
+        try {
+          localStorage.setItem('tormenta13-magic-item-favorites', JSON.stringify([...favorites]));
+        } catch {}
+        refreshStars();
+        apply();
+      }));
+
+      refreshStars();
+      apply();
+    })();
+  </script>
+
+  <script is:inline>
+    (() => {
+      const search = document.getElementById('enchant-catalog-search');
+      const type = document.getElementById('enchant-catalog-type');
+      const system = document.getElementById('enchant-catalog-system');
+      const cost = document.getElementById('enchant-catalog-cost');
+      const sort = document.getElementById('enchant-catalog-sort');
+      const grid = document.getElementById('enchant-catalog-grid');
+      const cards = [...document.querySelectorAll('#enchant-catalog-grid .magic-catalog-card')];
+      const visibleCount = document.getElementById('enchant-catalog-visible');
+      const empty = document.getElementById('enchant-catalog-empty');
 
       if (!search || !type || !system || !cost || !sort || !grid) return;
 
