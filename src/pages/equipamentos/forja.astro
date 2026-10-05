@@ -1,0 +1,629 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import EquipmentBack from '../../components/EquipmentBack.astro';
+import '../../styles/equipment.css';
+import { weapons } from '../../data/equipamentos/armas';
+import { armors, specialMaterials } from '../../data/equipamentos/armaduras';
+import {
+  progressiveEnchantments,
+  fixedMagicPowers,
+  enchantmentSlotRule
+} from '../../data/equipamentos/itens-magicos';
+import {
+  forgeSources,
+  weaponForgeImprovements,
+  armorForgeImprovements,
+  weaponMagicBonusPrices,
+  armorMagicBonusPrices
+} from '../../data/equipamentos/forja';
+
+const parsePrice = (value: string | undefined | null) => {
+  if (!value) return null;
+  const clean = value.replace(/\./g, '').replace(',', '.');
+  const match = clean.match(/\d+(?:\.\d+)?/);
+  return match ? Number(match[0]) : null;
+};
+
+const materialData = specialMaterials.map((material) => {
+  const dot = material.description.indexOf('.');
+  return {
+    name: dot > 0 ? material.description.slice(0, dot).trim() : 'Material',
+    effect: dot > 0 ? material.description.slice(dot + 1).trim() : material.description,
+    weapon: parsePrice(material.costs.weapon),
+    lightArmor: parsePrice(material.costs.lightArmor),
+    mediumArmor: parsePrice(material.costs.mediumArmor),
+    heavyArmor: parsePrice(material.costs.heavyArmor),
+    lightShield: parsePrice(material.costs.lightShield),
+    heavyShield: parsePrice(material.costs.heavyShield)
+  };
+});
+
+const weaponEnchantments = progressiveEnchantments.filter((item) => item.appliesTo === 'Arma');
+const protectionPowers = fixedMagicPowers.filter((power) =>
+  power.appliesTo === 'Armadura' ||
+  power.appliesTo === 'Escudo' ||
+  power.appliesTo === 'Armadura e Escudo'
+);
+
+const roman = ['','I','II','III','IV','V'];
+---
+<BaseLayout title="Forja de Equipamentos" activePath="/equipamentos/">
+  <EquipmentBack current="Forja de Equipamentos" />
+
+  <section class="section-hero forge-hero">
+    <p class="eyebrow">Equipamentos personalizados</p>
+    <h1>Forja</h1>
+    <p class="lede">Monte armas, armaduras e escudos combinando os equipamentos, materiais e encantamentos do Tormenta 1.3 com os aprimoramentos físicos usados pelas forjas de referência.</p>
+    <div class="notice forge-source-note">
+      <strong>Fontes separadas:</strong> equipamento-base, materiais, bônus mágico e encantamentos usam os dados do Tormenta 1.3 deste compêndio. Os <strong>aprimoramentos físicos e suas sobretaxas</strong> seguem as referências da ORC &amp; Roll.
+      <span>
+        <a href={forgeSources.weaponImprovements} target="_blank" rel="noreferrer">Forja de Armas ↗</a>
+        <a href={forgeSources.armorImprovements} target="_blank" rel="noreferrer">Forja de Armaduras ↗</a>
+      </span>
+    </div>
+  </section>
+
+  <div class="forge-tabs" role="tablist" aria-label="Tipo de equipamento">
+    <button class="forge-tab is-active" type="button" role="tab" aria-selected="true" data-forge-tab="weapon">Forjar Arma</button>
+    <button class="forge-tab" type="button" role="tab" aria-selected="false" data-forge-tab="armor">Forjar Armadura / Escudo</button>
+  </div>
+
+  <section class="forge-panel" data-forge-panel="weapon">
+    <div class="forge-layout">
+      <div class="forge-builder">
+        <section class="forge-step">
+          <div class="forge-step-head"><span>01</span><div><p class="eyebrow">Base Tormenta 1.3</p><h2>Arma</h2></div></div>
+          <div class="forge-fields two">
+            <label>Nome personalizado<input id="forge-weapon-name" type="text" placeholder="Ex.: Presa do Dragão" /></label>
+            <label>Arma-base
+              <select id="forge-weapon-base">
+                {weapons.map((weapon, index) => (
+                  <option
+                    value={String(index)}
+                    data-name={weapon.name}
+                    data-price={parsePrice(weapon.price) ?? ''}
+                    data-price-label={weapon.price}
+                    data-damage={weapon.damage}
+                    data-critical={weapon.critical}
+                    data-properties={weapon.properties}
+                    data-category={weapon.category}
+                    data-type={weapon.type}
+                  >{weapon.name} — {weapon.price}</option>
+                ))}
+              </select>
+            </label>
+          </div>
+        </section>
+
+        <section class="forge-step">
+          <div class="forge-step-head"><span>02</span><div><p class="eyebrow">Tormenta 1.3</p><h2>Material</h2></div></div>
+          <label class="forge-field-full">Material
+            <select id="forge-weapon-material">
+              <option value="standard" data-name="Padrão" data-price="0" data-effect="">Padrão — sem custo adicional</option>
+              {materialData.filter((material) => material.weapon !== null).map((material) => (
+                <option value={material.name} data-name={material.name} data-price={String(material.weapon ?? 0)} data-effect={material.effect}>
+                  {material.name} — +{material.weapon?.toLocaleString('pt-BR')} TO
+                </option>
+              ))}
+            </select>
+          </label>
+          <p class="forge-selection-effect" id="forge-weapon-material-effect">Material padrão, sem efeito adicional.</p>
+        </section>
+
+        <section class="forge-step">
+          <div class="forge-step-head"><span>03</span><div><p class="eyebrow">ORC &amp; Roll</p><h2>Aprimoramentos</h2></div></div>
+          <div class="forge-option-grid">
+            {weaponForgeImprovements.map((item) => (
+              <label class="forge-option-card">
+                <input class="forge-weapon-improvement" type="checkbox" value={item.id} data-name={item.name} data-price={String(item.price)} data-effect={item.effect} />
+                <span><strong>{item.name}</strong><small>+{item.price.toLocaleString('pt-BR')} TO</small><em>{item.effect}</em></span>
+              </label>
+            ))}
+          </div>
+        </section>
+
+        <section class="forge-step">
+          <div class="forge-step-head"><span>04</span><div><p class="eyebrow">Tormenta 1.3</p><h2>Bônus Mágico e Encantamentos</h2></div></div>
+          <div class="forge-magic-head">
+            <label>Bônus mágico
+              <select id="forge-weapon-magic">
+                {weaponMagicBonusPrices.map((price, bonus) => <option value={String(bonus)} data-price={String(price)}>+{bonus} — {price.toLocaleString('pt-BR')} TO</option>)}
+              </select>
+            </label>
+            <div class="forge-slot-meter">
+              <span>Slots usados</span>
+              <strong><b id="forge-weapon-slots-used">0</b> / <b id="forge-weapon-slots-max">0</b></strong>
+              <small>Máximo de {enchantmentSlotRule.maxSlots} slots.</small>
+            </div>
+          </div>
+
+          <div class="forge-enchantment-grid">
+            {weaponEnchantments.map((enchant) => (
+              <article class="forge-enchantment">
+                <header><strong>{enchant.name}</strong><span>{enchant.appliesTo}</span></header>
+                {enchant.intro && <p>{enchant.intro}</p>}
+                <label>Nível
+                  <select
+                    class="forge-weapon-enchant"
+                    data-name={enchant.name}
+                    data-effects={JSON.stringify(enchant.levels.map((level) => level.effect))}
+                  >
+                    <option value="0">Sem encantamento</option>
+                    {enchant.levels.map((level) => <option value={String(level.slots)}>{roman[level.slots]} — {level.slots} {level.slots === 1 ? 'slot' : 'slots'}</option>)}
+                  </select>
+                </label>
+              </article>
+            ))}
+          </div>
+          <p class="forge-validation" id="forge-weapon-validation"></p>
+        </section>
+      </div>
+
+      <aside class="forge-summary" aria-live="polite">
+        <div class="forge-summary-sticky">
+          <p class="eyebrow">Resultado</p>
+          <h2 id="forge-weapon-result-name">Arma Forjada</h2>
+          <div class="forge-result-stats">
+            <article><span>Dano</span><strong id="forge-weapon-damage">—</strong></article>
+            <article><span>Crítico</span><strong id="forge-weapon-critical">—</strong></article>
+            <article><span>Ataque</span><strong id="forge-weapon-attack">+0</strong></article>
+            <article><span>Dano extra</span><strong id="forge-weapon-damage-bonus">+0</strong></article>
+          </div>
+          <div class="forge-result-base" id="forge-weapon-base-info"></div>
+
+          <section class="forge-summary-section">
+            <h3>Efeitos escolhidos</h3>
+            <ul id="forge-weapon-effects"><li>Nenhum efeito adicional.</li></ul>
+          </section>
+
+          <section class="forge-price">
+            <h3>Preço</h3>
+            <dl>
+              <div><dt>Arma-base</dt><dd id="forge-weapon-price-base">—</dd></div>
+              <div><dt>Material</dt><dd id="forge-weapon-price-material">0 TO</dd></div>
+              <div><dt>Aprimoramentos</dt><dd id="forge-weapon-price-improvements">0 TO</dd></div>
+              <div><dt>Bônus mágico</dt><dd id="forge-weapon-price-magic">0 TO</dd></div>
+            </dl>
+            <div class="forge-total"><span>Total</span><strong id="forge-weapon-price-total">—</strong></div>
+            <small id="forge-weapon-price-note"></small>
+          </section>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="forge-panel" data-forge-panel="armor" hidden>
+    <div class="forge-layout">
+      <div class="forge-builder">
+        <section class="forge-step">
+          <div class="forge-step-head"><span>01</span><div><p class="eyebrow">Base Tormenta 1.3</p><h2>Armadura ou Escudo</h2></div></div>
+          <div class="forge-fields two">
+            <label>Nome personalizado<input id="forge-armor-name" type="text" placeholder="Ex.: Muralha de Valkaria" /></label>
+            <label>Proteção-base
+              <select id="forge-armor-base">
+                {armors.map((item, index) => (
+                  <option
+                    value={String(index)}
+                    data-name={item.name}
+                    data-price={parsePrice(item.price) ?? ''}
+                    data-price-label={item.price}
+                    data-ca={item.ca}
+                    data-max-dex={item.maxDex}
+                    data-penalty={item.armorPenalty}
+                    data-category={item.category}
+                  >{item.name} — {item.price} TO</option>
+                ))}
+              </select>
+            </label>
+          </div>
+        </section>
+
+        <section class="forge-step">
+          <div class="forge-step-head"><span>02</span><div><p class="eyebrow">Tormenta 1.3</p><h2>Material</h2></div></div>
+          <label class="forge-field-full">Material
+            <select id="forge-armor-material">
+              <option value="standard" data-name="Padrão" data-effect="" data-light="" data-medium="" data-heavy="" data-light-shield="" data-heavy-shield="">Padrão — sem custo adicional</option>
+              {materialData.map((material) => (
+                <option
+                  value={material.name}
+                  data-name={material.name}
+                  data-effect={material.effect}
+                  data-light={material.lightArmor ?? ''}
+                  data-medium={material.mediumArmor ?? ''}
+                  data-heavy={material.heavyArmor ?? ''}
+                  data-light-shield={material.lightShield ?? ''}
+                  data-heavy-shield={material.heavyShield ?? ''}
+                >{material.name}</option>
+              ))}
+            </select>
+          </label>
+          <p class="forge-selection-effect" id="forge-armor-material-effect">Material padrão, sem efeito adicional.</p>
+        </section>
+
+        <section class="forge-step">
+          <div class="forge-step-head"><span>03</span><div><p class="eyebrow">ORC &amp; Roll</p><h2>Aprimoramentos</h2></div></div>
+          <div class="forge-option-grid">
+            {armorForgeImprovements.map((item) => (
+              <label class="forge-option-card forge-protection-improvement" data-applies={item.appliesTo}>
+                <input class="forge-armor-improvement" type="checkbox" value={item.id} data-name={item.name} data-price={String(item.price)} data-effect={item.effect} />
+                <span><strong>{item.name}</strong><small>+{item.price.toLocaleString('pt-BR')} TO</small><em>{item.effect}</em></span>
+              </label>
+            ))}
+          </div>
+        </section>
+
+        <section class="forge-step">
+          <div class="forge-step-head"><span>04</span><div><p class="eyebrow">Tormenta 1.3</p><h2>Bônus Mágico e Encantamentos</h2></div></div>
+          <div class="forge-magic-head">
+            <label>Bônus mágico
+              <select id="forge-armor-magic">
+                {armorMagicBonusPrices.map((price, bonus) => <option value={String(bonus)} data-price={String(price)}>+{bonus} — {price.toLocaleString('pt-BR')} TO</option>)}
+              </select>
+            </label>
+            <div class="forge-slot-meter">
+              <span>Slots usados</span>
+              <strong><b id="forge-armor-slots-used">0</b> / <b id="forge-armor-slots-max">0</b></strong>
+              <small>Máximo de {enchantmentSlotRule.maxSlots} slots.</small>
+            </div>
+          </div>
+
+          <h3 class="forge-subtitle">Poderes de Armadura / Escudo</h3>
+          <div class="forge-option-grid forge-power-grid">
+            {protectionPowers.map((power) => (
+              <label class="forge-option-card forge-protection-power" data-applies={power.appliesTo.toLowerCase()}>
+                <input
+                  class="forge-armor-power"
+                  type="checkbox"
+                  value={power.id}
+                  data-name={power.name}
+                  data-cost={String(power.cost)}
+                  data-effect={power.effect}
+                  data-medium={power.mediumEffect ?? ''}
+                  data-major={power.majorEffect ?? ''}
+                />
+                <span><strong>{power.name}</strong><small>{power.cost} {power.cost === 1 ? 'slot' : 'slots'}</small><em>{power.effect}</em></span>
+              </label>
+            ))}
+          </div>
+
+          <div id="forge-shield-weapon-enchants" hidden>
+            <h3 class="forge-subtitle">Encantamentos de Arma para Escudos</h3>
+            <p class="section-copy">Pela regra do Tormenta 1.3, escudos também podem receber encantamentos de Arma.</p>
+            <div class="forge-enchantment-grid">
+              {weaponEnchantments.map((enchant) => (
+                <article class="forge-enchantment">
+                  <header><strong>{enchant.name}</strong><span>Escudo</span></header>
+                  {enchant.intro && <p>{enchant.intro}</p>}
+                  <label>Nível
+                    <select
+                      class="forge-shield-enchant"
+                      data-name={enchant.name}
+                      data-effects={JSON.stringify(enchant.levels.map((level) => level.effect))}
+                    >
+                      <option value="0">Sem encantamento</option>
+                      {enchant.levels.map((level) => <option value={String(level.slots)}>{roman[level.slots]} — {level.slots} {level.slots === 1 ? 'slot' : 'slots'}</option>)}
+                    </select>
+                  </label>
+                </article>
+              ))}
+            </div>
+          </div>
+          <p class="forge-validation" id="forge-armor-validation"></p>
+        </section>
+      </div>
+
+      <aside class="forge-summary" aria-live="polite">
+        <div class="forge-summary-sticky">
+          <p class="eyebrow">Resultado</p>
+          <h2 id="forge-armor-result-name">Proteção Forjada</h2>
+          <div class="forge-result-stats">
+            <article><span>CA</span><strong id="forge-armor-ca">—</strong></article>
+            <article><span>Des. Máx.</span><strong id="forge-armor-max-dex">—</strong></article>
+            <article><span>Penalidade</span><strong id="forge-armor-penalty">—</strong></article>
+            <article><span>Categoria</span><strong id="forge-armor-category">—</strong></article>
+          </div>
+
+          <section class="forge-summary-section">
+            <h3>Efeitos escolhidos</h3>
+            <ul id="forge-armor-effects"><li>Nenhum efeito adicional.</li></ul>
+          </section>
+
+          <section class="forge-price">
+            <h3>Preço</h3>
+            <dl>
+              <div><dt>Item-base</dt><dd id="forge-armor-price-base">—</dd></div>
+              <div><dt>Material</dt><dd id="forge-armor-price-material">0 TO</dd></div>
+              <div><dt>Aprimoramentos</dt><dd id="forge-armor-price-improvements">0 TO</dd></div>
+              <div><dt>Bônus mágico</dt><dd id="forge-armor-price-magic">0 TO</dd></div>
+            </dl>
+            <div class="forge-total"><span>Total</span><strong id="forge-armor-price-total">—</strong></div>
+            <small id="forge-armor-price-note"></small>
+          </section>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <script is:inline>
+    (() => {
+      const money = (value) => new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 2 }).format(value) + ' TO';
+      const num = (value) => {
+        const parsed = Number(value);
+        return Number.isFinite(parsed) ? parsed : 0;
+      };
+      const selectedOption = (select) => select?.options?.[select.selectedIndex];
+
+      document.querySelectorAll('[data-forge-tab]').forEach((button) => {
+        button.addEventListener('click', () => {
+          const target = button.dataset.forgeTab;
+          document.querySelectorAll('[data-forge-tab]').forEach((tab) => {
+            const active = tab === button;
+            tab.classList.toggle('is-active', active);
+            tab.setAttribute('aria-selected', String(active));
+          });
+          document.querySelectorAll('[data-forge-panel]').forEach((panel) => {
+            panel.hidden = panel.dataset.forgePanel !== target;
+          });
+        });
+      });
+
+      const improveCritical = (critical, threatBonus, multiplierBonus) => {
+        if (!critical || critical === '—') return '—';
+        let result = critical;
+        if (threatBonus > 0 && /x\d+/i.test(result)) {
+          const match = result.match(/(\d+)-20/);
+          const current = match ? Number(match[1]) : 20;
+          const next = Math.max(2, current - threatBonus);
+          if (match) result = result.replace(/\d+-20/, next + '-20');
+          else result = next + '-20/' + result;
+        }
+        if (multiplierBonus > 0) {
+          result = result.replace(/x(\d+)/i, (_, value) => 'x' + (Number(value) + multiplierBonus));
+        }
+        return result;
+      };
+
+      const collectEnchantEffects = (selects) => {
+        const effects = [];
+        let slots = 0;
+        selects.forEach((select) => {
+          const rank = Number(select.value) || 0;
+          if (!rank) return;
+          slots += rank;
+          let levels = [];
+          try { levels = JSON.parse(select.dataset.effects || '[]'); } catch {}
+          const chosen = levels.slice(0, rank).join(' ');
+          effects.push(`${select.dataset.name} ${['','I','II','III','IV','V'][rank]}: ${chosen}`);
+        });
+        return { effects, slots };
+      };
+
+      // WEAPON FORGE
+      const wName = document.getElementById('forge-weapon-name');
+      const wBase = document.getElementById('forge-weapon-base');
+      const wMaterial = document.getElementById('forge-weapon-material');
+      const wMagic = document.getElementById('forge-weapon-magic');
+      const wImprovements = [...document.querySelectorAll('.forge-weapon-improvement')];
+      const wEnchants = [...document.querySelectorAll('.forge-weapon-enchant')];
+
+      const updateWeapon = () => {
+        const base = selectedOption(wBase);
+        const material = selectedOption(wMaterial);
+        const magic = selectedOption(wMagic);
+        if (!base || !material || !magic) return;
+
+        const magicBonus = Number(wMagic.value) || 0;
+        const directBonus = Math.max(0, magicBonus - 5);
+        const maxSlots = Math.min(magicBonus, 5);
+        const selectedImprovements = wImprovements.filter((input) => input.checked);
+        const improvementPrice = selectedImprovements.reduce((sum, input) => sum + num(input.dataset.price), 0);
+        const materialPrice = num(material.dataset.price);
+        const magicPrice = num(magic.dataset.price);
+        const baseKnown = base.dataset.price !== '';
+        const basePrice = num(base.dataset.price);
+        const enchantments = collectEnchantEffects(wEnchants);
+
+        const attackBonus =
+          directBonus +
+          (selectedImprovements.some((item) => item.value === 'obra-prima') ? 1 : 0) +
+          (selectedImprovements.some((item) => item.value === 'magistral') ? 2 : 0);
+        const damageBonus = directBonus + (selectedImprovements.some((item) => item.value === 'brutal') ? 1 : 0);
+        const threatBonus = selectedImprovements.some((item) => item.value === 'precisa') ? 1 : 0;
+        const multiplierBonus = selectedImprovements.some((item) => item.value === 'macica') ? 1 : 0;
+
+        document.getElementById('forge-weapon-result-name').textContent = wName.value.trim() || base.dataset.name || 'Arma Forjada';
+        document.getElementById('forge-weapon-damage').textContent = base.dataset.damage || '—';
+        document.getElementById('forge-weapon-critical').textContent = improveCritical(base.dataset.critical, threatBonus, multiplierBonus);
+        document.getElementById('forge-weapon-attack').textContent = (attackBonus >= 0 ? '+' : '') + attackBonus;
+        document.getElementById('forge-weapon-damage-bonus').textContent = (damageBonus >= 0 ? '+' : '') + damageBonus;
+        document.getElementById('forge-weapon-base-info').textContent =
+          [base.dataset.category, base.dataset.type, base.dataset.properties].filter(Boolean).join(' · ');
+
+        document.getElementById('forge-weapon-slots-used').textContent = String(enchantments.slots);
+        document.getElementById('forge-weapon-slots-max').textContent = String(maxSlots);
+        const validation = document.getElementById('forge-weapon-validation');
+        const valid = enchantments.slots <= maxSlots;
+        validation.textContent = valid ? (magicBonus ? `${maxSlots - enchantments.slots} slot(s) disponível(is).` : 'Escolha um bônus mágico para liberar slots.') : `Encantamentos excedem a capacidade em ${enchantments.slots - maxSlots} slot(s).`;
+        validation.classList.toggle('is-error', !valid);
+
+        const effects = [];
+        if (material.value !== 'standard' && material.dataset.effect) effects.push(`${material.dataset.name}: ${material.dataset.effect}`);
+        selectedImprovements.forEach((item) => effects.push(`${item.dataset.name}: ${item.dataset.effect}`));
+        effects.push(...enchantments.effects);
+        if (directBonus > 0) effects.push(`Bônus mágico acima dos 5 slots: +${directBonus} em jogadas de ataque e dano.`);
+
+        const effectList = document.getElementById('forge-weapon-effects');
+        effectList.innerHTML = effects.length ? effects.map((effect) => `<li>${effect}</li>`).join('') : '<li>Nenhum efeito adicional.</li>';
+
+        document.getElementById('forge-weapon-material-effect').textContent = material.value === 'standard' ? 'Material padrão, sem efeito adicional.' : material.dataset.effect || '—';
+        document.getElementById('forge-weapon-price-base').textContent = baseKnown ? money(basePrice) : (base.dataset.priceLabel || 'Não informado');
+        document.getElementById('forge-weapon-price-material').textContent = money(materialPrice);
+        document.getElementById('forge-weapon-price-improvements').textContent = money(improvementPrice);
+        document.getElementById('forge-weapon-price-magic').textContent = money(magicPrice);
+        document.getElementById('forge-weapon-price-total').textContent = baseKnown ? money(basePrice + materialPrice + improvementPrice + magicPrice) : money(materialPrice + improvementPrice + magicPrice) + ' + preço base';
+        document.getElementById('forge-weapon-price-note').textContent = baseKnown ? '' : 'A arma-base não possui preço numérico no Tormenta 1.3; o total exibido é parcial.';
+      };
+
+      [wName,wBase,wMaterial,wMagic].forEach((control) => {
+        control?.addEventListener(control?.tagName === 'INPUT' ? 'input' : 'change', updateWeapon);
+      });
+      [...wImprovements,...wEnchants].forEach((control) => control.addEventListener('change', updateWeapon));
+
+      // ARMOR / SHIELD FORGE
+      const aName = document.getElementById('forge-armor-name');
+      const aBase = document.getElementById('forge-armor-base');
+      const aMaterial = document.getElementById('forge-armor-material');
+      const aMagic = document.getElementById('forge-armor-magic');
+      const aImprovements = [...document.querySelectorAll('.forge-armor-improvement')];
+      const aPowers = [...document.querySelectorAll('.forge-armor-power')];
+      const shieldEnchants = [...document.querySelectorAll('.forge-shield-enchant')];
+
+      const armorMaterialKey = (base) => {
+        const category = base.dataset.category || '';
+        const name = base.dataset.name || '';
+        if (category === 'Armaduras Leves') return 'light';
+        if (category === 'Armaduras Médias') return 'medium';
+        if (category === 'Armaduras Pesadas') return 'heavy';
+        if (category === 'Escudos' && /leve/i.test(name)) return 'lightShield';
+        if (category === 'Escudos') return 'heavyShield';
+        return '';
+      };
+
+      const materialPriceFor = (option, key) => {
+        if (option.value === 'standard') return 0;
+        const attr = key === 'lightShield' ? option.dataset.lightShield :
+          key === 'heavyShield' ? option.dataset.heavyShield :
+          key === 'light' ? option.dataset.light :
+          key === 'medium' ? option.dataset.medium :
+          key === 'heavy' ? option.dataset.heavy : '';
+        return attr === '' || attr == null ? null : num(attr);
+      };
+
+      const refreshArmorMaterials = () => {
+        const base = selectedOption(aBase);
+        if (!base) return;
+        const key = armorMaterialKey(base);
+        [...aMaterial.options].forEach((option) => {
+          if (option.value === 'standard') {
+            option.disabled = false;
+            option.hidden = false;
+            return;
+          }
+          const available = materialPriceFor(option, key) !== null;
+          option.disabled = !available;
+          option.hidden = !available;
+        });
+        if (selectedOption(aMaterial)?.disabled) aMaterial.value = 'standard';
+      };
+
+      const updateArmor = () => {
+        refreshArmorMaterials();
+        const base = selectedOption(aBase);
+        const material = selectedOption(aMaterial);
+        const magic = selectedOption(aMagic);
+        if (!base || !material || !magic) return;
+
+        const isShield = base.dataset.category === 'Escudos';
+        const magicBonus = Number(aMagic.value) || 0;
+        const directBonus = Math.max(0, magicBonus - 5);
+        const maxSlots = Math.min(magicBonus, 5);
+        const materialKey = armorMaterialKey(base);
+        const materialPrice = materialPriceFor(material, materialKey) ?? 0;
+        const magicPrice = num(magic.dataset.price);
+        const baseKnown = base.dataset.price !== '';
+        const basePrice = num(base.dataset.price);
+
+        document.querySelectorAll('.forge-protection-improvement').forEach((card) => {
+          const applies = card.dataset.applies;
+          const show = applies === 'protection' || (isShield ? applies === 'shield' : applies === 'armor');
+          card.hidden = !show;
+          const input = card.querySelector('input');
+          if (!show && input) input.checked = false;
+        });
+
+        document.querySelectorAll('.forge-protection-power').forEach((card) => {
+          const applies = card.dataset.applies || '';
+          const show = isShield ? applies.includes('escudo') : applies.includes('armadura');
+          card.hidden = !show;
+          const input = card.querySelector('input');
+          if (!show && input) input.checked = false;
+        });
+
+        document.getElementById('forge-shield-weapon-enchants').hidden = !isShield;
+        if (!isShield) shieldEnchants.forEach((select) => { select.value = '0'; });
+
+        const selectedImprovements = aImprovements.filter((input) => input.checked && !input.closest('[hidden]'));
+        const selectedPowers = aPowers.filter((input) => input.checked && !input.closest('[hidden]'));
+        const improvementPrice = selectedImprovements.reduce((sum, input) => sum + num(input.dataset.price), 0);
+        const shieldMagic = isShield ? collectEnchantEffects(shieldEnchants) : { effects: [], slots: 0 };
+        const powerSlots = selectedPowers.reduce((sum, input) => sum + num(input.dataset.cost), 0);
+        const usedSlots = powerSlots + shieldMagic.slots;
+
+        let ca = Number(base.dataset.ca);
+        const caKnown = Number.isFinite(ca);
+        let maxDex = Number(base.dataset.maxDex);
+        const maxDexKnown = Number.isFinite(maxDex);
+        let penalty = Number(base.dataset.penalty);
+        const penaltyKnown = Number.isFinite(penalty);
+
+        if (caKnown) {
+          if (selectedImprovements.some((item) => item.value === 'reforcada')) ca += 1;
+          ca += directBonus;
+        }
+        if (maxDexKnown && selectedImprovements.some((item) => item.value === 'delicada')) maxDex += 2;
+        if (penaltyKnown) {
+          if (selectedImprovements.some((item) => item.value === 'obra-prima')) penalty += 1;
+          if (selectedImprovements.some((item) => item.value === 'reforcada')) penalty -= 2;
+          if (selectedImprovements.some((item) => item.value === 'sob-medida')) penalty += 2;
+          penalty += directBonus;
+          penalty = Math.min(0, penalty);
+        }
+
+        document.getElementById('forge-armor-result-name').textContent = aName.value.trim() || base.dataset.name || 'Proteção Forjada';
+        document.getElementById('forge-armor-ca').textContent = caKnown ? '+' + ca : (base.dataset.ca || '—');
+        document.getElementById('forge-armor-max-dex').textContent = maxDexKnown ? '+' + maxDex : (base.dataset.maxDex || '—');
+        document.getElementById('forge-armor-penalty').textContent = penaltyKnown ? String(penalty) : (base.dataset.penalty || '—');
+        document.getElementById('forge-armor-category').textContent = base.dataset.category || '—';
+
+        document.getElementById('forge-armor-slots-used').textContent = String(usedSlots);
+        document.getElementById('forge-armor-slots-max').textContent = String(maxSlots);
+        const validation = document.getElementById('forge-armor-validation');
+        const valid = usedSlots <= maxSlots;
+        validation.textContent = valid ? (magicBonus ? `${maxSlots - usedSlots} slot(s) disponível(is).` : 'Escolha um bônus mágico para liberar slots.') : `Encantamentos excedem a capacidade em ${usedSlots - maxSlots} slot(s).`;
+        validation.classList.toggle('is-error', !valid);
+
+        const effects = [];
+        if (material.value !== 'standard' && material.dataset.effect) effects.push(`${material.dataset.name}: ${material.dataset.effect}`);
+        selectedImprovements.forEach((item) => effects.push(`${item.dataset.name}: ${item.dataset.effect}`));
+
+        const tier = magicBonus >= 7 ? 'major' : magicBonus >= 4 ? 'medium' : 'minor';
+        selectedPowers.forEach((item) => {
+          effects.push(`${item.dataset.name}: ${item.dataset.effect}`);
+          const extra = tier === 'major' ? (item.dataset.major || item.dataset.medium) : tier === 'medium' ? item.dataset.medium : '';
+          if (extra) effects.push(`${item.dataset.name} — categoria ${tier === 'major' ? 'Maior' : 'Média'}: ${extra}`);
+        });
+        effects.push(...shieldMagic.effects);
+        if (directBonus > 0) effects.push(`Bônus mágico acima dos 5 slots: +${directBonus} na CA e redução equivalente da penalidade de armadura quando aplicável.`);
+
+        const effectList = document.getElementById('forge-armor-effects');
+        effectList.innerHTML = effects.length ? effects.map((effect) => `<li>${effect}</li>`).join('') : '<li>Nenhum efeito adicional.</li>';
+
+        document.getElementById('forge-armor-material-effect').textContent = material.value === 'standard' ? 'Material padrão, sem efeito adicional.' : material.dataset.effect || '—';
+        document.getElementById('forge-armor-price-base').textContent = baseKnown ? money(basePrice) : (base.dataset.priceLabel || 'Não informado');
+        document.getElementById('forge-armor-price-material').textContent = money(materialPrice);
+        document.getElementById('forge-armor-price-improvements').textContent = money(improvementPrice);
+        document.getElementById('forge-armor-price-magic').textContent = money(magicPrice);
+        document.getElementById('forge-armor-price-total').textContent = baseKnown ? money(basePrice + materialPrice + improvementPrice + magicPrice) : money(materialPrice + improvementPrice + magicPrice) + ' + preço base';
+        document.getElementById('forge-armor-price-note').textContent = baseKnown ? '' : 'O item-base não possui preço numérico no Tormenta 1.3; o total exibido é parcial.';
+      };
+
+      [aName,aBase,aMaterial,aMagic].forEach((control) => {
+        control?.addEventListener(control?.tagName === 'INPUT' ? 'input' : 'change', updateArmor);
+      });
+      [...aImprovements,...aPowers,...shieldEnchants].forEach((control) => control.addEventListener('change', updateArmor));
+
+      updateWeapon();
+      updateArmor();
+    })();
+  </script>
+</BaseLayout>
