@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
-import { baseSpells, getSpellAlteration, type BaseSpell } from '../../data/magias';
+import { baseSpells, getSpellAlteration, getSpellLevels, type BaseSpell } from '../../data/magias';
 import { newSpells, type NewSpell } from '../../data/magias-t13';
 import '../../styles/spells.css';
 
@@ -25,7 +25,7 @@ const fields = page.kind === 'base'
       ['Escola',page.spell.school],['Tempo de Execução',page.spell.action],['Alcance',page.spell.range],
       ['Alvo ou Efeito',page.spell.effect],['Duração',page.spell.duration],['Teste de Resistência',page.spell.resistance]
     ];
-const levels = page.kind === 'base' ? page.spell.levels : [...new Set(page.spell.lists.map((list)=>list.level))];
+const levels = page.kind === 'base' ? getSpellLevels(page.spell) : [...new Set(page.spell.lists.map((list)=>list.level))];
 ---
 <BaseLayout title={page.spell.name} activePath="/magias/">
   <Breadcrumbs items={[{ label: 'Magias', href: '/magias/' }, { label: page.spell.name }]} />
