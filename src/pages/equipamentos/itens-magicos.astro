@@ -560,8 +560,12 @@ const magicItemSearchText = (item: (typeof magicItemsCatalog)[number]) => [
               return difference || (a.dataset.name || '').localeCompare(b.dataset.name || '', 'pt-BR');
             }
 
-            const aPrice = a.dataset.price === '' ? Number.POSITIVE_INFINITY : Number(a.dataset.price);
-            const bPrice = b.dataset.price === '' ? Number.POSITIVE_INFINITY : Number(b.dataset.price);
+            const aMissing = a.dataset.price === '';
+            const bMissing = b.dataset.price === '';
+            if (aMissing !== bMissing) return aMissing ? 1 : -1;
+
+            const aPrice = Number(a.dataset.price || 0);
+            const bPrice = Number(b.dataset.price || 0);
             const difference = aPrice - bPrice;
             const ordered = sort.value === 'price-desc' ? -difference : difference;
             return ordered || (a.dataset.name || '').localeCompare(b.dataset.name || '', 'pt-BR');
