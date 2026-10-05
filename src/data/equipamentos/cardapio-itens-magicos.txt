@@ -998,3 +998,358 @@ impede este ataque, que pode destruir até mesmo um deus maior
 — caso este seja atacado em seu próprio Plano.
 Logo após a criação da espada, a Holy Avenger caiu nas mãos
 de Arsenal, que havia se aliado ao sumo-sacerdote de Sszzaas justamente
+para tomar posse desta arma suprema. Com a derrota do
+clérigo da guerra durante sua invasão ao Reinado, talvez o artefato
+tenha se perdido novamente.
+
+•Kailash
+Pequeno e de aspecto quase inofensivo, o kailash (“grande
+matador” em idioma halfl ing) lembra uma pequena esfera metálica
+com cravos, com um cordão de suporte para o arremesso. No
+entanto, uma vez dominado, tem grande poder destrutivo.
+Em termos de regras, o kailash é uma arma marcial de arremesso
+(dano 1d6, crítico 19-20, distância 30m, perfuração), com
+bônus mágico +3 e os poderes explosão fl amejante e retorno. Além
+disso, possui as seguintes habilidades.
+Captura. Quando o kailash é arremessado, seu cordão pode
+crescer e formar um laço capaz de capturar uma criatura Grande
+ou menor. Se o usuário do kailash é bem-sucedido em um ataque
+de toque, o alvo fi ca enredado. A vítima pode se soltar com uma
+ação completa e um teste de Acrobacia (CD 25).Arrastar. Com um comando, o usuário do kailash pode fazer
+uma criatura enredada pela arma ser arrastada para longe (até 30m
+do usuário) ou perto (até onde o usuário está). A vítima pode resistir
+com um teste de Fortitude (CD 25).
+Forma de Maça. Com um comando, o kailash pode distender
+um de seus espigões para servir como empunhadura, e ser usado
+como uma maça. Nesta forma será uma maça antimortos-vivos +3.
+Forma de Picareta. Com um comando, o kailash pode distender
+dois espigões e ser usado como picareta. Nesta forma será
+uma picareta anti-humanoides +3.
+Forma de Lança. Com um comando, o kailash pode distender
+dois espigões. Nesta forma será uma lança antimonstros +3.
+
+• O Olho de Sszzaas
+Como parte de seu plano para retornar
+ao Panteão, o deus Sszzaas removeu
+um de seus próprios olhos para forjar um
+artefato — o Olho de Sszzaas, uma gema
+es verdeada segura por um cajado de madeira
+fossilizada. As extremidades do cajado
+são ligadas por uma corrente, cujo
+comprimento pode variar magicamente.
+Cultistas de Sszzaas foram encarregados
+de esconder o artefato em um templo
+secreto nas proximidades de Lenórienn,
+onde deveria ser encontrado pela pessoa certa.
+O portador da peça acreditaria ser capaz
+de usar magia poderosa, quando na verdade
+estaria servindo aos interesses do Grande
+Corruptor. De fato, o Olho carrega parte da
+consciência do próprio Sszzaas, que testemunha
+e manipula tudo à distância.
+O cajado permite ao conjurador lançar
+qualquer magia que conheça ou tenha
+ouvido falar — seja arcana ou divina —
+como se fosse uma habilidade mágica, sem
+precisar gastar pontos de magia.
+Além disso, qualquer magia lançada
+recebe os benefícios de um dentre os seguintes
+talentos metamágicos, à escolha do
+usuário: Acelerar Magia, Ampliar Magia,
+Aumentar Magia, Estender Magia, Potencializar
+Magia ou Maximizar Magia.
+Lançar uma magia corretamente exige
+um teste de Identifi car Magia (CD igual
+a 20 + custo em PM da magia, incluindo
+ajustes por talentos metamágicos). Caso o
+teste falhe, a magia não funciona, ou provoca
+algum efeito imprevisível (alvo trocado,
+efeito invertido, teletransporte para um local
+diferente...), ou assim parece. Na verdade,
+sempre que uma magia “falha”, isso quer
+dizer que Sszzaas está no controle — e as
+coisas estão saindo exatamente como ele
+planejou, seguindo algum plano intrincado
+e desconhecido pelo portador do cajado.
+Apesar de poderoso, o Olho de Sszzaas é uma peça pouco conhecida.
+Reconhecê-lo e descobrir como usá-lo exige um teste de
+Conhecimento (arcano), CD 30.
+
+• Os Rubis da Virtude
+Criados originalmente como uma forma de selar um pacto entre
+os deuses, os Rubis da Virtude (que virtude? confi ança) quase foram
+a causa de sua morte. Cada um, se destruído, destruiria também o
+deus que estivesse secretamente ligado a ele — sem que fosse possível
+descobrir qual rubi pertencia a quem. Entregues aleatoriamente a
+cada deus após sua criação, eles seriam mantidos como provas de
+confi ança, provas de que os deuses — mesmo aqueles envolvidos em
+disputas pessoais — jamais tentariam destruir uns aos outros.
+Por segurança, as gemas foram encantadas de modo que não
+pudessem ser detectadas por nenhum meio mágico. Os rubis também
+não poderiam ser danifi cados por mortais, ou mesmo por
+deuses menores; apenas um deus do Panteão poderia destruí-los.
+Mesmo sem saber a quem estava ligado, cada deus guardou
+em lugar seguro a gema em sua posse. No entanto, conseguindo
+o que parecia ser impossível, Sszzaas — o mais traiçoeiro e furtivo
+dos seres — roubou todos os rubis. Ele foi descoberto e julgado
+antes de descobrir como utilizá-los, mas teve tempo de escondê-los
+em Arton. E os rubis, protegidos de qualquer detecção mágica, não
+puderam ser encontrados.
+Como castigo por sua traição, Sszzaas foi transformado em avatar
+e condenado a vagar pelo mundo até ser destruído ou aceito de
+volta. Antes de receber a pena, o Traidor conseguiu de Khalmyr a
+promessa de não interferir diretamente em seus atos — afi nal, que
+chance teria? O que havia de “justo” no confronto entre um avatar e
+um deus maior? Sem escolha, o Deus da Justiça concordou.
+Os rubis estavam desaparecidos, mas nenhum mortal poderia
+danifi cá-los. Mesmo assim, para evitar riscos, Khalmyr decretou
+que as ligações vitais entre os rubis e os deuses fossem rompidas.
+E assim foi feito.
+Mesmo sem essa conexão, as gemas ainda eram poderosas, pois
+traziam parte da essência divina dos vinte deuses. Sabendo que poderia
+utilizá-las de alguma forma, Sszzaas tratou de mantê-las longe
+dos olhos dos deuses, até o último instante.
+Os Rubis da Virtude são artefatos capazes de trazer grande poder
+para quem encontrá-los. Cada Rubi da Virtude oferece a seu
+portador um nível de experiência adicional em uma classe pré-existente
+— em geral aquela em que o personagem possui mais níveis.
+Para surtir efeito, a gema deve de alguma forma ser incrustada no
+corpo da criatura, o que exige um teste de Cura (CD 25). O efeito
+leva 24 horas para se manifestar.
+Por sua invulnerabilidade, cada rubi oferece ao portador
+redução de dano 1 e +2 em testes de resistência, cumulativos com
+quaisquer efeitos já existentes — incluindo outros rubis.
+Por sua indetectabilidade, cada rubi torna o portador mais
+difícil de observar por meios mágicos. Um conjurador que lance
+uma magia de adivinhação contra o portador de um rubi deve ser
+bem-sucedido em um teste de Vontade (CD 25 + a quantidade de
+rubis) ou a magia não terá efeito.
+
+• Shorder
+Shorder é uma armadura mágica única no mundo. Mais parece
+um cofre de duas pernas, feita com chapas de aço grossas como
+paredes. É tão pesada que vários cavalos seriam necessários para
+arrastá-la — e mesmo o mais forte guerreiro não poderia sequer
+levantar um braço dentro dela.
+Na verdade, qualquer criatura Pequena ou Média pode vestir
+a armadura (ou melhor, entrar nela) e mover-se sem problemas.
+Shorder conta como uma armadura completa +5 que fornece +8 na
+Força, redução de dano 10, +4 nos testes de resistência e deixa seu
+usuário permanentemente sob efeito de movimentação livre. Além
+disso, Shorder tem maças afi adas +2 no lugar das mãos. Seu usuário
+pode atacar com elas como se possuísse o talento Combater com
+Duas Armas Maior. Por fi m, dentro de Shorder seu usuário conta
+como uma criatura Grande.
+Shorder torna seu usuário quase invencível, mas cobra um preço
+alto — quem a utiliza não pode mais sair. Nem mesmo magias como
+teletransporte, remover maldição ou semelhantes conseguem permitir
+a saída de Shorder, embora se acredite que um desejo ou milagre possam.
+A entrada da armadura jamais pode ser aberta enquanto uma
+criatura viva estiver em seu interior. Uma pessoa que tenha morrido
+dentro de Shorder não pode ser ressuscitada por meios mortais; apenas
+uma intervenção divina consegue trazê-la de volta.
+O usuário não pode segurar objetos (pois a armadura não tem
+mãos) ou lançar magias (a menos que use o talento Magia sem
+Gestos). Entretanto, dentro da armadura o usuário não sente fome
+ou sede, e pode dormir (e recuperar pontos de vida) normalmente.
+
+• Slash Calliber
+Qualquer frequentador de tavernas já ouviu histórias sobre
+duelos de honra, confl itos entre aldeias, ou mesmo guerras entre
+reinos que teriam sido provocados por um único item mágico:
+uma espada chamada Slash Calliber.
+Infelizmente para seu portador, Slash Calliber é uma espada
+mágica inteligente com um desejo incontrolável por combate. Tentará
+iniciar batalhas de todas as maneiras, seja xingando o adversário
+(geralmente as pessoas acreditam que a voz vem do portador,
+não da espada!), seja com pequenas mentiras (“Estou lendo a mente
+daquele goblin! Ele vai atacar!”). Mas ela nunca fará coisas estúpidas
+ou puramente malignas, como provocar um ataque suicida
+contra um dragão vermelho ou degolar um camponês desarmado.
+Pelo menos, quase nunca...
+Slash Calliber é uma espada longa anárquica da velocidade +3.
+Pode ser usada para lançar detectar pensamentos, localizar objetos e
+ver o invisível à vontade, e corrente de relâmpagos uma vez por dia.
+
+
+
+
+
+
+
+
+Sem Aura / Uniques Sem Aura
+• Espada das Estrelas: 2d12 19-20/x2 C 2 Mãos FOR 30 para ser usada. seu golpe
+É sempre considerado ataque de toque, e ignora qualquer redução de dano.
+
+• Flauta Negra: A flauta negra concede +4 em testes de Atuação com esse instrumento. Além disso, uma
+vez ao dia, ela permite conjurar servos lefeu, a serviço do portador do artefato. Após 23
+horas, todas as criaturas desaparecem. Novos lacaios podem ser invocados somente após
+uma hora ter se passado. O usuário deve fazer um teste de Atuação (auta) contra CD
+10. Para cada ponto de sucesso acima da CD alvo, o músico pode conjurar 5 níveis de
+monstros lefeu, em qualquer combinação. Níveis excedentes não podem ser usados para
+aprimorar monstros; se não puder conjurar monstros com os níveis disponíveis, nada
+acontece
+
+• Ledd - A Lança Rubra: A Lança Rubra é uma lança de aço-rubi anti-monstros do retorno +3.Qualquer dragão, atingido três vezes por
+ela, morrerá automaticamente, sem direito a qualquer tipo de teste para resistir. Nenhum
+tipo de imunidade funciona contra este efeito.
+Apesar deste magnífico poder, a lança demanda grande maestria de seu usuário. É
+notório o fato de que, caso alguém empunhando a lança erre um único golpe, a arma
+perderá todos os poderes e propriedades especiais, tornando-se uma simples lança comum.
+Por isso, apenas grandes campeões possuíram ao longo das eras a coragem (ou loucura!)
+necessária para usá-la em combate.
+
+• Masakkoulèv, Espada de Maddox: +2 6d6+1d4+1 19-20/x3 C  2 Mãos (Descomunal) Matéria
+Vermelha. Intimidação+2. sempre que acertar um golpe com a espada, seu usuário pode realizar a
+manobra agarrar, como uma ação livre.
+
+• Máscara de Prata: Seu usuário se torna imune a quaisquer magias de encantamento. Além disso, ele não sofre os efeitos negativos
+de estar em uma área de Tormenta, cando imune aos efeitos ambientais, insanidade,
+perda de nível, entre outros. Quaisquer itens mágicos que carregue consigo são protegidos
+do efeito de magia débil.
+
+• Manto do imperador: O manto do imperator fornece +4 em CA e
+testes de resistência, e +10 em Intuição.
+
+• Cálice dos Deuses: Quando o cálice dos deuses é cheio de qualquer líquido
+(mas preferencialmente hidromel, a bebida dos heróis), transforma-
+o em uma versão potável, não venenosa e mágica da
+bebida. Assim, água pode ser purificada, veneno pode ser anulado,
+etc., ao ser derramado dentro do cálice.
+Contudo, o efeito mais impressionante é a inspiração e
+entusiasmo que toma conta de todos que consomem a bebida.
+Os usuários recebem 1 ponto de ação imediatamente. Além
+disso, recebem +4 em duas habilidades à sua escolha, +2 em
+todos os testes de resistência e tornam-se imunes a todos os
+efeitos de medo. Cada usuário também pode escolher um dos
+seguintes efeitos: um uso do talento Duro de Matar, 10 PM
+adicionais ou +8 em testes de duas perícias à sua escolha. Caso
+um personagem sem níveis de aventureiro (ou seja, um plebeu)
+beba do cálice, recebe imediatamente um nível de guerreiro (ou
+outra classe apropriada). Os efeitos funcionam apenas sobre
+criaturas inteligentes e duram 24 horas. Uma mesma criatura
+pode beber do cálice apenas uma vez por dia.
+Usar o cálice dos deuses tem um efeito colateral: os usuários
+veem-se como heróis, tornam-se muito entusiasmados e otimistas,
+acreditando que nada pode vencê-los. Qualquer tarefa
+à frente, mesmo as mais tediosas ou sofridas, passa a ser vista
+com alegria, ou ao menos por um prisma positivo. Ficar parado
+(guarnecendo ou esperando algo) é quase intolerável, e os
+usuários querem, acima de tudo, agir.
+
+• Ruína da Civilização: À Ruína da Civilização é uma foice Enorme afiada anárquica
+de trespassar poderoso +4, com o poder anti criatura contra
+seres racionais (ou seja, seu bônus mágico aumenta em +2, e
+ela causa +2d6 de dano, contra criaturas com Int 3 ou maior).
+
+Cajado das Matas (Allihanna): Este bordão +1 é feito com o que parece ser uma série de galhos finos retorcidos e fundidos com uma empunhadura feita de couro. Nas mãos de um devoto de Allihanna, torna-se um bordão +3. Enquanto o devoto estiver ao ar livre e pisando sobre terra, o cajado concede um bônus de +2 em CA e testes de resistência. Nas mãos de um devoto de 11º nível ou mais, torna-se um bordão +5.
+
+Cimitarra Solar (Azgher): Esta cimitarra +1 tem cabo de marfim e lâmina de aço reluzente. Quando reflete a luz do sol, o aço tem um brilho dourado. Nas mãos de um devoto de Azgher, ganha o poder explosão flamejante (+1d6 de dano de fogo por acerto, +1d10 de dano de fogo adicional com um acerto crítico). Toda vez que o devoto fizer uma doação de 1.000 TO ou mais para o templo de Azgher, a cimitarra reluz mais forte na luz do sol e aumenta o seu encantamento para +2 por um mês. Nas mãos de um devoto de 11º nível ou mais, torna-se uma cimitarra da explosão flamejante +3 (ou +4 após uma doação de 1.000 TO).
+
+Adaga Sorrateira (Hyninn): Esta adaga +1 é feita do que parece ser metal enferrujado. O cabo é feito de mitral maculado. Quando empunhada por um devoto de Hyninn, torna-se uma adaga +3 e tem sua margem de crítico aumentada para 18-20. Além disso, quando o devoto for bem-sucedido em um teste Enganação ou Furtividade, no próximo minuto o personagem pode escolher receber um bônus de +4 em qualquer teste ou rolagem. Esta habilidade só funciona uma vez por dia. Nas mãos de um devoto de 11º nível ou mais, torna-se uma adaga +5 com margem de crítico 17-20.
+
+Lança da Dominação (Kallyadranoch): Esta lança +1 é feita de uma única haste de metal, com uma ponta muito afiada. A sua coloração é cinza escuro, e tem um brilho muito tênue alaranjado. A cada acerto, causa 1d10 pontos dano, mais 1d6 pontos de dano de ácido, eletricidade, energia negativa, fogo ou frio (à escolha do usuário a cada golpe). Cada vez que o devoto sobe de nível enquanto estiver com a lança, o encantamento da arma aumenta em +1 (até um máximo de +6). Entretanto, a cada mês que o devoto passar separado da lança, seu encantamento diminui em –1 (até um mínimo de +1).
+
+Machado da Bravura (Keenn): Este machado de batalha +1 tem cabo de madeira marrom escura com um reforço de metal nas laterais e lâmina única, feita de aço com muitos entalhes representando batalhas e monstros. Nas mãos de um devoto de Keenn, torna-se um machado de batalha +3 e concede um bônus de +4 em testes de Iniciativa. Sempre que seu usuário for o primeiro a agir no combate (vencendo a iniciativa ou surpreendendo seus oponentes), recebe 2 PV temporários por nível de personagem, que terminam no fi m do combate. Nas mãos de um devoto de 11º nível ou mais, torna-se um machado de batalha +5.
+
+Espada da Justiça (Khalmyr): Esta espada longa +1 não deixa dúvidas sobre sua origem ou propósito. É uma espada de aço reluzente sem nenhum detalhe, exceto no seu cabo de ouro, onde existem algumas inscrições de orações a Khalmyr. Nas mãos de um devoto, torna se axiomática (+2d6 pontos de dano contra criaturas Caóticas) e sagrada (+2d6 pontos de dano contra criaturas Malignas). Nas mãos de um devoto de 11º nível ou mais, torna-se uma espada longa axiomática sagrada +3.
+
+Caldeirão da Vida (Lena): Esta grande panela de ferro é abençoada com o poder de Lena, e imbui qualquer comida cozinhada nela com energia positiva. Uma refeição do caldeirão pode alimentar até cinco criaturas Médias (uma criatura Pequena come o equivalente à metade de uma criatura Média, e uma criatura Grande, o equivalente ao dobro) e fornece +1 nos testes de resistência de todas as criaturas que se alimentarem dela. Se a refeição for preparada por uma devota de Lena, também fornece 1d8+1 PV temporários. Por fi m, se for preparada por uma devota de 11º nível ou mais, os bônus duplicam: +2 nos testes de resistência e 2d8+2 PV temporários. Apenas a primeira refeição de cada dia preparada no caldeirão da vida fornece esses bônus, e eles duram até o fim do dia.
+
+Katana da Determinação (Lin-Wu): Esta katana +1 é feita de aço tamuraniano e tem cabo coberto de tiras de couro trançadas. A lâmina tem coloração avermelhada, sinal de Lin-Wu para que seus devotos nunca se esqueçam da grande tragédia que se abateu sobre seu povo. Nas mãos de um devoto de Lin-Wu, torna-se uma katana +3. Sempre que o usuário derrotar um lefeu com a katana, recebe 20 PV temporários e um bônus de +2 nos testes de resistência e CA por 1 minuto (não cumulativo). Nas mãos de um devoto de 11º nível ou mais, torna-se uma katana +5.
+
+Instrumento da Alegria (Marah): Este item pode vir na forma de qualquer instrumento musical leve, como uma flauta, um bandolim ou um tambor pequeno. Um personagem treinado em Atuação (música) pode gastar uma ação padrão para tocar o instrumento e gerar um efeito de fascinar, como a música de bardo. Caso o usuário já possua a habilidade música de bardo, recebe um bônus de +2 no seu teste de Atuação (música). Nas mãos de um devoto de Marah, o instrumento também pode ser usado para gerar uma música alegre, que impede sentimentos agressivos e impõe uma penalidade de –1 nas jogadas de ataque de todas as criaturas Malignas a até 18m. Usar este efeito exige uma ação padrão, e ele dura 1 minuto. Nas mãos de um devoto de Marah de 11º nível ou mais, a penalidade aumenta para –2, e se aplica nas jogadas de dano, além de nas jogadas de ataque.
+
+Maça Monstruosa (Megalokk): Esta maça +1 é feita de rocha vulcânica. Nas mãos de um devoto de Megalokk, a maça causa 3d8+1 pontos de dano em vez de 1d8+1. Nas mãos de um devoto de 11º nível ou maior, a maça causa 5d8+1 pontos de dano.
+
+Alguma Coisa de Nimb…: E pode nem ser uma arma. Uma frigideira, salame ou pluma de avestruz prateada pode ser um objeto litúrgico tanto quanto uma maça ou espada. Objetos litúrgicos de Nimb só aparecem para seus devotos, sempre em momentos inesperados. O devoto sabe instintivamente que a adaga na bota do guarda, ou o arco no armorial do castelo ou até mesmo a panela do cozinheiro goblin é na verdade um item sagrado de seu deus. Qualquer que seja o objeto é uma arma anárquica +2 (+2d6 pontos de dano contra criaturas Leais). Nas mãos de um devoto de 11º nível ou mais, torna-se uma arma anárquica +5.
+
+Tridente Aquoso (Oceano): Este tridente +1 parece ser feito de coral translúcido azulado. As três pontas do tridente emanam uma tênue névoa gelada. Nas mãos de um devoto do Oceano, o tridente ganha o encantamento explosão congelante (+1d6 de pontos de dano de frio por acerto, +1d10 pontos de dano de frio adicional com um acerto crítico). Nas mãos de um devoto de 11º nível ou mais, torna-se um tridente da explosão congelante +4.
+
+Foice das Almas (Ragnar): Esta foice +1 é feita de osso muito duro e afiado. Nas mãos de um devoto de Ragnar, torna-se uma foice do toque espectral +2. Além disso, sempre que o usuário derrubar uma criatura a 0 ou menos PV, o inimigo derrubado é afetado pela magia
+drenar força vital. Um teste bem-sucedido de Vontade contra CD 16 anula o efeito da magia. Nas mãos de um devoto de 11º nível ou mais, torna-se uma foice do toque espectral +3.
+
+Adaga Pavorosa (Sszzaas): Esta adaga +1 é feita da presa de uma serpente gigantesca. Possui um compartimento oco no cabo com veneno de cascavel (1d12 pontos de dano, Fort CD 15 anula). O veneno é magicamente reposto a cada golpe. Nas mãos de um devoto de
+Sszzaas, torna-se uma adaga +3 que ignora qualquer resistência ou imunidade a veneno de uma criatura atingida. Nas mãos de um devoto de 11º nível ou mais, o veneno passa a causar 2d12 pontos de dano (Fort CD 20 reduz à metade).
+
+Bordão Sabichão (Tanna-Toh): Este bordão +1 é feito de metal e cravejado de diversas gemas, todas da mesma cor (cada cajado individual tem sua cor). Nas mãos de um devoto de Tanna-Toh, torna-se um bordão misericordioso +2 (causa +1d6 pontos de dano, e todo dano causado é não letal). O usuário pode desativar e ativar este poder como uma ação livre. Além disso, o cajado sussurra conselhos e lembretes quando o usuário realiza testes de Conhecimento, concedendo um bônus de +4 em todos esses testes. Nas mãos de um devoto de 11º nível ou mais, aumente torna-se um bordão misericordioso +4. Além disso, uma vez por dia o usuário pode repetir um teste de Conhecimento que tenha falhado.
+
+Machado Glorioso (Tauron): Este machado grande +1 é feito de adamante e tem nos seus dois gumes inscrições na língua de Tapista. O cabo é coberto de entalhes representando labirintos. Por ser feito de adamante, o machado causa 2d8 pontos de dano em vez de 1d12. Nas mãos de um devoto de Tauron, permite utilizar o talento Ataque Poderoso sem sofrer penalidade no ataque e fazer investidas sem sofrer penalidade na CA. Nas mãos de um devoto de 11º nível ou mais, torna-se um machado grande +3.
+
+Shuriken Noturno (Tenebra): Este shuriken +1 é feito de aço reluzente com uma safira no centro. Quando arremessado, ele deixa um rastro de sombras com estrelas no fundo — mas apenas por um instante. Nas mãos de um devoto de Tenebra, torna-se um shuriken +2 do arremesso e retorno: o shuriken tem alcance de 6m e volta voando ao usuário, no início de seu próximo turno. Pegar a arma é uma ação livre e não exige nenhum teste. Nas mãos de um devoto de 11º nível ou mais, torna-se um shuriken +5 do arremesso e retorno com alcance de 9m.
+
+Espada Imaculada (Thyatis): Esta espada longa +1 tem cabo de aço tingido de vermelho vivo, com asas de pássaro servindo de guarda-mão. Nas mãos de um devoto, torna-se uma espada longa +2 e uma vez por dia, como uma ação livre, o usuário pode transformá-la em uma espada de energia brilhante +2 por um minuto — a lâmina torna-se luz. Armas de energia brilhante fazem ataques de toque (em vez de ataques normais) e emanam luz como uma tocha. Nas mãos de um devoto de 11º nível ou maior, torna-se uma espada longa +4 e uma vez por dia o usuário pode transformá-la em uma espada longa de energia brilhante trovejante por um minuto.
+
+Mangual Aventureiro (Valkaria): Este mangual + 1 tem o cabo e a cabeça feitos de aço, interligados por uma corrente coberta de ouro. Nas mãos de um devoto, torna-se um mangual +2 dançarino — como uma ação padrão, o usuário pode soltá-lo no ar. A arma então flutua, ataca os inimigos do usuário (com os mesmos bônus que teria se fosse empunhada por ele) por quatro rodadas, então cai no chão. Nas mãos de um devoto de 11º nível ou mais, torna-se um mangual +3 dançarino, e luta por seis rodadas antes de cair.
+
+Varinha da Generosidade (Wynna) Esta varinha incomum é feita de madeira Tollon e tem
+várias runas que emanam uma luz púrpura quando encontram a luz da lua. A varinha tem a capacidade de gerar um campo de força, concedendo resistência a dano 2 ao usuário. Nas mãos de um devoto, a varinha pode ser usada como um florete +3. O usuário pode usar a varinha como uma arma desta forma sem precisar de treinamento com armas marciais. Nas mãos de um devoto de 11º nível ou mais, o encantamento aumenta para +5.
+
+Vingança de Khinlanas: O arco pessoal do último Rei dos Elfos. Vingança de Khinlanas é um arco grande e pesado, de madeira verde oliva, escurecida pelos séculos. É um arco longo +5. Seu bônus aumenta em +1 se o usuário for um elfo ou devoto de Glórienn. Os bônus são cumulativos — assim, para um elfo devoto de Glórienn, Vingança é um arco longo +7. Esta era a arma do rei de uma raça orgulhosa, e a magia dela reage à força da personalidade de seu portador. O usuário de Vingança de Khinlanas soma seu modificador de Carisma às jogadas de dano com a arma. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
