@@ -1,0 +1,1000 @@
+
+
+
+
+
+
+
+
+
+
+Aura Tênue
+
+Nota Promissória do Poder: As notas promissórias do poder são muito utilizadas para transferência segura de valores, principalmente pagamento para aventureiros, mercenários e até mesmo piratas e contrabandistas. Uma criatura pode assinar o pergaminho, garantindo um único uso de uma habilidade de classe, talento ou magia para aquele que estiver delineado como seu receptor (ativar o pergaminho é uma ação padrão). O contrato da nota promissória pode possuir outros parâmetros, ou mesmo a possibilidade de passar adiante a nota. O custo deste item varia de acordo com a magia ou poder armazenado no pergaminho. Para magias de 1º a 3º nível, o custo é o mesmo de um pergaminho. Para magias de 4º a 9º nível, o preço é igual ao nível da magia x o nível mínimo para usar a magia x 25 TO, mais o custo de qualquer componente material, mais 1 TO para cada 1 XP se a magia tiver esse custo. Para habilidades de classe ou talentos, um único uso é armazenado na nota promissória, e a duração máxima de seus benefícios é 1 minuto. O custo é de 300 TO x nível em que a habilidade é adquirida; ou 500 TO mais 500 TO para cada pré-requisito, no caso de talentos. Quaisquer outros parâmetros devem ser estabelecidos pelo mestre. Correm rumores que até mesmo deuses às vezes criam essas notas e as usam em negociatas intramundanas…
+Preço: Variável.
+
+Flecha do sono: esta flecha +1 é pintada de branco, incluindo suas penas. Ela causa dano não letal e força a criatura atingida aBo ser bem-sucedida em um teste de Vontade (CD 11) ou adormecer durante 1 hora. Preço: 132 TO
+
+Elixir do amor: um humanoide que beba este líquido de sabor adocicado fica apaixonado(mesmo efeito da magia enfeitiçar pessoa; Vontade CD 15 anula) pela primeira criatura que enxergar. O efeito dura 1d3 dias. Preço: 150
+
+Elixir do Estrangeiro: Estrangeiros em Skerry, o Mundo Despedaçado, não são maltratados por suas origens ou costumes — mas o próprio ambiente de baixa gravidade é perigoso para eles, diminuindo a força de seus músculos e ossos aos poucos, até a  completa atrofia. Para evitar isso, o elixir do estrangeiro é a solução mais simples. Se for ingerido uma vez por mês, ele evita os efeitos de perda de Força em gravidade baixa. Infelizmente, sua ausência é perigosa; se deixar de ser ingerido em um mês, o personagem perde 1 ponto de Força para cada mês em que bebeu o elixir (entrando em coma se chegar em Força 0). Beber o elixir posteriormente não recupera essa perda; apenas a magia recuperar musculatura, ou o retorno a um mundo de gravidade normal, podem fazê-lo.
+Preço: 150 TO.
+
+Pó de apagar rastros: é capaz de ocultar a passagem do personagem e seus companheiros. Lançado ao ar, faz com que um recinto com até 9m de lado torne-se tão empoeirado, sujo e coberto de teias de aranha como se estivesse abandonado e intocado por uma década. Espalhado sobre uma trilha, apaga as pegadas de um grupo com até doze homens e cavalos por uma distância de até 75m. Testes de Sobrevivência para rastrear pegadas afetadas por este item têm sua dificuldade aumentada em CD+20.
+Preço: 250
+
+Virote gritante: ao ser disparado, este virote +2 grita, forçando todos os inimigos a até 6m de seu trajeto a fazer um teste de Vontade (CD 14). Aqueles que falharem ficam abalados por 1 minuto. Preço: 267 TO
+
+Elixir da verdade: este elixir obriga aquele que o ingerir a responder com a verdade qualquer pergunta que lhe seja feita durante 10 minutos (Vontade CD 16 anula). 
+Preço: 500
+
+Flechas Elementais: Estas poderosas flechas eram criadas para os guardiões de Lenórienn, e hoje podem ser encontradas em torres de vigia abandonadas nas selvas de Lamnor. Existem diversas versões; todas podem ser usadas com qualquer tipo de arco e contam como flechas +2. Note que os bônus de ataque e dano das flechas não são cumulativos com quaisquer bônus que o arco tenha. Entretanto, caso sejam utilizadas em conjunto com um arco mágico, as flechas aumentam o bônus do arco em +1.
+
+Fúria dos Céus: esta flecha de penas brancas transforma-se em um raio quando é disparada. Ela causa +2d6 pontos de dano de eletricidade e atinge todas as criaturas numa linha, até o primeiro incremento de distância do arco, quando então se dissipa. Ou seja, se for disparada de um arco longo (distância 24m), atinge todas as criaturas em uma linha até 24m do arqueiro. Faça apenas uma jogada de ataque; todas as criaturas no caminho da flecha têm direito a um teste de Reflexos (CD igual à jogada de ataque) para sair do caminho do relâmpago e evitar o dano.Preço: 500 TO por flecha.
+
+Língua do Dragão: a madeira desta flecha parece ter sido queimada, sendo enegrecida e quente ao toque. Ela causa +2d6 pontos de dano de fogo e recobre o alvo atingido em labaredas. A criatura deve fazer um teste de Reflexos (CD igual ao resultado da jogada de ataque). Se falhar, pega fogo, sofrendo mais 2d6 pontos de dano de fogo por 1d6 rodadas. A criatura pode gastar uma ação completa para apagar as chamas. Preço: 500 TO por flecha.
+
+Nevasca: esta flecha azulada é fria ao toque. Ela causa +2d6 pontos de dano de frio e recobre o alvo com uma camada de gelo. A criatura deve fazer um teste de Fortitude (CD igual ao resultado da jogada de ataque). Se falhar, fica paralisada por 1d4 rodadas, mas recebe redução de dano 10/adamante. Se sofrer qualquer dano, a camada de gelo quebra, e o efeito de paralisia termina. Mesmo que a criatura seja bem-sucedida no teste de Fortitude, fica lenta (veja a magia lentidão) por uma rodada.
+Preço: 500 TO por flecha.
+
+Elixir Estrambólico: Este líquido mágico é muito procurado por aventureiros e comerciantes que desejam evitar os efeitos “normalizadores” da Síndrome de Khalmyr, em Ordine. Ao beber o elixir estrambólico, todos os redutores e bônus oferecidos pela presença continuada neste mundo (em direção à médias raciais) são imediatamente removidos, e o usuário fica imune a esses efeitos por 1 semana.
+Preço: 500 TO.
+
+Arco de Tollon: Feito com a madeira mágica da floresta de Tollon, este arco é mais resistente que o normal, por isso, consegue uma puxada mais forte. Funciona como um arco longo de madeira Tollon obra-prima, fornecendo um bônus de +1 nas jogadas de ataque e contando como uma arma mágica para fins de ultrapassar redução de dano. Além disso, permite que seu usuário aplique seu bônus de Força nas jogadas de dano. Seu preço é 800 TO. 
+
+Chave de Wynna: Esta pequena e delicada chave dourada traz a efígie da Deusa da Magia. Ela permite, uma vez por dia, lançar portal para o saber.
+Preço: 900
+
+Máscara da Revolução: Assim que é posta sobre o rosto, a máscara da revolução se mescla à pele do
+usuário, modificando sua aparência. Todos os usuários adquirem O mesmo rosto comum e ordinário, sem características marcantes. Todas as testemunhas têm dificuldade para descrevê- lo. Sempre lembram apenas que "tem altura mediana, cabelos castanhos e pele branca". Também sempre enxergam-no como homem, mesmo que seja mulher. Preço 1.000 TO; Peso 250g.
+
+Filactério da Fé: Esta pequena caixa de madeira contém escrituras religiosas, sendo mantida fechada por um cordão de couro. Apesar de seu poder reduzido, é muito valorizada por devotos do Panteão. O usuário de um filactério da fé é alertado telepaticamente quando está prestes a executar uma ação condenada por sua divindade  em termos de jogo, uma ação contrária a sua tendência ou às obrigações e restrições de deus. O usuário recebe o alerta a tempo de voltar atrás, se quiser.
+Preço: 1.000
+
+Armadura de Treinamento: Os legionários têm suas táticas tradicionais e seu modo típico de lutar, mas também precisam se adaptar a batalhas e situações específicas. Os rebeldes convivem todos os dias com novos desafios e tarefas imprevistas, e precisam estar sempre prontos. Uma armadura de treinamento pode ser de qualquer tipo. Um usuário pode vesti-la e treinar durante uma hora para trocar um de seus calemos por outro talento qualquer (desde que cumpra seus pré-requisitos). A troca permanece ativa enquanto o usuário estiver usando a armadura de treinamento. Uma vez que tire a armadura, seu talento volta ao normal. Existe uma versão maior da armadura de treinamento, que permite que o usuário troque qualquer número de talentos (um por hora de treinamento).
+Preço: encantamento +1 ou +3 para a maior.
+
+Braçadeiras da armadura: estes braceletes podem ser feitos de metal ou couro, e protegem seu usuário com um campo de força invisível, porém tangível. Fornecem um bônus de +1 a +8 na classe de armadura, não cumulativo com bônus de armaduras.
+Preço: 1.000, 4.000, 9.000, 16.000, 25.000, 36.000, 49.000, 64.000 TO
+
+Manto da resistência: este traje protege seu usuário, fornecendo um bônus de +1 a +5 em todos os testes de resistência.
+Preço: 1.000, 4.000, 9.000, 16.000, 25.000
+
+Arma dos Becos: Estas armas (sempre de ataque à distância) são especialmente encantadas para uso em combates nas ruas. Seus alvos náo podem utilizar esquinas, paredes e outros típicos obstáculos urbanos para evitar suas flechas. O usuário de uma arma dos becos deve fazer um teste de Percepção oposto pelo teste de Furtividade ou Acrobacia do alvo. Caso seja bem-sucedido, o usuário ignora roda a cobertura (inclusive cobertura total) devido a obstáculos urbanos (como esquinas, becos e prédios). A arma (ou os projéteis que ela dispara) dobram esquinas em busca do alvo, passam por cima de muralhas e desviam-se de carroças. Caso o alvo entre em um prédio ou cômodo e feche uma porta, a flecha não persegue-o - apenas desvia-se de obstáculos que possam ser contornados. Obviamente, o poder de uma arma dos becos funciona apenas em cidades (outros ambientes não apresentam "obstáculos urbanos"). 
+Preço: + 1 de bônus.
+
+Elixir de cuspir fogo: este elixir borbulhante fornece para quem o ingerir a capacidade de cuspir labaredas. A criatura pode cuspir fogo até três vezes, infligindo 4d6 pontos de dano de fogo (Reflexos CD 16 reduz à metade) por vez. Cada ataque atinge um único alvo a até 9m. Labaredas não utilizadas se dissipam uma hora após o líquido ter sido ingerido.
+Preço: 1.100
+
+Ar Engarrafado: Vendedores de bugigangas costumam tentar convencer os forasteiros a comprar garrafas vazias, dizendo que contêm "o ar de Valkaria engarrafado". Não se sabe se o ar engarrafado mágico deu origem a esse trambique, ou se algum mago empreendedor
+teve a ideia de fabricá-lo após ver um dos trambiqueiros em ação - mas é fato que existem garrafas que contêm um pouco da "essência" de Valkaria ou outras grandes cidades.Ao ser aberta, a garrafa de ar engarrafado expele urna fumaça translúcida, que mostra relances momentâneos de cenas e prédios da capital (ou de outra cidade). Cada garrafa simula uma cidade específica. A fumaça não tem cheiro e não obscurece a visão, mas ocupa uma área de 30 por 30 metros. Esta área passa a contar como Valkaria (ou a cidade em questão) para fins de habilidades de classe, talentos, magias, etc. Assim, um pastor de Valkaria pode usar sua habilidade pequenos deuses dentro da área coberta pela fumaça, por exemplo. Quaisquer criaturas vivas "criadas" pela fumaça para atender a habilidades ou magias (por exemplo, os guardas trazidos pelo talento Chamar Reforços) comportam-se exatamente como suas contrapartes reais, mas são na verdade construtos mágicos criados pela fumaça. O ar engarrafado, no entanto, não cria ou simula nenhum local específico de Valkaria ou qualquer outra cidade - não permite acesso aos esconderijos do rei do crime ou ao templo do pastor de Valkaria, por exemplo. A fumaça dissipa-se depois de 15 minutos (ou 5 minutos, com ventos fortes ou magias que criem vento). Uma vez utilizado, o ar engarrafado se esvai; é preciso comprar outra garrafa (comando cuidado para que seja legítima!). Talvez existam itens como este para simular outros terrenos (florestas, montanhas... ), mas isso não é confirmado.
+Preço: 1.125 TO.
+
+Pó da ilusão: esta poeira parece pó de giz — mas, se examinada com atenção, nota-se sua cor e forma mutáveis. Atirada sobre alguém, gera os efeitos da magia disfarce ilusório. A criatura adquire uma forma desejada pelo personagem que atirou o pó da ilusão.
+Preço: 1.200
+
+Lâmina Élfica: Usada pelos guardiões de Lenórienn, esta espada é feita de mitral, um metal prateado, brilhante e mais leve que o aço. Fios de prata correm ao longo da lâmina, formando desenhos belos e delicados. A lâmina élfica é uma espada longa de mitral obra-prima. Tem as estatísticas de uma espada longa, com bônus de +1 nas jogadas de ataque e na margem de ameaça e peso de 1kg. Seu preço é 1.315 TO, mas, na época atual, esta arma é encontrada apenas em lojas de antiguidades e relíquias élficas. 
+
+Amuleto dos Sussurros: amuleto dos sussurros é um item de uso único, com grande poder mas de curta duração. Por sua natureza descartável (e porque não deve despertar suspeitas), em geral é confeccionado com materiais ordinários e/ou aparência tosca: uma conta de vidro barato presa a um graveto, um pequeno cubo de chumbo envolto em pergaminho puído, um quadrado de bronze com
+um osso de galinha amarrado. Em geral, há algum tipo de pedra ou metal e um item que pode ser quebrado ou rasgado com facilidade. Quando a parte mais frágil é quebrada, a magia do amuleto se ativa: o usuário e todos num raio de 3 metros ficam imunes a efeitos de adivinhação. Ou seja, ainda precisam se preocupar com espiões ocultos nas sombras, mas são imunes a magias como vidência e itens como bola de cristal. Caso o usuário já estivesse sendo observado e, de repente, a vidência parasse de   funcionar, o observador poderia ficar alarmado. No entanto, o amuleto substitui as imagens e sons atuais
+do usuário por junções convincentes de suas atividades passadas. Apenas com um teste de Inteligência (CD 20) um observador pode notar que está vendo uma “colagem” de situações antigas. O efeito dura 3d10 rodadas. O usuário sente quando restam duas rodadas para o final do efeito. Após utilizado, o amuleto dos sussurros passa a ser um amontoado de sucata inútil, não sendo detectado como mágico de forma alguma.
+Preço 1.500 TO.
+
+Azagaia dos relâmpagos: esta azagaia se torna um relâmpago (como a magia, 6d6 de dano de eletricidade, Ref CD 14 reduz à metade) quando arremessada. Ela é consumida no ataque. Preço: 1.500 TO
+
+Chapéu do disfarce: este chapéu permite que o usuário altere sua aparência como se estivesse sob efeito da magia disfarce ilusório. Como parte do disfarce, o chapéu pode mudar para o aspecto de um elmo, faixa, tiara, gorro, touca, pente e assim por diante. Rumores dizem que o infame assassino Camaleão tem um chapéu do disfarce, e graças ao item ninguém jamais viu seu rosto verdadeiro.
+Preço: 1.800
+
+Flauta do som: quando tocada por um personagem treinado em Atuação (música), esta flauta cria diversos sons mágicos, equivalentes à magia som fantasma.
+Preço: 1.800
+
+Espada de Cavaleiro: Forjada por anões, esta espada é feita de adamante, um metal escuro, fosco e mais denso que o aço. A antiga aliança entre Doherimm e a Ordem da Luz faz com que muitos cavaleiros recebam esta arma de presente dos anões; por isso ela tem este nome no mundo da superfície. Em termos de regras, é uma espada bastarda de adamante obra-prima. Tem as estatísticas de uma espada bastarda, com um bônus de +1 nas jogadas de ataque e dano de 2d8. Seu preço é 1.835 TO. 
+
+Pedra da Boa Sorte: Uma vez por dia, o usuário de uma pedra da boa sorte pode rolar novamente
+uma jogada ou teste que tenha recém realizado.
+Preço: 2.000 TO.
+
+Cápsula da Sinergia: Esta cápsula especial é um trunfo nas mãos de um mago pistoleiro arcano que possua aliados também capazes de lançar magias. Um conjurador arcano pode lançar uma magia diretamente em uma cápsula da sinergia que esteja em sua posse. A magia armazenada na cápsula pode então ser utilizada por um pistoleiro arcano, e não conta em seu limite de magias preparadas. Cápsulas da sinergia são valiosas, mas de uso limitado; depois de disparadas são completamente destruídas.
+Preço: Seu custo é variável: 200 TO x número máximo de PMs que a cápsula pode receber (entre uma única magia e um número qualquer de talentos metamágicos), até um máximo de 2.000 TO por uma cápsula que possa armazenar 10 PM
+
+Amuleto do Conhecimento Arcano: Este amuleto de prata, gravado com o brasão da Academia Arcana, pode ser usado como prendedor de capa ou como broche. É oferecido como premiação para alunos aprovados no Teste do Vento . Uma vez por dia, oferece ao usuário um bônus de +10 em um teste de Conhecimento (arcano). No entanto, o amuleto não funciona no território da Academia  — impedindo que seja usado em exames e provas.
+Preço: 2.000
+
+Criatura em Miniatura: Estes fabulosos construtos mágicos são versões em miniatura de criaturas reais, cabendo na palma da mão de uma criatura média. Existem miniaturas de gnolls, águias, ogros e até dragões — a variedade é quase infinita. Os materiais e a manufatura dependem do poder da criatura representada. Gnolls costumam ser feitos de madeira ou argila, águias são feitas de prata ou marfim, dragões são feitos de ouro e jóias. Uma vez por dia, como uma ação padrão, o usuário de uma criatura em miniatura pode arremessá-la ao chão e falar uma palavra de comando, fazendo com que o item torne-se uma versão típica da criatura representada. A criatura então irá lutar em nome do usuário, ou cumprir qualquer tarefa a seu alcance (um grifo pode ser montado, um gigante pode erguer objetos pesados, etc.). Se for usada em combate, uma criatura em miniatura permanece ativa até o final do encontro, ou até ser reduzida a 0 PV. Fora de combate, a criatura em miniatura fica ativa por até 4 horas.
+Preço: 2.000, 12.000, 35.000, 70.000, 120.000
+
+Anel de proteção: este anel desvia ataques realizados contra o usuário, fornecendo de +1 a +5 em sua classe de armadura.
+Preço: 2.000, 8.000, 18.000, 32.000, 50.000
+
+Arma do Plebeu: No início das Guerras Táuricas, os reinos invadidos simplesmente não possuíam contingente para enfrentar as legiões. Depois da ocupação, isso é um problema ainda mais grave - os exércitos oficiais não podem se chocar contra os invasores. É preciso armar a população. Não se pode ter um guerreiro em cada cabana, mas é possível ter um cidadão! Uma arma do plebeu é uma arma encantada para que qualquer um possa usá-la, mesmo sem o talento apropriado. Normalmente são armas marciais, como espadas e arcos longos, que com este encantamento podem ser usadas mesmo por quem não possuí Usar Armas Marciais. Bandos rebeldes distribuem estas armas em aldeias remotas, e grupos de aventureiros usam-nas para garantir que mesmo os magos possam empunhar ferramentas mortais. Existem armas exóticas encantadas desta forma, e são ainda mais úteis e raras.
+Preço: 2.000 (encantamento +1)
+
+Anel de queda suave: este anel é decorado com um padrão de penas ao longo da orla. Seu usuário fica sob efeito da magia queda suave ao cair de 1,5m ou mais.
+Preço: 2.200
+
+Gema elemental: esta gema contém uma magia de invocação vinculada a um Plano Elemental específico (ar, terra, fogo ou água). Quando a gema é esmagada (uma ação padrão), um elemental Grande do tipo correspondente surge. O elemental fica sob controle da criatura que quebrou a gema, mas desaparece em 1 minuto.
+Preço: 2.250
+
+Flecha assassina: esta flecha é ligada a um tipo de criatura, como uma arma anti criatura. Se atingir uma criatura do tipo certo, a vítima deve ser bem-sucedida em um teste de Fortitude (CD 20) ou será destruída. Preço: 2.282 TO
+
+Anel do sustento: este anel supre a necessidade de comer e beber de seu usuário. Também refresca corpo e mente, permitindo que ele durma apenas duas horas por dia como se fossem oito. Os efeitos do anel só se ativam após uma semana de uso.
+Preço: 2.500 TO
+
+Bordão das Maldições: Este bordão + 1 é feito de madeira Tollon retorcida, e tem aparência sinistra e perturbadora. Apesar do material e da qualidade de sua manufatura, muitas vezes tem aspecto primitivo, com adornos rústicos (ossos de animais, ervas fedorentas, etc.). O bordão das maldições fornece um bônus de + 5 em testes de Identificar Magia para as maldições de um bruxo.
+Preço: 2.500
+
+Amuleto do Idioma: Um personagem usando esse amuleto pode compreender e falar o  idioma específico com o qual item foi imbuído. Caso saiba ler e escrever, também conseguirá fazê-lo no idioma do amuleto. Cada amuleto do idioma tem uma aparência diferente, com aspectos que lembrem a raça que emprega aquela língua, como adornos de folhas e flores para um amuleto do idioma silvestre, ou ondas e peixes para um amuleto do idioma aquan.
+Preço: 2.500
+
+Manto élfico: é indistinguível de um manto cinza comum. Entretanto, quando usado com o capuz cobrindo o rosto, fornece +5 em testes de Furtividade.
+Preço: 2.500
+
+Anel da Graça das Águas: Este anel de prata exibe uma turmalina incrustada; na própria gema está gravado o brasão da Academia Arcana.É oferecido como premiação para alunos aprovados no Teste da Água. Fornece um bônus de + 1 em CA e, uma vez por dia, oferece um bônus de + 5 em um teste de Conhecimento (natureza). O bônus em CA funciona em qualquer lugar, mas o bônus em Conhecimento (natureza) não pode ser usado no território da Academia.
+Preço: 2.500
+
+Mochila de carga: este item, que parece uma simples mochila de pano, está na verdade ligado um espaço inter-dimensional — fazendo com que seja maior por dentro que por fora. Pode-se guardar até 100kg dentro de uma mochila de carga, mas ela pesará no máximo 5kg. Se a mochila for rasgada, todos os objetos em seu interior se perdem para sempre. Criaturas vivas colocadas no interior da mochila podem sobreviver até 10 minutos, mas depois disso morrerão asfixiadas.
+Preço: 2.500 TO
+
+Carrilhão da abertura: quando este tubo oco de madeira com cerca de 30cm é soprado, emite vibrações mágicas que abrem qualquer tipo de tranca (portas, cadeados, algemas...). O carrilhão da abertura também dissipa automaticamente qualquer magia cerrar portas ou tranca arcana. A magia silêncio anula este item. O carrilhão da abertura pode ser usado 10 vezes antes de perder seu poder.
+Preço: 3.000
+
+Lanceiro: Reforçado com mitral, este arco é capaz de disparar poderosas flechas metálicas, muito pesadas para arcos normais. Funciona como um arco longo de mitral obra-prima, fornecendo um bônus de +1 nas jogadas de ataque e na margem de ameaça. As flechas metálicas aumentam o dano do arco em uma categoria (para 1d10). O preço do arco é 3.000 TO. O preço de cada flecha metálica é 1 TO. 
+
+Ferraduras da velocidade: este conjunto com quatro ferraduras de ferro pode ser fixado nos cascos de um cavalo para aumentar seu deslocamento em +9m.
+Preço: 3.000
+
+Corda da escalada: este corda de 15m é bastante fina, mas forte o suficiente para suportar até 1.500kg. Com um comando, a corda se move em qualquer direção (incluindo para cima) a 3m por rodada, fixando-se firmemente onde seu usuário desejar. Ela pode se desamarrar e voltar da mesma forma.
+Preço: 3.000
+
+Arma Ocultável: Para fingir inocência, entrar despercebido em um baile ou mesmo abordar um suspeito sem atrair hostilidade, é importante ser capaz de ocultar suas armas. Uma arma ocultável é qualquer arma que, através de um encantamento especial, pode ser escondida dentro de um manto ou casaco simples. Caso o usuário tire o casaco, manto ou peça de roupa onde a arma está escondida, ela é revelada - mas uma revista casual não mostra nada. Qualquer arma pessoal pode ser escondida, se estiver sob este encantamento: uma enorme espada de duas mãos passa a caber em um mero colete! Uma arma encantada desta forma também pode ser sacada e guardada como uma ação livre. Caso o usuário possua várias armas ocultáveis, pode trocar de arma (guardando uma e sacando a outra) como uma ação livre. 
+Preço: +2 de bônus.
+
+
+Escudo do conjurador: este escudo leve +1 tem uma pequena tira de couro na parte inferior, onde um conjurador pode escrever qualquer magia de até 3º nível que possa lançar. A tira de couro pode então ser lida como um pergaminho. Escrever uma magia na tira leva um minuto, e apenas uma magia pode ser escrita por dia. Preço 3.305 TO
+
+Espada de Aço-Rubi: Esta espada foi forjada com aço-rubi, um metal com a aparência de vidro avermelhado, capaz de cortar qualquer substância. Em termos de regras, é uma espada longa de aço-rubi magistral e precisa. Tem as estatísticas de uma espada longa, com um bônus de +2 nas jogadas de ataque, +1 na margem de ameaça e a capacidade de ultrapassar qualquer tipo de redução de dano. Seu preço é 3.415 TO
+
+Cota de malha élfica: esta cota de malha de mitral +1 é composta de finíssimos anéis, fazendo com que ela pareça ser feita de um tecido leve, como seda. Preço 3.450 TO
+
+Pó do desaparecimento: uma criatura ou objeto coberto por este pó torna-se invisível (como em invisibilidade maior) por 2d6 rodadas. O usuário não sabe quando a invisibilidade vai terminar.
+Preço: 3.500
+
+Bálsamo de pedra: este unguento tem duas finalidades. Se aplicado sobre uma criatura petrificada, ela retorna ao normal, como pela magia pedra em carne. Se aplicado em uma criatura normal, ela fica protegida, como pela magia pele rochosa. Um frasco contém o sufi ciente para um uso.
+Preço: 4.000 TO 
+
+Itens de Atributo(força,destreza,constituição,inteligência,sabedoria,carisma) +2/+4/+6: Fornece um bônus de +2, +4 ou +6 no atributo do usuário.
+Preço: 4.000, 16.000, 36.000
+
+Anel da Contramágica: Este anel feito de aço polido com uma pérola incrustada armazena uma magia arcana. Quando o usuário do anel da contramágica é alvo da mesma magia que está armazenada, pode anular a magia lançada contra ele automaticamente. A magia armazenada no anel é então “gasta”. Armazenar uma magia no anel exige o tempo de execução normal da magia escolhida.
+Preço: 4.000
+
+Estilhaçadora: a lâmina desta espada longa +1 é levemente serrilhada. Se usada para uma manobra de separar, se torna uma espada longa +4. Preço: 4.315 TO
+
+Escudo brilhante: este escudo pesado +1 é feito de metal reluzente e brilhante. Qualquer inimigo a até 6m do usuário deve ser bem-sucedido em um teste de Fortitude (CD 15) ou ficará ofuscado por 1 minuto. Uma vítima bem-sucedida no teste de resistência fica imune a este efeito por um dia. Preço 4.320 TO
+
+Couraça dos anões: esta couraça de adamante +1 é pesada,mas oferece boa proteção. Preço 4.500 TO
+
+Manto dos Dao: Este belo manto de tecido azul escuro (para alunos do sexo masculino) ou vermelho escuro (para o sexo feminino) tem símbolos da Academia Arcana e de Wynna bordados alternadamente na gola e nas bainhas. É oferecido como premiação para alunos aprovados no Teste da Terra. Fornece um bônus de +2 em todos os testes de resistência e um bônus adicional de +2 em testes de Vontade para lançar magias em condições precárias (em movimento, ao sofrer dano, etc.). Um presente dos dao (outro nome dos gênios da terra) aos alunos mais bravos e dedicados, este item funciona dentro do território da Academia - ao contrário do amuleto do conhecimento arcano e do anel da graça das águas. Assim, seu bônus em testes de resistência pode ser usado para os testes de frustração
+dos alunos.
+Preço: 4.500
+
+Incenso da meditação: este incenso possui fragrância adocicada e fumaça perolada. Se um conjurador divino acendê-lo e meditar por uma hora, na próxima vez que preparar suas magias, todas serão afetadas pelo talento metamágico Maximizar Magia, mas sem a necessidade de pagar PM adicionais.
+Preço: 4.900
+
+Bastão imóvel: este bastão é uma barra de ferro achatada com um botão em uma das pontas. Quando o botão é pressionado(uma ação de movimento), o bastão fica imóvel no lugar — mesmo que isso desafie a gravidade! Assim, o bastão imóvel pode ser usado para segurar cordas, barrar portas, entre outras coisas. Dois bastões imóveis podem ser usados para criar uma escada em qualquer lugar. Um bastão imóvel pode suportar até 4.000kg antes de cair. Mover o bastão exige um teste bem-sucedido de Força (CD 30).
+Preço: 5.000 TO
+
+Braçadeiras Bélicas: Estas braçadeiras de couro desgastado possuem farpas de aço costuradas. Os encantamentos infundidos nestas braçadeiras tornam os golpes de seu usuário mais potentes. As braçadeiras bélicas fornecem um bônus de +1 em todas as jogadas de dano. Seu preço é 5.000 TO.
+
+Braçadeiras do arqueiro: estes protetores de punho fornecem +1 nas jogadas de ataque com armas de ataque à distância.
+Preço: 5.000 TO
+
+Cinturão de Controle da Gravidade: Este item especial é usado por tripulantes e engenheiros de naves-vivas para realizar reparos externos quando necessário. Trata-se de um cinto com dois pequenos cristais na fivela, encantado para permitir ao usuário controlar os efeitos da gravidade sobre o seu corpo. Quando o item é ativado (uma ação padrão), ele permite ao usuário andar em qualquer superfície, como se estivesse andando em terra firme. Ele ganha deslocamento de escalar igual ao seu deslocamento em terra. Enquanto usa o cinto, o usuário nunca sofre dano por quedas.
+Preço: 5.000 TO.
+
+Amuleto de Valkaria: Este item muito simples, favorito entre os aventureiros, contém a bênção da Deusa da Ambição. Valkaria incentiva a sede de aventuras - assim, o usuário recebe 1 ponto de ação adicional por heroísmo
+Preço: 5.000TO.
+
+Indumentária do Guarda-Costas: Muitos nobres, burgueses e figurões em Valkaria possuem poder político e econômico mas nenhuma capacidade de combate. Outros (como clérigos e magos) são capazes de se defender, mas preferem deixar os confrontos físicos para seus guardas. De qualquer forma, é comum que esses poderosos tenham guarda-costas inteiramente dedicados a preservar suas vidas - muitas vezes ao custo de seu próprio sacrifício. A indumentária do guarda-costas é um conjunto de itens em pares. Cada peça de um par deve ser vestida pelo guarda costas e pelo protegido. Cada uma confere uma habilidade específica à dupla, sempre com a finalidade de preservar a segurança do protegido e facilitar o trabalho do protetor Os itens são descritos a seguir.
+
+Amuletos: usados ao redor dos pescoços de ambos. Tornam o guarda-costas capaz de atrair quaisquer perigos que afetariam o protegido, desde que ambos estejam a 3 metros ou menos de distância um do outro. Quaisquer armadilhas, venenos, magias, efeitos ambientais, etc. afetam apenas o guarda-costas. 
+
+Anéis: um par de anéis usados nas mãos direitas do protegido e do protetor. Tomam o guarda-costas capaz de "atrair" ataques originalmente direccionados ao protegido, desde que ambos estejam a 3 metros ou menos de distância um do outro. Quaisquer inimigos que desejam atacar o protegido precisam ser bem-sucedidos em testes de Vontade (CD igual a 10 + o nível do protetor). Caso falhem, podem atacar apenas o protetor. 
+
+Braceletes: o protetor usa um bracelete; o outro é usado pelo protegido. Os braceletes concedem ao protegido o talento Liderança (mesmo que ele não cumpra seus pré-requisitos), adquirindo um parceiro (que será o guarda-costas). Caso o protegido seja um personagem jogador, os braceletes têm um efeito adicional- permitem que o guarda-costas seja controlado pelo jogador (normalmente, é um PdM sob controle do mestre).
+
+Cinturões: alguns protegidos confiam tanto em seus guarda-costas que escolhem voluntariamente tornar-se mais frágeis, para que o guarda-costas fique forte e resistente, capaz de garantir a segurança de ambos. O protegido pode transferir seus pontos de vida para o protetor, na quantidade que quiser. Esta transferência é permanente, até que o guarda-costas morra ou os cinturões sejam destruídos. Em contrapartida, o guarda costas pode gastar uma ação padrão para curar 3d8 pontos de vida do protegido (perdendo a mesma quantidade de pontos de vida), desde que possa tocá-lo. 
+
+Mantos: cobrem os ombros do protegido e do guarda-costas. O protegido pode transferir quaisquer XP que receba para o guarda-costas, fazendo com que ele avance de nível.
+Preço: 5.000 TO (amuletos), 10.000 TO (anéis), 50.000 TO (braceletes), 25.000 TO (mantos).
+
+Mapa da Cidade: Muito popular entre criminosos e outros rufiões sempre em fuga, o mapa da cidade é um pergaminho encantado que mostra toda Valkaria (com uma quantidade variável de detalhes, já que quase ninguém é capaz de mapear cada prédio e esquina da metrópole). O mapa da cidade mostra a localização de pessoas escolhidas pelo usuário - elas aparecem como pontos luminosos, de cores diferentes, movendo-se pelas ruas desenhadas no mapa. Para "marcar" uma pessoa no mapa da cidade, o usuário precisa conhecer sua descrição física exata e seu nome (em geral, basta observá-la por alguns minutos). A "vítima'' tem direito a um teste de Vontade contra CD 20 - se for bem-sucedida, nada acontece. Contudo, se falhar, suas idas e vindas são registradas pelo mapa, tornando qualquer vigilância e emboscada muito mais fáceis. Remover maldição retira a pessoa do mapa, mas a maioria dos alvos nem mesmo sabe que está sendo vigiada. Além de seu uso mais comum (para escapar de autoridades e seguir futuras vítimas de assaltos e chantagens), estes mapas também são usados por turistas ricos que desejam bisbilhotar as vidas de celebridades de Valkaria, maridos e esposas que suspeitam de infidelidade e aventureiros que desejam manter-se a par da localização de seus companheiros. Todos os criminosos da capital esforçam-se para que nenhum destes itens jamais caia nas mãos da milícia. Existem versões do mapa da cidade capazes de comportar a localização de cinco, dez e quinze pessoas. 
+Preço: 5.000 TO (cinco pessoas), 7.500 TO (dez pessoas) e 10.000 TO (quinze pessoas).
+
+Pedra Infectada: Este leve pedaço de pedra-pomes possui pequenos vermes esbranquiçados e translúcidos passeando por seus buracos. Pode estar preso em um cordão de couro, como um pingente, ou simplesmente ser carregado num bolso. O portador de uma pedra infectada permite que a Pedra-que-tudo-vê enxergue através de seus olhos e ouça com seus ouvidos, enquanto ele mesmo pode usar a magia clarividência/clariaudiência uma vez por dia. Carregar a pedra infectada causa 1d2 pontos de dano de Constituição por dia.
+Preço: A pedra infectada normalmente não pode ser comprada, apenas oferecida a um personagem por um membro do Culto do Novo Dia. Em mercados ilegais, ela pode ser encontrada por 5.000 TO ou mais.
+
+Couro de rinoceronte: feito de couro de rinoceronte, este gibão de peles +2 fornece +2d6 de dano em ataques de investida realizados por seu usuário. Preço 5.315 TO
+
+Garrafa da fumaça eterna: quando a tampa desta urna de metal é retirada, uma grande quantidade de fumaça é liberada, gerando o efeito da magia névoa. A fumaça persiste até a garrafa ser tampada. Após isso, se dissipa em um minuto (ou 4 rodadas, sob vento forte, ou 1 rodada, sob um vendaval).
+Preço: 5.400
+
+Botas de caminhar e saltar: estas botas aumentam o deslocamento do usuário em 3m, e fornecem +5 em testes de Atletismo. 
+Preço: 5.500 TO
+
+Leque do vento: este leque com estrutura de madeira e folha de tecido pode ser balançado para criar um efeito idêntico à magia lufada de vento (Fortitude CD 16 anula). Pode ser usado uma vez por dia sem problemas; caso seja usado mais de uma vez no mesmo dia, há 20% de chance por uso de que se despedaçe em farrapos inúteis.
+Preço: 5.500
+
+Escudo espinhoso: este escudo pesado +1 é coberto de espinhos. Três vezes por dia, o usuário pode ativá-lo para disparar um de seus espinhos. Cada espinho é uma arma de ataque à distância +1
+(1d10, crítico 19-20, perfuração) com distância de 36m. Preço 5.725 TO
+
+Amuleto dos punhos poderosos: um amuleto simples, normalmente feito de madeira com ideogramas pintados. Fornece um bônus de +1 a +5 nas jogadas de ataque e dano com ataques desarmados e armas naturais. Preço: 6.000, 24.000, 54.000, 96.000, 150,000
+
+Barraca Segura de Aleph: Esta barraca mágica foi criada pelo famoso Aleph Olhos Vermelhos, para ajudá-lo em suas andanças por Arton. É o objeto de desejo de todos os arcanos que não gostam de acampar nos ermos — ou seja, quase todos. Trata-se de uma barraca de tecido simples, com capacidade para duas criaturas Médias. A barraca segura de Aleph protege seus ocupantes de todas as intempéries climáticas, até mesmo em casos extremos (tempestades, inundações, terremotos, avalanches, erupções vulcânicas, etc.), mantendo-os em condições confortáveis de temperatura e umidade. Além disso, quando uma criatura se aproxima a menos de 9m da barraca com intenção de ferir seus ocupantes, eles acordam imediatamente, cientes da situação perigosa. Todos os efeitos da barraca só funcionam se ela estiver fechada.
+Preço: 7.500
+
+Venda da Escuridão: Esta faixa de tecido negro é feita para ser amarrada ao redor da cabeça, tapando os olhos. Um usuário da venda da escuridão não consegue enxergar (por motivos óbvios...). Mas apenas em ambientes iluminados. Em ambientes escuros, ele passa a enxergar normalmente, como se possuísse visão no escuro com alcance ilimitado. A visão no escuro da venda vence mesmo escuridão mágica.
+Preço: 7.500 TO.
+
+Anel do escudo mental: este anel, forjado em ouro maciço, é finamente trabalhado. Seu usuário fica imune a detectar pensamentos, discernir mentiras e qualquer tentativa de determinar sua tendência através de magia. Preço: 8.000
+
+Adaga venenosa: esta adaga +1 tem lâmina negra e serrilhada. Como uma ação livre, seu usuário pode infligir um efeito de envenenamento (como a magia, Fort CD 14 anula) na criatura atingida. Este poder pode ser usado uma vez por dia. Preço: 8.302 TO
+
+Bastão do Favor de Wynna: Este bastão de metal é pintado com faixas de cores exóticas
+e possui duas pedras preciosas, um rubi e uma ametista, em cada extremidade. É oferecido como premiação para alunos aprovados no Teste do Fogo e, portanto, serve como comprovação de que o usuário formou-se na Academia Arcana. Funciona exatamente como um bastão metamágico, mas o talento que proporciona é determinado aleatoriamente ao nascer do sol. Role 1d10:
+1-2) Aumentar Magia.
+3-4) Estender Magia.
+5-6) Magia Silenciosa.
+7-8) Potencializar Magia.
+9-10) Maximizar Magia.
+Preço: 9.000
+
+Caneco de Murphy: Efeito: Toda vez que o caneco é cheio com qualquer líquido (uma ação de movimento), há 50% de chance dele imbuir a bebida com os efeitos de sorte súbita, e 50% de imbuir
+com os efeitos de azar atípico. Toda a bebida no caneco deve ser consumida para receber os efeitos da magia. Preço: 24.000 TO.
+
+Aura Moderada
+
+Bastões metamágicos: o usuário do bastão metamágico pode usá-lo, como uma ação livre e até três vezes por dia, para aplicar os efeitos de um talento metamágico em uma magia que esteja lançando, sem aumentar seu custo em PM. Um bastão metamágico pode afetar qualquer magia de até 3º nível; um bastão metamágico aprimorado pode afetar qualquer magia de até 6º nível, e um bastão metamágico maior pode afetar qualquer magia de até 9º nível.
+Preço: 3.000(Aumentar, Estender, Silencioso), 9.000(Potencializar), 11.000(Aumentar apr., Estender apr, Silencioso apr.), 14.000(maximizar).
+24.500(Aumentar maior, Estender maior, Silencioso maior), 32.500(Potencializar apr), 35.000(Acelerar). 54.000(maximizar apr.), 73.000(Potencializar maior), 75.500(acelerar apr), 121.500(maximizar maior),170.000(acelerar maior).
+
+Escudo do leão: este escudo pesado +2 é forjado como uma cabeça de leão rugindo. Três vezes por dia, como uma ação livre, o usuário pode ordenar que a cabeça ataque. Ela morde com o mesmo bônus de ataque do usuário, e causa 2d6 de dano de perfuração. O ataque ocorre independentemente das ações do usuário. Preço 9.315 TO
+
+Capa de Thyatis Ela concede um bônus de +2 ao carisma do personagem, além de resistência a fogo 5.
+Preço 10.000 TO. Peso: 1 kg.
+
+Bordão do Geomante: Este bordão +1 é feito de pedra, mas pesa o mesmo que um bordão normal. Sua aparência abrutalhada combina com os geomantes. O bordão do geomante concede um bônus de + 1 em ataques, dano, CA e testes de resistência ao servo elemental de um geomante. Além disso, o usuário recebe redução de dano 2. Esta redução de dano é aplicada à metade do dano que um geomante recebe do seu servo.
+Preço: 10.000
+
+Cospe-Chamas: Este arco chamuscado e enegrecido, quase como se fosse feito de carvão, faz qualquer flecha disparada por ele irromper em chamas. O cospe-chamas é um arco longo flamejante +1. Uma criatura atingida por uma de suas flechas pega fogo, sofrendo mais 1d6 pontos de dano no fim de seu próximo turno, a menos que gaste uma ação completa para apagar as chamas. Seu preço é 10.100 TO. 
+
+Distintivo da Milícia: Dizem as más línguas que este item foi criado após reclamações dos milicianos de Valkaria - que afirmavam nunca contar com apoio mágico algum, enquanto que uma organização muito menor, os Xerifes de Azgher, possuíam distintivos encantados para ajudá-los a caçar criminosos. Independente da veracidade deste boato, poucos milicianos possuem um distintivo da milícia. Em geral, apenas investigadores e sargentos que tenham se destacado com atos de heroísmo ou resolvido casos notórios. O distintivo da milícia concede os seguintes poderes:
+· O usuário torna-se capaz de ser compreendido por qualquer criatura inteligente, mesmo que seja nativa de outro reino, mundo ou Plano. Contudo, apenas algumas frases são afetadas (o usuário pode dar voz de prisão e recitar os direitos do suspeito, nada mais).
+· O usuário recebe um bônus de +5 em testes de Intimidação e Diplomacia.
+· O usuário pode lançar imobilizar pessoa, sem gastar PM, uma vez por dia (CD do teste de resistência 12 + modificador de Sabedoria do usuário).
+· O usuário tem acesso ao talento Chamar Reforços. Caso já possua esse talento, tem direito a um uso diário adicional.
+Fisicamente, o distintivo da milícia é uma espécie de disco de aço, com uma imagem da estátua de Valkaria e um par de espadas cruzadas. A milícia continua lutando para que cada patrulheiro possua seu próprio distintivo.
+Preço: 10.300 TO.
+
+
+Cajado da Enfeitiçar: feito de madeira retorcida e esculpida com cuidado, Este cajado permite o uso de enfeitiçar monstro e enfeitiçar pessoa. Preço 11.250 TO
+
+Manto da Invisibilidade Este manto deixa seu usuário invisível quando o capuz é vestido. Se o usuário fizer qualquer ação ofensiva, o efeito do manto é anulado por 1 minuto. Preço 12.000 TO.
+
+Botas da velocidade: uma vez por dia, o usuário destas botas pode bater seus saltos (uma ação livre) para receber os benefícios da magia velocidade.
+Preço: 12.000 TO
+
+Colar das Bolas de Fogo: Este colar de ouro possui cinco pequenos rubis incrustados.
+Uma vez por dia, com uma ação padrão, o usuário do colar das bolas de fogo pode invocar uma bola de fogo ( CD para resistir 17). Além disso, o usuário recebe resistência a fogo 10.
+Preço: 12.000
+
+Monóculo da Águia: Este monóculo com armação de ouro e uma lente fina se encaixa magicamente sobre o olho de qualquer criatura Grande ou menor. O monóculo da águia concede visão perfeita e a capacidade de enxergar detalhes normalmente imperceptíveis a olho nu. O usuário recebe um bônus de +5 em testes de Percepção e a habilidade de classe encontrar armadilhas.
+Preço: 12.500
+
+Cinto do monge: esta simples faixa de tecido, quando amarrada na cintura, fornece grandes habilidades de combate desarmado. Um monge será considerado cinco níveis acima para determinar dano desarmado e bônus na CA. Se o usuário não é um monge, recebe o talento Ataque Desarmado Aprimorado e as habilidades dano desarmado e sexto sentido, como um monge de 5º nível.
+Preço: 13.000
+
+Gema da luminosidade: este cristal tem a aparência de um longo prisma. Com um comando, emite luz de dois tipos — luz equivalente a uma tocha, ou então um raio brilhante, que força uma criatura a até 9m a ser bem-sucedida em um teste de Fortitude (CD 14) ou ficar cega por 1d4 rodadas.
+Preço: 13.000
+
+Cajado da Fogo: feito de madeira resistente e com ponteiras de bronze, Este cajado lança bola de fogo, mãos flamejantes e muralhas de fogo.Preço 15.000 TO
+
+Cajado da Enxame: este sinistro cajado de madeira escura possui manchas negras, semelhantes a pequenos insetos, que ocasionalmente parecem se mover. Um cajado do enxame pode lançar invocar enxame e praga de insetos.Preço 15.750 TO
+
+Bainha das lâminas afiadas: esta bainha é feita de couro curtido e prata. Ela pode encolher ou alargar para acomodar qualquer adaga, espada ou arma similar. Três vezes por dia, com um comando, a bainha lança lâmina afiada em qualquer arma colocada em seu interior.
+Preço: 16.000 TO
+
+Botas aladas: estas botas parecem comuns mas, com um comando, asas brotam da altura dos calcanhares, permitindo que seu usuário voe com deslocamento 18m por até 1 minuto. Este poder pode ser usado três vezes por dia.
+Preço: 16.000 TO
+
+Bordão da Defesa: Este bordão +2 é feito de aço com empunhaduras de cobre. É a marca dos arcanos lutadores, muito valorizado por aqueles que passam mais tempo em masmorras do que em laboratórios, e concede CA +2 ao usuário.
+Preço: 16.000
+
+Manto de Keenn Um manto com bordados ou pinturas típicas do Deus da Guerra. Concede +1 nas jogadas de ataque e na classe de armadura do usuário. Preço 17.000 TO.
+
+Vassoura voadora: esta vassoura é capaz de voar como se estivesse sob efeito de voo prolongado. Ela pode carregar até 200kg, mas também pode viajar sozinha a um lugar determinado pelo dono, desde que ele tenha uma boa ideia da localização do lugar. Se estiver a até 300m do dono, a vassoura vem até ele quando um comando é pronunciado.
+Preço: 17.000
+
+Cajado da  Cura: este cajado de feixe branco incrustado de runas prateadas pode lançar curar ferimentos graves, restauração menor, remover cegueira/surdez e remover doenças.Preço 17.250 TO
+
+Escudo alado: este escudo pesado +3 é redondo, com um par de asas emplumadas. Uma vez por dia, pode lançar a magia voo em seu usuário. Preço 17.315 TO
+
+Espada Sagrada: Clérigos de Khalmyr, o Deus da Justiça, abençoaram esta arma para que ela destrua criaturas malignas. Esta arma é uma espada longa sagrada +1. Tem as estatísticas de uma espada longa, com um bônus de +1 nas jogadas de ataque e dano. Também causa 2d6 pontos de dano extra contra criaturas Malignas e conta como uma arma Bondosa para fi ns de ultrapassar redução de dano. Seu preço é 18.015 TO. 
+
+Tridente de comandar peixes: o usuário deste tridente +1 pode se comunicar com animais aquáticos (baleias, peixes, lulas...), como a magia falar com animais, e nunca será atacado por eles. Além disso, uma vez por dia, pode lançar enfeitiçar monstro em Massa (Vontade CD 22 anula), apenas contra animais aquáticos. Preço: 18.650 TO
+
+Loriga segmentada da sorte: dezenas de joias decoram esta loriga segmentada +3. Uma vez por dia, o usuário pode fazer com que um ataque contra ele seja rolado novamente. A segunda rolagem deve ser aceita, mesmo sendo melhor que a primeira, afinal, nem sempre a sorte é boa. O usuário deve usar esta habilidade antes de rolar o dano. Preço 19.050 TO
+
+Anel de invisibilidade: ao colocar este anel de prata, o usuário fica sob efeito da magia invisibilidade.
+Preço: 20.000
+
+Brincos de Marah: abençoado pela Deusa da Paz, este par de brincos brancos protege o usuário contra agressão. Qualquer criatura que tente atacá-lo deve ser bem-sucedida em um teste de Vontade (CD 15), ou perderá sua ação. Se o usuário dos brincos de Marah atacar uma criatura, o efeito dos itens é cancelado por um dia.
+Preço: 20.000 TO
+
+Anel do arcano: este anel fornece 5 PM adicionais a qualquer conjurador arcano. Os efeitos do anel só se ativam após um dia inteiro de uso.
+Preço: 20.000
+
+Cruz dos Caçadores: Um cordão simples ornamentado com uma cruz de prata. Este é o símbolo da Ordem dos Caçadores, em Sombria. É considerado um sinal de esperança por todos aqueles que tentam sobreviver no mundo da noite eterna. Qualquer personagem
+de tendência Bondosa a até 9m do caçador recebe +1 em todas as jogadas de ataque e testes de resistência. Além disso, quando empunhada por um personagem capaz de canalizar energia positiva de tendência Bondosa, o item permite o uso dessa habilidade (algo normalmente impossível em Sombria), como se ele tivesse metade do seu nível, arredondado para baixo (um clérigo de 9º nível poderia canalizar energia positiva como se fosse de 4º nível).
+Preço: A cruz dos caçadores não pode ser comprada, apenas oferecida a um personagem por um membro da Ordem dos Caçadores mediante sua aceitação. Em mercados ilegais, pode ser encontrada por 20.000 TO ou mais.
+
+Capa da Invisibilidade: Estas capas vêm em diversos modelos: algumas são simples, humildes até; outras são tão luxuosas que poderiam ser usadas por reis e rainhas. Em comum, todas têm capuz. Quando o capuz é colocado sobre a cabeça (uma ação de movimento), o usuário fica invisível, como se fosse alvo da magia invisibilidade. Como pela magia, o efeito termina se o usuário fizer qualquer ação ofensiva direta contra outra criatura. Nesse caso, o item só poderá ser ativado novamente após um minuto.
+Preço: 20.000
+
+Bastão das Maravilhas: Efeito: Usando uma ação padrão, você pode apontar o bastão para uma única criatura e falar uma palavra mágica qualquer; um efeito mágico aleatório é então gerado a partir do bastão das maravilhas. O mestre pode decidir por qualquer efeito que considerar apropriado, e não há nenhuma correlação entre palavra mágica e efeito obtido (mas pode haver correlação, também). Se o mestre estiver com preguiça, pode simplesmente rolar na tabela abaixo. O bastão vem carregado com 50 PM, e cada vez que é ativado, 1 PM é gasto. Um bastão das maravilhas sem PM se torna um item mundano, e não pode ser recarregado. Preço: 20.000 TO
+
+Manto Cinzento Este manto puído e cinzento é muito discreto e tem o poder de tornar quem o está vestindo igualmente discreto. O usuário de um manto cinzento recebe um bônus de +10 em Testes de Furtividade e o benefício do talento Aparência Inofensiva. Se já possuir este talento, a CD para resistir a seu efeito aumenta em +5.  Preço 20.000 TO.
+
+Cinto do Campeão: Seu usuário recebe um bônus de 4 em Força e um bônus de +2 em manobras de combate (como desarmar, derrubar, etc.). Além disso, caso o usuário tenha o talento Torcida, seu bônus por ele é duplicado (+2 em jogadas de ataque, CA e testes de resistência, em vez de + 1). Preço 20.500 TO; Peso 1 Kg.
+
+Língua flamejante: uma espada longa da explosão flamejante +1, a língua flamejante pode disparar um raio de chamas uma vez por dia. O raio exige um ataque de toque à distância, tem alcance de 30m e causa 4d6 de dano de fogo. Preço: 20.715 TO
+
+Espada da sutileza: esta espada curta +1 tem lâmina delgada e fosca, e fornece +4 nas jogadas de ataque e dano quando utilizada para um ataque furtivo. preço 22.310 TO
+
+Espada dos planos: esta espada longa +1 se torna +4 se usada em qualquer plano que não o Plano Material, ou contra criaturas nativas de qualquer plano que não o Plano Material. Preço: 22.315 TO
+
+Armadura celestial: esta cota de malha +3 em prata ou ouro brilhante é tão fina e leve que pode
+ser usada sob roupas normais. É considerada uma armadura leve, com bônus máximo de Destreza +8, penalidade de armadura –0 e peso 10kg. Uma vez por dia, seu usuário pode lançar voo. Preço 22.450 TO
+
+Ladra das nove vidas: esta espada longa+2 tem o terrível poder de sugar vidas. Quando seu usuário faz um acerto crítico, pode ativar o poder da espada. Se fizer isso, a criatura atingida deve ser bem-sucedida em um teste de Fortitude (CD 20) ou morrerá. A espada pode usar seu poder nove vezes (quer ele seja
+bem-sucedido ou não), quando então se torna apenas uma espada longa +2. preço: 23.057 TO
+
+Cajado da Frio: com um diamante reluzente em cada ponta, este cajado pode lançar cone glacial, muralha de gelo e tempestade glacial. Preço 24.000 TO
+
+Manto da Difusão: Este manto rosado com forro púrpura cria imagens estáticas semitransparentes de seu usuário quando este se movimenta. O usuário do manto da difusão fica permanentemente sob o efeito da magia nublar (20% de falha em todos os ataques contra ele). O usuário pode ativar e desativar este efeito a qualquer momento, como uma ação livre.
+Preço: 24.000
+
+Armadura das profundezas: esta armadura completa +1 é decorada com motivos de peixes e ondas. Seu usuário não sofre penalidade de armadura em testes de Atletismo para natação, pode respirar sob a água e conversar com qualquer criatura aquática que possua um idioma.Preço 24.800 TO
+
+Bordão da Invocação: Este bordão +1 é feito de vidro, e entalhado com desenhos de inúmeras criaturas em toda a sua superfície. Enquanto um conjurador arcano estiver empunhando o bordão da invocação, todas as criaturas invocadas por ele recebem redução de dano 1 por nível da magia que as invocou. Por exemplo, o monstro invocado por invocar monstro IV recebe RD 4. Preço: 25.000
+
+Couraça do comando: esta couraça +2 irradia uma aura de dignidade e autoridade. Seu usuário recebe +2 em testes de Carisma e perícias baseadas em Carisma. Além disso, todos os seguidores do usuário recebem +4 em testes de resistência contra medo. Preço 25.550 TO
+
+Arco do juramento: uma vez por dia, o usuário deste arco longo +2 de madeira branca pode jurar em voz alta que irá matar seu alvo. Se fizer isso, contra o alvo jurado o arco se torna +5, suas flechas causam +2d6 de dano e seu multiplicador de crítico se torna x4. Contra todas as outras criaturas, o arco se torna uma arma mundana obra-prima. Além disso, seu usuário sofre –1 nos ataques se usar qualquer outra arma. Esses modificadores duram até o alvo jurado morrer ou sete dias se passarem, o que vier primeiro. O usuário só pode jurar outro alvo depois de matar o primeiro, ou após sete dias, o que vier primeiro.
+Sempre que é disparado contra um alvo jurado, o arco do juramento grita “morte rápida a meus inimigos”, em élfico. Preço:25.600 TO
+
+Manto do morcego: Quando ativado, o manto do morcego transforma o usuário em um morcego de tamanho mínimo. O usuário adquire voo com deslocamento de 12 m, +8 em Furtividade (pelo tamanho) e percepção às cegas. Contudo, sofre –2 de penalidade em todas as jogadas e testes sob luz direta do sol. O usuário pode ficar assim por quanto tempo quiser, e não pode ser detectado por magias ou habilidades capazes de enxergar ilusões  pois não é uma ilusão, ele é efetivamente transformado. Em todos os outros aspectos, isto é tratado como a magia metamorfose. Preço 26.000 TO; Peso 1kg.
+
+Armadura da velocidade: uma vez por dia, como uma ação livre, o usuário desta armadura completa de mitral +1 pode lançar velocidade sobre si mesmo.Preço 26.650 TO
+
+Elmo da telepatia: o usuário pode usar detectar pensamentos sem limite diário. Ele também pode se comunicar telepaticamente com qualquer criatura cujos pensamentos possa captar. Além disso, uma vez por dia, o usuário do elmo da telepatia pode implantar uma sugestão (como a magia, Vontade CD 17 anula) juntamente com uma mensagem telepática.
+Preço: 27.000
+
+Periapto da saúde: o usuário desta jóia verde em um cordão de prata fica imune a doenças (incluindo doenças mágicas).
+Preço: 27.000
+
+Alaúde Elétrico: Este alaúde pintado como uma explosão solar é cheio de medidores e instrumentos, como se fosse uma engenhoca goblin. É pesado e agressivo, mas seu real poder vem quando um personagem treinado em Atuação começa a dedilhar suas cordas. O alaúde elétrico é imbuído com o poder do relâmpago. A cada nota que produz, faíscas e pequenas descargas elétricas correm por suas cordas e surgem de seu braço. O som que ele produz é distorcido, áspero e muito alto. Qualquer uso de música de bardo com o alaúde elétrico tem efeito a até 27 metros do bardo (em vez dos 9m normais). Além disso, cada aliado afetado pela música de bardo produzida pelo alaúde elétrico recebe um ponto de ação, que desaparece no fim da cena. Independentemente de quantas músicas o bardo use, nenhum aliado pode receber mais de um ponto de ação por cena. Sempre que um bardo estiver usando o alaúde elétrico (produzindo música de bardo ou apenas tocando-o), deve fazer um teste de Atuação por rodada e anotar os resultados. Assim que somar 66 pontos em resultados de testes de Atuação, o bardo pode, como uma ação padrão, lançar corrente de relâmpagos. Os testes de Atuação contam para esta soma mesmo se forem usados para outro fim (como música de bardo). Preço: 27.000
+
+Cajado da Iluminação: folheado em prata e finamente decorado com sóis, este belo cajado permite o uso de brilho, globos de luz, explosão solar e luz do dia. Preço 27.000 TO
+
+Manual do de atributos: Uma criatura que leia o livro inteiro (o que leva uma semana) recebe um bônus de +1 a +5 em seu valor de atributo. O atributos respectivo de uma criatura pode aumentar até +5 pelo uso de livros, e este bônus não é cumulativo com aquele concedido pela magia desejo. Assim que o livro é lido, a magia desaparece de suas páginas, e ele se torna um item mundano.
+Preço: 27.500, 55.000, 82.500, 110.000, 137.500
+
+Arco Arcano: Diversas runas foram entalhadas neste arco, tornando-o um canal de poder arcano. O arco arcano é um arco longo +3. Se o usuário for um conjurador, pode gastar 1 PM como uma ação livre para receber um bônus de +2 em suas jogadas de ataque e dano com o arco por um turno. Seu preço é 28.400 TO. 
+
+
+Robe das Estrelas: Diz-se que este robe totalmente escuro por fora e por dentro foi um presente de Tenebra para alguns de seus servos arcanos. O robe das estrelas revela seu poder apenas durante a noite ou em ambientes muito escuros. Nessas condições, lindas estrelas brilham sobre o fundo escuro do robe. O usuário recebe um bônus de +2 em todas as habilidades, visão no escuro e -4 de penalidade em testes de furtividade.
+Preço: 29.000
+
+Toga do Senador: Seu usuário recebe +4 na classe de armadura e +4 em testes de Diplomacia e Intuição. Além disso, todas as habilidades do personagem que fornecem um bônus direto para seus aliados (como inspirar coragem do bardo ou aura de retidão do senador) fornecem o dobro do seu bónus
+normal este efeito não se aplica a magias. Por fim, a atitude de qualquer cidadão do Império de Tauron em relação ao usuário automaticamente melhora em uma categoria (um personagem que seria indiferente se torna amistoso, por exemplo). O uso de uma destas togas é terminantemente proibido a qualquer um que não seja um senador. Preço 39.200 TO; Peso 1 kg.
+
+Voz da Rebelião: A voz da rebelião parece uma espécie de caixa ou pequeno baú adornado com cobre e outros metais baratos. Movendo os adornos na combinação certa, a caixa se abre, revelando um espelho permanentemente turvo, como um lago enevoado. O usuário pode falar próximo a esse espelho, e será ouvido por todos aqueles que ele mesmo desejar, num raio de 50 quilómetros. Caso haja outra voz da rebelião dentro desta área, seu usuário pode usá-la para propagar as palavras do primeiro, e assim por diante. É impossível detectar ou ouvir uma transmissão feita com uma voz da rebelião, mesmo com magia, se o usuário não desejar isso. Apenas desejo ou milagre são capazes de interceptar as transmissões. O usuário pode definir categorias amplas para seus ouvintes ("tOdos os náo-minotauros", "todos os devotos de Marah", "todos os prisioneiros") ou designar pessoas específicas como alvo.
+Qualquer um que escute as transmissões pode parar de ouvi~las apenas desejando isso. A5 células rebeldes usam as vozes da rebelião para se comunicar, (trocando informações e planejando ataques secretos. Aldeias inteiras fecham os olhos em determinada hora da noite, para ouvir em suas cabeças as palavras de esperança de algum líder rebelde. Clérigos de deuses proibidos usam esses itens para assegurar seu rebanho de que os deuses não esqueceram Arton, e que suas almas devem continuar livres. Preço 45.000 TO; Peso Ikg.
+
+
+• Chicote Escravizador: Um chicote escravizador é um chicote +2, de couro negro e 
+opaco. Sempre que a arma é usada num ataque, lança a magia medo sobre o alvo (CD 16). Se for usada num ataque contra uma vitima já afetada pelo medo. lança dominar pessoa (CD 17). Um alvo que seja bem-sucedido em um teste de resistência Contra um desses efe icos torna-se imune a ele por 24 horas.
+Preço 53.000 TO; Peso 1 kg.
+
+
+
+
+Aura Poderosa
+
+Lanterna da revelação: este item funciona como um lampião normal, mas sua luz revela todas as criaturas e objetos invisíveis a até 9m, como a magia purgar invisibilidade.
+Preço: 30.000
+
+Florete do Duelo: Este florete +2 tem um senso de honra digno dos duelistas mais exigentes (ou mais brigões). Caso o portador da arma seja trapaceado, traído ou simplesmente ofendido, a lâmina dela brilha com uma luz tênue. Nesse momento, o portador do florete pode desafiar seu ofensor para um duelo. Enquanto estiver duelando contra seu ofensor, o bônus do florete torna-se igual ao bônus de Carisma do usuário (mínimo +2). Um usuário com Carisma 22, por exemplo, irá atacar com um florete +6! Este bônus só é válido contra o alvo do desafio; contra todas as outras criaturas, o florete do duelo continua sendo uma arma +2. O bônus dura até o fim do duelo, independentemente
+de quem vencer, ou por até um mês após a ofensa inicial (o florete é esquentado, mas não é rancoroso).
+Preço: 30.000 TO.
+
+Medalhão de Lena: quando seu usuário é reduzido a 0 ou menos PV, esta joia gera uma emissão de cura que restaura 100 PV. Este poder só se ativa uma vez por dia.
+Preço: 30.000 TO
+
+Arco Energético: Este poderoso arco foi presenteado a um jovem ranger vindo de outro mundo, muito tempo atrás. Infelizmente, o bravo garoto, líder de um bando de aventureiros, decidiu voltar para seu mundo natal, uma terra árida, sem emoção e desprovida de magia, sendo alvo de chacota dos principais heróis artonianos desde então. Diz-se que seu arco continua por aí em algum lugar. O arco energético conta como um arco longo +3, mas parece apenas um pedaço de um arco — não tem corda, e não aceita flechas de nenhum tipo. Contudo, uma vez empunhado, quando o usuário faz o gesto como se puxasse a corda inexistente, o arco cria uma corda e uma flecha de energia. O arco é dourado, assim como a energia que emite. O arco energético é capaz de ler as intenções do usuário, produzindo diferentes tipos de flechas energéticas à escolha dele.
+
+Flecha normal: uma flecha feita de energia que causa 3d8 pontos de dano de essência.
+
+Flecha piedosa: uma flecha de energia que causa 4d8 pontos de dano não letal. Segundo histórias, o usuário original do arco nunca costumava matar seus inimigos.
+
+Flecha-rede: não causa dano, mas prende todas as criaturas em um raio de 3m com uma rede feita de energia. As criaturas podem atravessar a rede sendo bem-sucedidas num teste de Força contra CD 20, mas sofrem 3d8 pontos de dano. A rede dura por 10 minutos.
+
+Flecha explosiva: causa 2d8 pontos de dano de fogo no alvo e em todas as criaturas a até 3m (essas têm direito a um teste de Reflexos contra CD 20 para reduzir o dano à metade).
+
+Flecha-amarra: enrola-se ao redor do alvo e de até três criaturas Médias adjacentes a ele. Não causa dano, mas prende os braços de todas as criaturas atingidas, impedindo que façam quaisquer ações com os braços a menos que pelo menos uma delas seja bem-sucedida em um teste de Força contra CD 22 (quebrando a amarra e libertando todas). A amarra dura por 10 minutos.
+Preço: 35.000
+
+
+• Cajado da Transmutação: feito de madeira petrificada, este cajado permite
+o uso de alterar-se, desintegrar, metamorfose, metamorfose tórrida,
+piscar e recuo acelerado. 35.250 TO
+
+• Cajado da Necromancia: feito de ébano, e esculpido com imagens macabras
+de ossos e crânios, este cajado permite o uso de causar medo,
+círculo da morte, drenar temporário, imobilizar mortos-vivos, onda de
+fadiga e toque do carniçal. 35.250 TO
+
+• Cajado da Abjuração: esculpido do cerne de um carvalho antigo, este cajado pode lançar dissipar magia, escudo arcano, expulsão, globo de invulnerabilidade menor, repulsão e resistência a energia. 35.250 TO
+
+• Cajado da Adivinhação: feito de um galho flexível de salgueiro com
+ponta dupla, este cajado lança detectar portas secretas, idiomas, localizar
+criatura, localizar objetos, olhos observadores e visão da verdade. 35.250 TO
+
+• Cajado da Evocação: este bastão de madeira escura e lisa, reforçado com
+ponteiras de metal, pode lançar bola de fogo, corrente de relâmpagos,
+despedaçar, mísseis mágicos, muralhas de energia e tempestade glacial. 35.250 TO
+
+• Cajado da Ilusão: esculpido em forma de espiral, este cajado pode ser
+usado para lançar despistar, imagem maior, imagem persistente, padrão
+prismático, reflexos e transformação momentânea. 35.250 TO
+
+• Cajado do Encantamento: feito de macieira e com um cristal transparente
+em sua ponta, este cajado pode lançar desespero esmagador,
+névoa mental, riso histérico, sono, sugestão e sugestão em massa. 35.250 TO
+
+Bordão da Evocação: Este bordão +3 é feito de ferro escuro. Enquanto um conjurador arcano estiver empunhando o bordão da evocação, todas as suas magias que causam dano têm seu dano aumentado em + 1 dado do mesmo tipo.
+Preço: 38.000
+
+• Maça do terror: esta maça +2 é feita com um osso e um crânio.
+Como uma ação livre, seu usuário adquire uma aparência assustadora,
+que deixa todas as criaturas vivas a até 9m apavoradas
+por 1 minuto (Vontade CD 16 anula). Este poder pode ser usado
+três vezes por dia. Preço: 38.552 TO
+
+• Cajado da Florestas: com a aparência de um simples galho de árvore
+natural, não esculpido, este cajado pode lançar animar plantas, enfeitiçar
+animal, falar com animais, invocar monstro VI, muralha de
+espinhos e pele de árvore. 39.750 TO
+
+Anel de movimentação livre: este anel de ouro mantém seu usuário sob efeito permanente da magia movimentação livre. 
+Preço: 40.000
+
+Anel Anti-Veneno: Estes raros anéis são muito procurados por aventureiros que pretendem explorar as imensidões inóspitas e venenosas de Venomia. Usando o anel, o usuário é imune a qualquer veneno, normal ou mágico. Há rumores de que alguns destes anéis são amaldiçoados por servos do Deus da Traição e parecem funcionar normalmente, mas um único típico de veneno é capaz de vencer sua imunidade, deixando seus usuários vulneráveis.
+Preço: 40.000 TO.
+
+• Sorvedouro de vidas: uma criatura atingida por este machado
+grande +1 sofre dois níveis negativos. Um dia após sofrer os
+níveis negativos, a criatura deve ser bem-sucedida em um teste de
+Fortitude (CD 16) para cada nível negativo, ou perderá um nível
+permanentemente. Cada vez que o sorvedouro de vidas causa dano,
+seu usuário também sofre um nível negativo. Por este motivo, esta
+arma é normalmente usada por construtos e mortos-vivos, que não
+sofrem sua desvantagem. Preço: 40.320 TO
+
+Bola de cristal: esta esfera de cristal com cerca de 15cm de diâmetro pode ser usada para enxergar qualquer lugar ou pessoa, como a magia vidência. 
+Preço: 42.000 TO
+
+Arco de Luz: Este arco não usa flechas. Em vez disso, dispara rajadas de luz. O arco de luz é um arco longo +4. Seus disparos causam 2d6+4 pontos de dano de essência e causam dano dobrado contra mortos-vivos. Seu preço é 43.900 TO.
+
+Orbe das tempestades: esta esfera de vidro com 20cm de diâmetro pode ser usada uma vez por dia para lançar controlar o clima, e uma vez por mês para lançar tempestade da vingança. O usuário do orbe das tempestades fica permanentemente protegido por suportar elementos.
+Preço: 48.000 TO
+
+• Escudo absorvente: este escudo pesado +1 é completamente
+negro, e parece absorver a luz. Uma vez por dia, como uma ação
+livre, pode lançar desintegrar (Fortitude CD 19 parcial) contra uma
+criatura atingida por um ataque bem-sucedido do escudo. 50.315 TO
+
+• Sabre da perfuração: três vezes por dia, este sabre do sangramento
++2 pode ser usado para fazer um ataque de toque que causa
+1d6 pontos de dano de Constituição. Este poder não afeta criaturas
+imunes a acertos críticos. Preço: 50.320 TO
+
+• Lâmina do sol: esta espada bastarda +2 tem a lâmina dourada e
+brilhante. Contra criaturas Malignas, seu bônus se torna +4, e contra
+mortos-vivos ela causa dano dobrado. O portador de uma lâmina do
+sol pode brandi-la acima da cabeça (uma ação padrão) para que ela
+irradie luz brilhante como o sol a até 18m, durante 1 minuto. Preço: 50.335 TO
+
+• Armadura demoníaca: esta armadura completa +4 é forjada
+para fazer com que seu usuário pareça um demônio — o elmo
+tem o formato de uma cabeça demoníaca com chifres, e o usuário
+enxerga através da boca aberta e repleta de dentes. As manoplas
+da armadura permitem que o usuário realize dois ataques de garra
+(1d10, crítico x2, corte), que contam como armas +1 e causam o
+efeito da magia envenenamento (Fortitude CD 16 anula) em qualquer
+criatura atingida. 52.410 TO
+
+• Estigma do gelo: esta espada grande congelante +3 fornece resistência
+a fogo 10. Além disso, como uma ação padrão, seu usuário
+pode dissipar qualquer magia de fogo, como se lançasse dissipar
+magia maior (bônus de conjurador +14). preço: 54.475 TO
+
+• Cajado da Passagem: a aparência singela deste cajado — um bastão de
+madeira com uma única ponteira de metal — esconde seu grande
+poder. Um cajado da passagem pode lançar criar passagens, passagem
+invisível, porta dimensional, projeção astral e teletransporte maior. 57.000 TO
+
+• Gema Antimagia: Qualquer conjurador
+a até 6m de uma gema antimagia que lance uma magia deve
+realizar um teste de Identificar Magia (CD 25 + nível da magia). Se
+falhar, a magia não funciona (mas os PM são gastos mesmo assim).
+Incrustada num estandarte da legião, a gema antimagia pro~
+rege todos os legionários. Qualquer conjurador que lance uma
+magia ofensiva cujo alvo sejam os legionários ou cuja área esteja
+ocupada por eles deve fazer o teste de Identificar Magia para não
+perder a magia.
+Preço 60.000 TO; Peso 0,5kg.
+
+Tapete voador: com um comando, este tapete levanta voo, como se estivesse sob efeito de voo prolongado. Alguém que conheça a palavra de comando pode controlar o voo do tapete mesmo que não esteja sobre ele, desde que sua voz o alcance. Um tapete normal tem 3m x 3m, e pode carregar até 400kg, mas existem tapetes menores e maiores.
+Preço: 60.000
+
+Caveira negra: esta pedra de ébano esculpida em formato de crânio gera permanentemente o efeito da magia conspurcar, onde quer que esteja, com o próprio crânio como ponto de origem.
+Preço: 60.000
+
+• Martelo de arremesso anão: normalmente um martelo de
+guerra +2, nas mãos de um anão sua distância aumenta para 9m,
+seu bônus aumenta em +1 (para um total +3) e ela adquire o poder
+retorno. Além disso, causa +1d8 de dano, ou +2d8 de dano se usada
+contra criaturas Grandes ou maiores. Preço 60.312 TO
+
+Elmo do teletransporte: o usuário deste item pode lançar teletransporte três vezes por dia.
+Preço: 73.500
+
+Anel de telecinesia: quando ativado, este anel permite que seu usuário use a magia telecinesia.
+Preço: 75.000 TO
+
+Robe do arquimago: este traje pode ser branco (1 e 2 em 1d6; tendência Bondosa), cinza (3 e 4; tendência Neutra) ou negro (5 e 6; tendência Maligna). Se o usuário é um conjurador da tendência certa, recebe +5 na CA e +4 em testes de resistência. Além disso, a dificuldade para resistir às suas magias aumenta em CD+1.
+Preço: 75.000
+
+Robe do Arco-Íris: Este robe extravagante é colorido com as cores do arco-íris em um padrão de linhas verticais. É usado tanto por pessoas que defendem a liberdade e o amor incondicional, quanto por pessoas com senso de moda vanguardista. Como uma ação padrão, o usuário do robe do arco-íris pode lançar através de suas mangas compridas
+as magias brilho, leque cromático, muralha prismática, padrão cintilante, padrão prismático, pirotecnia (apenas fogos de artifício) e rajada prismática. Ele pode usar três magias dessa lista por dia.
+Preço: 81.000 TO.
+
+Anel de regeneração: este anel de ouro branco fornece cura acelerada 1. Caso seu usuário perca um membro, um órgão ou outra parte do corpo, ela regenera como pela magia regeneração. Os efeitos do anel só se ativam após um dia de uso.
+Preço: 90.000 TO
+
+• Estandarte da Legião: Um oficial que carregar um estandarte da legião ou estiver
+adjacente a ele pode dar ordens em voz normal, e será ouvido e
+compreendido por todos os soldados sob o seu comando que possam
+enxergar o estandarte.
+Além disso, um conjurador arcano ou divino pode lançar
+magias sobre o estandarte da legião. Se o fizer, as magias assim con ~
+juradas afetam todos os soldados da legião capazes de enxergar o
+estandarte. Por exemplo, é possível lançar força do touro sobre o
+estandarte, e afetar dezenas e dezenas de legionários.
+Ambos os poderes só funcionam com soldados que pertençam
+à legião que possui o estandarte. Aliados civis ou de outras legiões,
+mesmo lutando ao lado desses legionários, não são afetados.
+Caso um bando de aventureiros obtenha um destes itens (em geral
+através de roubo), é necessário definir uma hierarquia militar dentro
+do grupo, com um líder inquestionável, e fazer juramentos de
+serviço, lealdade e obediência para que seus poderes funcionem.
+Preço 91.000TO; Peso 5kg.
+
+Espelho da oposição: este item lembra um espelho normal com cerca de 1,2m de comprimento e 1,5m de altura. Pode ser fixado em qualquer superfície, e ativado (ou desativado) com um comando. Quando uma criatura observa seu reflexo, o espelho
+cria uma cópia sua, com as mesmas habilidades e equipamento. A duplicata
+ataca a criatura original; quando um dos dois é derrotado, a duplicata e seus itens desaparecem.
+Preço: 92.000
+
+Anel de refletir magias: três vezes por dia, este aro de platina pode ser ativado para refletir os próximos nove níveis de magia lançados sobre seu usuário (como se ele estivesse sob efeito de reverter magias).
+Preço: 98.280
+
+•Anel Arcano Maior
+Como o anel do arcano, mas fornece 20 PM adicionais.
+Preço 100.000 TO.
+
+• Cajado do Poder: um cajado do poder tem cabo reto e liso, com uma joia
+cintilante na ponta, e pode lançar bola de fogo, chama contínua,
+cone glacial, globo de invulnerabilidade, imobilizar monstro, levitação,
+mísseis mágicos, muralha de energia, raio do enfraquecimento e
+relâmpago. Ele também pode ser usado como um bordão +2, e fornece
++2 na classe de armadura e testes de resistência. Com o gasto
+de 1 PM, um ataque do cajado causa dano dobrado.
+Um cajado do poder pode ser usado para um golpe de retaliação.
+Para isso, seu usuário deve quebrá-lo intencionalmente (uma
+ação padrão, não é necessário teste de Força). Todas as criaturas
+a até 9m sofrem 1d6 de dano por cada PM restante no cajado
+(máximo 50d6); um teste de Refl exos (CD 17) reduz o dano à
+metade. O usuário tem 50% de ser transportado para outro plano
+de existência  mas, se isso não acontecer, será instantaneamente
+destruído pela explosão mágica.
+Um cajado do poder sem PM continua sendo um bordão +2,
+mas não pode mais ser usado para um golpe de retaliação. 100.750 TO
+
+• Escudo do sol: este escudo pesado da resistência ao fogo maior
++4 é forjado na forma de um sol estilizado. Uma vez por dia, ele
+pode gerar uma luz brilhante e quente, que causa 6d6 pontos de
+dano em cone de 9m (Reflexos CD 22 reduz à metade). Mortos-vivos e espíritos Malignos sofrem 16d6 de dano. 107.400 TO
+
+• Vingadora sagrada: esta espada longa +2 revela todo o seu
+poder apenas quando empunhada por um paladino. Nessa situação,
+se torna uma espada longa sagrada +5, que fornece +4 em
+testes de resistência contra magia ao usuário e seus aliados a até
+3m. Além disso, permite que o usuário lance dissipar magia maior
+(usando o bônus de Vontade do paladino) como uma ação padrão,
+sem limite de usos diários. Preço: 120.630 TO
+
+• Cajado da Vida: feito de carvalho com ponteiras de ouro, este cajado
+pode lançar cura completa e reviver os mortos. 123.250 TO
+
+•Lâmina da sorte: esta espada curta +2 é cravejada de pequenas
+joias. Ela fornece +2 aos testes de resistência de seu usuário e,
+uma vez por dia, permite que ele role novamente qualquer jogada
+ou teste que tenha recém realizado. O usuário deve ficar com
+a segunda rolagem, mesmo sendo pior que a primeira. Por fim,
+A lâmina da sorte possui três desejos que seu portador pode usar.
+Quando os desejos terminam, a arma mantém seus outros poderes. Preço: 142.960 TO
+
+Bordão do Tempo: Este bordão +4 é feito de madeira e tem aparência simples e comum, mas possui grande poder. Uma vez por dia, o usuário do bordão do tempo pode gastar uma ação completa para conceder o poder do tempo a seus aliados. 1d6 aliados a até 9m podem usar uma ação padrão no turno do usuário, além de ter suas ações normais durante a rodada.
+Preço: 150.000
+
+Diamante do caos: esta gema brilhante, do tamanho de um punho humano, não é lapidada. Ela concede a seu usuário a capacidade de lançar as magias círculo mágico contra a ordem, confusão menor, manto do caos e palavra do caos, cada uma 1d4 vezes por dia. Os diamantes do caos foram criados pelo deus Nimb, e espalhados por toda Arton para promover o caos. Ou não.
+Preço: 160.000
+
+•Gema Bruta: O usuário de uma gema bruta recebe o
+dobro dos PM ganhos por nível (por exemplo, 2 + 2 x mod.
+Int no 1º nível, e 6 PM por nível adicional, para um mago).
+Aura poderosa; Criar Item Maravilhoso, desejo; Preço
+200.000 TO.
+
+Espelho do aprisionamento: este item de cristal, com 1,5m de altura e moldura de metal, pode ser fixado em qualquer superfície e ativado (ou desativado) com um comando. Qualquer criatura que se aproxime a menos de 9m do espelho do aprisionamento e enxergue seu próprio reflexo deve ser bem-sucedida em um teste de Reflexos (CD 23) ou será transportada mágicamente para um espaço extra-dimensional dentro do espelho, ficando presa ali. O tamanho da criatura não importa mas construtos, mortos-vivos e objetos não podem ser transportados. Com um comando, é possível conversar com uma criatura presa no espelho, ou libertá-la. Se o espelho for quebrado, todas as criaturas dentro dele são libertadas. 
+Preço: 200.000
+
+Espada Vorpal: Esta temível espada é capaz de decapitar criaturas com um único golpe. Em termos de regras, é uma espada longa vorpal +5. Seu preço é 200.015 TO. Existem poucos exemplares desta arma em Arton, e — desnecessário dizer — só é possível encontrar um deles à venda na coleção de um poderoso mago comerciante, como Lorde Vectorius ou Salini Alan. 
+
+
+• A Adaga da Coragem de Vallen: A Adaga da
+Coragem de Vallen
+A adaga da coragem de Vallen é uma adaga +3 imbuída
+com o ímpeto, teimosia e autoconfi ança do aventureiro. Essa
+valentia excessiva concede ao usuário a capacidade de aceitar
+uma penalidade em sua classe de armadura para causar mais
+dano ou receber outro benefício. Para cada –1 na classe de armadura
+(até um máximo de –5), o usuário pode causar +1d6
+de dano ou aumentar a margem de ameaça ou o multiplicador
+de acerto crítico em 1. Assim, por exemplo, um usuário que
+aceite –4 em sua classe de armadura pode causar +2d6 de dano,
+com margem 18 a 20 (em vez de 19 a 20) e multiplicador x3
+(em vez de x2). As penalidades e bônus duram até o próximo
+turno do usuário.
+Qualquer um que utilize ou mesmo carregue a adaga torna-
+se mais impulsivo, mais propenso a entrar em lutas, mesmo
+que esteja em clara desvantagem. Além disso, tem vagas impressões
+de estar sendo empurrado por algum tipo de personalidade
+forte e aventuresca (o próprio Vallen). Não são visões
+claras, mas algo indefinível e sutil.(sem preço)
+
+•A Manopla da Juventude de Vallen:
+Ajusta-se perfeitamente à mão esquerda
+de qualquer usuário entre tamanho Pequeno e Grande,
+conferindo-lhe uma aparência um pouco agigantada.
+O usuário da manopla não sofre quaisquer efeitos de idade
+enquanto usá-la. Nem mesmo habilidades especiais de criaturas
+capazes de envelhecer seus inimigos afetam-no. Contudo,
+este poder funciona apenas enquanto a manopla permanecer
+na mão do usuário. Caso seja tirada, quaisquer efeitos de idade
+que tenham sido evitados atingem-no imediatamente — inclusive
+a morte! Assim, um usuário que já teria morrido de
+velhice não pode tirá-la nunca. Caso o usuário já tenha sofrido
+qualquer penalidade por idade antes de colocar a manopla,
+essas penalidades somem, mas quaisquer bônus permanecem.
+Além disso, o vigor fornecido pela manopla concede um bônus
+de +4 na Força, Destreza e Constituição do usuário.
+A presença de Vallen não é tão forte na manopla quanto
+nos outros itens. O usuário torna-se repleto de uma sensação
+de bem-estar e ânimo, além de uma certa inquietude e curiosidade.
+Experimenta tênues impressões de pertencer a um bando
+de jovens metidos em aventuras.(sem preço)
+
+•O Escudo do Amor de Vallen:
+O escudo do amor de Vallen é talvez o item mais poderoso
+do conjunto, rivalizando apenas com o anel feito de sua
+felicidade. É um escudo pesado apanhador de flechas da fortifi -
+cação leve +3. Contudo, seu poder mais impressionante surge
+quando o usuário decide proteger outra criatura. Com uma
+ação de movimento, o usuário pode abrir mão de todos os
+bônus do escudo e concedê-los a uma criatura adjacente. Para
+essa criatura, ele se torna então um escudo pesado da fortificação moderada +5. O efeito apanhador de flechas continua
+funcionando para o usuário (ou seja, os projéteis são atraídos
+para o usuário, não para a criatura que ele está protegendo).
+Essa proteção dura até o início do próximo turno do usuário
+(quando então ele pode usar outra ação de movimento para
+renová-la, ou trocá-la para outro alvo), mas acaba se o usuário
+e o aliado não estiverem mais adjacentes.
+
+A presença de Vallen Allond é sentida fortemente pelo
+usuário. Embora não seja a fonte do poder do escudo, Vallen
+é o foco do sentimento que originou-o. O usuário sente forte
+afeição por qualquer um que lembre Vallen Allond de alguma
+forma (mesmo que nunca tenha ouvido falar do aventureiro).
+Em geral, escolhe uma ou duas pessoas para focalizar o sentimento.
+Por exemplo, pode se apegar muito (com amor ou
+amizade) a um guerreiro, ao líder de um grupo de aventureiros
+ou mesmo a alguém com nome parecido.(sem preço)
+
+• Armadura de Crânio Negro
+A armadura de Crânio Negro é uma armadura completa da
+fortificação moderada +5, que parece se mover sozinha (suas
+placas deslizam para manter o usuário protegido e defendê-lo).
+Apesar de seu peso e solidez, não atrapalha os movimentos,
+permitindo grandes saltos e acrobacias em meio ao combate:
+seu usuário conta como se estivesse sem armadura.
+Contudo, por ser feita a partir das memórias de uma artoniana,
+a armadura tem um efeito colateral: bombardeia o
+usuário com impressões da vida de Ellisa Thorn. Molda o estilo
+de luta e até mesmo parte do comportamento do usuário para
+refletir os membros do Esquadrão do Inferno. Por exemplo,
+Crânio Negro luta com duas espadas (como Vallen Allond),
+rastreia (como a própria Ellisa ou Andilla Dente-de-Ferro) e
+repete “não há morte” (como Gregor Vahn). (sem preço)
+
+• Baú do Açougueiro: Qualquer item ou criatura no interior do baú do açougueiro
+torna-se imune a detecção de tendência. Apenas criaturas
+Pequenas ou menores podem entrar no baú, mas dentro dele
+fi cam imperceptíveis a efeitos como detectar o mal e similares.
+Além disso, qualquer efeito que afete tendências originado de
+dentro do baú permite que as criaturas afetadas façam dois testes
+de resistência, escolhendo o melhor resultado. Por exemplo:
+guardada dentro do baú do açougueiro, Rhumnam continua
+enviando a magia pesadelo a um portador indigno, mas o alvo
+tem direito a dois testes de Vontade por noite.(sem preço)
+
+• Escudo de Azgher
+O escudo de Azgher é um belíssimo escudo pesado +3 feito de
+ouro, com a face de Azgher esculpida em sua superfície. Sua aparência
+marcante chama a atenção, e destaca-se em qualquer campo
+de batalha. Contudo, seu verdadeiro poder é revelar a verdade.
+Ao comando do usuário, o escudo de Azgher emite um
+cone de luz de 12 metros, que revela quaisquer ilusões ou efeitos
+de mudança de forma, como forma selvagem, metamorfose
+e outros. Todos que estiverem olhando para a área afetada pelo
+cone enxergam a aparência real das coisas, não apenas o usuário
+do escudo. Contudo, o escudo não dissipa as magias e efeitos,
+apenas revela a verdade. Assim, o alvo de uma metamorfose ainda
+manterá as estatísticas de sua forma modificada, mas será
+visto como sua forma original. O escudo de Azgher também
+revela disfarces e mentiras (o alvo fica cercado por uma névoa
+leitosa), mortos-vivos (cercados por uma aura pálida) e quaisquer
+espíritos, criaturas etéreas e outros seres invisíveis na área.
+Pode ser desconcertante enxergar algo sob o efeito do escudo
+de Azgher (por exemplo, um humano sob o efeito de forma
+selvagem atacando com garras que não parecem possuir). O objetivo
+de Azgher é exatamente esse: revelar essas metamorfoses
+e truques como as tolices que são. Alguns efeitos poderosos
+(como a aparência humana do albino) podem ser imunes aos
+poderes do escudo, mas isso é extremamente raro. O efeito do
+cone dura 10 minutos, e pode ser usado uma vez por dia.(sem preço)
+
+• Sabre Vampírico: O sabre vampírico é um florete de matéria vermelha +3.
+Quando perfura um adversário, prende-se a seu corpo, causando
+os efeitos da manobra agarrar. Além disso, começa a beber seu
+sangue, causando 1 ponto de dano na Constituição. Esse dano
+é cumulativo por rodada em que a vítima continuar agarrada
+(ou seja, 2 pontos de dano de Constituição na segunda rodada,
+3 pontos na terceira, e assim por diante). O sabre vampírico não
+pode ser usado para atacar enquanto estiver agarrado a alguém.
+O sabre vampírico pode reter sangue equivalente a até 15
+pontos de Constituição em suas bolsas. Ao atingir esse limite, a
+arma não é mais capaz de beber (não pode mais provocar dano
+de Constituição). O usuário deve soltar a vítima e gastar uma
+ação padrão para “esvaziar” as bolsas.(sem preço)
+
+• Wakizashi da Morte: Qualquer criatura inteligente que veja seu refl exo na lâmina
+da wakizashi irá enxergar o momento de sua própria morte, vendo
+a si mesma “de fora”. Um personagem que enxergue sua morte
+tem um bônus de +2 em CA e testes de resistência em qualquer
+combate antes do momento fatídico. Em compensação, no
+encontro que levará à sua morte, sofre –4 em CA e testes de
+resistência, e todos os acertos contra ele são considerados críticos.
+Tudo conspira para que a profecia se cumpra. No caso de mortes
+que não envolvam combate, esses bônus e penalidades são
+adaptados. Por exemplo, um personagem marcado para morrer
+de doença recebe +4 em testes de Fortitude, mas falha automaticamente
+ao entrar em contato com a peste que irá matá-lo.
+Felizmente, nem sempre a previsão é exata. Caso o personagem
+consiga destruir defi nitivamente a causa de sua morte
+(matando um inimigo, erradicando uma doença, etc.), consegue
+mudar o futuro, e todos os bônus e penalidades somem.
+Contudo, muitas vezes isso é ilusório — quando chega o momento,
+descobre-se que o inimigo morto tinha um irmão gêmeo,
+ou que a doença “erradicada” voltou mais forte.
+O mestre determina as circunstâncias da morte de qualquer
+personagem que veja seu refl exo na lâmina.(sem preço)
+
+
+
+Aura Avassaladora
+
+• Toga do Reitor: Seu usuário
+recebe +10 na classe de armadura, +5 nos testes de resistência
+e resistência 10 a todos os tipos de energia (ácido, eletricidade,
+fogo, frio e sônico). Além disso, sempre que é alvo de uma magia
+de até 3º nível, não sofre nenhum efeito; em vez disso, recebe
+um número de PM igual ao custo da magia. Esses PM podem
+ser usados para memorizar uma magia instantaneamente.
+
+• Armadura Risonha: A Armadura Risonha é uma armadura completa +5. Não restringe
+os movimentos de seu usuário, que conta como se não estivesse
+usando armadura e fi ca sob efeito de movimentação livre.
+Além disso, gera um efeito de caos e aleatoriedade, que força todas
+as criaturas Leais e Caóticas a até 9m a rolar duas vezes cada
+teste ou jogada. Criaturas Leais usam o pior resultado; criaturas
+Caóticas, o melhor. Criaturas neutras não são afetadas.
+A armadura às vezes é acompanhada por um escudo pesado
+da reflexão +4. A habilidade reflexão pode ser usada uma vez
+por rodada (em vez de apenas uma vez por dia, como normal).
+Ao contrário do que alguns pensam, a armadura não afeta a
+mente ou as ações de seu usuário. Apenas torna o caos atraente
+
+• Espada-Deus: A espada-deus conta como uma espada longa, mas fornece
++6 nas jogadas de ataque, permite um ataque adicional
+por turno sem penalidades, causa 2d12+6 pontos de dano e
+tem margem de ameaça 17-20. Alguns estudiosos e armeiros
+dizem que seu fio é tão fino que pode cortar qualquer coisa, e
+em todos os Planos de existência simultaneamente. Por causa
+disso, a espada-deus ultrapassa qualquer redução de dano (até
+mesmo a que não pode ser vencida por nenhum material ou
+propriedade) e atinge criaturas incorpóreas (como se possuísse
+o poder toque espectral). Seus acertos críticos afetam até mesmo
+criaturas imunes a acertos críticos. A espada-deus nunca pode
+ser quebrada e nunca precisa fazer testes de resistência.
+A espada-deus é um item inteligente (veja abaixo) Caótico e
+Neutro, com Int 14, Sab 19, Car 22 e Ego 22. Possui percepção
+às cegas 36m e se comunica por empatia, sempre projetando
+vontade de lutar. Quando há chance de combate, ela estremece e
+vibra na mão do usuário, ou mesmo na bainha. Apenas criaturas
+com pelo menos 15 níveis em classes com bônus base de ataque
+máximo (guerreiro, bárbaro, paladino, ranger...) podem empunhar
+a espada-deus. Os demais são capazes de segurá-la, mas erram
+todos os ataques com a arma. Quando está aguardando seu
+próximo usuário, a espada-deus não permite que criaturas que
+não cumpram esses pré-requisitos tirem-na de onde está.
+Fisicamente, a espada-deus é surpreendentemente simples.
+
+•Rhumnam, Espada-Pistola: É uma espada grande +5 inteligente. É capaz de falar
+todos os idiomas de Arton, mas dirige-se apenas a pessoas de tendência Bondosa. Aí começam as diferenças: após a modifi
+cação, a espada pode se dirigir a indivíduos de tendência
+Caótica. Ainda exala a forte moralidade, como antes: estando
+próximo a ela, qualquer um tem noção exata das maldades e
+injustiças que já cometeu, lembra-se a todo instante do sofrimento
+que causou. Quando usada por uma pessoa indigna (ou
+seja, qualquer um que não se encaixe nas tendências exigidas
+ou que seja culpado de crimes graves, segundo o julgamento
+da própria espada), Rhumnam é apenas uma espada grande
++1, que provoca terríveis pesadelos (como a magia pesadelo)
+no mortal que ousa portá-la. Durante esses pesadelos, a pessoa
+lembra-se de quem prejudicou com seus atos. Alguns criminosos
+nem mesmo conseguem dormir perto de Rhumnam.
+Empunhada por alguém digno (de tendência Bondosa, mas
+não necessariamente Leal, ou com comportamento perfeito),
+Rhumnam, com um ataque bem-sucedido, destrói automaticamente
+qualquer criatura de tendência Maligna ou culpada de
+crimes graves (não mais crimes de qualquer tipo). Contra alvos
+inocentes, a Espada da Justiça não causa dano. Ela concede ao
+portador imunidade total a magias arcanas, mas a imunidade
+contra ataques realizados por mortos-vivos
+desapareceu (afi nal, essas criaturas são algumas
+das preferidas de Tenebra).
+A arma de pólvora embutida em Rhumnam
+é uma pistola caçadora +5. Suas restrições
+são as mesmas da espada: nas mãos de
+um usuário que não seja Bondoso, é apenas
+uma pistola +1. Um tiro bem-sucedido também
+destrói qualquer criatura de tendência
+Maligna. Usuários que saibam usar pistolas
+podem golpear com a lâmina e apertar o gatilho
+ao mesmo tempo, com uma ação padrão.
+Nesse caso, fazem duas jogadas de ataque
+— uma para a espada, outra para a pistola
+— com –2 de penalidade em ambas. Os dois
+danos são calculados normalmente. Obviamente,
+se uma criatura Maligna for destruída
+pelo golpe ou pelo tiro, não poderá ser mais
+destruída pelo segundo ataque…
+
+•Tomo da Criação Mágica: Qualquer mago pode estudar o tomo da criação mágica.
+É necessário um teste estendido de Identificar Magia (CD 20,
+12 sucessos exigidos, um teste por dia). Em caso de sucesso,
+o mago vê que, subitamente, os escritos passam a fazer sentido.
+O que antes parecia obscuro torna-se claro — e, mais do
+que isso, torna-se exatamente o que ele precisa. O mago então
+é capaz de simular qualquer magia (como pela magia desejo),
+mesmo que normalmente não seja capaz de lançá-la, ou então
+criar uma magia completamente nova. Durante este primeiro
+uso, o tomo detecta e interpreta as necessidades do usuário,
+oferecendo uma magia adequada.
+Usos posteriores exigem apenas 9 sucessos, e o usuário
+pode pesquisar a magia que desejar. Caso deseje criar uma magia
+nova, o usuário pode combinar os efeitos de até três magias
+arcanas ou divinas, desde que a soma de seus níveis não ultrapasse
+10. Por exemplo: um mago deseja ver seus inimigos surdos
+e em agonia. Então pesquisa e cria a magia urro de morte,
+que produz um grito horrendo a partir da garganta do usuário,
+combinando grito (arcana 4) e drenar temporário (arcana 4).
+Com a permissão do mestre, essas novas magias podem,
+em vez de combinar magias já existentes, aumentar o efeito
+de outra magia. Rufus usou viagem planar para levar o albino
+até a Anti Criação — mas uma versão que alcançava esse outro
+universo, não um mero Plano de existência. Nenhuma magia
+lançada a partir do tomo exige componentes materiais.
+No entanto, como já foi dito, o tomo é perigoso. Ao estudar
+uma magia nova, o usuário deve concentrar-se profundamente
+em seu objetivo. A energia mágica do tomo traz esse objetivo
+mais para perto do mago — muitas vezes com resultados desastrosos.
+O usuário deve, ao fi nal do estudo, fazer um teste de
+Vontade (CD 20 + 2 para cada uso do tomo além do primeiro).
+Em caso de sucesso, nada acontece. Em caso de falha, é afetado
+permanentemente por parte do efeito da magia que estava pesquisando.
+Por exemplo, o mago que criou urro de morte poderia
+ficar surdo para sempre. Rufus foi afetado pela loucura e corrupção
+da Tormenta ao criar um portal para a Anti Criação.
+A magia criada fica nas páginas do tomo até ser lançada.
+Depois disso, o texto volta a parecer incongruente.
+
+• O Desbravador
+Antes de ser aprisionada, durante suas andanças por Arton
+e pelos planos, Valkaria adotava a aparência de uma aventureira
+armada com um mangual, o Desbravador. Quando foi salva de seu
+cativeiro, a Deusa da Ambição deu o Desbravador como recompensa
+a seus Libertadores. Desde então, a arma passou de mãos em
+mãos, algumas vezes presenteada, outras roubada. Não há como
+saber onde está agora. Talvez nas profundezas de uma masmorra,
+ao lado do corpo de um aventureiro ambicioso demais...
+O Desbravador é um mangual do toque espectral +6. Refl etindo
+o caráter inconstante de sua mestra, ele pode se transformar em
+numerosas outras armas, e possui diversos poderes. Todos podem
+ser usados livremente, sem limite de utilizações diárias.
+• Armas. Ao acionar um botão (uma ação de movimento), o
+usuário pode transformar o Desbravador em qualquer destas armas:
+espada longa fl amejante +6, machado de batalha afi ado +6, martelo
+de guerra congelante +6 ou lança defensora +6.
+• Anticriatura. Em todas as suas formas, o Desbravador é
+considerado uma arma anticriaturas contra todos os tipos de criatura,
+exceto humanos ou devotos de Valkaria.
+• Dissipar Magia. O Desbravador pode lançar dissipar magia
+(nível de conjurador 20) como uma ação padrão.
+• Imobilizar Pessoas. Em todas as suas formas, o Desbravador
+pode ser usado para realizar um ataque de toque que paralisa a
+criatura atingida por 1 minuto. Um teste de Fortitude (CD 20)
+anula o efeito.
+• Medo. O Desbravador pode lançar medo (Vontade CD 18
+anula) como uma ação padrão.
+
+• Holy Avenger
+A arma mais poderosa de Arton foi criada pelo deus Sszzaas
+através de um plano extremamente intrincado, que envolveu enganar
+todos os outros deuses do Panteão e forçá-los a depositar seu
+poder nesta espada.
+A Holy Avenger é uma espada bastarda +10, que provoca 4d6
+pontos de dano adicional e fornece +8 em testes de resistência contra
+magia. Além disso, pode lançar dissipar magia maior (nível de
+conjurador 20) como uma ação padrão.
+Três vezes por dia, a Holy Avenger pode ser usada para desferir
+um ataque de destruição total. Caso seja atingida por um ataque de
+toque feito com a espada, qualquer criatura é totalmente destruída,
+sem direito a testes de resistência. Nenhum tipo de imunidade
+impede este ataque, que pode destruir até mesmo um deus maior
+— caso este seja atacado em seu próprio Plano.
+Logo após a criação da espada, a Holy Avenger caiu nas mãos
+de Arsenal, que havia se aliado ao sumo-sacerdote de Sszzaas justamente
