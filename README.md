@@ -35,3 +35,10 @@ Talentos gerais ficam em **Talentos**. Talentos exclusivos de classe ficam **den
 
 - `main` — versão publicada.
 - `dev` — construção e validação antes de publicação.
+
+
+## Documentação do projeto
+
+- [Documentação completa técnica e editorial](docs/DOCUMENTACAO_COMPLETA_PROJETO.md)
+- [Guia de arquitetura](docs/ARQUITETURA_SITE.md)
+- [Instruções para agentes/IA](AGENTS.md)
