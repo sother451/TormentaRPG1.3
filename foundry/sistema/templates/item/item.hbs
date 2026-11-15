@@ -1,0 +1,71 @@
+<div class="t13 t13-item">
+  <header class="t13-item-topo">
+    <img src="{{item.img}}" data-action="editImage" data-edit="img" alt="{{item.name}}">
+    <input type="text" name="name" value="{{item.name}}" placeholder="Nome" {{#unless editavel}}disabled{{/unless}}>
+  </header>
+
+  <fieldset class="t13-campos" {{#unless editavel}}disabled{{/unless}}>
+    {{#if (eq tipo "classe")}}
+      <label>Nível nesta classe <input type="number" name="system.nivel" value="{{fonte.nivel}}" min="0" max="20"></label>
+      <label class="marcar"><input type="checkbox" name="system.inicial" {{checked fonte.inicial}}> Classe inicial (dá o PV do 1º nível)</label>
+      <label>BBA <select name="system.bba">{{selectOptions tiposBBA selected=fonte.bba valueAttr="id" labelAttr="label"}}</select></label>
+      <label>PV inicial <input type="number" name="system.pvInicial" value="{{fonte.pvInicial}}" min="0"></label>
+      <label>PV por nível <input type="number" name="system.pvPorNivel" value="{{fonte.pvPorNivel}}" min="0"></label>
+      <p class="dica">PM = base + modificador de conjuração (definido na ficha) + PM por nível a partir do 2º. Deixe a base vazia se a classe não tem PM.</p>
+      <label>PM base <input type="number" name="system.pm.base" value="{{fonte.pm.base}}"></label>
+      <label>PM por nível <input type="number" name="system.pm.porNivel" value="{{fonte.pm.porNivel}}"></label>
+    {{/if}}
+
+    {{#if (eq tipo "talento")}}
+      <label>Grupo <input type="text" name="system.grupo" value="{{fonte.grupo}}"></label>
+      <label>Pré-requisitos <input type="text" name="system.prerequisitos" value="{{fonte.prerequisitos}}"></label>
+      <label>Custo <input type="text" name="system.beneficio" value="{{fonte.beneficio}}"></label>
+      <label>Usos <span class="par"><input type="number" name="system.usos.atual" value="{{fonte.usos.atual}}" min="0"> / <input type="number" name="system.usos.max" value="{{fonte.usos.max}}" min="0"></span></label>
+    {{/if}}
+
+    {{#if (eq tipo "magia")}}
+      <label>Ciclo <input type="number" name="system.ciclo" value="{{fonte.ciclo}}" min="0" max="9"></label>
+      <label>Custo em PM <input type="number" name="system.custoPM" value="{{fonte.custoPM}}" min="0"></label>
+      <label>Listas / procedência <input type="text" name="system.procedencia" value="{{fonte.procedencia}}"></label>
+      <label>Escola <input type="text" name="system.escola" value="{{fonte.escola}}"></label>
+      <label>Execução <input type="text" name="system.tempo" value="{{fonte.tempo}}"></label>
+      <label>Alcance <input type="text" name="system.alcance" value="{{fonte.alcance}}"></label>
+      <label>Alvo/área/efeito <input type="text" name="system.alvo" value="{{fonte.alvo}}"></label>
+      <label>Duração <input type="text" name="system.duracao" value="{{fonte.duracao}}"></label>
+      <label>Resistência <input type="text" name="system.resistencia" value="{{fonte.resistencia}}"></label>
+      <label>Dano (fórmula) <input type="text" name="system.dano" value="{{fonte.dano}}" placeholder="3d6 ou 2d8 + @mdc"></label>
+      <label class="marcar"><input type="checkbox" name="system.preparada" {{checked fonte.preparada}}> Preparada</label>
+    {{/if}}
+
+    {{#if (eq tipo "arma")}}
+      <label>Tipo de ataque <select name="system.tipoAtaque">{{selectOptions tiposAtaque selected=fonte.tipoAtaque valueAttr="id" labelAttr="label"}}</select></label>
+      <label>Habilidade do ataque <select name="system.habilidadeAtaque">{{selectOptions habilidadesAtaque selected=fonte.habilidadeAtaque valueAttr="id" labelAttr="label"}}</select></label>
+      <label>Dano <input type="text" name="system.dano" value="{{fonte.dano}}" placeholder="1d8"></label>
+      <label>Crítico <input type="text" name="system.critico" value="{{fonte.critico}}" placeholder="19-20/x2"></label>
+      <label>Tipo de dano <input type="text" name="system.tipoDano" value="{{fonte.tipoDano}}"></label>
+      <label>Bônus de ataque (fórmula) <input type="text" name="system.bonusAtaque" value="{{fonte.bonusAtaque}}" placeholder="1 + @minhaVariavel"></label>
+      <label>Bônus de dano (fórmula) <input type="text" name="system.bonusDano" value="{{fonte.bonusDano}}" placeholder="1d6"></label>
+      <label>Munição (vazio = não usa) <input type="number" name="system.municao" value="{{fonte.municao}}" min="0"></label>
+      <label>Categoria <input type="text" name="system.categoria" value="{{fonte.categoria}}"></label>
+      <label>Propriedades <input type="text" name="system.propriedades" value="{{fonte.propriedades}}"></label>
+    {{/if}}
+
+    {{#if (eq tipo "armadura")}}
+      <label class="marcar"><input type="checkbox" name="system.escudo" {{checked fonte.escudo}}> É um escudo</label>
+      <label>Bônus na CA <input type="number" name="system.ca" value="{{fonte.ca}}"></label>
+      <label>Bônus máximo de Des (vazio = sem limite) <input type="number" name="system.maxDex" value="{{fonte.maxDex}}"></label>
+      <label>Penalidade de armadura <input type="number" name="system.penalidade" value="{{fonte.penalidade}}"></label>
+      <label>Categoria <input type="text" name="system.categoria" value="{{fonte.categoria}}"></label>
+    {{/if}}
+
+    {{#if ehEquipavel}}
+      <label>Peso (kg) <input type="number" step="0.1" name="system.peso" value="{{fonte.peso}}" min="0"></label>
+      <label>Quantidade <input type="number" name="system.quantidade" value="{{fonte.quantidade}}" min="0"></label>
+      <label>Preço <input type="text" name="system.preco" value="{{fonte.preco}}"></label>
+    {{/if}}
+  </fieldset>
+
+  <div class="t13-descricao">
+    {{formGroup campos.descricao value=fonte.descricao enriched=enriquecido.descricao toggled=true localize=true}}
+  </div>
+</div>

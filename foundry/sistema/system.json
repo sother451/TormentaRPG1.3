@@ -1,0 +1,92 @@
+{
+  "id": "tormenta13",
+  "title": "Tormenta RPG 1.3",
+  "description": "Sistema de Tormenta RPG 1.3 para Foundry VTT: ficha com cálculos automáticos, itens estruturados e variáveis livres para o jogador.",
+  "version": "0.2.0",
+  "authors": [
+    {
+      "name": "sother451"
+    }
+  ],
+  "url": "https://github.com/sother451/TormentaRPG1.3",
+  "manifest": "https://raw.githubusercontent.com/sother451/TormentaRPG1.3/main/foundry/sistema/system.json",
+  "download": "https://github.com/sother451/TormentaRPG1.3/releases/download/foundry-v0.2.0/system.zip",
+  "compatibility": {
+    "minimum": "14",
+    "verified": "14"
+  },
+  "esmodules": [
+    "module/tormenta13.mjs"
+  ],
+  "styles": [
+    "styles/tormenta13.css"
+  ],
+  "languages": [
+    {
+      "lang": "pt-BR",
+      "name": "Português (Brasil)",
+      "path": "lang/pt-BR.json"
+    }
+  ],
+  "documentTypes": {
+    "Actor": {
+      "character": {
+        "htmlFields": [
+          "biografia"
+        ]
+      },
+      "npc": {
+        "htmlFields": [
+          "biografia"
+        ]
+      }
+    },
+    "Item": {
+      "raca": {
+        "htmlFields": [
+          "descricao"
+        ]
+      },
+      "classe": {
+        "htmlFields": [
+          "descricao"
+        ]
+      },
+      "talento": {
+        "htmlFields": [
+          "descricao"
+        ]
+      },
+      "magia": {
+        "htmlFields": [
+          "descricao"
+        ]
+      },
+      "arma": {
+        "htmlFields": [
+          "descricao"
+        ]
+      },
+      "armadura": {
+        "htmlFields": [
+          "descricao"
+        ]
+      },
+      "equipamento": {
+        "htmlFields": [
+          "descricao"
+        ]
+      },
+      "itemMagico": {
+        "htmlFields": [
+          "descricao"
+        ]
+      }
+    }
+  },
+  "grid": {
+    "distance": 1.5,
+    "units": "m"
+  },
+  "primaryTokenAttribute": "pv"
+}

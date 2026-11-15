@@ -1,0 +1,89 @@
+/* Tormenta RPG 1.3: cores derivadas do texto do tema (funciona em claro e escuro). */
+.tormenta13 {
+  --t13-acento: #2f8a8c;
+  --t13-perigo: #b0485a;
+  --t13-linha: color-mix(in srgb, currentColor 20%, transparent);
+  --t13-painel: color-mix(in srgb, currentColor 6%, transparent);
+  --t13-mudo: color-mix(in srgb, currentColor 65%, transparent);
+}
+.tormenta13 .window-content { padding: 0; }
+.tormenta13 .t13 { display: flex; flex-direction: column; height: 100%; font-size: 13px; }
+.tormenta13 .t13 input[type="number"] { text-align: right; }
+.tormenta13 .t13 input[type="number"], .tormenta13 .t13 select { min-width: 0; }
+
+/* Topo */
+.tormenta13 .t13-topo { display: grid; grid-template-columns: 72px 1fr 200px; gap: 12px; align-items: center; padding: 10px 14px; border-bottom: 1px solid var(--t13-linha); }
+.tormenta13 .t13-topo img { width: 72px; height: 72px; object-fit: cover; border-radius: 6px; border: 1px solid var(--t13-linha); cursor: pointer; }
+.tormenta13 .t13-nome { font-size: 22px; font-weight: 700; height: 36px; background: transparent; border: 0; border-bottom: 1px solid var(--t13-linha); border-radius: 0; }
+.tormenta13 .t13-identidade p { margin: 4px 0 0; color: var(--t13-mudo); }
+.tormenta13 .t13-vida label { display: flex; justify-content: space-between; align-items: center; gap: 6px; }
+.tormenta13 .t13-vida .par input { width: 58px; }
+.tormenta13 .t13-pa { width: auto; height: 22px; line-height: 20px; padding: 0 8px; }
+.tormenta13 .t13-filtro { display: flex; gap: 8px; align-items: center; }
+.tormenta13 .t13-filtro input[type="search"] { flex: 1; }
+.tormenta13 [hidden] { display: none !important; }
+.tormenta13 .t13-barra { height: 8px; border-radius: 4px; background: var(--t13-painel); overflow: hidden; margin: 4px 0; }
+.tormenta13 .t13-barra div { height: 100%; background: var(--t13-perigo); }
+
+/* Abas */
+.tormenta13 .t13-abas { display: flex; flex-wrap: wrap; gap: 2px; padding: 6px 14px 0; border-bottom: 1px solid var(--t13-linha); }
+.tormenta13 .t13-abas button { width: auto; flex: 0 0 auto; height: 30px; padding: 0 14px; background: transparent; border: 0; border-radius: 6px 6px 0 0; color: inherit; cursor: pointer; }
+.tormenta13 .t13-abas button:hover { background: var(--t13-painel); }
+.tormenta13 .t13-abas button.ativa { background: var(--t13-painel); box-shadow: inset 0 -2px 0 var(--t13-acento); font-weight: 700; }
+.tormenta13 .t13-corpo { flex: 1; overflow-y: auto; padding: 12px 14px 16px; }
+.tormenta13 h3 { display: flex; justify-content: space-between; align-items: center; margin: 14px 0 6px; padding-bottom: 3px; border-bottom: 1px solid var(--t13-linha); font-size: 15px; }
+.tormenta13 .t13-dica { color: var(--t13-mudo); margin: 4px 0 8px; }
+
+/* Habilidades: o modificador é o centro da ficha */
+.tormenta13 .t13-habilidades { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
+.tormenta13 .t13-hab { display: flex; flex-direction: column; align-items: stretch; gap: 3px; padding: 8px; background: var(--t13-painel); border: 1px solid var(--t13-linha); border-radius: 8px; text-align: center; }
+.tormenta13 .t13-hab label { display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--t13-mudo); }
+.tormenta13 .t13-hab label input { width: 44px; height: 22px; }
+.tormenta13 .t13-mod { height: 54px; width: 100%; font-size: 30px; font-weight: 700; line-height: 1; background: transparent; border: 1px solid var(--t13-acento); border-radius: 8px; color: var(--t13-acento); cursor: pointer; }
+.tormenta13 .t13-mod:hover { background: var(--t13-acento); color: #fff; }
+
+.tormenta13 .t13-numeros { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; margin: 10px 0; }
+.tormenta13 .t13-numeros div { display: flex; flex-direction: column; align-items: center; padding: 6px; border: 1px solid var(--t13-linha); border-radius: 8px; }
+.tormenta13 .t13-numeros span { font-size: 11px; color: var(--t13-mudo); }
+.tormenta13 .t13-numeros strong { font-size: 20px; }
+.tormenta13 .t13-duas { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+/* Linhas de lista */
+.tormenta13 .t13-linha { display: flex; align-items: center; gap: 8px; padding: 3px 0; border-bottom: 1px dashed var(--t13-linha); }
+.tormenta13 .t13-linha.inativa { opacity: 0.5; }
+.tormenta13 .t13-linha > strong { min-width: 34px; text-align: right; }
+.tormenta13 .t13-linha select { width: 64px; height: 24px; }
+.tormenta13 .t13-linha input[type="number"] { width: 52px; height: 24px; }
+.tormenta13 .t13-linha input[type="text"] { flex: 1; height: 24px; }
+.tormenta13 .t13-linha button { width: auto; flex: 0 0 auto; height: 24px; line-height: 22px; padding: 0 8px; }
+.tormenta13 .t13-rolar { flex: 1 !important; text-align: left; background: transparent; border: 0; cursor: pointer; }
+.tormenta13 .t13-rolar:hover { color: var(--t13-acento); }
+.tormenta13 .t13-item img { width: 26px; height: 26px; border: 0; border-radius: 4px; }
+.tormenta13 .t13-item a { flex: 1; font-weight: 600; }
+.tormenta13 .t13-item label { display: flex; align-items: center; gap: 4px; }
+.tormenta13 .t13-info { color: var(--t13-mudo); }
+.tormenta13 .t13-acoes { display: inline-flex; gap: 4px; font-weight: 400; }
+.tormenta13 .t13-acoes button { width: auto; height: 24px; line-height: 22px; padding: 0 10px; }
+
+.tormenta13 .t13-campo { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 4px; }
+.tormenta13 .t13-campo input, .tormenta13 .t13-campo select { width: 55%; }
+.tormenta13 .t13-moedas, .tormenta13 .t13-bonus { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px 10px; margin-bottom: 8px; }
+.tormenta13 .t13-bonus { grid-template-columns: repeat(3, 1fr); }
+.tormenta13 .t13-moedas label, .tormenta13 .t13-bonus label { display: flex; justify-content: space-between; align-items: center; gap: 6px; }
+.tormenta13 .t13-moedas input, .tormenta13 .t13-bonus input { width: 64px; }
+
+/* Ficha de item */
+.tormenta13 .t13-item-topo { display: grid; grid-template-columns: 48px 1fr; gap: 10px; align-items: center; padding: 10px 14px; border-bottom: 1px solid var(--t13-linha); }
+.tormenta13 .t13-item-topo img { width: 48px; height: 48px; border-radius: 6px; cursor: pointer; }
+.tormenta13 .t13-item-topo input { font-size: 18px; font-weight: 700; }
+.tormenta13 .t13-campos { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 12px; padding: 10px 14px; border: 0; margin: 0; }
+.tormenta13 .t13-campos label { display: flex; flex-direction: column; gap: 2px; font-size: 12px; color: var(--t13-mudo); }
+.tormenta13 .t13-campos label.marcar { flex-direction: row; align-items: center; gap: 6px; grid-column: 1 / -1; color: inherit; }
+.tormenta13 .t13-campos .dica { grid-column: 1 / -1; margin: 2px 0; color: var(--t13-mudo); }
+.tormenta13 .t13-campos .par { display: flex; align-items: center; gap: 4px; }
+.tormenta13 .t13-descricao { padding: 0 14px 14px; }
+
+@media (max-width: 720px) {
+  .tormenta13 .t13-habilidades, .tormenta13 .t13-numeros { grid-template-columns: repeat(3, 1fr); }
+  .tormenta13 .t13-duas { grid-template-columns: 1fr; }
+}
