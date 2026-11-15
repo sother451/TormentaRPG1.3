@@ -32,8 +32,8 @@ jobs:
           const fs = require('fs');
           const manifest = JSON.parse(fs.readFileSync('foundry/sistema/system.json', 'utf8'));
           if (manifest.version !== '0.2.0') throw new Error('Versão inesperada: ' + manifest.version);
-          if (!String(manifest.manifest || '').includes('/foundry-v0.2.0/foundry/sistema/system.json')) {
-            throw new Error('URL manifest não aponta para foundry-v0.2.0.');
+          if (String(manifest.manifest || '') !== 'https://raw.githubusercontent.com/sother451/TormentaRPG1.3/main/foundry/sistema/system.json') {
+            throw new Error('URL manifest inesperada: ' + manifest.manifest);
           }
           if (!String(manifest.download || '').includes('/releases/download/foundry-v0.2.0/system.zip')) {
             throw new Error('URL download não aponta para foundry-v0.2.0/system.zip.');
