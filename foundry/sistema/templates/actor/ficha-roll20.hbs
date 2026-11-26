@@ -4,17 +4,7 @@
 
 <div class="sheet_completa">
 <input type="hidden" class="sheet-tabstoggle" value="{{@root.ui.aba}}">
-<div class="tab_group">
-	<input type="hidden" class="sheet-tabstoggle" value="{{@root.ui.aba}}">
-    <button class="tab_button" type="button" data-action="aba" data-aba="personagem" name="act_personagem">Personagem</button>
-    <button class="tab_button" type="button" data-action="aba" data-aba="parametro" name="act_parametro">Parametros</button>
-    <button class="tab_button" type="button" data-action="aba" data-aba="ataque" name="act_ataque">Ataques</button>
-	<button class="tab_button" type="button" data-action="aba" data-aba="habilidade" name="act_habilidade">Habilidades</button>
-    <button class="tab_button" type="button" data-action="aba" data-aba="magia" name="act_magia">Magias</button>
-    <button class="tab_button" type="button" data-action="aba" data-aba="inventario" name="act_inventario">Inventario</button>
-	<button class="tab_button" type="button" data-action="aba" data-aba="nota" name="act_nota">Anotações</button>
-	<button class="tab_button" type="button" data-action="aba" data-aba="configuracao" name="act_configuracao">Configurações</button>
-</div>
+
 <div class="sheet-personagem">	
 		<div class="sheet-pc-details">
 			<div class="sheet-table">  
@@ -23,7 +13,7 @@
 			<div>
 				<div>    
 					<span class="sheet-table-data-left"><b>Nome: </b></span> <span class="sheet-table-data-left" style="width:40%;"><input title="character_name" type="text" name="name" value="{{@root.actor.name}}"></span>        
-					<span class="sheet-table-data-left"><b>Raça: </b></span> <span class="sheet-table-data-left" style="width:25%;"><input title="raca" type="text" name="system.raca" value="{{v.raca}}" /></span>    
+					<span class="sheet-table-data-left"><b>Raça: </b></span> <span class="sheet-table-data-left" style="width:25%;"><input type="text" name="system.raca" value="{{v.raca}}" title="{{v.raca}}" /></span>    
 					<span class="sheet-table-data-left"><b>Tendência: </b></span>
 					<span class="sheet-table-data-left" style="width:20%;">
 						<select title="tendencia" name="system.tendencia">
@@ -42,10 +32,10 @@
 				<div>
 					<span class="sheet-table-data-left"> <b>Sexo: </b></span>
 					<span class="sheet-table-data-left" style="width:15%;">
-						<input title="character_sex" type="text" name="system.character_sex" value="{{v.character_sex}}" />
+						<input type="text" name="system.character_sex" value="{{v.character_sex}}" title="{{v.character_sex}}" />
 					</span>
 					<span class="sheet-table-data-left"><b>Idade: </b></span> <span class="sheet-table-data-left" style="width:20%;"><input title="idade" type="number" name="system.idade" value="{{v.idade}}" /></span>
-					<span class="sheet-table-data-left"><b>Divindade: </b></span> <span class="sheet-table-data-left" style="width:30%;"><input title="divindade" type="text" name="system.divindade" value="{{v.divindade}}" /></span>
+					<span class="sheet-table-data-left"><b>Divindade: </b></span> <span class="sheet-table-data-left" style="width:30%;"><input type="text" name="system.divindade" value="{{v.divindade}}" title="{{v.divindade}}" /></span>
 					<span class="sheet-table-data-left"><b>Tamanho: </b></span> 
 					<span class="sheet-table-data-left" style="width:20%;">
 						<select title="tamanho" name="system.tamanho">
@@ -62,8 +52,8 @@
 					</span>
 				</div>
 				<div>				
-					<span class="sheet-table-data-left"><b>Idiomas: </b></span><span class="sheet-table-data-left" style="width:80%"><input title="idiomas" type="text" name="system.idiomas" value="{{v.idiomas}}" /></span>
-					<span class="sheet-table-data-left"><b>Nivel: </b></span><span class="sheet-table-data-left" style="width:20%"><input title="Nivel" type="text" readonly value="{{v.nivel}}" /></span>
+					<span class="sheet-table-data-left"><b>Idiomas: </b></span><span class="sheet-table-data-left" style="width:80%"><input type="text" name="system.idiomas" value="{{v.idiomas}}" title="{{v.idiomas}}" /></span>
+					<span class="sheet-table-data-left"><b>Nivel: </b></span><span class="sheet-table-data-left" style="width:20%"><input type="text" readonly value="{{v.nivel}}" title="{{v.nivel}}" /></span>
 					<input type="hidden" value="{{b.meio_nivel}}" />
 				</div>
 				
@@ -75,10 +65,10 @@
 					<div class="sheet-table">
 						<div class="sheet-table-row">
 							<span class="sheet-table-row-nome">XP Atual</span>
-							<span class="sheet-table-data-center"><input title="experiencia" type="text" placeholder="XP Atual" name="system.experiencia" value="{{v.experiencia}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" placeholder="XP Atual" name="system.experiencia" value="{{v.experiencia}}" title="{{v.experiencia}}" /></span>
 							<span class="sheet-table-data-center" style="vertical-align:middle;font-size:150%;"><b>/</b></span>
 							<span class="sheet-table-row-nome">XP para o próx. nível</span>
-							<span class="sheet-table-data-center"><input title="experiencia|max" type="text" disabled value="{{v.experiencia_max}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" disabled value="{{v.experiencia_max}}" title="{{v.experiencia_max}}" /></span>
 							<span class="sheet-table-data-center" style="vertical-align:middle;font-size:150%;"> </span>
 							<span class="sheet-table-row-nome">Ponto de Ação</span>
 							<span class="sheet-table-data-center"><input title="Ponto-de-Ação" type="number" name="system.ponto_acao" value="{{v.ponto_acao}}" /></span>
@@ -102,70 +92,70 @@
 						</div>
 						<div class="sheet-table-row">
 							<span class="sheet-table-row-nome"><button style="font-size:100%;" type="button" data-action="rolar" data-macro=":forcheck">FOR</button></span>
-							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" title="FOR" type="text" readonly value="{{v.for}}" /></span>
+							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" type="text" readonly value="{{v.for}}" title="{{v.for}}" /></span>
 							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" title="for_valor" type="number" min="0" name="system.for_valor" value="{{v.for_valor}}" /></span>
-							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" title="for_mod" type="text" readonly value="{{v.for_mod}}" /></span>
-							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" title="for_outros" type="text" readonly value="{{v.for_outros}}" /></span>
+							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" type="text" readonly value="{{v.for_mod}}" title="{{v.for_mod}}" /></span>
+							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" type="text" readonly value="{{v.for_outros}}" title="{{v.for_outros}}" /></span>
 							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" title="for_temp" type="number" name="system.for_temp" value="{{v.for_temp}}" /></span>
 						</div>
 						<div class="sheet-table-row">
 							<span class="sheet-table-row-nome"><button style="font-size:100%;" type="button" data-action="rolar" data-macro=":des_check">DES</button></span>
-							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" title="DES" type="text" readonly value="{{v.des}}" /></span>
+							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" type="text" readonly value="{{v.des}}" title="{{v.des}}" /></span>
 							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" title="DES-valor" type="number" min="0" name="system.des_valor" value="{{v.des_valor}}" /></span>
-							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" title="des_mod" type="text" readonly value="{{v.des_mod}}" /></span>
-							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" title="DES-outros" type="text" readonly value="{{v.des_outros}}" /></span>
+							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" type="text" readonly value="{{v.des_mod}}" title="{{v.des_mod}}" /></span>
+							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" type="text" readonly value="{{v.des_outros}}" title="{{v.des_outros}}" /></span>
 							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" title="DES-temp" type="number" name="system.des_temp" value="{{v.des_temp}}" /></span>
 						</div>
 						<div class="sheet-table-row">
 							<span class="sheet-table-row-nome"><button style="font-size:100%;" type="button" data-action="rolar" data-macro=":concheck">CON</button></span>
-							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" title="CON" type="text" readonly value="{{v.con}}" /></span>
+							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" type="text" readonly value="{{v.con}}" title="{{v.con}}" /></span>
 							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" title="con_valor" type="number" min="0" name="system.con_valor" value="{{v.con_valor}}" /></span>
-							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" title="con_mod" type="text" readonly value="{{v.con_mod}}" /></span>
-							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" title="con_outros" type="text" readonly value="{{v.con_outros}}" /></span>
+							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" type="text" readonly value="{{v.con_mod}}" title="{{v.con_mod}}" /></span>
+							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" type="text" readonly value="{{v.con_outros}}" title="{{v.con_outros}}" /></span>
 							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" title="con_temp" type="number" name="system.con_temp" value="{{v.con_temp}}" /></span>
 						</div>
 						<div class="sheet-table-row">
 							<span class="sheet-table-row-nome"><button style="font-size:100%;" type="button" data-action="rolar" data-macro=":intcheck">INT</button></span>
-							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" title="INT" type="text" readonly value="{{v.int}}" /></span>
+							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" type="text" readonly value="{{v.int}}" title="{{v.int}}" /></span>
 							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" title="int_valor" type="number" min="0" name="system.int_valor" value="{{v.int_valor}}" /></span>
-							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" title="int_mod" type="text" readonly value="{{v.int_mod}}" /></span>
-							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" title="int_outros" type="text" readonly value="{{v.int_outros}}" /></span>
+							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" type="text" readonly value="{{v.int_mod}}" title="{{v.int_mod}}" /></span>
+							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" type="text" readonly value="{{v.int_outros}}" title="{{v.int_outros}}" /></span>
 							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" title="int_temp" type="number" name="system.int_temp" value="{{v.int_temp}}" /></span>
 						</div>
 						<div class="sheet-table-row">
 							<span class="sheet-table-row-nome"><button style="font-size:100%;" type="button" data-action="rolar" data-macro=":sabcheck">SAB</button></span>
-							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" title="SAB" type="text" readonly value="{{v.sab}}" /></span>
+							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" type="text" readonly value="{{v.sab}}" title="{{v.sab}}" /></span>
 							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" title="sab_valor" type="number" min="0" name="system.sab_valor" value="{{v.sab_valor}}" /></span>
-							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" title="sab_mod" type="text" readonly value="{{v.sab_mod}}" /></span>
-							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" title="sab_outros" type="text" readonly value="{{v.sab_outros}}" /></span>
+							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" type="text" readonly value="{{v.sab_mod}}" title="{{v.sab_mod}}" /></span>
+							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" type="text" readonly value="{{v.sab_outros}}" title="{{v.sab_outros}}" /></span>
 							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" title="sab_temp" type="number" name="system.sab_temp" value="{{v.sab_temp}}" /></span>
 						</div>
 						<div class="sheet-table-row">
 							<span class="sheet-table-row-nome"><button style="font-size:100%;" type="button" data-action="rolar" data-macro=":carcheck">CAR</button></span>
-							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" title="CAR" type="text" readonly value="{{v.car}}" /></span>
+							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" type="text" readonly value="{{v.car}}" title="{{v.car}}" /></span>
 							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" title="car_valor" type="number" min="0" name="system.car_valor" value="{{v.car_valor}}" /></span>
-							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" title="car_mod" type="text" readonly value="{{v.car_mod}}" /></span>
-							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" title="car_outros" type="text" readonly value="{{v.car_outros}}" /></span>
+							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" type="text" readonly value="{{v.car_mod}}" title="{{v.car_mod}}" /></span>
+							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" type="text" readonly value="{{v.car_outros}}" title="{{v.car_outros}}" /></span>
 							<span class="sheet-table-data-center-habilidade"><input class="input-habilidade" title="car_temp" type="number" name="system.car_temp" value="{{v.car_temp}}" /></span>
 						</div>
 					</div>
 					<div class="sheet-table">
 						<span class="sheet-table-nome">Equipamento Mágico</span>
 						<div class="sheet-table-row">
-							<span class="sheet-table-data-left"><input placeholder="Item 1" type="text" style="width:100%" name="system.item1" value="{{v.item1}}" /></span>
+							<span class="sheet-table-data-left"><input placeholder="Item 1" type="text" style="width:100%" name="system.item1" value="{{v.item1}}" title="{{v.item1}}" /></span>
 						</div>
 						<div class="sheet-table-row">
-							<span class="sheet-table-data-left"><input placeholder="Item 2" type="text" style="width:100%" name="system.item2" value="{{v.item2}}" /></span>
+							<span class="sheet-table-data-left"><input placeholder="Item 2" type="text" style="width:100%" name="system.item2" value="{{v.item2}}" title="{{v.item2}}" /></span>
 						</div>
 						<div class="sheet-table-row">
-							<span class="sheet-table-data-left"><input placeholder="Item 3" type="text" style="width:100%" name="system.item3" value="{{v.item3}}" /></span>
+							<span class="sheet-table-data-left"><input placeholder="Item 3" type="text" style="width:100%" name="system.item3" value="{{v.item3}}" title="{{v.item3}}" /></span>
 						</div>
 						<div class="sheet-table-row">
-							<span class="sheet-table-data-left"><input placeholder="Item 4" type="text" style="width:100%" name="system.item4" value="{{v.item4}}" /></span>
+							<span class="sheet-table-data-left"><input placeholder="Item 4" type="text" style="width:100%" name="system.item4" value="{{v.item4}}" title="{{v.item4}}" /></span>
 						</div>
 						<div style="text-align: justify;" class="sheet-table-row">
 							<div class="repcontainer" data-secao="item_magico">{{#each @root.reps.item_magico}}<div class="repitem" data-linha="{{id}}"><div class="itemcontrol"><button type="button" class="repcontrol_del" data-action="repApagar" title="Apagar">✕</button></div>						
-								<span class="sheet-table-data-left" style="display:block;width:100%"><input placeholder="Item Extra" type="text" name="system.rep_item_magico.{{id}}.itemextra" value="{{v.itemextra}}" /></span>
+								<span class="sheet-table-data-left" style="display:block;width:100%"><input placeholder="Item Extra" type="text" name="system.rep_item_magico.{{id}}.itemextra" value="{{v.itemextra}}" title="{{v.itemextra}}" /></span>
 							</div>{{/each}}</div><div class="repcontrol"><button type="button" class="repcontrol_add" data-action="repAdicionar" data-secao="item_magico">+ Adicionar</button></div>
 						</div>
 					</div>
@@ -190,7 +180,7 @@
 						<div class="repcontainer" data-secao="class">{{#each @root.reps.class}}<div class="repitem" data-linha="{{id}}"><div class="itemcontrol"><button type="button" class="repcontrol_del" data-action="repApagar" title="Apagar">✕</button></div> 
 							<div class="sheet-table-row">
 								<span class="sheet-table-data-center" style="width:10%;"><input type="number" min="0" name="system.rep_class.{{id}}.xclasse_nivel" value="{{v.xclasse_nivel}}" /></span>
-								<span class="sheet-table-data-center" style="width:30%;"><input title="Classe" type="text" name="system.rep_class.{{id}}.xclass_nome" value="{{v.xclass_nome}}" /> </span>
+								<span class="sheet-table-data-center" style="width:30%;"><input type="text" name="system.rep_class.{{id}}.xclass_nome" value="{{v.xclass_nome}}" title="{{v.xclass_nome}}" /> </span>
 								<span class="sheet-table-data-center" style="width:10%;">
 									<select title="BBA" name="system.rep_class.{{id}}.xclasse_bba">
 										<option value="0" {{#if (eq v.xclasse_bba "0")}}selected{{/if}}>0</option>
@@ -209,7 +199,7 @@
 										<option value="6" {{#if (eq v.xclasse_pv "6")}}selected{{/if}}>6</option>
 									</select>
 								</span>
-								<span class="sheet-table-data-center" style="width:10%;"><input type="text" readonly value="{{v.xclasse_pvclasse}}" /></span>
+								<span class="sheet-table-data-center" style="width:10%;"><input type="text" readonly value="{{v.xclasse_pvclasse}}" title="{{v.xclasse_pvclasse}}" /></span>
 							</div>	
 						</div>{{/each}}</div><div class="repcontrol"><button type="button" class="repcontrol_add" data-action="repAdicionar" data-secao="class">+ Adicionar</button></div>
 					</div>				
@@ -258,11 +248,11 @@
 								<span class="sheet-table-header">Outros</span>
 							</div>
 							<div class="sheet-table-row">
-								<span class="sheet-table-data-center"><input type="text" title="PV_formula_max" disabled value="{{v.pv_formula_max}}" /></span>
+								<span class="sheet-table-data-center"><input type="text" disabled value="{{v.pv_formula_max}}" title="{{v.pv_formula_max}}" /></span>
 								<span class="sheet-table-data-center" style="vertical-align:middle;font-size:150%;"><b></b></span>
-								<span class="sheet-table-data-center"><input type="text" title="PV_formula_classes" disabled value="{{v.pv_formula_classes}}" /></span>
+								<span class="sheet-table-data-center"><input type="text" disabled value="{{v.pv_formula_classes}}" title="{{v.pv_formula_classes}}" /></span>
 								<span class="sheet-table-data-center" style="vertical-align:middle;font-size:150%;"><b></b></span>
-								<span class="sheet-table-data-center"><input type="text" title="PV-temp" disabled value="{{v.pv_formula_nivel}}" /></span>
+								<span class="sheet-table-data-center"><input type="text" disabled value="{{v.pv_formula_nivel}}" title="{{v.pv_formula_nivel}}" /></span>
 								<span class="sheet-table-data-center" style="vertical-align:middle;font-size:150%;"><b></b></span>
 								<span style="display:flex" class="sheet-table-data-center">
 								<select name="system.pv_formula_hab">
@@ -274,10 +264,10 @@
 									<option value="@{sab_mod}" {{#if (eq v.pv_formula_hab "@{sab_mod}")}}selected{{/if}}>SAB</option>
 									<option value="@{car_mod}" {{#if (eq v.pv_formula_hab "@{car_mod}")}}selected{{/if}}>CAR</option>
 								</select>
-								<input style="width: 50%;" type="text" title="PV_formula_mod" disabled value="{{v.pv_formula_mod}}" /> 
+								<input style="width: 50%;" type="text" disabled value="{{v.pv_formula_mod}}" title="{{v.pv_formula_mod}}" /> 
 								</span>
 								<span class="sheet-table-data-center" style="vertical-align:middle;font-size:150%;"><b></b></span>
-								<span class="sheet-table-data-center"><input type="text" title="PV_formula_outros" readonly value="{{v.pvnivel_outros}}" /></span>
+								<span class="sheet-table-data-center"><input type="text" readonly value="{{v.pvnivel_outros}}" title="{{v.pvnivel_outros}}" /></span>
 								<span class="sheet-table-data-center" style="vertical-align:middle;font-size:150%;"><b></b></span>							
 								<span class="sheet-table-data-center"><input type="number" title="PV_formula_temp" readonly value="{{v.pv_outros}}" /></span>
 							</div>
@@ -298,7 +288,7 @@
 							<span class="sheet-table-header">Temp</span>
 						</div>
 						<div class="sheet-table-row">
-							<span class="sheet-table-data-center" style="width:min-content;width:15%;"><input style="text-align:center" title="CA" type="text" disabled value="{{v.ca}}" /></span>
+							<span class="sheet-table-data-center" style="width:min-content;width:15%;"><input style="text-align:center" type="text" disabled value="{{v.ca}}" title="{{v.ca}}" /></span>
 							<span>=</span>
 							<span style="text-align:center; width:15%;" class="sheet-table-data-center">
 								<select title="Nivel" name="system.ca_base">
@@ -306,11 +296,11 @@
 									<option value="floor(@{nivel})" {{#if (eq v.ca_base "floor(@{nivel})")}}selected{{/if}}>1</option>
 								</select>
 							</span>
-							<span class="sheet-table-data-center" style="text-align:center;"><input title="armadura-cabonus" type="text" disabled value="{{v.ca_armadura}}" /></span>
-							<span class="sheet-table-data-center" style="text-align:center;"><input title="escudo-cabonus" type="text" disabled value="{{v.ca_escudo}}" /></span>
-							<span class="sheet-table-data-center" style="text-align:center;"><input title="des" type="text" readonly value="{{v.ca_des}}" /></span>
-							<span class="sheet-table-data-center" style="text-align:center;"><input title="tamanho" type="text" disabled value="{{v.ca_tamanho}}" /></span>
-							<span class="sheet-table-data-center" style="text-align:center;"><input title="CA-outros" type="text" readonly value="{{v.ca_outros}}" /></span>
+							<span class="sheet-table-data-center" style="text-align:center;"><input type="text" disabled value="{{v.ca_armadura}}" title="{{v.ca_armadura}}" /></span>
+							<span class="sheet-table-data-center" style="text-align:center;"><input type="text" disabled value="{{v.ca_escudo}}" title="{{v.ca_escudo}}" /></span>
+							<span class="sheet-table-data-center" style="text-align:center;"><input type="text" readonly value="{{v.ca_des}}" title="{{v.ca_des}}" /></span>
+							<span class="sheet-table-data-center" style="text-align:center;"><input type="text" disabled value="{{v.ca_tamanho}}" title="{{v.ca_tamanho}}" /></span>
+							<span class="sheet-table-data-center" style="text-align:center;"><input type="text" readonly value="{{v.ca_outros}}" title="{{v.ca_outros}}" /></span>
 							<span class="sheet-table-data-center" style="text-align:center;"><input title="CA-temp" type="number" name="system.ca_temp" value="{{v.ca_temp}}" /></span>
 						</div>				
 					</div>
@@ -329,7 +319,7 @@
 					</div>
 					<div class="sheet-table-row">
 						<span class="sheet-table-data-center"><input title="armadura_equipado" type="checkbox" name="system.armadura_equipado" {{#if v.armadura_equipado}}checked{{/if}} /></span>
-						<span class="sheet-table-data-center"><input title="armadura" type="text" class="sheet-detail-medium" name="system.armadura" value="{{v.armadura}}" /></span>
+						<span class="sheet-table-data-center"><input type="text" class="sheet-detail-medium" name="system.armadura" value="{{v.armadura}}" title="{{v.armadura}}" /></span>
 						<span class="sheet-table-data-center"><input title="armadura-cabonus" type="number" min="0" name="system.armadura_ca" value="{{v.armadura_ca}}" /></span>
 						<span class="sheet-table-data-center"><input title="armadura-max-des" type="number" name="system.armadura_max_des" value="{{v.armadura_max_des}}" /></span>
 						<span class="sheet-table-data-center">
@@ -345,7 +335,7 @@
 					</div>
 					<div class="sheet-table-row">
 						<span class="sheet-table-data-center" style="width:10% "><input title="escudo-equipado" type="checkbox" name="system.escudo_equip" {{#if v.escudo_equip}}checked{{/if}} /></span>
-						<span class="sheet-table-data-center" style="width:20%"><input title="escudo" type="text" class="sheet-detail-medium" name="system.escudo" value="{{v.escudo}}" /></span>
+						<span class="sheet-table-data-center" style="width:20%"><input type="text" class="sheet-detail-medium" name="system.escudo" value="{{v.escudo}}" title="{{v.escudo}}" /></span>
 						<span class="sheet-table-data-center" style="width:10% "><input title="escudo-cabonus" type="number" min="0" name="system.escudo_ca" value="{{v.escudo_ca}}" /></span>
 						<span class="sheet-table-data-center" style="width:10% "></span>
 						<span class="sheet-table-data-center" style="width:10%"></span>
@@ -366,8 +356,8 @@
 						</div>
 						<div class="sheet-table-row">
 							<span class="sheet-table-row-nome"><button style="font-size:100%;" title="Teste-Fort" type="button" data-action="rolar" data-macro=":fortitude_save">Fort</button></span>
-							<span class="sheet-table-data-center"><input title="Fort" type="text" disabled value="{{v.fortitude}}" /></span>
-							<span class="sheet-table-data-center"><input title="meio_nivel" type="text" disabled value="{{v.fortitude_meio_nivel}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" disabled value="{{v.fortitude}}" title="{{v.fortitude}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" disabled value="{{v.fortitude_meio_nivel}}" title="{{v.fortitude_meio_nivel}}" /></span>
 							<span class="sheet-table-data-center">
 								<select title="Habilidade do teste" name="system.fortitude_mod">
 									<option value="@{for_mod}" {{#if (eq v.fortitude_mod "@{for_mod}")}}selected{{/if}}>FOR</option>
@@ -378,14 +368,14 @@
 									<option value="@{car_mod}" {{#if (eq v.fortitude_mod "@{car_mod}")}}selected{{/if}}>CAR</option>
 								</select>
 							</span>
-							<span class="sheet-table-data-center"><input title="Fort-outros" type="text" disabled value="{{v.fortitude_hab}}" /></span>
-							<span class="sheet-table-data-center"><input title="Fort-outros" type="text" readonly value="{{v.fortitude_outros}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" disabled value="{{v.fortitude_hab}}" title="{{v.fortitude_hab}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" readonly value="{{v.fortitude_outros}}" title="{{v.fortitude_outros}}" /></span>
 							<span class="sheet-table-data-center"><input title="Fort-temp" type="number" name="system.fortitude_temp" value="{{v.fortitude_temp}}" /></span>
 						</div>
 						<div class="sheet-table-row">
 							<span class="sheet-table-row-nome"><button style="font-size:100%;" title="Teste-refl" type="button" data-action="rolar" data-macro=":reflexo_save">Refl</button></span>
-							<span class="sheet-table-data-center"><input title="refl" type="text" disabled value="{{v.reflexo}}" /></span>
-							<span class="sheet-table-data-center"><input title="meio_nivel" type="text" disabled value="{{v.reflexo_meio_nivel}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" disabled value="{{v.reflexo}}" title="{{v.reflexo}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" disabled value="{{v.reflexo_meio_nivel}}" title="{{v.reflexo_meio_nivel}}" /></span>
 							<span class="sheet-table-data-center">
 								<select title="Habilidade do teste" name="system.reflexo_mod">
 									<option value="@{for_mod}" {{#if (eq v.reflexo_mod "@{for_mod}")}}selected{{/if}}>FOR</option>
@@ -396,14 +386,14 @@
 									<option value="@{car_mod}" {{#if (eq v.reflexo_mod "@{car_mod}")}}selected{{/if}}>CAR</option>
 								</select>
 							</span>
-							<span class="sheet-table-data-center"><input title="Fort-outros" type="text" disabled value="{{v.reflexo_hab}}" /></span>
-							<span class="sheet-table-data-center"><input title="refl-outros" type="text" readonly value="{{v.reflexo_outros}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" disabled value="{{v.reflexo_hab}}" title="{{v.reflexo_hab}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" readonly value="{{v.reflexo_outros}}" title="{{v.reflexo_outros}}" /></span>
 							<span class="sheet-table-data-center"><input title="refl-temp" type="number" name="system.reflexo_temp" value="{{v.reflexo_temp}}" /></span>
 						</div>
 						<div class="sheet-table-row">
 							<span class="sheet-table-row-nome"><button style="font-size:100%;" title="Teste-vont" type="button" data-action="rolar" data-macro=":vontade_save">Vont</button></span>
-							<span class="sheet-table-data-center"><input title="vont" type="text" disabled value="{{v.vontade}}" /></span>
-							<span class="sheet-table-data-center"><input title="meio_nivel" type="text" disabled value="{{v.vontade_meio_nivel}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" disabled value="{{v.vontade}}" title="{{v.vontade}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" disabled value="{{v.vontade_meio_nivel}}" title="{{v.vontade_meio_nivel}}" /></span>
 							<span class="sheet-table-data-center">
 								<select title="Habilidade do teste" name="system.vontade_mod">
 									<option value="@{for_mod}" {{#if (eq v.vontade_mod "@{for_mod}")}}selected{{/if}}>FOR</option>
@@ -414,8 +404,8 @@
 									<option value="@{car_mod}" {{#if (eq v.vontade_mod "@{car_mod}")}}selected{{/if}}>CAR</option>
 								</select>
 							</span>
-							<span class="sheet-table-data-center"><input title="Fort-outros" type="text" disabled value="{{v.vontade_hab}}" /></span>
-							<span class="sheet-table-data-center"><input title="vont-outros" type="text" readonly value="{{v.vontade_outros}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" disabled value="{{v.vontade_hab}}" title="{{v.vontade_hab}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" readonly value="{{v.vontade_outros}}" title="{{v.vontade_outros}}" /></span>
 							<span class="sheet-table-data-center"><input title="vont-temp" type="number" name="system.vontade_temp" value="{{v.vontade_temp}}" /></span>
 						</div>
 					</div>								
@@ -440,15 +430,15 @@
 					<div class="sheet-table">
 						<div class="sheet-table-row">
 							<span class="sheet-table-row-nome">RDs</span>
-							<span class="sheet-table-data-left"><input title="resistencias" type="text" style="width:100%" name="system.rds" value="{{v.rds}}" /></span>
+							<span class="sheet-table-data-left"><input type="text" style="width:100%" name="system.rds" value="{{v.rds}}" title="{{v.rds}}" /></span>
 						</div>
 						<div class="sheet-table-row">
 							<span class="sheet-table-row-nome">REs</span>
-							<span class="sheet-table-data-left"><input title="resistencias" type="text" style="width:100%" name="system.res" value="{{v.res}}" /></span>
+							<span class="sheet-table-data-left"><input type="text" style="width:100%" name="system.res" value="{{v.res}}" title="{{v.res}}" /></span>
 						</div>
 						<div class="sheet-table-row">
 							<span class="sheet-table-row-nome">Imunidades</span>
-							<span class="sheet-table-data-left"><input title="imunidades" type="text" style="width:100%" name="system.imunidades" value="{{v.imunidades}}" /></span>
+							<span class="sheet-table-data-left"><input type="text" style="width:100%" name="system.imunidades" value="{{v.imunidades}}" title="{{v.imunidades}}" /></span>
 						</div>
 					</div>
 					<br>
@@ -472,7 +462,7 @@
 									<input type="checkbox" name="system.rep_mods.{{id}}.xmod_equip" {{#if v.xmod_equip}}checked{{/if}} />
 								</span>
 								<span class="sheet-table-data-center" style="width:10% ">
-									<input type="text" readonly value="{{v.xmod_total}}" />
+									<input type="text" readonly value="{{v.xmod_total}}" title="{{v.xmod_total}}" />
 								</span>
 								<span class="sheet-table-data-center" style="width:30%">
 									<select title="armadura-type" name="system.rep_mods.{{id}}.xmod_tipo">
@@ -539,7 +529,7 @@
 										<option {{#if (eq v.xmod_tipo "Usos Diarios")}}selected{{/if}}>Usos Diarios</option>
 									</select>
 								</span>
-								<span class="sheet-table-data-center" style="width:25%"><input type="text" placeholder="Nome" name="system.rep_mods.{{id}}.xmod_nome" value="{{v.xmod_nome}}" /></span>
+								<span class="sheet-table-data-center" style="width:25%"><input type="text" placeholder="Nome" name="system.rep_mods.{{id}}.xmod_nome" value="{{v.xmod_nome}}" title="{{v.xmod_nome}}" /></span>
 								<span class="sheet-table-data-center" style="width:15% ">
 									<select title="Habilidade do teste" name="system.rep_mods.{{id}}.xmod_habilidade">
 									<option value="0" {{#if (eq v.xmod_habilidade "0")}}selected{{/if}}></option>
@@ -578,7 +568,7 @@
 						</div>
 						<div class="sheet-table-row">
 							<div class="sheet-table-data-center ">							
-								<--<input style="display:none" class="check-pericia-treinada-show" title="Acrobacia_treinada" type="checkbox" data-campo="system.acrobacia_treinada" {{#if v.acrobacia_treinada}}checked{{/if}} />
+								<input style="display:none" class="check-pericia-treinada-show" title="Acrobacia_treinada" type="checkbox" data-campo="system.acrobacia_treinada" {{#if v.acrobacia_treinada}}checked{{/if}} />
 								<button class="button-pericia-treinada" style="font-size:100%;" title="Teste-Acrobacia" type="button" data-action="rolar" data-macro=":teste_acrobacia"><i class="fa-solid fa-dice-d20"></i></button>
 							</div>
 							<div class="sheet-table-data-center">
@@ -586,7 +576,7 @@
 							</div>
 							<span class="sheet-table-data-center"></span>
 							<span class="sheet-table-data-left">Acrobacia &bull;</span>
-							<span class="sheet-table-data-center"><input title="Acrobacia" type="text" disabled value="{{v.acrobacia}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" disabled value="{{v.acrobacia}}" title="{{v.acrobacia}}" /></span>
 							<span class="sheet-table-data-center">
 								<select name="system.acrobacia_hab">
 									<option value="@{for_mod}" {{#if (eq v.acrobacia_hab "@{for_mod}")}}selected{{/if}}>FOR</option>
@@ -597,20 +587,20 @@
 									<option value="@{car_mod}" {{#if (eq v.acrobacia_hab "@{car_mod}")}}selected{{/if}}>CAR</option>
 								</select>
 							</span>
-							<span class="sheet-table-data-center"><input title="Acrobacia_outros" type="text" readonly value="{{v.acrobacia_outros}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" readonly value="{{v.acrobacia_outros}}" title="{{v.acrobacia_outros}}" /></span>
 							<span class="sheet-table-data-center"><input title="Acrobacia_temp" type="number" name="system.acrobacia_temp" value="{{v.acrobacia_temp}}" /></span>
 						</div>
 						<div class="sheet-table-row">
 							<div class="sheet-table-data-center ">							
 								<input style="display:none" class="check-pericia-treinada-show" title="Adestrar_Animais_treinada" type="checkbox" data-campo="system.adestrar_animais_treinada" {{#if v.adestrar_animais_treinada}}checked{{/if}} />
-								<button class="button-pericia-treinada" style="font-size:100%;" title="Teste-Adestrar_Animais" type="button" data-action="rolar" data-macro=":teste_adestrar_animais"><i class="fa-solid fa-dice-d20"></i></button>
+								{{#if v.adestrar_animais_treinada}}<button class="button-pericia-treinada" style="font-size:100%;" title="Teste-Adestrar_Animais" type="button" data-action="rolar" data-macro=":teste_adestrar_animais"><i class="fa-solid fa-dice-d20"></i></button>{{/if}}
 							</div>
 							<div class="sheet-table-data-center">
 								<input class="check-pericia-treinada-show" title="Adestrar_Animais_treinada" type="checkbox" name="system.adestrar_animais_treinada" {{#if v.adestrar_animais_treinada}}checked{{/if}} />						
 							</div>
 							<span class="sheet-table-data-center"></span>
 							<span class="sheet-table-data-left">Adestrar Animais</span>
-							<span class="sheet-table-data-center"><input title="Adestrar_Animais" type="text" disabled value="{{v.adestrar_animais}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" disabled value="{{v.adestrar_animais}}" title="{{v.adestrar_animais}}" /></span>
 							<span class="sheet-table-data-center">
 								<select name="system.adestrar_animais_hab">
 									<option value="@{for_mod}" {{#if (eq v.adestrar_animais_hab "@{for_mod}")}}selected{{/if}}>FOR</option>
@@ -621,12 +611,12 @@
 									<option value="@{car_mod}" {{#if (eq v.adestrar_animais_hab "@{car_mod}")}}selected{{/if}}>CAR</option>
 								</select>
 							</span>
-							<span class="sheet-table-data-center"><input title="Adestrar_Animais_outros" type="text" readonly value="{{v.adestrar_animais_outros}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" readonly value="{{v.adestrar_animais_outros}}" title="{{v.adestrar_animais_outros}}" /></span>
 							<span class="sheet-table-data-center"><input title="Adestrar_Animais_temp" type="number" name="system.adestrar_animais_temp" value="{{v.adestrar_animais_temp}}" /></span>
 						</div>
 						<div class="sheet-table-row">
 							<div class="sheet-table-data-center ">							
-								<--<input style="display:none" class="check-pericia-treinada-show" title="atletismo_treinada" type="checkbox" data-campo="system.atletismo_treinada" {{#if v.atletismo_treinada}}checked{{/if}} />
+								<input style="display:none" class="check-pericia-treinada-show" title="atletismo_treinada" type="checkbox" data-campo="system.atletismo_treinada" {{#if v.atletismo_treinada}}checked{{/if}} />
 								<button class="button-pericia-treinada" style="font-size:100%;" title="Teste-atletismo" type="button" data-action="rolar" data-macro=":teste_atletismo"><i class="fa-solid fa-dice-d20"></i></button>
 							</div>
 							<div class="sheet-table-data-center">
@@ -634,7 +624,7 @@
 							</div>
 							<span class="sheet-table-data-center"></span>
 							<span class="sheet-table-data-left">Atletismo &bull;</span>
-							<span class="sheet-table-data-center"><input title="atletismo" type="text" disabled value="{{v.atletismo}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" disabled value="{{v.atletismo}}" title="{{v.atletismo}}" /></span>
 							<span class="sheet-table-data-center">
 								<select name="system.atletismo_hab">
 									<option value="@{for_mod}" {{#if (eq v.atletismo_hab "@{for_mod}")}}selected{{/if}}>FOR</option>
@@ -645,12 +635,12 @@
 									<option value="@{car_mod}" {{#if (eq v.atletismo_hab "@{car_mod}")}}selected{{/if}}>CAR</option>
 								</select>
 							</span>
-							<span class="sheet-table-data-center"><input title="atletismo_outros" type="text" readonly value="{{v.atletismo_outros}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" readonly value="{{v.atletismo_outros}}" title="{{v.atletismo_outros}}" /></span>
 							<span class="sheet-table-data-center"><input title="atletismo_temp" type="number" name="system.atletismo_temp" value="{{v.atletismo_temp}}" /></span>
 						</div>
 						<div class="sheet-table-row">
 							<div class="sheet-table-data-center ">							
-								<--<input style="display:none" class="check-pericia-treinada-show" title="atuacao_treinada" type="checkbox" data-campo="system.atuacao_treinada" {{#if v.atuacao_treinada}}checked{{/if}} />
+								<input style="display:none" class="check-pericia-treinada-show" title="atuacao_treinada" type="checkbox" data-campo="system.atuacao_treinada" {{#if v.atuacao_treinada}}checked{{/if}} />
 								<button class="button-pericia-treinada" style="font-size:100%;" title="Teste-atuacao" type="button" data-action="rolar" data-macro=":teste_atuacao"><i class="fa-solid fa-dice-d20"></i></button>
 							</div>
 							<div class="sheet-table-data-center">
@@ -658,7 +648,7 @@
 							</div>
 							<span class="sheet-table-data-center"></span>
 							<span class="sheet-table-data-left">Atuação</span>
-							<span class="sheet-table-data-center"><input title="atuacao" type="text" disabled value="{{v.atuacao}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" disabled value="{{v.atuacao}}" title="{{v.atuacao}}" /></span>
 							<span class="sheet-table-data-center">
 								<select name="system.atuacao_hab">
 									<option value="@{for_mod}" {{#if (eq v.atuacao_hab "@{for_mod}")}}selected{{/if}}>FOR</option>
@@ -669,12 +659,12 @@
 									<option value="@{car_mod}" {{#if (eq v.atuacao_hab "@{car_mod}")}}selected{{/if}}>CAR</option>
 								</select>
 							</span>
-							<span class="sheet-table-data-center"><input title="atuacao_outros" type="text" readonly value="{{v.atuacao_outros}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" readonly value="{{v.atuacao_outros}}" title="{{v.atuacao_outros}}" /></span>
 							<span class="sheet-table-data-center"><input title="atuacao_temp" type="number" name="system.atuacao_temp" value="{{v.atuacao_temp}}" /></span>
 						</div>
 						<div class="sheet-table-row">
 							<div class="sheet-table-data-center ">							
-								<--<input style="display:none" class="check-pericia-treinada-show" title="cavalgar_treinada" type="checkbox" data-campo="system.cavalgar_treinada" {{#if v.cavalgar_treinada}}checked{{/if}} />
+								<input style="display:none" class="check-pericia-treinada-show" title="cavalgar_treinada" type="checkbox" data-campo="system.cavalgar_treinada" {{#if v.cavalgar_treinada}}checked{{/if}} />
 								<button class="button-pericia-treinada" style="font-size:100%;" title="Teste-cavalgar" type="button" data-action="rolar" data-macro=":teste_cavalgar"><i class="fa-solid fa-dice-d20"></i></button>
 							</div>
 							<div class="sheet-table-data-center">
@@ -682,7 +672,7 @@
 							</div>
 							<span class="sheet-table-data-center"></span>
 							<span class="sheet-table-data-left">Cavalgar</span>
-							<span class="sheet-table-data-center"><input title="cavalgar" type="text" disabled value="{{v.cavalgar}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" disabled value="{{v.cavalgar}}" title="{{v.cavalgar}}" /></span>
 							<span class="sheet-table-data-center">
 								<select name="system.cavalgar_hab">
 									<option value="@{for_mod}" {{#if (eq v.cavalgar_hab "@{for_mod}")}}selected{{/if}}>FOR</option>
@@ -693,20 +683,20 @@
 									<option value="@{car_mod}" {{#if (eq v.cavalgar_hab "@{car_mod}")}}selected{{/if}}>CAR</option>
 								</select>
 							</span>
-							<span class="sheet-table-data-center"><input title="cavalgar_outros" type="text" readonly value="{{v.cavalgar_outros}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" readonly value="{{v.cavalgar_outros}}" title="{{v.cavalgar_outros}}" /></span>
 							<span class="sheet-table-data-center"><input title="cavalgar_temp" type="number" name="system.cavalgar_temp" value="{{v.cavalgar_temp}}" /></span>
 						</div>
 						<div class="sheet-table-row">
 							<div class="sheet-table-data-center ">							
 								<input style="display:none" class="check-pericia-treinada-show" title="conhecimento_treinada" type="checkbox" data-campo="system.conhecimento_treinada" {{#if v.conhecimento_treinada}}checked{{/if}} />
-								<button class="button-pericia-treinada" style="font-size:100%;" title="Teste-conhecimento" type="button" data-action="rolar" data-macro=":teste_conhecimento"><i class="fa-solid fa-dice-d20"></i></button>
+								{{#if v.conhecimento_treinada}}<button class="button-pericia-treinada" style="font-size:100%;" title="Teste-conhecimento" type="button" data-action="rolar" data-macro=":teste_conhecimento"><i class="fa-solid fa-dice-d20"></i></button>{{/if}}
 							</div>
 							<div class="sheet-table-data-center">
 								<input class="check-pericia-treinada-show" title="conhecimento_treinada" type="checkbox" name="system.conhecimento_treinada" {{#if v.conhecimento_treinada}}checked{{/if}} />						
 							</div>
 							<span class="sheet-table-data-center"></span>
 							<span class="sheet-table-data-left">Conhecimento</span>
-							<span class="sheet-table-data-center"><input title="conhecimento" type="text" disabled value="{{v.conhecimento}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" disabled value="{{v.conhecimento}}" title="{{v.conhecimento}}" /></span>
 							<span class="sheet-table-data-center">
 								<select name="system.conhecimento_hab">
 									<option value="@{for_mod}" {{#if (eq v.conhecimento_hab "@{for_mod}")}}selected{{/if}}>FOR</option>
@@ -717,12 +707,12 @@
 									<option value="@{car_mod}" {{#if (eq v.conhecimento_hab "@{car_mod}")}}selected{{/if}}>CAR</option>
 								</select>
 							</span>
-							<span class="sheet-table-data-center"><input title="conhecimento_outros" type="text" readonly value="{{v.conhecimento_outros}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" readonly value="{{v.conhecimento_outros}}" title="{{v.conhecimento_outros}}" /></span>
 							<span class="sheet-table-data-center"><input title="conhecimento_temp" type="number" name="system.conhecimento_temp" value="{{v.conhecimento_temp}}" /></span>
 						</div>
 						<div class="sheet-table-row">
 							<div class="sheet-table-data-center ">							
-								<--<input style="display:none" class="check-pericia-treinada-show" title="curar_treinada" type="checkbox" data-campo="system.curar_treinada" {{#if v.curar_treinada}}checked{{/if}} />
+								<input style="display:none" class="check-pericia-treinada-show" title="curar_treinada" type="checkbox" data-campo="system.curar_treinada" {{#if v.curar_treinada}}checked{{/if}} />
 								<button class="button-pericia-treinada" style="font-size:100%;" title="Teste-curar" type="button" data-action="rolar" data-macro=":teste_curar"><i class="fa-solid fa-dice-d20"></i></button>
 							</div>
 							<div class="sheet-table-data-center">
@@ -730,7 +720,7 @@
 							</div>
 							<span class="sheet-table-data-center"></span>
 							<span class="sheet-table-data-left">Curar</span>
-							<span class="sheet-table-data-center"><input title="curar" type="text" disabled value="{{v.curar}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" disabled value="{{v.curar}}" title="{{v.curar}}" /></span>
 							<span class="sheet-table-data-center">
 								<select name="system.curar_hab">
 									<option value="@{for_mod}" {{#if (eq v.curar_hab "@{for_mod}")}}selected{{/if}}>FOR</option>
@@ -741,12 +731,12 @@
 									<option value="@{car_mod}" {{#if (eq v.curar_hab "@{car_mod}")}}selected{{/if}}>CAR</option>
 								</select>
 							</span>
-							<span class="sheet-table-data-center"><input title="curar_outros" type="text" readonly value="{{v.curar_outros}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" readonly value="{{v.curar_outros}}" title="{{v.curar_outros}}" /></span>
 							<span class="sheet-table-data-center"><input title="curar_temp" type="number" name="system.curar_temp" value="{{v.curar_temp}}" /></span>
 						</div>
 						<div class="sheet-table-row">
 							<div class="sheet-table-data-center ">							
-								<--<input style="display:none" class="check-pericia-treinada-show" title="Diplomacia_treinada" type="checkbox" data-campo="system.diplomacia_treinada" {{#if v.diplomacia_treinada}}checked{{/if}} />
+								<input style="display:none" class="check-pericia-treinada-show" title="Diplomacia_treinada" type="checkbox" data-campo="system.diplomacia_treinada" {{#if v.diplomacia_treinada}}checked{{/if}} />
 								<button class="button-pericia-treinada" style="font-size:100%;" title="Teste-Diplomacia" type="button" data-action="rolar" data-macro=":teste_diplomacia"><i class="fa-solid fa-dice-d20"></i></button>
 							</div>
 							<div class="sheet-table-data-center">
@@ -754,7 +744,7 @@
 							</div>
 							<span class="sheet-table-data-center"></span>
 							<span class="sheet-table-data-left">Diplomacia</span>
-							<span class="sheet-table-data-center"><input title="Diplomacia" type="text" disabled value="{{v.diplomacia}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" disabled value="{{v.diplomacia}}" title="{{v.diplomacia}}" /></span>
 							<span class="sheet-table-data-center">
 								<select name="system.diplomacia_hab">
 									<option value="@{for_mod}" {{#if (eq v.diplomacia_hab "@{for_mod}")}}selected{{/if}}>FOR</option>
@@ -765,12 +755,12 @@
 									<option value="@{car_mod}" {{#if (eq v.diplomacia_hab "@{car_mod}")}}selected{{/if}}>CAR</option>
 								</select>
 							</span>
-							<span class="sheet-table-data-center"><input title="Diplomacia_outros" type="text" readonly value="{{v.diplomacia_outros}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" readonly value="{{v.diplomacia_outros}}" title="{{v.diplomacia_outros}}" /></span>
 							<span class="sheet-table-data-center"><input title="Diplomacia_temp" type="number" name="system.diplomacia_temp" value="{{v.diplomacia_temp}}" /></span>
 						</div>
 						<div class="sheet-table-row">
 							<div class="sheet-table-data-center ">							
-								<--<input style="display:none" class="check-pericia-treinada-show" title="enganacao_treinada" type="checkbox" data-campo="system.enganacao_treinada" {{#if v.enganacao_treinada}}checked{{/if}} />
+								<input style="display:none" class="check-pericia-treinada-show" title="enganacao_treinada" type="checkbox" data-campo="system.enganacao_treinada" {{#if v.enganacao_treinada}}checked{{/if}} />
 								<button class="button-pericia-treinada" style="font-size:100%;" title="Teste-enganacao" type="button" data-action="rolar" data-macro=":teste_enganacao"><i class="fa-solid fa-dice-d20"></i></button>
 							</div>
 							<div class="sheet-table-data-center">
@@ -778,7 +768,7 @@
 							</div>
 							<span class="sheet-table-data-center"></span>
 							<span class="sheet-table-data-left">Enganação</span>
-							<span class="sheet-table-data-center"><input title="enganacao" type="text" disabled value="{{v.enganacao}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" disabled value="{{v.enganacao}}" title="{{v.enganacao}}" /></span>
 							<span class="sheet-table-data-center">
 								<select name="system.enganacao_hab">
 									<option value="@{for_mod}" {{#if (eq v.enganacao_hab "@{for_mod}")}}selected{{/if}}>FOR</option>
@@ -789,12 +779,12 @@
 									<option value="@{car_mod}" {{#if (eq v.enganacao_hab "@{car_mod}")}}selected{{/if}}>CAR</option>
 								</select>
 							</span>
-							<span class="sheet-table-data-center"><input title="enganacao_outros" type="text" readonly value="{{v.enganacao_outros}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" readonly value="{{v.enganacao_outros}}" title="{{v.enganacao_outros}}" /></span>
 							<span class="sheet-table-data-center"><input title="enganacao_temp" type="number" name="system.enganacao_temp" value="{{v.enganacao_temp}}" /></span>
 						</div>
 						<div class="sheet-table-row">
 							<div class="sheet-table-data-center ">							
-								<--<input style="display:none" class="check-pericia-treinada-show" title="Furtividade_treinada" type="checkbox" data-campo="system.furtividade_treinada" {{#if v.furtividade_treinada}}checked{{/if}} />
+								<input style="display:none" class="check-pericia-treinada-show" title="Furtividade_treinada" type="checkbox" data-campo="system.furtividade_treinada" {{#if v.furtividade_treinada}}checked{{/if}} />
 								<button class="button-pericia-treinada" style="font-size:100%;" title="Teste-Furtividade" type="button" data-action="rolar" data-macro=":teste_furtividade"><i class="fa-solid fa-dice-d20"></i></button>
 							</div>
 							<div class="sheet-table-data-center">
@@ -803,7 +793,7 @@
 							<span class="sheet-table-data-center"></span>
 							<input type="hidden" value="{{b.furtividade_tamanho}}" />
 							<span class="sheet-table-data-left">Furtividade &bull;</span>
-							<span class="sheet-table-data-center"><input title="Furtividade" type="text" disabled value="{{v.furtividade}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" disabled value="{{v.furtividade}}" title="{{v.furtividade}}" /></span>
 							<span class="sheet-table-data-center">
 								<select name="system.furtividade_hab">
 									<option value="@{for_mod}" {{#if (eq v.furtividade_hab "@{for_mod}")}}selected{{/if}}>FOR</option>
@@ -814,20 +804,20 @@
 									<option value="@{car_mod}" {{#if (eq v.furtividade_hab "@{car_mod}")}}selected{{/if}}>CAR</option>
 								</select>
 							</span>
-							<span class="sheet-table-data-center"><input title="Furtividade_outros" type="text" readonly value="{{v.furtividade_outros}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" readonly value="{{v.furtividade_outros}}" title="{{v.furtividade_outros}}" /></span>
 							<span class="sheet-table-data-center"><input title="Furtividade_temp" type="number" name="system.furtividade_temp" value="{{v.furtividade_temp}}" /></span>
 						</div>
 						<div class="sheet-table-row">
 							<div class="sheet-table-data-center ">							
 								<input style="display:none" class="check-pericia-treinada-show" title="identificar_magia_treinada" type="checkbox" data-campo="system.identificar_magia_treinada" {{#if v.identificar_magia_treinada}}checked{{/if}} />
-								<button class="button-pericia-treinada" style="font-size:100%;" title="Teste-identificar_magia" type="button" data-action="rolar" data-macro=":teste_identificar_magia"><i class="fa-solid fa-dice-d20"></i></button>
+								{{#if v.identificar_magia_treinada}}<button class="button-pericia-treinada" style="font-size:100%;" title="Teste-identificar_magia" type="button" data-action="rolar" data-macro=":teste_identificar_magia"><i class="fa-solid fa-dice-d20"></i></button>{{/if}}
 							</div>
 							<div class="sheet-table-data-center">
 								<input class="check-pericia-treinada-show" title="identificar_magia_treinada" type="checkbox" name="system.identificar_magia_treinada" {{#if v.identificar_magia_treinada}}checked{{/if}} />						
 							</div>
 							<span class="sheet-table-data-center"></span>
 							<span class="sheet-table-data-left">Identificar Magia</span>
-							<span class="sheet-table-data-center"><input title="identificar_magia" type="text" disabled value="{{v.identificar_magia}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" disabled value="{{v.identificar_magia}}" title="{{v.identificar_magia}}" /></span>
 							<span class="sheet-table-data-center">
 								<select name="system.identificar_magia_hab">
 									<option value="@{for_mod}" {{#if (eq v.identificar_magia_hab "@{for_mod}")}}selected{{/if}}>FOR</option>
@@ -838,12 +828,12 @@
 									<option value="@{car_mod}" {{#if (eq v.identificar_magia_hab "@{car_mod}")}}selected{{/if}}>CAR</option>
 								</select>
 							</span>
-							<span class="sheet-table-data-center"><input title="identificar_magia_outros" type="text" readonly value="{{v.identificar_magia_outros}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" readonly value="{{v.identificar_magia_outros}}" title="{{v.identificar_magia_outros}}" /></span>
 							<span class="sheet-table-data-center"><input title="identificar_magia_temp" type="number" name="system.identificar_magia_temp" value="{{v.identificar_magia_temp}}" /></span>
 						</div>
 						<div class="sheet-table-row">
 							<div class="sheet-table-data-center ">							
-								<--<input style="display:none" class="check-pericia-treinada-show" title="iniciativa_treinada" type="checkbox" data-campo="system.iniciativa_treinada" {{#if v.iniciativa_treinada}}checked{{/if}} />
+								<input style="display:none" class="check-pericia-treinada-show" title="iniciativa_treinada" type="checkbox" data-campo="system.iniciativa_treinada" {{#if v.iniciativa_treinada}}checked{{/if}} />
 								<button class="button-pericia-treinada" style="font-size:100%;" title="Teste-iniciativa" type="button" data-action="rolar" data-macro=":teste_iniciativa"><i class="fa-solid fa-dice-d20"></i></button>
 							</div>
 							<div class="sheet-table-data-center">
@@ -851,7 +841,7 @@
 							</div>
 							<span class="sheet-table-data-center"></span>
 							<span class="sheet-table-data-left">Iniciativa</span>
-							<span class="sheet-table-data-center"><input title="iniciativa" type="text" disabled value="{{v.iniciativa}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" disabled value="{{v.iniciativa}}" title="{{v.iniciativa}}" /></span>
 							<span class="sheet-table-data-center">
 								<select name="system.iniciativa_hab">
 									<option value="@{for_mod}" {{#if (eq v.iniciativa_hab "@{for_mod}")}}selected{{/if}}>FOR</option>
@@ -862,12 +852,12 @@
 									<option value="@{car_mod}" {{#if (eq v.iniciativa_hab "@{car_mod}")}}selected{{/if}}>CAR</option>
 								</select>
 							</span>
-							<span class="sheet-table-data-center"><input title="iniciativa_outros" type="text" readonly value="{{v.iniciativa_outros}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" readonly value="{{v.iniciativa_outros}}" title="{{v.iniciativa_outros}}" /></span>
 							<span class="sheet-table-data-center"><input title="iniciativa_temp" type="number" name="system.iniciativa_temp" value="{{v.iniciativa_temp}}" /></span>
 						</div>
 						<div class="sheet-table-row">
 							<div class="sheet-table-data-center ">							
-								<--<input style="display:none" class="check-pericia-treinada-show" title="intimidacao_treinada" type="checkbox" data-campo="system.intimidacao_treinada" {{#if v.intimidacao_treinada}}checked{{/if}} />
+								<input style="display:none" class="check-pericia-treinada-show" title="intimidacao_treinada" type="checkbox" data-campo="system.intimidacao_treinada" {{#if v.intimidacao_treinada}}checked{{/if}} />
 								<button class="button-pericia-treinada" style="font-size:100%;" title="Teste-intimidacao" type="button" data-action="rolar" data-macro=":teste_intimidacao"><i class="fa-solid fa-dice-d20"></i></button>
 							</div>
 							<div class="sheet-table-data-center">
@@ -875,7 +865,7 @@
 							</div>
 							<span class="sheet-table-data-center"></span>
 							<span class="sheet-table-data-left">Intimidação</span>
-							<span class="sheet-table-data-center"><input title="intimidacao" type="text" disabled value="{{v.intimidacao}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" disabled value="{{v.intimidacao}}" title="{{v.intimidacao}}" /></span>
 							<span class="sheet-table-data-center">
 								<select name="system.intimidacao_hab">
 									<option value="@{for_mod}" {{#if (eq v.intimidacao_hab "@{for_mod}")}}selected{{/if}}>FOR</option>
@@ -886,12 +876,12 @@
 									<option value="@{car_mod}" {{#if (eq v.intimidacao_hab "@{car_mod}")}}selected{{/if}}>CAR</option>
 								</select>
 							</span>
-							<span class="sheet-table-data-center"><input title="intimidacao_outros" type="text" readonly value="{{v.intimidacao_outros}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" readonly value="{{v.intimidacao_outros}}" title="{{v.intimidacao_outros}}" /></span>
 							<span class="sheet-table-data-center"><input title="intimidacao_temp" type="number" name="system.intimidacao_temp" value="{{v.intimidacao_temp}}" /></span>
 						</div>
 						<div class="sheet-table-row">
 							<div class="sheet-table-data-center ">							
-								<--<input style="display:none" class="check-pericia-treinada-show" title="intuicao_treinada" type="checkbox" data-campo="system.intuicao_treinada" {{#if v.intuicao_treinada}}checked{{/if}} />
+								<input style="display:none" class="check-pericia-treinada-show" title="intuicao_treinada" type="checkbox" data-campo="system.intuicao_treinada" {{#if v.intuicao_treinada}}checked{{/if}} />
 								<button class="button-pericia-treinada" style="font-size:100%;" title="Teste-intuicao" type="button" data-action="rolar" data-macro=":teste_intuicao"><i class="fa-solid fa-dice-d20"></i></button>
 							</div>
 							<div class="sheet-table-data-center">
@@ -899,7 +889,7 @@
 							</div>
 							<span class="sheet-table-data-center"></span>
 							<span class="sheet-table-data-left">Intuição</span>
-							<span class="sheet-table-data-center"><input title="intuicao" type="text" disabled value="{{v.intuicao}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" disabled value="{{v.intuicao}}" title="{{v.intuicao}}" /></span>
 							<span class="sheet-table-data-center">
 								<select name="system.intuicao_hab">
 									<option value="@{for_mod}" {{#if (eq v.intuicao_hab "@{for_mod}")}}selected{{/if}}>FOR</option>
@@ -910,20 +900,20 @@
 									<option value="@{car_mod}" {{#if (eq v.intuicao_hab "@{car_mod}")}}selected{{/if}}>CAR</option>
 								</select>
 							</span>
-							<span class="sheet-table-data-center"><input title="intuicao_outros" type="text" readonly value="{{v.intuicao_outros}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" readonly value="{{v.intuicao_outros}}" title="{{v.intuicao_outros}}" /></span>
 							<span class="sheet-table-data-center"><input title="intuicao_temp" type="number" name="system.intuicao_temp" value="{{v.intuicao_temp}}" /></span>
 						</div>
 						<div class="sheet-table-row">
 							<div class="sheet-table-data-center ">							
 								<input style="display:none" class="check-pericia-treinada-show" title="ladinagem_treinada" type="checkbox" data-campo="system.ladinagem_treinada" {{#if v.ladinagem_treinada}}checked{{/if}} />
-								<button class="button-pericia-treinada" style="font-size:100%;" title="Teste-ladinagem" type="button" data-action="rolar" data-macro=":teste_ladinagem"><i class="fa-solid fa-dice-d20"></i></button>
+								{{#if v.ladinagem_treinada}}<button class="button-pericia-treinada" style="font-size:100%;" title="Teste-ladinagem" type="button" data-action="rolar" data-macro=":teste_ladinagem"><i class="fa-solid fa-dice-d20"></i></button>{{/if}}
 							</div>
 							<div class="sheet-table-data-center">
 								<input class="check-pericia-treinada-show" title="ladinagem_treinada" type="checkbox" name="system.ladinagem_treinada" {{#if v.ladinagem_treinada}}checked{{/if}} />						
 							</div>
 							<span class="sheet-table-data-center"></span>
 							<span class="sheet-table-data-left">Ladinagem &bull;</span>
-							<span class="sheet-table-data-center"><input title="ladinagem" type="text" disabled value="{{v.ladinagem}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" disabled value="{{v.ladinagem}}" title="{{v.ladinagem}}" /></span>
 							<span class="sheet-table-data-center">
 								<select name="system.ladinagem_hab">
 									<option value="@{for_mod}" {{#if (eq v.ladinagem_hab "@{for_mod}")}}selected{{/if}}>FOR</option>
@@ -934,12 +924,12 @@
 									<option value="@{car_mod}" {{#if (eq v.ladinagem_hab "@{car_mod}")}}selected{{/if}}>CAR</option>
 								</select>
 							</span>
-							<span class="sheet-table-data-center"><input title="ladinagem_outros" type="text" readonly value="{{v.ladinagem_outros}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" readonly value="{{v.ladinagem_outros}}" title="{{v.ladinagem_outros}}" /></span>
 							<span class="sheet-table-data-center"><input title="ladinagem_temp" type="number" name="system.ladinagem_temp" value="{{v.ladinagem_temp}}" /></span>
 						</div>
 						<div class="sheet-table-row">
 							<div class="sheet-table-data-center ">							
-								<--<input style="display:none" class="check-pericia-treinada-show" title="jogatina_treinada" type="checkbox" data-campo="system.jogatina_treinada" {{#if v.jogatina_treinada}}checked{{/if}} />
+								<input style="display:none" class="check-pericia-treinada-show" title="jogatina_treinada" type="checkbox" data-campo="system.jogatina_treinada" {{#if v.jogatina_treinada}}checked{{/if}} />
 								<button class="button-pericia-treinada" style="font-size:100%;" title="Teste-jogatina" type="button" data-action="rolar" data-macro=":teste_jogatina"><i class="fa-solid fa-dice-d20"></i></button>
 							</div>
 							<div class="sheet-table-data-center">
@@ -947,7 +937,7 @@
 							</div>
 							<span class="sheet-table-data-center"></span>
 							<span class="sheet-table-data-left">Jogatina</span>
-							<span class="sheet-table-data-center"><input title="jogatina" type="text" disabled value="{{v.jogatina}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" disabled value="{{v.jogatina}}" title="{{v.jogatina}}" /></span>
 							<span class="sheet-table-data-center">
 								<select name="system.jogatina_hab">
 									<option value="@{for_mod}" {{#if (eq v.jogatina_hab "@{for_mod}")}}selected{{/if}}>FOR</option>
@@ -958,12 +948,12 @@
 									<option value="@{car_mod}" {{#if (eq v.jogatina_hab "@{car_mod}")}}selected{{/if}}>CAR</option>
 								</select>
 							</span>
-							<span class="sheet-table-data-center"><input title="jogatina_outros" type="text" readonly value="{{v.jogatina_outros}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" readonly value="{{v.jogatina_outros}}" title="{{v.jogatina_outros}}" /></span>
 							<span class="sheet-table-data-center"><input title="jogatina_temp" type="number" name="system.jogatina_temp" value="{{v.jogatina_temp}}" /></span>
 						</div>
 						<div class="sheet-table-row">
 							<div class="sheet-table-data-center ">							
-								<--<input style="display:none" class="check-pericia-treinada-show" title="meditacao_treinada" type="checkbox" data-campo="system.meditacao_treinada" {{#if v.meditacao_treinada}}checked{{/if}} />
+								<input style="display:none" class="check-pericia-treinada-show" title="meditacao_treinada" type="checkbox" data-campo="system.meditacao_treinada" {{#if v.meditacao_treinada}}checked{{/if}} />
 								<button class="button-pericia-treinada" style="font-size:100%;" title="Teste-meditacao" type="button" data-action="rolar" data-macro=":teste_meditacao"><i class="fa-solid fa-dice-d20"></i></button>
 							</div>
 							<div class="sheet-table-data-center">
@@ -971,7 +961,7 @@
 							</div>
 							<span class="sheet-table-data-center"></span>
 							<span class="sheet-table-data-left">Meditação</span>
-							<span class="sheet-table-data-center"><input title="meditacao" type="text" disabled value="{{v.meditacao}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" disabled value="{{v.meditacao}}" title="{{v.meditacao}}" /></span>
 							<span class="sheet-table-data-center">
 								<select name="system.meditacao_hab">
 									<option value="@{for_mod}" {{#if (eq v.meditacao_hab "@{for_mod}")}}selected{{/if}}>FOR</option>
@@ -982,12 +972,12 @@
 									<option value="@{car_mod}" {{#if (eq v.meditacao_hab "@{car_mod}")}}selected{{/if}}>CAR</option>
 								</select>
 							</span>
-							<span class="sheet-table-data-center"><input title="meditacao_outros" type="text" readonly value="{{v.meditacao_outros}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" readonly value="{{v.meditacao_outros}}" title="{{v.meditacao_outros}}" /></span>
 							<span class="sheet-table-data-center"><input title="meditacao_temp" type="number" name="system.meditacao_temp" value="{{v.meditacao_temp}}" /></span>
 						</div>
 						<div class="sheet-table-row">
 							<div class="sheet-table-data-center ">							
-								<--<input style="display:none" class="check-pericia-treinada-show" title="obter_informacao_treinada" type="checkbox" data-campo="system.obter_informacao_treinada" {{#if v.obter_informacao_treinada}}checked{{/if}} />
+								<input style="display:none" class="check-pericia-treinada-show" title="obter_informacao_treinada" type="checkbox" data-campo="system.obter_informacao_treinada" {{#if v.obter_informacao_treinada}}checked{{/if}} />
 								<button class="button-pericia-treinada" style="font-size:100%;" title="Teste-obter_informacao" type="button" data-action="rolar" data-macro=":teste_obter_informacao"><i class="fa-solid fa-dice-d20"></i></button>
 							</div>
 							<div class="sheet-table-data-center">
@@ -995,7 +985,7 @@
 							</div>
 							<span class="sheet-table-data-center"></span>
 							<span class="sheet-table-data-left">Obter Informação</span>
-							<span class="sheet-table-data-center"><input title="obter_informacao" type="text" disabled value="{{v.obter_informacao}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" disabled value="{{v.obter_informacao}}" title="{{v.obter_informacao}}" /></span>
 							<span class="sheet-table-data-center">
 								<select name="system.obter_informacao_hab">
 									<option value="@{for_mod}" {{#if (eq v.obter_informacao_hab "@{for_mod}")}}selected{{/if}}>FOR</option>
@@ -1006,12 +996,12 @@
 									<option value="@{car_mod}" {{#if (eq v.obter_informacao_hab "@{car_mod}")}}selected{{/if}}>CAR</option>
 								</select>
 							</span>
-							<span class="sheet-table-data-center"><input title="obter_informacao_outros" type="text" readonly value="{{v.obter_informacao_outros}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" readonly value="{{v.obter_informacao_outros}}" title="{{v.obter_informacao_outros}}" /></span>
 							<span class="sheet-table-data-center"><input title="obter_informacao_temp" type="number" name="system.obter_informacao_temp" value="{{v.obter_informacao_temp}}" /></span>
 						</div>
 						<div class="sheet-table-row">
 							<div class="sheet-table-data-center ">							
-								<--<input style="display:none" class="check-pericia-treinada-show" title="oficio_treinada" type="checkbox" data-campo="system.oficio_treinada" {{#if v.oficio_treinada}}checked{{/if}} />
+								<input style="display:none" class="check-pericia-treinada-show" title="oficio_treinada" type="checkbox" data-campo="system.oficio_treinada" {{#if v.oficio_treinada}}checked{{/if}} />
 								<button class="button-pericia-treinada" style="font-size:100%;" title="Teste-oficio" type="button" data-action="rolar" data-macro=":teste_oficio"><i class="fa-solid fa-dice-d20"></i></button>
 							</div>
 							<div class="sheet-table-data-center">
@@ -1019,7 +1009,7 @@
 							</div>
 							<span class="sheet-table-data-center"></span>
 							<span class="sheet-table-data-left">Ofício</span>
-							<span class="sheet-table-data-center"><input title="oficio" type="text" disabled value="{{v.oficio}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" disabled value="{{v.oficio}}" title="{{v.oficio}}" /></span>
 							<span class="sheet-table-data-center">
 								<select name="system.oficio_hab">
 									<option value="@{for_mod}" {{#if (eq v.oficio_hab "@{for_mod}")}}selected{{/if}}>FOR</option>
@@ -1030,12 +1020,12 @@
 									<option value="@{car_mod}" {{#if (eq v.oficio_hab "@{car_mod}")}}selected{{/if}}>CAR</option>
 								</select>
 							</span>
-							<span class="sheet-table-data-center"><input title="oficio_outros" type="text" readonly value="{{v.oficio_outros}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" readonly value="{{v.oficio_outros}}" title="{{v.oficio_outros}}" /></span>
 							<span class="sheet-table-data-center"><input title="oficio_temp" type="number" name="system.oficio_temp" value="{{v.oficio_temp}}" /></span>
 						</div>
 						<div class="sheet-table-row">
 							<div class="sheet-table-data-center ">							
-								<--<input style="display:none" class="check-pericia-treinada-show" title="percepcao_treinada" type="checkbox" data-campo="system.percepcao_treinada" {{#if v.percepcao_treinada}}checked{{/if}} />
+								<input style="display:none" class="check-pericia-treinada-show" title="percepcao_treinada" type="checkbox" data-campo="system.percepcao_treinada" {{#if v.percepcao_treinada}}checked{{/if}} />
 								<button class="button-pericia-treinada" style="font-size:100%;" title="Teste-percepcao" type="button" data-action="rolar" data-macro=":teste_percepcao"><i class="fa-solid fa-dice-d20"></i></button>
 							</div>
 							<div class="sheet-table-data-center">
@@ -1043,7 +1033,7 @@
 							</div>
 							<span class="sheet-table-data-center"></span>
 							<span class="sheet-table-data-left">Percepção</span>
-							<span class="sheet-table-data-center"><input title="percepcao" type="text" disabled value="{{v.percepcao}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" disabled value="{{v.percepcao}}" title="{{v.percepcao}}" /></span>
 							<span class="sheet-table-data-center">
 								<select name="system.percepcao_hab">
 									<option value="@{for_mod}" {{#if (eq v.percepcao_hab "@{for_mod}")}}selected{{/if}}>FOR</option>
@@ -1054,12 +1044,12 @@
 									<option value="@{car_mod}" {{#if (eq v.percepcao_hab "@{car_mod}")}}selected{{/if}}>CAR</option>
 								</select>
 							</span>
-							<span class="sheet-table-data-center"><input title="percepcao_outros" type="text" readonly value="{{v.percepcao_outros}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" readonly value="{{v.percepcao_outros}}" title="{{v.percepcao_outros}}" /></span>
 							<span class="sheet-table-data-center"><input title="percepcao_temp" type="number" name="system.percepcao_temp" value="{{v.percepcao_temp}}" /></span>
 						</div>
 						<div class="sheet-table-row">
 							<div class="sheet-table-data-center ">							
-								<--<input style="display:none" class="check-pericia-treinada-show" title="sobrevivencia_treinada" type="checkbox" data-campo="system.sobrevivencia_treinada" {{#if v.sobrevivencia_treinada}}checked{{/if}} />
+								<input style="display:none" class="check-pericia-treinada-show" title="sobrevivencia_treinada" type="checkbox" data-campo="system.sobrevivencia_treinada" {{#if v.sobrevivencia_treinada}}checked{{/if}} />
 								<button class="button-pericia-treinada" style="font-size:100%;" title="Teste-sobrevivencia" type="button" data-action="rolar" data-macro=":teste_sobrevivencia"><i class="fa-solid fa-dice-d20"></i></button>
 							</div>
 							<div class="sheet-table-data-center">
@@ -1067,7 +1057,7 @@
 							</div>
 							<span class="sheet-table-data-center"></span>
 							<span class="sheet-table-data-left">Sobrevivência</span>
-							<span class="sheet-table-data-center"><input title="sobrevivencia" type="text" disabled value="{{v.sobrevivencia}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" disabled value="{{v.sobrevivencia}}" title="{{v.sobrevivencia}}" /></span>
 							<span class="sheet-table-data-center">
 								<select name="system.sobrevivencia_hab">
 									<option value="@{for_mod}" {{#if (eq v.sobrevivencia_hab "@{for_mod}")}}selected{{/if}}>FOR</option>
@@ -1078,7 +1068,7 @@
 									<option value="@{car_mod}" {{#if (eq v.sobrevivencia_hab "@{car_mod}")}}selected{{/if}}>CAR</option>
 								</select>
 							</span>
-							<span class="sheet-table-data-center"><input title="sobrevivencia_outros" type="text" readonly value="{{v.sobrevivencia_outros}}" /></span>
+							<span class="sheet-table-data-center"><input type="text" readonly value="{{v.sobrevivencia_outros}}" title="{{v.sobrevivencia_outros}}" /></span>
 							<span class="sheet-table-data-center"><input title="sobrevivencia_temp" type="number" name="system.sobrevivencia_temp" value="{{v.sobrevivencia_temp}}" /></span>
 						</div>					
 					</div>
@@ -1096,13 +1086,13 @@
 											<button type="button" data-action="rolar" data-macro="atuacao:xatuacao_teste"><i class="fa-solid fa-dice-d20"></i></button>
 										</div>
 										<div class="sheet-table-data-center" style="vertical-align: top;width:70%">
-											<input type="text" name="system.rep_atuacao.{{id}}.xatuacao_nome" value="{{v.xatuacao_nome}}" />
+											<input type="text" name="system.rep_atuacao.{{id}}.xatuacao_nome" value="{{v.xatuacao_nome}}" title="{{v.xatuacao_nome}}" />
 										</div>
 										<div class="sheet-table-data-center" style="vertical-align: top;width:30%">
-											<input type="text" name="system.rep_atuacao.{{id}}.xatuacao_valor" value="{{v.xatuacao_valor}}" />
+											<input type="text" name="system.rep_atuacao.{{id}}.xatuacao_valor" value="{{v.xatuacao_valor}}" title="{{v.xatuacao_valor}}" />
 										</div>
 									</div>
-								</div>{{/each}}</div><div class="repcontrol"><button type="button" class="repcontrol_add" data-action="repAdicionar" data-secao="atuacao">+ Adicionar</button></div>
+								</div>{{/each}}</div>{{#if @root.v.atuacao_treinada}}<div class="repcontrol"><button type="button" class="repcontrol_add" data-action="repAdicionar" data-secao="atuacao">+ Adicionar</button></div>{{/if}}
 							</div>						
 							<div class="sheet-table-data-center" style="vertical-align: top"></div>	
 							<div class="sheet-table-data-center" style="vertical-align: top;width:33%">
@@ -1115,13 +1105,13 @@
 												<button type="button" data-action="rolar" data-macro="conhecimento:xconhecimento_teste"><i class="fa-solid fa-dice-d20"></i></button>
 											</div>
 											<div class="sheet-table-data-center" style="vertical-align: top;width:70%">
-												<input type="text" name="system.rep_conhecimento.{{id}}.xconhecimento_nome" value="{{v.xconhecimento_nome}}" />
+												<input type="text" name="system.rep_conhecimento.{{id}}.xconhecimento_nome" value="{{v.xconhecimento_nome}}" title="{{v.xconhecimento_nome}}" />
 											</div>
 											<div class="sheet-table-data-center" style="vertical-align: top;width:30%">
-												<input type="text" name="system.rep_conhecimento.{{id}}.xconhecimento_valor" value="{{v.xconhecimento_valor}}" />
+												<input type="text" name="system.rep_conhecimento.{{id}}.xconhecimento_valor" value="{{v.xconhecimento_valor}}" title="{{v.xconhecimento_valor}}" />
 											</div>
 										</div>
-									</div>{{/each}}</div><div class="repcontrol"><button type="button" class="repcontrol_add" data-action="repAdicionar" data-secao="conhecimento">+ Adicionar</button></div>
+									</div>{{/each}}</div>{{#if @root.v.conhecimento_treinada}}<div class="repcontrol"><button type="button" class="repcontrol_add" data-action="repAdicionar" data-secao="conhecimento">+ Adicionar</button></div>{{/if}}
 								</div>
 							</div>		
 							<div class="sheet-table-data-center" style="vertical-align: top"></div>
@@ -1133,13 +1123,13 @@
 											<button type="button" data-action="rolar" data-macro="oficio:xatuacao_teste"><i class="fa-solid fa-dice-d20"></i></button>
 										</div>
 										<div class="sheet-table-data-center" style="vertical-align: top;width:70%">
-											<input type="text" name="system.rep_oficio.{{id}}.xoficio_nome" value="{{v.xoficio_nome}}" />
+											<input type="text" name="system.rep_oficio.{{id}}.xoficio_nome" value="{{v.xoficio_nome}}" title="{{v.xoficio_nome}}" />
 										</div>
 										<div class="sheet-table-data-center" style="vertical-align: top;width:30%">
-											<input type="text" name="system.rep_oficio.{{id}}.xoficio_valor" value="{{v.xoficio_valor}}" />
+											<input type="text" name="system.rep_oficio.{{id}}.xoficio_valor" value="{{v.xoficio_valor}}" title="{{v.xoficio_valor}}" />
 										</div>
 									</div>
-								</div>{{/each}}</div><div class="repcontrol"><button type="button" class="repcontrol_add" data-action="repAdicionar" data-secao="oficio">+ Adicionar</button></div>
+								</div>{{/each}}</div>{{#if @root.v.oficio_treinada}}<div class="repcontrol"><button type="button" class="repcontrol_add" data-action="repAdicionar" data-secao="oficio">+ Adicionar</button></div>{{/if}}
 							</div>
 						</div>
 					</div>
@@ -1164,8 +1154,8 @@
 		</div>
 		<div class="sheet-table-row">
 			<span class="sheet-table-row-nome"><button style="font-size:100%;" title="Ataque-Corpo-A-Corpo" type="button" data-action="rolar" data-macro=":melee_attack_roll">Corpo-a-Corpo</button></span>
-			<span class="sheet-table-data-center"><input title="ataque-corpo-a-corpo" type="text" disabled value="{{v.ataque_cac}}" /></span>
-			<span class="sheet-table-data-center"><input title="bba" type="text" disabled value="{{v.ataque_bba}}" /></span>
+			<span class="sheet-table-data-center"><input type="text" disabled value="{{v.ataque_cac}}" title="{{v.ataque_cac}}" /></span>
+			<span class="sheet-table-data-center"><input type="text" disabled value="{{v.ataque_bba}}" title="{{v.ataque_bba}}" /></span>
 			<span class="sheet-table-data-center">
 				<select title="ataque-corpo-a-corpo-habilidade" name="system.ataque_cac_mod">
 					<option value="0" {{#if (eq v.ataque_cac_mod "0")}}selected{{/if}}>Nenhum</option>
@@ -1177,15 +1167,15 @@
 					<option value="@{car_mod}" {{#if (eq v.ataque_cac_mod "@{car_mod}")}}selected{{/if}}>CAR</option>
 				</select>
 			</span>
-			<span class="sheet-table-data-center"><input title="ataque-habilidade-value" type="text" disabled value="{{v.ataque_cac_hab}}" /></span>
-			<span class="sheet-table-data-center"><input title="tamanho" type="text" disabled value="{{v.ataque_corpo_a_corpo_tamanho}}" /></span>
-			<span class="sheet-table-data-center"><input title="ataque-corpo-a-corpo-outros" type="text" readonly value="{{v.ataque_cac_outros}}" /></span>
+			<span class="sheet-table-data-center"><input type="text" disabled value="{{v.ataque_cac_hab}}" title="{{v.ataque_cac_hab}}" /></span>
+			<span class="sheet-table-data-center"><input type="text" disabled value="{{v.ataque_corpo_a_corpo_tamanho}}" title="{{v.ataque_corpo_a_corpo_tamanho}}" /></span>
+			<span class="sheet-table-data-center"><input type="text" readonly value="{{v.ataque_cac_outros}}" title="{{v.ataque_cac_outros}}" /></span>
 			<span class="sheet-table-data-center"><input title="ataque-corpo-a-corpo-temp" type="number" name="system.ataque_cac_temp" value="{{v.ataque_cac_temp}}" /></span>
 		</div>
 		<div class="sheet-table-row">
 			<span class="sheet-table-row-nome"><button style="font-size:100%;" title="Ataque-Corpo-A-Corpo" type="button" data-action="rolar" data-macro=":ranged_attack_roll">Distancia</button></span>
-			<span class="sheet-table-data-center"><input title="ataque-corpo-a-corpo" type="text" disabled value="{{v.ataque_dis}}" /></span>
-			<span class="sheet-table-data-center"><input title="bba" type="text" disabled value="{{v.ataque_bba}}" /></span>
+			<span class="sheet-table-data-center"><input type="text" disabled value="{{v.ataque_dis}}" title="{{v.ataque_dis}}" /></span>
+			<span class="sheet-table-data-center"><input type="text" disabled value="{{v.ataque_bba}}" title="{{v.ataque_bba}}" /></span>
 			<span class="sheet-table-data-center">
 				<select title="ataque-corpo-a-corpo-habilidade" name="system.ataque_dis_mod">
 					<option value="0" {{#if (eq v.ataque_dis_mod "0")}}selected{{/if}}>Nenhum</option>
@@ -1197,9 +1187,9 @@
 					<option value="@{car_mod}" {{#if (eq v.ataque_dis_mod "@{car_mod}")}}selected{{/if}}>CAR</option>
 				</select>
 			</span>
-			<span class="sheet-table-data-center"><input title="ataque-habilidade-value" type="text" disabled value="{{v.ataque_dis_hab}}" /></span>
-			<span class="sheet-table-data-center"><input title="tamanho" type="text" disabled value="{{v.ataque_corpo_a_corpo_tamanho}}" /></span>
-			<span class="sheet-table-data-center"><input title="ataque-corpo-a-corpo-outros" type="text" readonly value="{{v.ataque_dis_outros}}" /></span>
+			<span class="sheet-table-data-center"><input type="text" disabled value="{{v.ataque_dis_hab}}" title="{{v.ataque_dis_hab}}" /></span>
+			<span class="sheet-table-data-center"><input type="text" disabled value="{{v.ataque_corpo_a_corpo_tamanho}}" title="{{v.ataque_corpo_a_corpo_tamanho}}" /></span>
+			<span class="sheet-table-data-center"><input type="text" readonly value="{{v.ataque_dis_outros}}" title="{{v.ataque_dis_outros}}" /></span>
 			<span class="sheet-table-data-center"><input title="ataque-corpo-a-corpo-temp" type="number" name="system.ataque_dis_temp" value="{{v.ataque_dis_temp}}" /></span>
 		</div>
 	</div>
@@ -1230,7 +1220,7 @@
 					<span class="sheet-table-data-center" style="width:3%;">
 						<button style="font-family: &#x27;dicefontd20&#x27;; vertical-align: top;border-radius:5px" type="button" data-action="repRolar"><i class="fa-solid fa-dice-d20"></i></button>  
 					</span>
-					<span class="sheet-table-data-center" style="width:17%;"><input title="xarma_nome" type="text" name="system.rep_arma.{{id}}.xarma_nome" value="{{v.xarma_nome}}" /></span>
+					<span class="sheet-table-data-center" style="width:17%;"><input type="text" name="system.rep_arma.{{id}}.xarma_nome" value="{{v.xarma_nome}}" title="{{v.xarma_nome}}" /></span>
 					<span class="sheet-table-data-center" style="width:6%;"><input title="xarma_ataque" type="number" name="system.rep_arma.{{id}}.xarma_ataque" value="{{v.xarma_ataque}}" /></span>
 					<span class="sheet-table-data-center" style="width:15%;">
 						<select class="sheet-color-select1" title="xarma_tipo" name="system.rep_arma.{{id}}.xarma_tipo">
@@ -1239,7 +1229,7 @@
 							<option value="@{ataque_dis}" {{#if (eq v.xarma_tipo "@{ataque_dis}")}}selected{{/if}}>Distância</option>
 						</select>
 					</span>					
-					<span class="sheet-table-data-center" style="width:15%;"><input title="xarma_dano" type="text" name="system.rep_arma.{{id}}.xarma_dano" value="{{v.xarma_dano}}" /></span>
+					<span class="sheet-table-data-center" style="width:15%;"><input type="text" name="system.rep_arma.{{id}}.xarma_dano" value="{{v.xarma_dano}}" title="{{v.xarma_dano}}" /></span>
 					
 					<span class="sheet-table-data-center" style="width:10%;">
 						<select title="xarma_habilidade" name="system.rep_arma.{{id}}.xarma_habilidade">
@@ -1254,10 +1244,10 @@
 					</span>
 					<span class="sheet-table-data-center" style="width:6%;"><input title="xarma_critico" type="number" min="1" max="20" name="system.rep_arma.{{id}}.xarma_critico" value="{{v.xarma_critico}}" /></span>
 					<span class="sheet-table-data-center" style="width:6%;"><input title="xarma_multiplicador" type="number" min="1" name="system.rep_arma.{{id}}.xarma_multiplicador" value="{{v.xarma_multiplicador}}" /></span>
-					<span class="sheet-table-data-center" style="width:15%;"><input title="xarma_extra" type="text" name="system.rep_arma.{{id}}.xarma_extra" value="{{v.xarma_extra}}" /></span>
+					<span class="sheet-table-data-center" style="width:15%;"><input type="text" name="system.rep_arma.{{id}}.xarma_extra" value="{{v.xarma_extra}}" title="{{v.xarma_extra}}" /></span>
 					<span class="sheet-table-data-center" style="width:7%;">
 						<input type="hidden" class="sheet-color-switch" value="{{b.xarma_tipo}}" />
-						<input class="municao" title="xarma_municao" type="text" name="system.rep_arma.{{id}}.xarma_municao" value="{{v.xarma_municao}}" />
+						<input class="municao" type="text" name="system.rep_arma.{{id}}.xarma_municao" value="{{v.xarma_municao}}" title="{{v.xarma_municao}}" />
 					</span>
 				</div>				
 				<b>Mostrar Texto do Macro?</b>
@@ -1298,7 +1288,7 @@
 						<option value="Outro" {{#if (eq v.tipo "Outro")}}selected{{/if}}>Outro</option>
 					</select>
 				</span>
-				<span class="sheet-table-data-center"><input title="repetindo_talento_X_nome" type="text" name="system.rep_talento.{{id}}.nome" value="{{v.nome}}" /></span>
+				<span class="sheet-table-data-center"><input type="text" name="system.rep_talento.{{id}}.nome" value="{{v.nome}}" title="{{v.nome}}" /></span>
 				<span class="sheet-table-data-center" style="width:8%;"><input title="repetindo_talento_X_usado" type="number" min="0" step="1" name="system.rep_talento.{{id}}.usos_atual" value="{{v.usos_atual}}" /></span>
 				<span class="sheet-table-data-center" style="width:2%;vertical-align:middle;font-size:150%;">/</span>
 				<span class="sheet-table-data-center" style="width:8%;"><input title="repetindo_talento_X_uso|max" type="number" disabled value="{{v.max_usos}}" /></span>
@@ -1444,8 +1434,8 @@
 					</div>
 					<div class="sheet-table-row">
 						<span class="sheet-table-row-nome"><button style="font-size:100%;" title="Ataque-Corpo-A-Corpo" type="button" data-action="rolar" data-macro=":melee_attack_roll_2">Corpo-a-Corpo</button></span>
-						<span class="sheet-table-data-center"><input title="ataque-corpo-a-corpo" type="text" disabled value="{{v.toque_cac}}" /></span>
-						<span class="sheet-table-data-center"><input title="bba" type="text" disabled value="{{v.ataque_bba}}" /></span>
+						<span class="sheet-table-data-center"><input type="text" disabled value="{{v.toque_cac}}" title="{{v.toque_cac}}" /></span>
+						<span class="sheet-table-data-center"><input type="text" disabled value="{{v.ataque_bba}}" title="{{v.ataque_bba}}" /></span>
 						<span class="sheet-table-data-center">
 							<select title="ataque-corpo-a-corpo-habilidade" name="system.toque_cac_mod">
 								<option value="0" {{#if (eq v.toque_cac_mod "0")}}selected{{/if}}>Nenhum</option>
@@ -1457,15 +1447,15 @@
 								<option value="@{car_mod}" {{#if (eq v.toque_cac_mod "@{car_mod}")}}selected{{/if}}>CAR</option>
 							</select>
 						</span>
-						<span class="sheet-table-data-center"><input title="ataque-habilidade-value" type="text" disabled value="{{v.toque_cac_hab}}" /></span>
-						<span class="sheet-table-data-center"><input title="tamanho" type="text" disabled value="{{v.ataque_corpo_a_corpo_tamanho}}" /></span>
-						<span class="sheet-table-data-center"><input title="ataque-corpo-a-corpo-outros" type="text" readonly value="{{v.toque_cac_outros}}" /></span>
+						<span class="sheet-table-data-center"><input type="text" disabled value="{{v.toque_cac_hab}}" title="{{v.toque_cac_hab}}" /></span>
+						<span class="sheet-table-data-center"><input type="text" disabled value="{{v.ataque_corpo_a_corpo_tamanho}}" title="{{v.ataque_corpo_a_corpo_tamanho}}" /></span>
+						<span class="sheet-table-data-center"><input type="text" readonly value="{{v.toque_cac_outros}}" title="{{v.toque_cac_outros}}" /></span>
 						<span class="sheet-table-data-center"><input title="ataque-corpo-a-corpo-temp" type="number" name="system.toque_cac_temp" value="{{v.toque_cac_temp}}" /></span>
 					</div>
 					<div class="sheet-table-row">
 						<span class="sheet-table-row-nome"><button style="font-size:100%;" title="Ataque-Corpo-A-Corpo" type="button" data-action="rolar" data-macro=":melee_attack_roll_3">Distancia</button></span>
-						<span class="sheet-table-data-center"><input title="ataque-corpo-a-corpo" type="text" disabled value="{{v.toque_dis}}" /></span>
-						<span class="sheet-table-data-center"><input title="bba" type="text" disabled value="{{v.ataque_bba}}" /></span>
+						<span class="sheet-table-data-center"><input type="text" disabled value="{{v.toque_dis}}" title="{{v.toque_dis}}" /></span>
+						<span class="sheet-table-data-center"><input type="text" disabled value="{{v.ataque_bba}}" title="{{v.ataque_bba}}" /></span>
 						<span class="sheet-table-data-center">
 							<select title="ataque-corpo-a-corpo-habilidade" name="system.toque_dis_mod">
 								<option value="0" {{#if (eq v.toque_dis_mod "0")}}selected{{/if}}>Nenhum</option>
@@ -1477,9 +1467,9 @@
 								<option value="@{car_mod}" {{#if (eq v.toque_dis_mod "@{car_mod}")}}selected{{/if}}>CAR</option>
 							</select>
 						</span>
-						<span class="sheet-table-data-center"><input title="ataque-habilidade-value" type="text" disabled value="{{v.toque_dis_hab}}" /></span>
-						<span class="sheet-table-data-center"><input title="tamanho" type="text" disabled value="{{v.ataque_corpo_a_corpo_tamanho}}" /></span>
-						<span class="sheet-table-data-center"><input title="ataque-corpo-a-corpo-outros" type="text" readonly value="{{v.toque_dis_outros}}" /></span>
+						<span class="sheet-table-data-center"><input type="text" disabled value="{{v.toque_dis_hab}}" title="{{v.toque_dis_hab}}" /></span>
+						<span class="sheet-table-data-center"><input type="text" disabled value="{{v.ataque_corpo_a_corpo_tamanho}}" title="{{v.ataque_corpo_a_corpo_tamanho}}" /></span>
+						<span class="sheet-table-data-center"><input type="text" readonly value="{{v.toque_dis_outros}}" title="{{v.toque_dis_outros}}" /></span>
 						<span class="sheet-table-data-center"><input title="ataque-corpo-a-corpo-temp" type="number" name="system.toque_dis_temp" value="{{v.toque_dis_temp}}" /></span>
 					</div>
 				</div>
@@ -1497,8 +1487,8 @@
 					</div>
 					<div class="sheet-table-row">
 						<span class="sheet-table-row-nome"><button style="font-size:100%;" title="Ataque-Corpo-A-Corpo" type="button" data-action="rolar" data-macro=":melee_attack_roll_4">CD</button></span>
-						<span class="sheet-table-data-center"><input title="ataque-corpo-a-corpo" type="text" disabled value="{{v.magia_cd}}" /></span>
-						<span class="sheet-table-data-center"><input title="bba" type="text" disabled value="{{v.magia_cd_nivel}}" /></span>
+						<span class="sheet-table-data-center"><input type="text" disabled value="{{v.magia_cd}}" title="{{v.magia_cd}}" /></span>
+						<span class="sheet-table-data-center"><input type="text" disabled value="{{v.magia_cd_nivel}}" title="{{v.magia_cd_nivel}}" /></span>
 						<span class="sheet-table-data-center">
 							<select title="ataque-corpo-a-corpo-habilidade" name="system.magia_cd_mod">
 								<option value="0" {{#if (eq v.magia_cd_mod "0")}}selected{{/if}}>Nenhum</option>
@@ -1510,8 +1500,8 @@
 								<option value="@{car_mod}" {{#if (eq v.magia_cd_mod "@{car_mod}")}}selected{{/if}}>CAR</option>
 							</select>
 						</span>
-						<span class="sheet-table-data-center"><input title="ataque-habilidade-value" type="text" disabled value="{{v.magia_cd_hab}}" /></span>
-						<span class="sheet-table-data-center"><input title="ataque-corpo-a-corpo-outros" type="text" readonly value="{{v.magia_cd_outros}}" /></span>
+						<span class="sheet-table-data-center"><input type="text" disabled value="{{v.magia_cd_hab}}" title="{{v.magia_cd_hab}}" /></span>
+						<span class="sheet-table-data-center"><input type="text" readonly value="{{v.magia_cd_outros}}" title="{{v.magia_cd_outros}}" /></span>
 						<span class="sheet-table-data-center"><input title="ataque-corpo-a-corpo-temp" type="number" name="system.magia_cd_temp" value="{{v.magia_cd_temp}}" /></span>
 					</div>
 				</div>
@@ -1526,8 +1516,8 @@
 						<span class="sheet-table-header">Temp</span>
 					</div>
 					<div class="sheet-table-row">
-						<span class="sheet-table-data-center"><input title="ataque-corpo-a-corpo" type="text" disabled value="{{v.dano_magia}}" /></span>
-						<span class="sheet-table-data-center"><input title="bba" type="text" disabled value="{{v.dano_magia_nivel}}" /></span>
+						<span class="sheet-table-data-center"><input type="text" disabled value="{{v.dano_magia}}" title="{{v.dano_magia}}" /></span>
+						<span class="sheet-table-data-center"><input type="text" disabled value="{{v.dano_magia_nivel}}" title="{{v.dano_magia_nivel}}" /></span>
 						<span class="sheet-table-data-center">
 							<select title="ataque-corpo-a-corpo-habilidade" name="system.dano_magia_mod">
 								<option value="0" {{#if (eq v.dano_magia_mod "0")}}selected{{/if}}>Nenhum</option>
@@ -1539,8 +1529,8 @@
 								<option value="@{car_mod}" {{#if (eq v.dano_magia_mod "@{car_mod}")}}selected{{/if}}>CAR</option>
 							</select>
 						</span>
-						<span class="sheet-table-data-center"><input title="ataque-habilidade-value" type="text" disabled value="{{v.dano_magia_hab}}" /></span>
-						<span class="sheet-table-data-center"><input title="ataque-corpo-a-corpo-outros" type="text" readonly value="{{v.dano_magia_outros}}" /></span>
+						<span class="sheet-table-data-center"><input type="text" disabled value="{{v.dano_magia_hab}}" title="{{v.dano_magia_hab}}" /></span>
+						<span class="sheet-table-data-center"><input type="text" readonly value="{{v.dano_magia_outros}}" title="{{v.dano_magia_outros}}" /></span>
 						<span class="sheet-table-data-center"><input title="ataque-corpo-a-corpo-temp" type="number" name="system.dano_magia_temp" value="{{v.dano_magia_temp}}" /></span>
 					</div>
 				</div>
@@ -1687,7 +1677,7 @@
 										<button style="font-family: &#x27;dicefontd20&#x27;; vertical-align: top;border-radius:5px" type="button" data-action="repRolar"><i class="fa-solid fa-dice-d20"></i></button>  
 									</span>
 									<span class="sheet-table-data-center" style="width:80%">
-										<input type="text" readonly data-campo="system.rep_magias0.{{id}}.xmagias_nome" value="{{v.xmagias_nome}}" />
+										<input type="text" readonly data-campo="system.rep_magias0.{{id}}.xmagias_nome" value="{{v.xmagias_nome}}" title="{{v.xmagias_nome}}" />
 									</span>									
 								</div>
 						</div>{{/each}}</div><div class="repcontrol"><button type="button" class="repcontrol_add" data-action="repAdicionar" data-secao="magias0">+ Adicionar</button></div>
@@ -1704,7 +1694,7 @@
 										<button style="font-family: &#x27;dicefontd20&#x27;; vertical-align: top;border-radius:5px" type="button" data-action="repRolar"><i class="fa-solid fa-dice-d20"></i></button>  
 									</span>
 									<span class="sheet-table-data-center" style="width:80%">
-										<input type="text" readonly data-campo="system.rep_magias1.{{id}}.xmagias_nome" value="{{v.xmagias_nome}}" />
+										<input type="text" readonly data-campo="system.rep_magias1.{{id}}.xmagias_nome" value="{{v.xmagias_nome}}" title="{{v.xmagias_nome}}" />
 									</span>									
 								</div>									
 						</div>{{/each}}</div><div class="repcontrol"><button type="button" class="repcontrol_add" data-action="repAdicionar" data-secao="magias1">+ Adicionar</button></div>
@@ -1721,7 +1711,7 @@
 										<button style="font-family: &#x27;dicefontd20&#x27;; vertical-align: top;border-radius:5px" type="button" data-action="repRolar"><i class="fa-solid fa-dice-d20"></i></button>  
 									</span>
 									<span class="sheet-table-data-center" style="width:80%">
-										<input type="text" readonly data-campo="system.rep_magias2.{{id}}.xmagias_nome" value="{{v.xmagias_nome}}" />
+										<input type="text" readonly data-campo="system.rep_magias2.{{id}}.xmagias_nome" value="{{v.xmagias_nome}}" title="{{v.xmagias_nome}}" />
 									</span>									
 								</div>									
 						</div>{{/each}}</div><div class="repcontrol"><button type="button" class="repcontrol_add" data-action="repAdicionar" data-secao="magias2">+ Adicionar</button></div>
@@ -1738,7 +1728,7 @@
 										<button style="font-family: &#x27;dicefontd20&#x27;; vertical-align: top;border-radius:5px" type="button" data-action="repRolar"><i class="fa-solid fa-dice-d20"></i></button>  
 									</span>
 									<span class="sheet-table-data-center" style="width:80%">
-										<input type="text" readonly data-campo="system.rep_magias3.{{id}}.xmagias_nome" value="{{v.xmagias_nome}}" />
+										<input type="text" readonly data-campo="system.rep_magias3.{{id}}.xmagias_nome" value="{{v.xmagias_nome}}" title="{{v.xmagias_nome}}" />
 									</span>									
 								</div>									
 						</div>{{/each}}</div><div class="repcontrol"><button type="button" class="repcontrol_add" data-action="repAdicionar" data-secao="magias3">+ Adicionar</button></div>
@@ -1758,7 +1748,7 @@
 										<button style="font-family: &#x27;dicefontd20&#x27;; vertical-align: top;border-radius:5px" type="button" data-action="repRolar"><i class="fa-solid fa-dice-d20"></i></button>  
 									</span>
 									<span class="sheet-table-data-center" style="width:80%">
-										<input type="text" readonly data-campo="system.rep_magias4.{{id}}.xmagias_nome" value="{{v.xmagias_nome}}" />
+										<input type="text" readonly data-campo="system.rep_magias4.{{id}}.xmagias_nome" value="{{v.xmagias_nome}}" title="{{v.xmagias_nome}}" />
 									</span>									
 								</div>									
 						</div>{{/each}}</div><div class="repcontrol"><button type="button" class="repcontrol_add" data-action="repAdicionar" data-secao="magias4">+ Adicionar</button></div>
@@ -1775,7 +1765,7 @@
 										<button style="font-family: &#x27;dicefontd20&#x27;; vertical-align: top;border-radius:5px" type="button" data-action="repRolar"><i class="fa-solid fa-dice-d20"></i></button>  
 									</span>
 									<span class="sheet-table-data-center" style="width:80%">
-										<input type="text" readonly data-campo="system.rep_magias5.{{id}}.xmagias_nome" value="{{v.xmagias_nome}}" />
+										<input type="text" readonly data-campo="system.rep_magias5.{{id}}.xmagias_nome" value="{{v.xmagias_nome}}" title="{{v.xmagias_nome}}" />
 									</span>									
 								</div>									
 						</div>{{/each}}</div><div class="repcontrol"><button type="button" class="repcontrol_add" data-action="repAdicionar" data-secao="magias5">+ Adicionar</button></div>
@@ -1792,7 +1782,7 @@
 										<button style="font-family: &#x27;dicefontd20&#x27;; vertical-align: top;border-radius:5px" type="button" data-action="repRolar"><i class="fa-solid fa-dice-d20"></i></button>  
 									</span>
 									<span class="sheet-table-data-center" style="width:80%">
-										<input type="text" readonly data-campo="system.rep_magias6.{{id}}.xmagias_nome" value="{{v.xmagias_nome}}" />
+										<input type="text" readonly data-campo="system.rep_magias6.{{id}}.xmagias_nome" value="{{v.xmagias_nome}}" title="{{v.xmagias_nome}}" />
 									</span>									
 								</div>									
 						</div>{{/each}}</div><div class="repcontrol"><button type="button" class="repcontrol_add" data-action="repAdicionar" data-secao="magias6">+ Adicionar</button></div>
@@ -1809,7 +1799,7 @@
 										<button style="font-family: &#x27;dicefontd20&#x27;; vertical-align: top;border-radius:5px" type="button" data-action="repRolar"><i class="fa-solid fa-dice-d20"></i></button>  
 									</span>
 									<span class="sheet-table-data-center" style="width:80%">
-										<input type="text" readonly data-campo="system.rep_magias7.{{id}}.xmagias_nome" value="{{v.xmagias_nome}}" />
+										<input type="text" readonly data-campo="system.rep_magias7.{{id}}.xmagias_nome" value="{{v.xmagias_nome}}" title="{{v.xmagias_nome}}" />
 									</span>									
 								</div>									
 						</div>{{/each}}</div><div class="repcontrol"><button type="button" class="repcontrol_add" data-action="repAdicionar" data-secao="magias7">+ Adicionar</button></div>
@@ -1829,7 +1819,7 @@
 										<button style="font-family: &#x27;dicefontd20&#x27;; vertical-align: top;border-radius:5px" type="button" data-action="repRolar"><i class="fa-solid fa-dice-d20"></i></button>  
 									</span>
 									<span class="sheet-table-data-center" style="width:80%">
-										<input type="text" readonly data-campo="system.rep_magias8.{{id}}.xmagias_nome" value="{{v.xmagias_nome}}" />
+										<input type="text" readonly data-campo="system.rep_magias8.{{id}}.xmagias_nome" value="{{v.xmagias_nome}}" title="{{v.xmagias_nome}}" />
 									</span>									
 								</div>									
 						</div>{{/each}}</div><div class="repcontrol"><button type="button" class="repcontrol_add" data-action="repAdicionar" data-secao="magias8">+ Adicionar</button></div>
@@ -1846,7 +1836,7 @@
 										<button style="font-family: &#x27;dicefontd20&#x27;; vertical-align: top;border-radius:5px" type="button" data-action="repRolar"><i class="fa-solid fa-dice-d20"></i></button>  
 									</span>
 									<span class="sheet-table-data-center" style="width:80%">
-										<input type="text" readonly data-campo="system.rep_magias9.{{id}}.xmagias_nome" value="{{v.xmagias_nome}}" />
+										<input type="text" readonly data-campo="system.rep_magias9.{{id}}.xmagias_nome" value="{{v.xmagias_nome}}" title="{{v.xmagias_nome}}" />
 									</span>									
 								</div>									
 						</div>{{/each}}</div><div class="repcontrol"><button type="button" class="repcontrol_add" data-action="repAdicionar" data-secao="magias9">+ Adicionar</button></div>
@@ -1886,7 +1876,7 @@
 								</span>
 								<input type="hidden" value="{{b.xmagias_nivel}}" />
 								<span class="sheet-table-data-center" style="width:5%;"><input title="xmagias_pm" type="number" name="system.rep_magias0.{{id}}.xmagias_pm" value="{{v.xmagias_pm}}" /></span>
-								<span class="sheet-table-data-center" style="width:20%;"><input title="xmagias_nome" type="text" name="system.rep_magias0.{{id}}.xmagias_nome" value="{{v.xmagias_nome}}" /></span>
+								<span class="sheet-table-data-center" style="width:20%;"><input type="text" name="system.rep_magias0.{{id}}.xmagias_nome" value="{{v.xmagias_nome}}" title="{{v.xmagias_nome}}" /></span>
 								<span class="sheet-table-data-center" style="width:10%;">
 									<select name="system.rep_magias0.{{id}}.xmagias_procedencia">
 										<option {{#if (eq v.xmagias_procedencia "Nenhum")}}selected{{/if}}>Nenhum</option>
@@ -1969,7 +1959,7 @@
 										<option {{#if (eq v.xmagias_resistencia "Vontade")}}selected{{/if}}>Vontade</option>
 									</select>
 								</span>								
-								<span class="sheet-table-data-center" style="width:10%;"><input title="xmagias_dano" type="text" name="system.rep_magias0.{{id}}.xmagias_dano" value="{{v.xmagias_dano}}" /></span>
+								<span class="sheet-table-data-center" style="width:10%;"><input type="text" name="system.rep_magias0.{{id}}.xmagias_dano" value="{{v.xmagias_dano}}" title="{{v.xmagias_dano}}" /></span>
 								<div class="sheet-table">
 									<div class="sheet-table-row">
 										<div class="sheet-table-data-center" style="width:50%;text-align:left">
@@ -2016,7 +2006,7 @@
 								</span>
 								<input type="hidden" value="{{b.xmagias_nivel}}" />
 								<span class="sheet-table-data-center" style="width:5%;"><input title="xmagias_pm" type="number" name="system.rep_magias1.{{id}}.xmagias_pm" value="{{v.xmagias_pm}}" /></span>
-								<span class="sheet-table-data-center" style="width:20%;"><input title="xmagias_nome" type="text" name="system.rep_magias1.{{id}}.xmagias_nome" value="{{v.xmagias_nome}}" /></span>
+								<span class="sheet-table-data-center" style="width:20%;"><input type="text" name="system.rep_magias1.{{id}}.xmagias_nome" value="{{v.xmagias_nome}}" title="{{v.xmagias_nome}}" /></span>
 								<span class="sheet-table-data-center" style="width:10%;">
 									<select name="system.rep_magias1.{{id}}.xmagias_procedencia">
 										<option {{#if (eq v.xmagias_procedencia "Nenhum")}}selected{{/if}}>Nenhum</option>
@@ -2099,7 +2089,7 @@
 										<option {{#if (eq v.xmagias_resistencia "Vontade")}}selected{{/if}}>Vontade</option>
 									</select>
 								</span>								
-								<span class="sheet-table-data-center" style="width:10%;"><input title="xmagias_dano" type="text" name="system.rep_magias1.{{id}}.xmagias_dano" value="{{v.xmagias_dano}}" /></span>
+								<span class="sheet-table-data-center" style="width:10%;"><input type="text" name="system.rep_magias1.{{id}}.xmagias_dano" value="{{v.xmagias_dano}}" title="{{v.xmagias_dano}}" /></span>
 								<div class="sheet-table">
 									<div class="sheet-table-row">
 										<div class="sheet-table-data-center" style="width:50%;text-align:left">
@@ -2146,7 +2136,7 @@
 								</span>
 								<input type="hidden" value="{{b.xmagias_nivel}}" />
 								<span class="sheet-table-data-center" style="width:5%;"><input title="xmagias_pm" type="number" name="system.rep_magias2.{{id}}.xmagias_pm" value="{{v.xmagias_pm}}" /></span>
-								<span class="sheet-table-data-center" style="width:20%;"><input title="xmagias_nome" type="text" name="system.rep_magias2.{{id}}.xmagias_nome" value="{{v.xmagias_nome}}" /></span>
+								<span class="sheet-table-data-center" style="width:20%;"><input type="text" name="system.rep_magias2.{{id}}.xmagias_nome" value="{{v.xmagias_nome}}" title="{{v.xmagias_nome}}" /></span>
 								<span class="sheet-table-data-center" style="width:10%;">
 									<select name="system.rep_magias2.{{id}}.xmagias_procedencia">
 										<option {{#if (eq v.xmagias_procedencia "Nenhum")}}selected{{/if}}>Nenhum</option>
@@ -2229,7 +2219,7 @@
 										<option {{#if (eq v.xmagias_resistencia "Vontade")}}selected{{/if}}>Vontade</option>
 									</select>
 								</span>								
-								<span class="sheet-table-data-center" style="width:10%;"><input title="xmagias_dano" type="text" name="system.rep_magias2.{{id}}.xmagias_dano" value="{{v.xmagias_dano}}" /></span>
+								<span class="sheet-table-data-center" style="width:10%;"><input type="text" name="system.rep_magias2.{{id}}.xmagias_dano" value="{{v.xmagias_dano}}" title="{{v.xmagias_dano}}" /></span>
 								<div class="sheet-table">
 									<div class="sheet-table-row">
 										<div class="sheet-table-data-center" style="width:50%;text-align:left">
@@ -2276,7 +2266,7 @@
 								</span>
 								<input type="hidden" value="{{b.xmagias_nivel}}" />
 								<span class="sheet-table-data-center" style="width:5%;"><input title="xmagias_pm" type="number" name="system.rep_magias3.{{id}}.xmagias_pm" value="{{v.xmagias_pm}}" /></span>
-								<span class="sheet-table-data-center" style="width:20%;"><input title="xmagias_nome" type="text" name="system.rep_magias3.{{id}}.xmagias_nome" value="{{v.xmagias_nome}}" /></span>
+								<span class="sheet-table-data-center" style="width:20%;"><input type="text" name="system.rep_magias3.{{id}}.xmagias_nome" value="{{v.xmagias_nome}}" title="{{v.xmagias_nome}}" /></span>
 								<span class="sheet-table-data-center" style="width:10%;">
 									<select name="system.rep_magias3.{{id}}.xmagias_procedencia">
 										<option {{#if (eq v.xmagias_procedencia "Nenhum")}}selected{{/if}}>Nenhum</option>
@@ -2359,7 +2349,7 @@
 										<option {{#if (eq v.xmagias_resistencia "Vontade")}}selected{{/if}}>Vontade</option>
 									</select>
 								</span>								
-								<span class="sheet-table-data-center" style="width:10%;"><input title="xmagias_dano" type="text" name="system.rep_magias3.{{id}}.xmagias_dano" value="{{v.xmagias_dano}}" /></span>
+								<span class="sheet-table-data-center" style="width:10%;"><input type="text" name="system.rep_magias3.{{id}}.xmagias_dano" value="{{v.xmagias_dano}}" title="{{v.xmagias_dano}}" /></span>
 								<div class="sheet-table">
 									<div class="sheet-table-row">
 										<div class="sheet-table-data-center" style="width:50%;text-align:left">
@@ -2406,7 +2396,7 @@
 								</span>
 								<input type="hidden" value="{{b.xmagias_nivel}}" />
 								<span class="sheet-table-data-center" style="width:5%;"><input title="xmagias_pm" type="number" name="system.rep_magias4.{{id}}.xmagias_pm" value="{{v.xmagias_pm}}" /></span>
-								<span class="sheet-table-data-center" style="width:20%;"><input title="xmagias_nome" type="text" name="system.rep_magias4.{{id}}.xmagias_nome" value="{{v.xmagias_nome}}" /></span>
+								<span class="sheet-table-data-center" style="width:20%;"><input type="text" name="system.rep_magias4.{{id}}.xmagias_nome" value="{{v.xmagias_nome}}" title="{{v.xmagias_nome}}" /></span>
 								<span class="sheet-table-data-center" style="width:10%;">
 									<select name="system.rep_magias4.{{id}}.xmagias_procedencia">
 										<option {{#if (eq v.xmagias_procedencia "Nenhum")}}selected{{/if}}>Nenhum</option>
@@ -2489,7 +2479,7 @@
 										<option {{#if (eq v.xmagias_resistencia "Vontade")}}selected{{/if}}>Vontade</option>
 									</select>
 								</span>								
-								<span class="sheet-table-data-center" style="width:10%;"><input title="xmagias_dano" type="text" name="system.rep_magias4.{{id}}.xmagias_dano" value="{{v.xmagias_dano}}" /></span>
+								<span class="sheet-table-data-center" style="width:10%;"><input type="text" name="system.rep_magias4.{{id}}.xmagias_dano" value="{{v.xmagias_dano}}" title="{{v.xmagias_dano}}" /></span>
 								<div class="sheet-table">
 									<div class="sheet-table-row">
 										<div class="sheet-table-data-center" style="width:50%;text-align:left">
@@ -2536,7 +2526,7 @@
 								</span>
 								<input type="hidden" value="{{b.xmagias_nivel}}" />
 								<span class="sheet-table-data-center" style="width:5%;"><input title="xmagias_pm" type="number" name="system.rep_magias5.{{id}}.xmagias_pm" value="{{v.xmagias_pm}}" /></span>
-								<span class="sheet-table-data-center" style="width:20%;"><input title="xmagias_nome" type="text" name="system.rep_magias5.{{id}}.xmagias_nome" value="{{v.xmagias_nome}}" /></span>
+								<span class="sheet-table-data-center" style="width:20%;"><input type="text" name="system.rep_magias5.{{id}}.xmagias_nome" value="{{v.xmagias_nome}}" title="{{v.xmagias_nome}}" /></span>
 								<span class="sheet-table-data-center" style="width:10%;">
 									<select name="system.rep_magias5.{{id}}.xmagias_procedencia">
 										<option {{#if (eq v.xmagias_procedencia "Nenhum")}}selected{{/if}}>Nenhum</option>
@@ -2619,7 +2609,7 @@
 										<option {{#if (eq v.xmagias_resistencia "Vontade")}}selected{{/if}}>Vontade</option>
 									</select>
 								</span>								
-								<span class="sheet-table-data-center" style="width:10%;"><input title="xmagias_dano" type="text" name="system.rep_magias5.{{id}}.xmagias_dano" value="{{v.xmagias_dano}}" /></span>
+								<span class="sheet-table-data-center" style="width:10%;"><input type="text" name="system.rep_magias5.{{id}}.xmagias_dano" value="{{v.xmagias_dano}}" title="{{v.xmagias_dano}}" /></span>
 								<div class="sheet-table">
 									<div class="sheet-table-row">
 										<div class="sheet-table-data-center" style="width:50%;text-align:left">
@@ -2666,7 +2656,7 @@
 								</span>
 								<input type="hidden" value="{{b.xmagias_nivel}}" />
 								<span class="sheet-table-data-center" style="width:5%;"><input title="xmagias_pm" type="number" name="system.rep_magias6.{{id}}.xmagias_pm" value="{{v.xmagias_pm}}" /></span>
-								<span class="sheet-table-data-center" style="width:20%;"><input title="xmagias_nome" type="text" name="system.rep_magias6.{{id}}.xmagias_nome" value="{{v.xmagias_nome}}" /></span>
+								<span class="sheet-table-data-center" style="width:20%;"><input type="text" name="system.rep_magias6.{{id}}.xmagias_nome" value="{{v.xmagias_nome}}" title="{{v.xmagias_nome}}" /></span>
 								<span class="sheet-table-data-center" style="width:10%;">
 									<select name="system.rep_magias6.{{id}}.xmagias_procedencia">
 										<option {{#if (eq v.xmagias_procedencia "Nenhum")}}selected{{/if}}>Nenhum</option>
@@ -2749,7 +2739,7 @@
 										<option {{#if (eq v.xmagias_resistencia "Vontade")}}selected{{/if}}>Vontade</option>
 									</select>
 								</span>								
-								<span class="sheet-table-data-center" style="width:10%;"><input title="xmagias_dano" type="text" name="system.rep_magias6.{{id}}.xmagias_dano" value="{{v.xmagias_dano}}" /></span>
+								<span class="sheet-table-data-center" style="width:10%;"><input type="text" name="system.rep_magias6.{{id}}.xmagias_dano" value="{{v.xmagias_dano}}" title="{{v.xmagias_dano}}" /></span>
 								<div class="sheet-table">
 									<div class="sheet-table-row">
 										<div class="sheet-table-data-center" style="width:50%;text-align:left">
@@ -2796,7 +2786,7 @@
 								</span>
 								<input type="hidden" value="{{b.xmagias_nivel}}" />
 								<span class="sheet-table-data-center" style="width:5%;"><input title="xmagias_pm" type="number" name="system.rep_magias7.{{id}}.xmagias_pm" value="{{v.xmagias_pm}}" /></span>
-								<span class="sheet-table-data-center" style="width:20%;"><input title="xmagias_nome" type="text" name="system.rep_magias7.{{id}}.xmagias_nome" value="{{v.xmagias_nome}}" /></span>
+								<span class="sheet-table-data-center" style="width:20%;"><input type="text" name="system.rep_magias7.{{id}}.xmagias_nome" value="{{v.xmagias_nome}}" title="{{v.xmagias_nome}}" /></span>
 								<span class="sheet-table-data-center" style="width:10%;">
 									<select name="system.rep_magias7.{{id}}.xmagias_procedencia">
 										<option {{#if (eq v.xmagias_procedencia "Nenhum")}}selected{{/if}}>Nenhum</option>
@@ -2879,7 +2869,7 @@
 										<option {{#if (eq v.xmagias_resistencia "Vontade")}}selected{{/if}}>Vontade</option>
 									</select>
 								</span>								
-								<span class="sheet-table-data-center" style="width:10%;"><input title="xmagias_dano" type="text" name="system.rep_magias7.{{id}}.xmagias_dano" value="{{v.xmagias_dano}}" /></span>
+								<span class="sheet-table-data-center" style="width:10%;"><input type="text" name="system.rep_magias7.{{id}}.xmagias_dano" value="{{v.xmagias_dano}}" title="{{v.xmagias_dano}}" /></span>
 								<div class="sheet-table">
 									<div class="sheet-table-row">
 										<div class="sheet-table-data-center" style="width:50%;text-align:left">
@@ -2926,7 +2916,7 @@
 								</span>
 								<input type="hidden" value="{{b.xmagias_nivel}}" />
 								<span class="sheet-table-data-center" style="width:5%;"><input title="xmagias_pm" type="number" name="system.rep_magias8.{{id}}.xmagias_pm" value="{{v.xmagias_pm}}" /></span>
-								<span class="sheet-table-data-center" style="width:20%;"><input title="xmagias_nome" type="text" name="system.rep_magias8.{{id}}.xmagias_nome" value="{{v.xmagias_nome}}" /></span>
+								<span class="sheet-table-data-center" style="width:20%;"><input type="text" name="system.rep_magias8.{{id}}.xmagias_nome" value="{{v.xmagias_nome}}" title="{{v.xmagias_nome}}" /></span>
 								<span class="sheet-table-data-center" style="width:10%;">
 									<select name="system.rep_magias8.{{id}}.xmagias_procedencia">
 										<option {{#if (eq v.xmagias_procedencia "Nenhum")}}selected{{/if}}>Nenhum</option>
@@ -3009,7 +2999,7 @@
 										<option {{#if (eq v.xmagias_resistencia "Vontade")}}selected{{/if}}>Vontade</option>
 									</select>
 								</span>								
-								<span class="sheet-table-data-center" style="width:10%;"><input title="xmagias_dano" type="text" name="system.rep_magias8.{{id}}.xmagias_dano" value="{{v.xmagias_dano}}" /></span>
+								<span class="sheet-table-data-center" style="width:10%;"><input type="text" name="system.rep_magias8.{{id}}.xmagias_dano" value="{{v.xmagias_dano}}" title="{{v.xmagias_dano}}" /></span>
 								<div class="sheet-table">
 									<div class="sheet-table-row">
 										<div class="sheet-table-data-center" style="width:50%;text-align:left">
@@ -3056,7 +3046,7 @@
 								</span>
 								<input type="hidden" value="{{b.xmagias_nivel}}" />
 								<span class="sheet-table-data-center" style="width:5%;"><input title="xmagias_pm" type="number" name="system.rep_magias9.{{id}}.xmagias_pm" value="{{v.xmagias_pm}}" /></span>
-								<span class="sheet-table-data-center" style="width:20%;"><input title="xmagias_nome" type="text" name="system.rep_magias9.{{id}}.xmagias_nome" value="{{v.xmagias_nome}}" /></span>
+								<span class="sheet-table-data-center" style="width:20%;"><input type="text" name="system.rep_magias9.{{id}}.xmagias_nome" value="{{v.xmagias_nome}}" title="{{v.xmagias_nome}}" /></span>
 								<span class="sheet-table-data-center" style="width:10%;">
 									<select name="system.rep_magias9.{{id}}.xmagias_procedencia">
 										<option {{#if (eq v.xmagias_procedencia "Nenhum")}}selected{{/if}}>Nenhum</option>
@@ -3139,7 +3129,7 @@
 										<option {{#if (eq v.xmagias_resistencia "Vontade")}}selected{{/if}}>Vontade</option>
 									</select>
 								</span>								
-								<span class="sheet-table-data-center" style="width:10%;"><input title="xmagias_dano" type="text" name="system.rep_magias9.{{id}}.xmagias_dano" value="{{v.xmagias_dano}}" /></span>
+								<span class="sheet-table-data-center" style="width:10%;"><input type="text" name="system.rep_magias9.{{id}}.xmagias_dano" value="{{v.xmagias_dano}}" title="{{v.xmagias_dano}}" /></span>
 								<div class="sheet-table">
 									<div class="sheet-table-row">
 										<div class="sheet-table-data-center" style="width:50%;text-align:left">
@@ -3187,7 +3177,7 @@
 				<span class="sheet-table-header" style="width:35%;">Nome</span>
 				<span class="sheet-table-header" style="width:10%;">Qtd.</span>
 				<span class="sheet-table-header" style="width:10%;">Peso</span>
-				<span class="sheet-table-header" style="width:40%;">Descrição</span>
+				<span class="sheet-table-header" style="width:32%;">Descrição</span><span class="sheet-table-header" style="width:8%;">Equipar</span>
 			</div>
 		</div>
 		<div class="repcontainer" data-secao="itens">{{#each @root.reps.itens}}<div class="repitem" data-linha="{{id}}"><div class="itemcontrol"><button type="button" class="repcontrol_del" data-action="repApagar" title="Apagar">✕</button></div>
@@ -3195,10 +3185,10 @@
 				<span class="sheet-table-data-center" style="width:5%;">
 					<button style="font-family: &#x27;dicefontd20&#x27;; vertical-align: top;border-radius:5px" type="button" data-action="repRolar"><i class="fa-solid fa-dice-d20"></i></button>
 				</span>
-				<span class="sheet-table-data-center" style="width:35%;"><input title="repetindo_item_X_nome" type="text" name="system.rep_itens.{{id}}.xitem_nome" value="{{v.xitem_nome}}" /></span>
+				<span class="sheet-table-data-center" style="width:35%;"><input type="text" name="system.rep_itens.{{id}}.xitem_nome" value="{{v.xitem_nome}}" title="{{v.xitem_nome}}" /></span>
 				<span class="sheet-table-data-center" style="width:10%;"><input title="repetindo_item_X_qtd" type="number" min="0" name="system.rep_itens.{{id}}.xitem_qtd" value="{{v.xitem_qtd}}" /></span>
 				<span class="sheet-table-data-center" style="width:10%;"><input title="repetindo_item_X_peso" type="number" min="0" step="any" name="system.rep_itens.{{id}}.xitem_peso" value="{{v.xitem_peso}}" /></span>
-				<span class="sheet-table-data-center" style="width:40%;"><input title="repetindo_item_X_descricao" type="text" name="system.rep_itens.{{id}}.xitem_descricao" value="{{v.xitem_descricao}}" /></span>
+				<span class="sheet-table-data-center" style="width:32%;"><input type="text" name="system.rep_itens.{{id}}.xitem_descricao" value="{{v.xitem_descricao}}" title="{{v.xitem_descricao}}" /></span><span class="sheet-table-data-center t13-equipar" style="width:8%;">{{#if v.xitem_tipo}}{{#unless (eq v.xitem_tipo "equipamento")}}<input type="checkbox" data-action="equipar" title="Equipar" {{#if v.xitem_equipado}}checked{{/if}} />{{/unless}}{{/if}}</span>
 			</div>
 		</div>{{/each}}</div><div class="repcontrol"><button type="button" class="repcontrol_add" data-action="repAdicionar" data-secao="itens">+ Adicionar</button></div>
 		<input type="hidden" value="{{b.xitem_macro_texto}}" />
@@ -3250,6 +3240,17 @@
 
 <div class="sheet-nota">
 	<div class="repcontainer" data-secao="anotacoes">{{#each @root.reps.anotacoes}}<div class="repitem" data-linha="{{id}}"><div class="itemcontrol"><button type="button" class="repcontrol_del" data-action="repApagar" title="Apagar">✕</button></div>	
-		<input type="text" style="width:100%" name="system.rep_anotacoes.{{id}}.xanotacao_nome" value="{{v.xanotacao_nome}}" />
-		<textarea name="system.rep_anotacoes.{{id}}.xanotacao_corpo">{{v.xanotacao_corpo}}<hr></div>{{/each}}</div><div class="repcontrol"><button type="button" class="repcontrol_add" data-action="repAdicionar" data-secao="anotacoes">+ Adicionar</button></div></div><div class="sheet-configuracao"><input type="checkbox" name="system.backgroundcolour" {{#if v.backgroundcolour}}checked{{/if}} /></div></div>
+		<input type="text" style="width:100%" name="system.rep_anotacoes.{{id}}.xanotacao_nome" value="{{v.xanotacao_nome}}" title="{{v.xanotacao_nome}}" />
+		<textarea name="system.rep_anotacoes.{{id}}.xanotacao_corpo">{{v.xanotacao_corpo}}</textarea>
+		<hr>
+	</div>{{/each}}</div><div class="repcontrol"><button type="button" class="repcontrol_add" data-action="repAdicionar" data-secao="anotacoes">+ Adicionar</button></div>
+</div>
+	
+<div class="sheet-configuracao">
+
+<input type="checkbox" name="system.backgroundcolour" {{#if v.backgroundcolour}}checked{{/if}} />Tema cinza    
+
+</div>
+
+</div>
 </div>

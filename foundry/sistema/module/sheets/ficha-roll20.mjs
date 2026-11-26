@@ -6,6 +6,7 @@
 import { SYSTEM_ID } from "../config.mjs";
 import { FichaRoll20 } from "../roll20/motor.mjs";
 import { linhaDeItem } from "../roll20/do-item.mjs";
+import { linhaDeInventario, TIPOS_DE_INVENTARIO } from "../roll20/inventario.mjs";
 import { importarDoRoll20 } from "../roll20/importar.mjs";
 import { apagar } from "../documents/actor.mjs";
 
@@ -33,11 +34,14 @@ export class FichaRoll20Sheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       abrir_grimorio: FichaRoll20Sheet.#abrirGrimorio,
       abrir_filtro: FichaRoll20Sheet.#abrirFiltro,
       filtrar: FichaRoll20Sheet.#filtrar,
+      equipar: FichaRoll20Sheet.#equipar,
       importarRoll20: FichaRoll20Sheet.#importarRoll20
     }
   };
 
   static PARTS = {
+    // A barra de abas fica numa parte própria, fixa no topo; só a ficha rola.
+    abas: { template: `systems/${SYSTEM_ID}/templates/actor/ficha-roll20-abas.hbs` },
     ficha: { template: `systems/${SYSTEM_ID}/templates/actor/ficha-roll20.hbs`, scrollable: [""] }
   };
 
@@ -105,6 +109,14 @@ export class FichaRoll20Sheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     if (ok) return this.actor.apagarLinha(secao, id);
   }
 
+  /** Caixa "Equipar" do inventário. */
+  static #equipar(event, alvo) {
+    if (!this.isEditable) return;
+    const { id } = FichaRoll20Sheet.#linhaDe(alvo);
+    const equipado = Boolean(this.actor.system.rep_itens?.[id]?.xitem_equipado);
+    return this.actor.equiparItem(id, !equipado);
+  }
+
   static #abrirGrimorio() {
     this.ui.tab_magias = this.ui.tab_magias === 1 ? 0 : 1;
     this.render();
@@ -123,6 +135,12 @@ export class FichaRoll20Sheet extends HandlebarsApplicationMixin(ActorSheetV2) {
   /** Arrastar do compêndio: o item vira uma linha da ficha (não um item embutido). */
   async _onDropItem(event, item) {
     if (!this.actor.isOwner) return null;
+    // Itens físicos vão para o Inventário; de lá o jogador equipa.
+    if (TIPOS_DE_INVENTARIO.includes(item.type)) {
+      await this.actor.adicionarLinha("itens", linhaDeInventario(item));
+      ui.notifications.info(`${item.name} foi para o Inventário.`);
+      return null;
+    }
     const r = linhaDeItem(item);
     if (!r) {
       ui.notifications.warn(`A ficha não tem onde colocar itens do tipo "${item.type}".`);

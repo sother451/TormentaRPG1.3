@@ -1365,6 +1365,11 @@ export const FICHA = {
      "original": "macro_texto",
      "tipo": "texto",
      "inicial": "&{template:default} [[ [[ { [[ [[ { [[1d20cs>@{xarma_critico} + @{xarma_tipo} + @{xarma_ataque} ]], -9999}>[[@{xarma_critico} + @{xarma_tipo} + @{xarma_ataque}]] ]]*@{xarma_multiplicador}]],1}dl1 ]] * (@{xarma_dano} + @{meio_nivel}+ @{xarma_habilidade}) ]] {{name=[**@{xarma_nome}**](#\" style=\"display:block;text-align:center;color:white)}} {{Resultado do Ataque= $[[0]]}} {{Dano do Golpe= $[[5]] }} {{Extra= [[@{xarma_extra}]] }}"
+    },
+    "xarma_origem": {
+     "original": "(foundry)",
+     "tipo": "texto",
+     "inicial": ""
     }
    },
    "calculados": {}
@@ -1471,6 +1476,22 @@ export const FICHA = {
      "original": "xitem_descricao",
      "tipo": "texto",
      "inicial": ""
+    },
+    "xitem_tipo": {
+     "original": "(foundry)",
+     "tipo": "texto",
+     "inicial": ""
+    },
+    "xitem_dados": {
+     "original": "(foundry)",
+     "tipo": "texto",
+     "inicial": ""
+    },
+    "xitem_equipado": {
+     "original": "(foundry)",
+     "tipo": "marcado",
+     "inicial": false,
+     "valorMarcado": "1"
     }
    },
    "calculados": {}

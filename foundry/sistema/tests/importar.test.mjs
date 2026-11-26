@@ -83,3 +83,55 @@ for (const arquivo of ["racas", "classes", "talentos-de-classe", "talentos", "ma
 }
 
 console.log("importar.test.mjs: todos os testes passaram");
+
+/* Inventário: itens físicos entram no inventário e são equipados de lá */
+const { linhaDeInventario, atualizacaoDeEquipar } = await import("../module/roll20/inventario.mjs");
+let contador = 0;
+const op = { novoId: () => `novo${++contador}`, apagar: (caminho, chave) => ({ [`${caminho}.-=${chave}`]: null }) };
+
+const invBesta = linhaDeInventario(porNome("armas", "Besta Leve"));
+assert.equal(invBesta.xitem_tipo, "arma");
+assert.equal(invBesta.xitem_equipado, false);
+assert.equal(JSON.parse(invBesta.xitem_dados).xarma_tipo, "@{ataque_dis}");
+
+const sys = { rep_itens: { b: invBesta }, rep_arma: {} };
+const eq = atualizacaoDeEquipar(sys, "b", true, op);
+assert.equal(eq["system.rep_itens.b.xitem_equipado"], true);
+assert.equal(eq["system.rep_arma.novo1"].xarma_nome, "Besta Leve");
+assert.equal(eq["system.rep_arma.novo1"].xarma_origem, "b");
+// desequipar apaga a arma ligada
+const sysEq = { rep_itens: { b: { ...invBesta, xitem_equipado: true } }, rep_arma: { novo1: eq["system.rep_arma.novo1"] } };
+const deseq = atualizacaoDeEquipar(sysEq, "b", false, op);
+assert.ok("system.rep_arma.-=novo1" in deseq);
+
+// Armadura: só uma por vez
+const armaduras = dados("armaduras").filter((a) => !a.system.escudo);
+const a1 = linhaDeInventario(armaduras[0]);
+const a2 = linhaDeInventario(armaduras[1]);
+const sysA = { rep_itens: { a1: { ...a1, xitem_equipado: true }, a2 }, armadura: armaduras[0].name };
+const eqA = atualizacaoDeEquipar(sysA, "a2", true, op);
+assert.equal(eqA["system.rep_itens.a1.xitem_equipado"], false);
+assert.equal(eqA["system.armadura"], armaduras[1].name);
+assert.equal(eqA["system.armadura_equipado"], true);
+const deseqA = atualizacaoDeEquipar({ ...sysA, armadura: armaduras[1].name }, "a2", false, op);
+assert.equal(deseqA["system.armadura"], "");
+
+// Escudo vai para os campos de escudo
+const escudo = linhaDeInventario(dados("armaduras").find((a) => a.system.escudo));
+assert.equal(escudo.xitem_tipo, "escudo");
+const eqE = atualizacaoDeEquipar({ rep_itens: { e: escudo } }, "e", true, op);
+assert.equal(eqE["system.escudo_equip"], true);
+
+// Item mágico ocupa a primeira vaga livre
+const anel = linhaDeInventario(dados("itens-magicos")[0]);
+const eqM = atualizacaoDeEquipar({ rep_itens: { m: anel }, item1: "Capa", item2: "" }, "m", true, op);
+assert.equal(eqM["system.item2"], anel.xitem_nome);
+const cheio = { rep_itens: { m: anel }, item1: "a", item2: "b", item3: "c", item4: "d" };
+const eqM2 = atualizacaoDeEquipar(cheio, "m", true, op);
+assert.equal(Object.values(eqM2).find((x) => x?.itemextra)?.itemextra, anel.xitem_nome);
+
+// Equipamento comum não equipa nada
+const corda = linhaDeInventario(dados("equipamentos")[0]);
+assert.deepEqual(Object.keys(atualizacaoDeEquipar({ rep_itens: { c: corda } }, "c", true, op)), ["system.rep_itens.c.xitem_equipado"]);
+
+console.log("importar.test.mjs (inventário): todos os testes passaram");

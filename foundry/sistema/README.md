@@ -1,4 +1,4 @@
-# Tormenta RPG 1.3 para Foundry VTT (v14) — versão 0.3
+# Tormenta RPG 1.3 para Foundry VTT (v14) — versão 0.3.1
 
 Sistema com **a ficha do Roll20 do grupo** (mesmo visual, mesmos campos, mesmas fórmulas e scripts),
 **compêndios prontos** (1.926 itens do compendium Tormenta 1.3) e **importação de personagens do Roll20**.
@@ -24,7 +24,11 @@ Novas versões aparecem na mesma tela com o botão **Update**.
 - **Compêndios:** aba Compêndios → pasta "Tormenta RPG 1.3". Arraste para a ficha:
   - arma → linha em Ataques; talento → Habilidades; magia → Magias (no nível do círculo);
   - equipamento e item mágico → Inventário; classe → Informação de Classe;
-  - raça → campo Raça; armadura/escudo → Armadura e escudo (já equipado).
+  - raça → campo Raça;
+  - armas, armaduras, escudos, equipamentos e itens mágicos → **Inventário**. Marque **Equipar** na linha para a arma
+    ir para Ataques, a armadura/escudo para "Armadura e escudo" e o item mágico para "Equipamento Mágico".
+- **Perícias:** todas rolam sem treino, menos Adestrar Animais, Conhecimento, Identificar Magia e Ladinagem
+  (só treinadas). Atuação, Conhecimento e Ofício só deixam adicionar especialidades com a perícia treinada.
 - **Importar do Roll20:** no topo da ficha, menu da janela (⋮) → **Importar do Roll20**. Escolha o `.json`
   exportado pelo VTT Enhancement Suite (botão Export do personagem no Roll20). Os dados atuais da ficha são substituídos.
 - **Chat:** os botões rolam as mesmas macros do Roll20, inclusive as que o jogador escreveu em "Mostrar Texto do Macro".

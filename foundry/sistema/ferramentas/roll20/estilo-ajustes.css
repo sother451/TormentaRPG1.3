@@ -1,0 +1,62 @@
+/* Ajustes para o Foundry (depois do CSS original, por isso ganham dele). */
+
+/* Janela: barra de abas fixa no topo; só o conteúdo da ficha rola. */
+.tormenta13-r20 .window-content {
+  padding: 0;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.tormenta13-r20 [data-application-part="abas"] { flex: 0 0 auto; }
+.tormenta13-r20 [data-application-part="ficha"] { flex: 1 1 auto; min-height: 0; overflow-y: auto; }
+.tormenta13-r20 .charsheet-abas { padding: 0; }
+.tormenta13-r20 .charsheet-abas .tab_group { position: static; margin: 0; padding: 6px 4px; }
+
+/* O fundo branco (ou cinza) ocupa a janela toda, não só até onde há conteúdo. */
+.tormenta13-r20 [data-application-part="ficha"] .charsheet { min-height: 100%; display: flex; flex-direction: column; padding: 0; }
+.tormenta13-r20 [data-application-part="ficha"] .sheet_completa { flex: 1 1 auto; padding: 4px 10px 10px; }
+
+/* Campos */
+.tormenta13-r20 .charsheet :is(input[type="text"], input[type="number"], select, textarea) {
+  background: #fff;
+  color: #000;
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  padding: 1px 3px;
+  height: auto;
+  min-height: 20px;
+}
+.tormenta13-r20 .charsheet :is(input[readonly], input[disabled], select[disabled]) {
+  background: #ececec;
+  color: #000;
+  -webkit-text-fill-color: #000;
+  opacity: 1;
+}
+.tormenta13-r20 .charsheet input::placeholder { color: #888; -webkit-text-fill-color: #888; }
+.tormenta13-r20 .charsheet input[type="checkbox"] { width: auto; margin: 2px 3px; cursor: pointer; }
+.tormenta13-r20 .charsheet textarea { resize: vertical; min-height: 50px; }
+
+/* Botões genéricos (os do Roll20 com classe própria, como as abas, mantêm o estilo original) */
+.tormenta13-r20 .charsheet :where(button) {
+  color: #000;
+  background: #e9e9e9;
+  border: 1px solid #888;
+  border-radius: 4px;
+  padding: 1px 5px;
+  cursor: pointer;
+}
+.tormenta13-r20 .charsheet :where(button):hover { background: #d6e0ff; }
+.tormenta13-r20 .charsheet .sheet-table-row-nome button { width: 100%; white-space: normal; line-height: 1.1; }
+.tormenta13-r20 .charsheet .tab_button { color: #000; background: #e9e9e9; padding: 1px 6px; cursor: pointer; }
+
+/* Perícias: botão de rolar sempre visível (pode rolar sem treino) e a seta "<--" na mesma linha */
+.tormenta13-r20 .charsheet .button-pericia-treinada { display: inline-block; padding: 0 4px; margin-left: 2px; }
+.tormenta13-r20 .charsheet .sheet-table-data-center:has(> .button-pericia-treinada) { white-space: nowrap; }
+
+/* Seções repetíveis (no Roll20 vinham prontas) */
+.tormenta13-r20 .charsheet .repitem { position: relative; padding-right: 22px; }
+.tormenta13-r20 .charsheet .itemcontrol { position: absolute; right: 0; top: 0; }
+.tormenta13-r20 .charsheet .repcontrol_del { border: 0; background: transparent; color: #b00; padding: 0 4px; }
+.tormenta13-r20 .charsheet .repcontrol { text-align: left; margin: 2px 0 6px; }
+.tormenta13-r20 .charsheet .repcontrol_add { font-size: 11px; padding: 0 6px; }

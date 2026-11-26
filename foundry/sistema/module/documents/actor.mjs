@@ -1,6 +1,7 @@
 import { FICHA } from "../roll20/campos.mjs";
 import { executarMacro, macroDeArma, macroDeItem } from "../roll20/macro.mjs";
 import { inteiro } from "../roll20/motor.mjs";
+import { atualizacaoDeEquipar } from "../roll20/inventario.mjs";
 
 /** Rola uma fórmula com os dados do Foundry (para o interpretador de macros). */
 async function rolarNoFoundry(formula) {
@@ -47,8 +48,16 @@ export class TormentaActor extends foundry.documents.Actor {
     return id;
   }
 
-  apagarLinha(secao, id) {
+  async apagarLinha(secao, id) {
+    // Item equipado que sai do inventário é desequipado antes (some de Ataques, Armadura etc.).
+    if (secao === "itens" && this.system.rep_itens?.[id]?.xitem_equipado) await this.equiparItem(id, false);
     return this.update(apagar(`system.rep_${secao}`, id));
+  }
+
+  /** Equipa ou desequipa um item do inventário (ver module/roll20/inventario.mjs). */
+  equiparItem(id, equipar) {
+    const update = atualizacaoDeEquipar(this.system._source, id, equipar, { novoId: () => foundry.utils.randomID(), apagar });
+    return Object.keys(update).length ? this.update(update) : null;
   }
 
   /* ------------------------------------------------------------------------------------------ */

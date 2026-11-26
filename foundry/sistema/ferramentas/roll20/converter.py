@@ -254,6 +254,9 @@ class Conversor(html.parser.HTMLParser):
                     extra += f' value="{{{{b.{nome}}}}}"'
                 else:
                     extra += f' value="{{{{{r}}}}}"'
+                    if tipo == "text":
+                        resto = [(k, v) for k, v in resto if k != "title"]
+                        extra += f' title="{{{{{r}}}}}"'
                 self.emitir_tag(tag, resto, extra, fechar=True)
             elif tag == "select":
                 self.select = r
@@ -296,6 +299,8 @@ class Conversor(html.parser.HTMLParser):
 
     def handle_startendtag(self, tag, attrs):
         self.handle_starttag(tag, attrs)
+        if tag == "textarea":
+            self.handle_endtag("textarea")
 
     def handle_data(self, data):
         if self.textarea:
@@ -333,6 +338,8 @@ class Conversor(html.parser.HTMLParser):
         if tag == "select":
             self.select = None
         if tag == "textarea":
+            if not self.textarea:
+                return              # </textarea> solto: o textarea já foi fechado
             self.textarea = None
         if tag == "button" and getattr(self, "botao", None) is not None:
             texto = "".join(self.saida[self.botao:]).strip()
@@ -356,6 +363,10 @@ class Conversor(html.parser.HTMLParser):
 # --------------------------------------------------------------------------------------------
 ESCOPO = ".tormenta13-r20 .charsheet"
 
+# Seletores do CSS original que não entram (comparados sem espaços):
+# - o botão de rolar perícia sumia quando a perícia não era treinada; no 1.3 pode rolar sem treino.
+SELETORES_REMOVIDOS = {".check-pericia-treinada-show:not(:checked)~.button-pericia-treinada"}
+
 
 def escopar_css(css: str) -> str:
     css = re.sub(r"/\*.*?\*/", "", css, flags=re.S)
@@ -370,7 +381,11 @@ def escopar_css(css: str) -> str:
 
     saida = []
     for sel, corpo in regras_css(css):
-        sel = ",\n".join(seletor(s) for s in dividir_fora_de_aspas(sel, ",") if s.strip())
+        partes = [s for s in dividir_fora_de_aspas(sel, ",")
+                  if s.strip() and re.sub(r"\s+", "", s) not in SELETORES_REMOVIDOS]
+        if not partes:
+            continue
+        sel = ",\n".join(seletor(s) for s in partes)
         saida.append(f"{sel} {{{corpo.rstrip()}\n}}")
     return "\n\n".join(saida)
 
@@ -410,27 +425,82 @@ def regras_css(css):
     return regras
 
 
-BASE_CSS = """/* Gerado por ferramentas/roll20/converter.py a partir da ficha do Roll20. Não edite à mão. */
+# CSS próprio do Foundry: antes do CSS original (base) e depois dele (ajustes, que ganham do original).
+CABECALHO_CSS = "/* Gerado por ferramentas/roll20/converter.py a partir da ficha do Roll20. Não edite à mão. */\n"
 
-/* Os controles voltam ao estilo padrão do navegador (como no Roll20), sem o tema do Foundry. */
-.tormenta13-r20 .charsheet :is(input, select, textarea, button) { all: revert; font: inherit; box-sizing: border-box; }
-.tormenta13-r20 .window-content { padding: 0; background: black; color: black; }
-.tormenta13-r20 .charsheet { font-family: Arial, sans-serif; font-size: 13px; color: black; padding: 0 10px; min-height: 100%; }
-.tormenta13-r20 .charsheet input[type="text"], .tormenta13-r20 .charsheet input[type="number"],
-.tormenta13-r20 .charsheet select, .tormenta13-r20 .charsheet textarea { border: 1px solid #aaa; border-radius: 3px; padding: 1px 3px; }
-.tormenta13-r20 .charsheet input[readonly], .tormenta13-r20 .charsheet input[disabled] { background: #f1f1f1; }
-.tormenta13-r20 .charsheet button[data-action="rolar"], .tormenta13-r20 .charsheet button[data-action="repRolar"] { cursor: pointer; }
-.tormenta13-r20 .charsheet .sheet_completa { padding: 0 10px; }
-.tormenta13-r20 .charsheet .tab_group { top: 0; }
 
-/* Seções repetíveis (no Roll20 vinham prontas) */
-.tormenta13-r20 .charsheet .repitem { position: relative; padding-right: 22px; }
-.tormenta13-r20 .charsheet .itemcontrol { position: absolute; right: 0; top: 0; }
-.tormenta13-r20 .charsheet .repcontrol_del { border: 0; background: transparent; color: #b00; cursor: pointer; padding: 0 4px; }
-.tormenta13-r20 .charsheet .repcontrol { text-align: left; margin: 2px 0 6px; }
-.tormenta13-r20 .charsheet .repcontrol_add { font-size: 11px; padding: 0 6px; cursor: pointer; }
-.tormenta13-r20 .charsheet .repcontainer.solta-aqui { outline: 2px dashed #3366cc; }
-"""
+# Tormenta 1.3 (compendium, Perícias): só podem ser usadas por quem é treinado.
+SO_TREINADAS = ["adestrar_animais", "conhecimento", "identificar_magia", "ladinagem"]
+# Perícias que se dividem em várias (uma linha por especialidade).
+ESPECIALIZAVEIS = ["atuacao", "conhecimento", "oficio"]
+
+
+def regras_de_treino(template):
+    """- Perícias só treinadas: o botão de rolar só aparece com a perícia marcada como treinada.
+    - Atuação/Conhecimento/Ofício: "+ Adicionar" especialidade só aparece com a perícia base treinada."""
+    def rolagem(m):
+        return f"{{{{#if v.{m.group(2)}_treinada}}}}{m.group(1)}{{{{/if}}}}"
+    padrao = r'(<button[^>]*data-macro=":teste_(' + "|".join(SO_TREINADAS) + r')"[^>]*>.*?</button>)'
+    template, n = re.subn(padrao, rolagem, template, flags=re.S)
+    assert n == len(SO_TREINADAS), f"botões de perícia só treinada encontrados: {n}"
+
+    def adicionar(m):
+        return f"{{{{#if @root.v.{m.group(2)}_treinada}}}}{m.group(1)}{{{{/if}}}}"
+    padrao = r'(<div class="repcontrol"><button[^>]*data-secao="(' + "|".join(ESPECIALIZAVEIS) + r')">.*?</button></div>)'
+    template, n = re.subn(padrao, adicionar, template, flags=re.S)
+    assert n == len(ESPECIALIZAVEIS), f"botões de adicionar especialidade encontrados: {n}"
+    return template
+
+
+# Campos que não existem na ficha do Roll20 (só do Foundry):
+# - inventário: de que tipo é o item do compêndio, os dados para equipar e se está equipado;
+# - armas: de qual linha do inventário a arma veio (para desequipar).
+CAMPOS_EXTRAS = {
+    "itens": {
+        "xitem_tipo": {"original": "(foundry)", "tipo": "texto", "inicial": ""},
+        "xitem_dados": {"original": "(foundry)", "tipo": "texto", "inicial": ""},
+        "xitem_equipado": {"original": "(foundry)", "tipo": "marcado", "inicial": False, "valorMarcado": "1"},
+    },
+    "arma": {"xarma_origem": {"original": "(foundry)", "tipo": "texto", "inicial": ""}},
+}
+
+
+def coluna_equipar(template):
+    """Inventário: coluna "Equipar" para itens do compêndio que se equipam (arma, armadura, escudo, item mágico)."""
+    cabecalho = ('<span class="sheet-table-header" style="width:40%;">Descrição</span>')
+    assert template.count(cabecalho) == 1, "cabeçalho do inventário não encontrado"
+    template = template.replace(cabecalho, '<span class="sheet-table-header" style="width:32%;">Descrição</span>'
+                                '<span class="sheet-table-header" style="width:8%;">Equipar</span>')
+    i = template.index('<div class="repcontainer" data-secao="itens">')
+    j = template.index("{{/each}}", i)
+    trecho = template[i:j]
+    descricao = 'style="width:40%;"><input'
+    assert trecho.count(descricao) == 1, "campo de descrição do inventário não encontrado"
+    trecho = trecho.replace(descricao, 'style="width:32%;"><input')
+    # A célula entra logo depois da descrição, dentro da mesma linha da tabela.
+    fim_linha = trecho.index("</span>", trecho.index('style="width:32%;"><input')) + len("</span>")
+    celula = ('<span class="sheet-table-data-center t13-equipar" style="width:8%;">'
+              '{{#if v.xitem_tipo}}{{#unless (eq v.xitem_tipo "equipamento")}}'
+              '<input type="checkbox" data-action="equipar" title="Equipar" {{#if v.xitem_equipado}}checked{{/if}} />'
+              '{{/unless}}{{/if}}</span>')
+    trecho = trecho[:fim_linha] + celula + trecho[fim_linha:]
+    return template[:i] + trecho + template[j:]
+
+
+def separar_abas(template):
+    """Tira o bloco <div class="tab_group">...</div> do corpo da ficha."""
+    inicio = template.index('<div class="tab_group">')
+    nivel, i = 0, inicio
+    while True:
+        abre = template.find("<div", i)
+        fecha = template.find("</div>", i)
+        if abre != -1 and abre < fecha:
+            nivel, i = nivel + 1, abre + 4
+        else:
+            nivel, i = nivel - 1, fecha + 6
+            if nivel == 0:
+                break
+    return template[inicio:i], template[:inicio] + template[i:]
 
 
 def main():
@@ -440,16 +510,25 @@ def main():
     inv = Inventario()
     inv.feed(corpo)
     salvos, calculados = classificar(inv)
+    for secao, campos in CAMPOS_EXTRAS.items():
+        salvos.setdefault(secao, {}).update(campos)
 
     conv = Conversor(salvos, calculados)
     conv.feed(corpo)
-    template = "".join(conv.saida)
-    template = (
-        "{{!-- Gerado por ferramentas/roll20/converter.py a partir da ficha do Roll20. Não edite à mão. --}}\n"
-        '<div class="charsheet">\n' + template.strip() + "\n</div>\n")
-    (SISTEMA / "templates" / "actor" / "ficha-roll20.hbs").write_text(template, encoding="utf-8")
+    # A seta "<--" antes do botão de rolar perícia (texto solto do original) sai: desalinha os botões.
+    template = "".join(conv.saida).replace("<--<input", "<input")
+    template = regras_de_treino(template)
+    template = coluna_equipar(template)
+    abas, template = separar_abas(template)
+    aviso = "{{!-- Gerado por ferramentas/roll20/converter.py a partir da ficha do Roll20. Não edite à mão. --}}\n"
+    (SISTEMA / "templates" / "actor" / "ficha-roll20.hbs").write_text(
+        aviso + '<div class="charsheet">\n' + template.strip() + "\n</div>\n", encoding="utf-8")
+    (SISTEMA / "templates" / "actor" / "ficha-roll20-abas.hbs").write_text(
+        aviso + '<div class="charsheet charsheet-abas">\n' + abas.strip() + "\n</div>\n", encoding="utf-8")
 
-    css = BASE_CSS + "\n" + escopar_css((ORIGINAL / "fichaTormenta.css").read_text(encoding="utf-8")) + "\n"
+    css = (CABECALHO_CSS + (AQUI / "estilo-base.css").read_text(encoding="utf-8") + "\n"
+           + escopar_css((ORIGINAL / "fichaTormenta.css").read_text(encoding="utf-8")) + "\n\n"
+           + (AQUI / "estilo-ajustes.css").read_text(encoding="utf-8"))
     (SISTEMA / "styles" / "ficha-roll20.css").write_text(css, encoding="utf-8")
 
     macros = inv.macros

@@ -1,0 +1,18 @@
+{
+  "TYPES": {
+    "Actor": {
+      "character": "Personagem",
+      "npc": "NPC"
+    },
+    "Item": {
+      "raca": "Raça",
+      "classe": "Classe",
+      "talento": "Talento",
+      "magia": "Magia",
+      "arma": "Arma",
+      "armadura": "Armadura / Escudo",
+      "equipamento": "Equipamento",
+      "itemMagico": "Item mágico"
+    }
+  }
+}

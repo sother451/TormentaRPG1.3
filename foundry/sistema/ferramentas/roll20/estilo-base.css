@@ -1,0 +1,17 @@
+/* Base (antes do CSS original): tira o tema do Foundry e volta ao visual de navegador claro, como no Roll20. */
+
+/* O tema escuro do Foundry liga "color-scheme: dark", que pinta campos e caixas de escuro. */
+.tormenta13-r20 .charsheet {
+  color-scheme: light;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  line-height: normal;
+  color: #000;
+}
+.tormenta13-r20 .charsheet :is(input, select, textarea, button) {
+  all: revert;
+  font: inherit;
+  color-scheme: light;
+  box-sizing: border-box;
+}
+.tormenta13-r20 .charsheet :is(h1, h2, h3, h4, b, strong, label, span, div, p) { color: inherit; }
