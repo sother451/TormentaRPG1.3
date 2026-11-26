@@ -39,7 +39,7 @@ jobs:
              '.download=$d | .manifest=$m' system.json > s.json && mv s.json system.json
       - name: Empacotar
         run: |
-          zip -r system.zip system.json module templates styles lang packs data/condicoes.json \
+          zip -r system.zip system.json module templates styles lang packs data/condicoes.json data/talentos.json data/classes-progressao.json \
             -x "packs/_fonte/*"
       - uses: softprops/action-gh-release@v2
         with:

@@ -47,6 +47,9 @@ Hooks.once("init", () => {
     makeDefault: true, label: "Ficha de item Tormenta 1.3"
   });
 
+  // Parte da ficha usada como {{> ...}} dentro do template gerado
+  foundry.applications.handlebars.loadTemplates([`systems/${SYSTEM_ID}/templates/actor/progressao.hbs`]);
+
   game.tormenta13 = { importarDoRoll20 };
 });
 

@@ -1,4 +1,4 @@
-# Tormenta RPG 1.3 para Foundry VTT (v14) — versão 0.3.1
+# Tormenta RPG 1.3 para Foundry VTT (v14) — versão 0.4.0
 
 Sistema com **a ficha do Roll20 do grupo** (mesmo visual, mesmos campos, mesmas fórmulas e scripts),
 **compêndios prontos** (1.926 itens do compendium Tormenta 1.3) e **importação de personagens do Roll20**.
@@ -34,6 +34,10 @@ Novas versões aparecem na mesma tela com o botão **Update**.
 - **Chat:** os botões rolam as mesmas macros do Roll20, inclusive as que o jogador escreveu em "Mostrar Texto do Macro".
   O resultado aparece como no template padrão do Roll20; passe o mouse no número para ver a fórmula.
   Crítico fica verde, 1 natural no d20 fica vermelho.
+- **Progressão (aba nova):** vagas de talento por nível de personagem (talento nos níveis ímpares e um extra no 1º;
+  combate/magia/Tormenta/poder no 4º e 12º; perícia no 6º e 14º; destino ou classe no 4º, 8º, 12º e 16º), o talento do
+  20º da classe e o +1 de atributo nos níveis pares. Cada vaga lista só os talentos que cabem nela (pré-requisitos não
+  são bloqueados). As habilidades da tabela da classe entram e saem sozinhas em Habilidades conforme o nível da classe.
 - **Token:** a barra mostra PV atual / PV máximo; mudar a barra muda o PV da ficha. Iniciativa = `1d20 + @iniciativa`.
 - **Fórmulas do Foundry:** todos os campos da ficha valem como `@nome` (minúsculas, `-` vira `_`): `@for_mod`, `@ca`,
   `@acrobacia`, `@ataque_cac`...
@@ -42,7 +46,8 @@ Novas versões aparecem na mesma tela com o botão **Update**.
 
 - Os modificadores (aba Parâmetros) somam sempre como número. No script original, dois modificadores no mesmo alvo
   podiam virar texto concatenado ("1" + "2" = "12").
-- Classes arrastadas do compêndio entram com BBA "1" (Tormenta 1.3: BBA = nível em todas as classes).
+- BBA = nível em todas as classes (Tormenta 1.3): classes novas, arrastadas ou criadas com "+ Adicionar", começam com BBA "1".
+  A coluna de BBA das tabelas dos documentos de classe não é usada.
 - O botão de dado usa o ícone d20 do Foundry no lugar da fonte de dados do Roll20.
 
 ## Para desenvolver
@@ -54,6 +59,7 @@ npm install
 npm test                 # regras, compêndios, motor da ficha, importação
 npm run pacotes          # monta os compêndios em packs/ (LevelDB, com o CLI oficial do Foundry)
 npm run converter        # regera ficha, CSS e campos a partir da ficha do Roll20
+python ferramentas/extrair_classes_drive.py   # relê as classes do compêndio original (Drive) -> data/classes-progressao.json
 node ferramentas/roll20/previa.mjs previa.html ataque   # prévia da ficha no navegador, sem Foundry
 ```
 

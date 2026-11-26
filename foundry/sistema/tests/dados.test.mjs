@@ -28,7 +28,7 @@ function confere(spec, valor, caminho) {
 }
 
 let total = 0; const ids = new Set();
-for (const arquivo of readdirSync("data").filter((a) => a.endsWith(".json") && a !== "condicoes.json")) {
+for (const arquivo of readdirSync("data").filter((a) => a.endsWith(".json") && !["condicoes.json", "classes-progressao.json"].includes(a))) {
   const itens = JSON.parse(readFileSync(`data/${arquivo}`, "utf8"));
   const locais = new Set();
   for (const it of itens) {

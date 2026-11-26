@@ -34,7 +34,28 @@
   opacity: 1;
 }
 .tormenta13-r20 .charsheet input::placeholder { color: #888; -webkit-text-fill-color: #888; }
-.tormenta13-r20 .charsheet input[type="checkbox"] { width: auto; margin: 2px 3px; cursor: pointer; }
+/* Caixas de marcar: o Foundry desenha as dele por cima (::before/::after sobre o input sem aparência),
+   o que deixava "um objeto em cima do outro". Aqui volta a caixa nativa, como no Roll20. */
+.tormenta13-r20 .charsheet input[type="checkbox"] {
+  appearance: auto !important;
+  -webkit-appearance: checkbox !important;
+  position: static !important;
+  width: 13px !important;
+  height: 13px !important;
+  min-height: 0 !important;
+  margin: 2px 3px !important;
+  padding: 0 !important;
+  background: none !important;
+  border: 0 !important;
+  vertical-align: middle;
+  accent-color: #3366cc;
+  cursor: pointer;
+}
+.tormenta13-r20 .charsheet input[type="checkbox"]::before,
+.tormenta13-r20 .charsheet input[type="checkbox"]::after {
+  content: none !important;
+  display: none !important;
+}
 .tormenta13-r20 .charsheet textarea { resize: vertical; min-height: 50px; }
 
 /* Botões genéricos (os do Roll20 com classe própria, como as abas, mantêm o estilo original) */
@@ -60,3 +81,24 @@
 .tormenta13-r20 .charsheet .repcontrol_del { border: 0; background: transparent; color: #b00; padding: 0 4px; }
 .tormenta13-r20 .charsheet .repcontrol { text-align: left; margin: 2px 0 6px; }
 .tormenta13-r20 .charsheet .repcontrol_add { font-size: 11px; padding: 0 6px; }
+
+/* Abas só do Foundry: Progressão */
+.tormenta13-r20 .charsheet .sheet-progressao { display: none; }
+.tormenta13-r20 .charsheet .sheet-tabstoggle[value="progressao"] ~ div.sheet-progressao { display: block; }
+.tormenta13-r20 .charsheet .sheet-tabstoggle[value="progressao"] ~ button.tab_button[name="act_progressao"] { background: #a6bcf9 !important; }
+.tormenta13-r20 .charsheet .t13-prog h3 { margin: 10px 0 4px; font-size: 14px; border-bottom: 2px solid #000; }
+.tormenta13-r20 .charsheet .t13-prog h4 { margin: 8px 0 2px; font-size: 13px; background: #000; color: #fff; padding: 1px 6px; }
+.tormenta13-r20 .charsheet .t13-vaga { display: flex; align-items: center; gap: 6px; padding: 3px 6px; border-left: 4px solid #3fb315; margin: 2px 0; flex-wrap: wrap; }
+.tormenta13-r20 .charsheet .t13-vaga.pendente { border-left-color: #e2a400; background: #fff8e1; }
+.tormenta13-r20 .charsheet .t13-vaga-rotulo { font-weight: bold; min-width: 220px; }
+.tormenta13-r20 .charsheet .t13-vaga-escolha { flex: 1; }
+.tormenta13-r20 .charsheet .t13-vaga-select { flex: 1; max-width: 360px; }
+.tormenta13-r20 .charsheet .t13-vaga-liberar { border: 0; background: transparent; color: #b00; }
+.tormenta13-r20 .charsheet .t13-dica { color: #555; font-size: 11px; }
+.tormenta13-r20 .charsheet .t13-prog-pendentes { font-weight: bold; color: #8a5a00; margin: 4px 0; }
+.tormenta13-r20 .charsheet .t13-prog-aviso { background: #fbe9e9; padding: 4px 6px; margin: 4px 0; }
+.tormenta13-r20 .charsheet .t13-prog details { margin: 4px 0 8px; }
+.tormenta13-r20 .charsheet .t13-prog summary { cursor: pointer; }
+.tormenta13-r20 .charsheet .t13-prog-tabela { width: 100%; border-collapse: collapse; margin-top: 4px; }
+.tormenta13-r20 .charsheet .t13-prog-tabela :is(th, td) { border: 1px solid #ccc; padding: 2px 6px; text-align: left; }
+.tormenta13-r20 .charsheet select.t13-atributo { width: auto; min-width: 120px; flex: 0 0 auto; }

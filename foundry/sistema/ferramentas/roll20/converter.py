@@ -462,7 +462,42 @@ CAMPOS_EXTRAS = {
         "xitem_equipado": {"original": "(foundry)", "tipo": "marcado", "inicial": False, "valorMarcado": "1"},
     },
     "arma": {"xarma_origem": {"original": "(foundry)", "tipo": "texto", "inicial": ""}},
+    # Progressão: vaga que o talento ocupa / habilidade de classe concedida pelo nível
+    "talento": {
+        "xtal_vaga": {"original": "(foundry)", "tipo": "texto", "inicial": ""},
+        "xtal_concedido": {"original": "(foundry)", "tipo": "texto", "inicial": ""},
+    },
+    # Progressão: atributo escolhido em cada nível par (JSON {"2": "FOR", ...})
+    "": {"xprog_atributos": {"original": "(foundry)", "tipo": "texto", "inicial": ""}},
 }
+
+# Abas só do Foundry (depois das do Roll20): botão na barra e conteúdo vindo de um template próprio.
+ABAS_FOUNDRY = [("progressao", "Progressão", "systems/tormenta13/templates/actor/progressao.hbs")]
+
+
+def fim_do_div(template, inicio):
+    """Índice logo depois do </div> que fecha o <div> que começa em `inicio`."""
+    nivel, i = 0, inicio
+    while True:
+        abre = template.find("<div", i)
+        fecha = template.find("</div>", i)
+        if abre != -1 and abre < fecha:
+            nivel, i = nivel + 1, abre + 4
+        else:
+            nivel, i = nivel - 1, fecha + 6
+            if nivel == 0:
+                return i
+
+
+def abas_do_foundry(abas, template):
+    for aba, rotulo, parcial in ABAS_FOUNDRY:
+        fim = abas.rindex("</div>")
+        abas = (abas[:fim] + f'    <button class="tab_button" type="button" data-action="aba" data-aba="{aba}" '
+                f'name="act_{aba}">{rotulo}</button>\n' + abas[fim:])
+        inicio = template.index('<div class="sheet-configuracao">')
+        fim = fim_do_div(template, inicio)
+        template = template[:fim] + f'\n<div class="sheet-{aba}">{{{{> "{parcial}"}}}}</div>\n' + template[fim:]
+    return abas, template
 
 
 def coluna_equipar(template):
@@ -512,6 +547,8 @@ def main():
     salvos, calculados = classificar(inv)
     for secao, campos in CAMPOS_EXTRAS.items():
         salvos.setdefault(secao, {}).update(campos)
+    # Tormenta 1.3: BBA = nível em todas as classes. A ficha do Roll20 começava a linha de classe com BBA 0.
+    salvos["class"]["xclasse_bba"]["inicial"] = "1"
 
     conv = Conversor(salvos, calculados)
     conv.feed(corpo)
@@ -520,6 +557,7 @@ def main():
     template = regras_de_treino(template)
     template = coluna_equipar(template)
     abas, template = separar_abas(template)
+    abas, template = abas_do_foundry(abas, template)
     aviso = "{{!-- Gerado por ferramentas/roll20/converter.py a partir da ficha do Roll20. Não edite à mão. --}}\n"
     (SISTEMA / "templates" / "actor" / "ficha-roll20.hbs").write_text(
         aviso + '<div class="charsheet">\n' + template.strip() + "\n</div>\n", encoding="utf-8")

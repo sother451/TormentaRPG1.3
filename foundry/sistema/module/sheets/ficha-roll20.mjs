@@ -9,6 +9,8 @@ import { linhaDeItem } from "../roll20/do-item.mjs";
 import { linhaDeInventario, TIPOS_DE_INVENTARIO } from "../roll20/inventario.mjs";
 import { importarDoRoll20 } from "../roll20/importar.mjs";
 import { apagar } from "../documents/actor.mjs";
+import { montarProgressao } from "../roll20/progressao.mjs";
+import { carregarCatalogo } from "../roll20/catalogo.mjs";
 
 const { HandlebarsApplicationMixin, DialogV2 } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets;
@@ -35,6 +37,8 @@ export class FichaRoll20Sheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       abrir_filtro: FichaRoll20Sheet.#abrirFiltro,
       filtrar: FichaRoll20Sheet.#filtrar,
       equipar: FichaRoll20Sheet.#equipar,
+      preencherVaga: FichaRoll20Sheet.#preencherVaga,
+      liberarVaga: FichaRoll20Sheet.#liberarVaga,
       importarRoll20: FichaRoll20Sheet.#importarRoll20
     }
   };
@@ -50,7 +54,13 @@ export class FichaRoll20Sheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     const fonte = this.actor.system.toObject(false);
     const ficha = new FichaRoll20(fonte, { nome: this.actor.name, filtrando: this.ui.filtro_cor === 1 });
     const { v, b, reps } = ficha.paraTemplate(fonte);
-    return Object.assign(contexto, { actor: this.actor, v, b, reps, ui: this.ui, editavel: this.isEditable });
+    let prog = { nivel: 0, classes: [], niveis: [], pendentes: 0 };
+    try {
+      prog = montarProgressao(fonte, await carregarCatalogo());
+    } catch (erro) {
+      console.error("tormenta13 | progressão", erro);
+    }
+    return Object.assign(contexto, { actor: this.actor, v, b, reps, prog, ui: this.ui, editavel: this.isEditable });
   }
 
   /**
@@ -60,6 +70,16 @@ export class FichaRoll20Sheet extends HandlebarsApplicationMixin(ActorSheetV2) {
    */
   _onRender(context, options) {
     super._onRender(context, options);
+    // Aba Progressão: +1 em atributo por nível par
+    for (const campo of this.element.querySelectorAll("select[data-atributo-nivel]")) {
+      campo.addEventListener("change", (event) => {
+        event.stopPropagation();
+        if (this.isEditable) this.actor.escolherAtributo(campo.dataset.atributoNivel, campo.value);
+      });
+    }
+    for (const campo of this.element.querySelectorAll(".t13-vaga-select")) {
+      campo.addEventListener("change", (event) => event.stopPropagation());
+    }
     for (const campo of this.element.querySelectorAll("[data-campo]")) {
       campo.addEventListener("change", (event) => {
         event.stopPropagation();
@@ -115,6 +135,21 @@ export class FichaRoll20Sheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     const { id } = FichaRoll20Sheet.#linhaDe(alvo);
     const equipado = Boolean(this.actor.system.rep_itens?.[id]?.xitem_equipado);
     return this.actor.equiparItem(id, !equipado);
+  }
+
+  /** Aba Progressão: adiciona o talento escolhido na vaga. */
+  static #preencherVaga(event, alvo) {
+    if (!this.isEditable) return;
+    const vaga = alvo.closest(".t13-vaga");
+    const talento = vaga?.querySelector(".t13-vaga-select")?.value;
+    if (!talento) return ui.notifications.warn("Escolha um talento na lista.");
+    return this.actor.preencherVaga(vaga.dataset.vaga, talento);
+  }
+
+  /** Aba Progressão: libera a vaga (apaga o talento da ficha). */
+  static #liberarVaga(event, alvo) {
+    if (!this.isEditable) return;
+    return this.actor.apagarLinha("talento", alvo.dataset.linha);
   }
 
   static #abrirGrimorio() {

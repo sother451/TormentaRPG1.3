@@ -1,0 +1,78 @@
+{{!-- Aba Progressão (só do Foundry): vagas de talento por nível e habilidades de classe. Contexto: prog (module/roll20/progressao.mjs). --}}
+{{#*inline "vaga"}}
+<div class="t13-vaga {{#if escolhido}}feita{{else}}pendente{{/if}}" data-vaga="{{id}}">
+  <span class="t13-vaga-rotulo">{{rotulo}}</span>
+  {{#if escolhido}}
+    <span class="t13-vaga-escolha">{{escolhido.nome}}</span>
+    <button type="button" class="t13-vaga-liberar" data-action="liberarVaga" data-linha="{{escolhido.linha}}"
+      title="Liberar a vaga (apaga o talento da ficha)">✕</button>
+  {{else}}
+    {{#if semOpcoes}}
+      <span class="t13-dica">Nenhum talento disponível para esta vaga.</span>
+    {{else}}
+      <select class="t13-vaga-select">
+        <option value="">— escolher talento —</option>
+        {{#each grupos}}
+        <optgroup label="{{grupo}}">
+          {{#each opcoes}}<option value="{{id}}" title="{{#if prerequisito}}Pré-requisito: {{prerequisito}}{{/if}}">{{nome}}</option>{{/each}}
+        </optgroup>
+        {{/each}}
+      </select>
+      <button type="button" data-action="preencherVaga">Adicionar</button>
+    {{/if}}
+  {{/if}}
+</div>
+{{/inline}}
+
+<div class="t13-prog">
+  <div class="sheet-table"><span class="sheet-table-nome">Progressão — {{prog.nivel}}º nível de personagem</span></div>
+
+  {{#unless prog.nivel}}
+  <p class="t13-prog-aviso">Adicione uma classe em <b>Informação de Classe</b> (aba Personagem) ou arraste uma classe do compêndio
+    para ver as escolhas de cada nível.</p>
+  {{/unless}}
+  {{#if prog.pendentes}}
+  <p class="t13-prog-pendentes">{{prog.pendentes}} escolha(s) pendente(s).</p>
+  {{/if}}
+  <p class="t13-dica">Os pré-requisitos não são bloqueados: passe o mouse sobre um talento da lista para ver o dele.</p>
+
+  {{#each prog.classes}}
+  <section class="t13-prog-classe">
+    <h3>{{nome}} — {{nivel}}º nível</h3>
+    {{#unless conhecida}}
+    <p class="t13-prog-aviso">Classe não encontrada no compêndio: as habilidades dela não entram sozinhas na ficha.</p>
+    {{/unless}}
+    {{#each vagas}}{{> vaga}}{{/each}}
+    {{#if ganhos.length}}
+    <details>
+      <summary>Habilidades de classe até agora (entram sozinhas em Habilidades)</summary>
+      <table class="t13-prog-tabela">
+        <tr><th>Nível</th><th>Habilidades</th>{{#if colunaExtra}}<th>{{colunaExtra}}</th>{{/if}}</tr>
+        {{#each ganhos}}
+        <tr><td>{{nivel}}º</td><td>{{habilidades}}</td>{{#if ../colunaExtra}}<td>{{extra}}</td>{{/if}}</tr>
+        {{/each}}
+      </table>
+    </details>
+    {{/if}}
+  </section>
+  {{/each}}
+
+  {{#each prog.niveis}}
+  <section class="t13-prog-nivel">
+    <h4>{{nivel}}º nível</h4>
+    {{#each vagas}}{{> vaga}}{{/each}}
+    {{#if atributo}}
+    <div class="t13-vaga {{#if atributo.escolhido}}feita{{else}}pendente{{/if}}">
+      <span class="t13-vaga-rotulo">+1 em um atributo</span>
+      <select class="t13-atributo" data-atributo-nivel="{{nivel}}">
+        <option value="">— escolher —</option>
+        {{#each atributo.opcoes}}
+        <option value="{{id}}" {{#if (eq ../atributo.escolhido id)}}selected{{/if}} {{#if bloqueado}}disabled{{/if}}>{{id}}</option>
+        {{/each}}
+      </select>
+      <span class="t13-dica">Some 1 no Valor do atributo (aba Personagem). Não pode ser o mesmo do nível par anterior.</span>
+    </div>
+    {{/if}}
+  </section>
+  {{/each}}
+</div>

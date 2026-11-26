@@ -2,6 +2,8 @@ import { FICHA } from "../roll20/campos.mjs";
 import { executarMacro, macroDeArma, macroDeItem } from "../roll20/macro.mjs";
 import { inteiro } from "../roll20/motor.mjs";
 import { atualizacaoDeEquipar } from "../roll20/inventario.mjs";
+import { linhaDeTalento, montarProgressao, sincronizacaoDeHabilidades } from "../roll20/progressao.mjs";
+import { carregarCatalogo } from "../roll20/catalogo.mjs";
 
 /** Rola uma fórmula com os dados do Foundry (para o interpretador de macros). */
 async function rolarNoFoundry(formula) {
@@ -58,6 +60,58 @@ export class TormentaActor extends foundry.documents.Actor {
   equiparItem(id, equipar) {
     const update = atualizacaoDeEquipar(this.system._source, id, equipar, { novoId: () => foundry.utils.randomID(), apagar });
     return Object.keys(update).length ? this.update(update) : null;
+  }
+
+  /* ------------------------------------------------------------------------------------------ */
+  /*  Progressão (aba Progressão)                                                                 */
+  /* ------------------------------------------------------------------------------------------ */
+
+  /** Ocupa uma vaga de talento com um talento do catálogo (vira uma linha em Talentos & Habilidades). */
+  async preencherVaga(vagaId, talentoId) {
+    const catalogo = await carregarCatalogo();
+    const talento = catalogo.porId.get(talentoId);
+    if (!talento) return null;
+    return this.adicionarLinha("talento", linhaDeTalento(talento, vagaId));
+  }
+
+  /** +1 em atributo escolhido num nível par (só registra; o jogador soma no Valor). */
+  escolherAtributo(nivel, atributo) {
+    let atual = {};
+    try { atual = JSON.parse(this.system._source.xprog_atributos || "{}") ?? {}; } catch { atual = {}; }
+    if (atributo) atual[nivel] = atributo;
+    else delete atual[nivel];
+    return this.update({ "system.xprog_atributos": JSON.stringify(atual) });
+  }
+
+  /** Coloca/tira as habilidades de classe conforme o nível de cada classe. */
+  async sincronizarHabilidadesDeClasse() {
+    const catalogo = await carregarCatalogo();
+    const update = sincronizacaoDeHabilidades(this.system._source, catalogo, { novoId: () => foundry.utils.randomID(), apagar });
+    if (Object.keys(update).length) await this.update(update, { tormenta13Sincronizacao: true });
+  }
+
+  /** Quando o nível de alguma classe muda: sincroniza habilidades e avisa das escolhas novas. */
+  async _onUpdate(changed, options, userId) {
+    await super._onUpdate(changed, options, userId);
+    if (userId !== game.user.id || options.tormenta13Sincronizacao || !changed.system) return;
+    if (!Object.keys(foundry.utils.flattenObject(changed.system)).some((k) => k.startsWith("rep_class"))) return;
+    try {
+      await this.sincronizarHabilidadesDeClasse();
+      const nivel = this.system.ficha?.numero("nivel") ?? 0;
+      if (nivel > (options.tormenta13NivelAnterior ?? this._tormenta13Nivel ?? nivel)) {
+        const prog = montarProgressao(this.system._source, await carregarCatalogo());
+        ui.notifications.info(`${this.name} chegou ao ${nivel}º nível: ${prog.pendentes} escolha(s) pendente(s) na aba Progressão.`);
+      }
+      this._tormenta13Nivel = nivel;
+    } catch (erro) {
+      console.error("tormenta13 | progressão", erro);
+    }
+  }
+
+  /** Guarda o nível antes da mudança (para o aviso de subir de nível). */
+  async _preUpdate(changed, options, user) {
+    if ((await super._preUpdate(changed, options, user)) === false) return false;
+    this._tormenta13Nivel = this.system.ficha?.numero("nivel") ?? 0;
   }
 
   /* ------------------------------------------------------------------------------------------ */

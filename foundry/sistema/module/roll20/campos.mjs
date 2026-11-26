@@ -1147,6 +1147,11 @@ export const FICHA = {
    "original": "peso_temp",
    "tipo": "numero",
    "inicial": 0
+  },
+  "xprog_atributos": {
+   "original": "(foundry)",
+   "tipo": "texto",
+   "inicial": ""
   }
  },
  "calculados": {
@@ -1404,7 +1409,7 @@ export const FICHA = {
     "xclasse_bba": {
      "original": "XCLASSE_BBA",
      "tipo": "texto",
-     "inicial": "0",
+     "inicial": "1",
      "opcoes": [
       "0",
       "1",
@@ -3269,6 +3274,16 @@ export const FICHA = {
      "original": "macro",
      "tipo": "texto",
      "inicial": "&{template:default} {{name=@{nome} - @{tipo} - [[@{usos_atual}]]/[[@{max_usos}]]}} {{@{descricao}}}"
+    },
+    "xtal_vaga": {
+     "original": "(foundry)",
+     "tipo": "texto",
+     "inicial": ""
+    },
+    "xtal_concedido": {
+     "original": "(foundry)",
+     "tipo": "texto",
+     "inicial": ""
     }
    },
    "calculados": {
