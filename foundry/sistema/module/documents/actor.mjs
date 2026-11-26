@@ -1,124 +1,127 @@
-import { PERICIAS, RESISTENCIAS, HABILIDADES } from "../config.mjs";
-import * as R from "../rules.mjs";
+import { FICHA } from "../roll20/campos.mjs";
+import { executarMacro, macroDeArma, macroDeItem } from "../roll20/macro.mjs";
+import { inteiro } from "../roll20/motor.mjs";
 
-const sinal = (n) => (n >= 0 ? `+${n}` : `${n}`);
+/** Rola uma fórmula com os dados do Foundry (para o interpretador de macros). */
+async function rolarNoFoundry(formula) {
+  const roll = await new Roll(formula).evaluate();
+  const naturais = roll.dice.flatMap((d) => d.results.filter((r) => r.active !== false).map((r) => r.result));
+  return { total: roll.total, formula: roll.formula, naturais, roll };
+}
+
+const escapar = (t) => foundry.utils.escapeHTML?.(String(t)) ?? String(t);
+
+/** Remove uma chave de um objeto num update (operador _del da v14; "-=chave" nas anteriores). */
+export function apagar(caminho, chave) {
+  return globalThis._del !== undefined ? { [`${caminho}.${chave}`]: globalThis._del } : { [`${caminho}.-=${chave}`]: null };
+}
 
 export class TormentaActor extends foundry.documents.Actor {
+  /** @nome nas fórmulas do Foundry (iniciativa, macros): os mesmos nomes da ficha do Roll20. */
   getRollData() {
-    return this.system.getRollData?.() ?? super.getRollData();
+    return { ...(this.system.ficha?.dadosDeRolagem() ?? {}), recursos: this.system.recursos };
   }
 
-  get falante() {
-    return ChatMessage.getSpeaker({ actor: this });
-  }
-
-  /** Teste básico: 1d20 + bônus. */
-  async #teste(rotulo, bonus) {
-    const roll = new Roll("1d20 + @b", { b: bonus });
-    await roll.toMessage({ speaker: this.falante, flavor: `${rotulo} (${sinal(bonus)})` });
-    return roll;
-  }
-
-  rolarHabilidade(id) {
-    return this.#teste(`Teste de ${HABILIDADES[id].label}`, this.system.habilidades[id].mod);
-  }
-
-  rolarResistencia(id) {
-    return this.#teste(`Teste de ${RESISTENCIAS[id].label}`, this.system.resistencias[id].total);
-  }
-
-  rolarPericia(id) {
-    const p = this.system.pericias[id];
-    if (!p.utilizavel) return ui.notifications.warn(`${PERICIAS[id].label} só pode ser usada por quem é treinado.`);
-    return this.#teste(PERICIAS[id].label, p.total);
-  }
-
-  rolarEspecialidade(chave) {
-    const e = this.system.especialidades[chave];
-    if (!e) return;
-    return this.#teste(`${PERICIAS[e.base]?.label ?? "Perícia"}: ${e.nome}`, e.total);
-  }
-
-  /** Ataque (1d20 + Nível + mod.) e dano (arma + MdN + mod.). Em ameaça de crítico rola o dano crítico. */
-  async rolarArma(arma) {
-    const d = arma.system;
-    const base = this.system.dadosArma(arma);
-    const dados = this.getRollData();
-
-    if (d.tipoAtaque === "distancia" && d.municao !== null) {
-      if (d.municao <= 0) return ui.notifications.warn(`${arma.name}: sem munição.`);
-      await arma.update({ "system.municao": d.municao - 1 });
+  /** A barra do token mostra PV/PV máximo; editar a barra muda o campo PV da ficha. */
+  async modifyTokenAttribute(attribute, value, isDelta, isBar) {
+    if (attribute === "recursos.pv") {
+      const atual = Number(this.system.pv) || 0;
+      return this.update({ "system.pv": isDelta ? atual + value : value });
     }
+    return super.modifyTokenAttribute(attribute, value, isDelta, isBar);
+  }
 
+  /* ------------------------------------------------------------------------------------------ */
+  /*  Linhas das seções repetíveis                                                               */
+  /* ------------------------------------------------------------------------------------------ */
+
+  linha(secao, id) {
+    return this.system.ficha?.linha(secao, id) ?? null;
+  }
+
+  async adicionarLinha(secao, dados = {}) {
+    const linhas = this.system[`rep_${secao}`] ?? {};
+    const ordem = Math.max(0, ...Object.values(linhas).map((l) => Number(l.ordem) || 0)) + 1;
+    const id = foundry.utils.randomID();
+    await this.update({ [`system.rep_${secao}.${id}`]: { ...dados, ordem } });
+    return id;
+  }
+
+  apagarLinha(secao, id) {
+    return this.update(apagar(`system.rep_${secao}`, id));
+  }
+
+  /* ------------------------------------------------------------------------------------------ */
+  /*  Macros do Roll20                                                                            */
+  /* ------------------------------------------------------------------------------------------ */
+
+  /** Executa uma macro (texto do Roll20) e manda o resultado ao chat. */
+  async executarMacro(texto, linha = null) {
+    let resultado;
     try {
-      const extraAtq = d.bonusAtaque.trim() ? ` + (${d.bonusAtaque})` : "";
-      const ataque = new Roll(`1d20 + ${base.ataque}${extraAtq}`, dados);
-      await ataque.evaluate();
-
-      const { margem, multiplicador } = R.parseCritico(d.critico);
-      const natural = ataque.dice[0]?.results[0]?.result ?? 0;
-      const ameaca = natural >= margem;
-
-      const dado = ameaca ? R.multiplicarDados(d.dano, multiplicador) : d.dano;
-      const extraDano = d.bonusDano.trim() ? ` + (${d.bonusDano})` : "";
-      const dano = new Roll(`max(1, ${dado} + ${base.dano}${extraDano})`, dados);
-      await dano.evaluate();
-
-      const aviso = ameaca ? ` — ameaça de crítico (${d.critico}): se acertar, dano ×${multiplicador}` : "";
-      await ataque.toMessage({ speaker: this.falante, flavor: `${arma.name}: ataque${aviso}` });
-      await dano.toMessage({ speaker: this.falante, flavor: `${arma.name}: dano${ameaca ? " crítico" : ""} (${d.tipoDano || "dano"})` });
+      resultado = await executarMacro(texto, this.system.ficha, linha, rolarNoFoundry);
     } catch (erro) {
       console.error(erro);
-      ui.notifications.error(`${arma.name}: fórmula inválida. Verifique os campos de bônus e as variáveis.`);
+      ui.notifications.error(`Não foi possível rolar a macro: ${erro.message}`);
+      return null;
     }
+    const rolls = resultado.rolagens.map((r) => r.roll).filter((r) => r?.dice?.length);
+    const html = resultado.emote
+      ? `<span class="t13-emote">${escapar(this.name)} ${resultado.html}</span>`
+      : resultado.html;
+    const dados = {
+      speaker: ChatMessage.getSpeaker({ actor: this }),
+      content: `<div class="tormenta13-chat">${html}</div>`,
+      rolls
+    };
+    if (rolls.length) dados.sound = CONFIG.sounds.dice;
+    const modo = game.settings.settings.has("core.messageMode")
+      ? game.settings.get("core", "messageMode") : game.settings.get("core", "rollMode");
+    return ChatMessage.implementation.create(dados, { messageMode: modo, rollMode: modo });
   }
 
-  /** Gasta PM da reserva e posta a magia com CD; rola dano se houver fórmula. */
-  async usarMagia(magia) {
-    const d = magia.system;
-    const reservas = this.system.reservasPM;
-    const reserva = reservas.find((r) => r.id === d.reserva) ?? reservas[0];
-
-    if (d.custoPM > 0) {
-      if (!reserva) ui.notifications.warn("Nenhuma classe com PM: o custo não foi descontado.");
-      else if (reserva.atual < d.custoPM) return ui.notifications.warn(`PM insuficientes em ${reserva.nome} (${reserva.atual}/${reserva.max}).`);
-      else await this.items.get(reserva.id).update({ "system.pm.atual": reserva.atual - d.custoPM });
-    }
-
-    const cabecalho = `<strong>${magia.name}</strong> — ${d.ciclo}º ciclo · ${d.custoPM} PM · CD ${this.system.cd}`;
-    if (!d.dano.trim()) {
-      return ChatMessage.create({ speaker: this.falante, content: `<p>${cabecalho}</p>` });
-    }
-    try {
-      const roll = new Roll(`${d.dano} + @mdn + ${this.system.bonus.danoMagia}`, this.getRollData());
-      await roll.toMessage({ speaker: this.falante, flavor: cabecalho });
-    } catch (erro) {
-      console.error(erro);
-      ui.notifications.error(`${magia.name}: fórmula de dano inválida.`);
-    }
+  /** Botão de rolagem fixo da ficha (testes, resistências, perícias, ataques básicos). */
+  rolarBotao(chave, idLinha = null) {
+    const texto = FICHA.macros[chave];
+    if (!texto) return ui.notifications.warn(`Macro "${chave}" não encontrada.`);
+    const secao = chave.split(":")[0];
+    return this.executarMacro(texto, secao ? this.linha(secao, idLinha) : null);
   }
 
-  /** Gasta 1 Ponto de Ação: dado extra, recuperar PV ou PM (valores pela tabela do compendium). */
-  async gastarPA(tipo) {
-    const sys = this.system;
-    if (sys.pa.value <= 0) return ui.notifications.warn("Sem Pontos de Ação.");
-    const tabela = R.tabelaPA(sys.nivel);
-    await this.update({ "system.pa.value": sys.pa.value - 1 });
-    const fala = this.falante;
-    if (tipo === "dado") {
-      return new Roll(tabela.dado).toMessage({ speaker: fala, flavor: "Ponto de Ação: dado extra (some ao teste ou jogada, depois de rolar)" });
+  /**
+   * Botão de rolar de uma linha (clicked:repeating_*): gasta munição, usos, PM ou quantidade
+   * como o script do Roll20 e rola a macro da linha.
+   */
+  async usarLinha(secao, id) {
+    const dados = this.system[`rep_${secao}`]?.[id];
+    if (!dados) return null;
+    const caminho = `system.rep_${secao}.${id}`;
+
+    if (secao === "arma") {
+      const atual = inteiro(dados.xarma_municao);
+      if (atual !== 0 && dados.xarma_tipo === "@{ataque_dis}") await this.update({ [`${caminho}.xarma_municao`]: String(atual - 1) });
+      return this.executarMacro(macroDeArma(dados.macro_texto ?? "", dados.xarma_tipo), this.linha(secao, id));
     }
-    if (tipo === "pv") {
-      const roll = new Roll(tabela.pv); await roll.evaluate();
-      await this.update({ "system.pv.value": Math.min(sys.pv.max, sys.pv.value + roll.total) });
-      return roll.toMessage({ speaker: fala, flavor: "Ponto de Ação: PV recuperados" });
+    if (secao === "talento") {
+      const atual = inteiro(dados.usos_atual);
+      if (atual !== 0) await this.update({ [`${caminho}.usos_atual`]: atual - 1 });
+      return this.executarMacro(dados.macro ?? "", this.linha(secao, id));
     }
-    if (tipo === "pm") {
-      const roll = new Roll(tabela.pm); await roll.evaluate();
-      const reserva = sys.reservasPM[0];
-      if (reserva) await this.items.get(reserva.id).update({ "system.pm.atual": Math.min(reserva.max, reserva.atual + roll.total) });
-      return roll.toMessage({ speaker: fala, flavor: `Ponto de Ação: PM recuperados${reserva ? ` (${reserva.nome})` : ""}` });
+    if (/^magias\d$/.test(secao)) {
+      const gasto = inteiro(dados.xmagias_pm);
+      const pms = {};
+      for (const [pid, pm] of Object.entries(this.system.rep_pms ?? {})) {
+        if (pm.xpm_uso) pms[`system.rep_pms.${pid}.xpm_atual`] = inteiro(pm.xpm_atual) - gasto;
+      }
+      if (Object.keys(pms).length) await this.update(pms);
+      return this.executarMacro(dados.macro_texto ?? "", this.linha(secao, id));
     }
-    return ChatMessage.create({ speaker: fala, content: `<p><strong>${this.name}</strong> gasta 1 Ponto de Ação.</p>` });
+    if (secao === "itens") {
+      let atual = inteiro(dados.xitem_qtd);
+      if (atual !== 0) atual--;
+      await this.update({ [`${caminho}.xitem_qtd`]: atual });
+      return this.executarMacro(macroDeItem(FICHA.calculados.xitem_macro_texto, atual), this.linha(secao, id));
+    }
+    return null;
   }
 }

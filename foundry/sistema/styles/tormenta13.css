@@ -87,3 +87,20 @@
   .tormenta13 .t13-habilidades, .tormenta13 .t13-numeros { grid-template-columns: repeat(3, 1fr); }
   .tormenta13 .t13-duas { grid-template-columns: 1fr; }
 }
+
+/* ------------------------------------------------------------------ */
+/* Chat: resultado das macros do Roll20 (&{template:default} e /em)    */
+/* ------------------------------------------------------------------ */
+.tormenta13-chat .t13-template { border: 1px solid #222; border-radius: 4px; overflow: hidden; background: #fff; color: #111; }
+.tormenta13-chat .t13-titulo { background: #111; color: #fff; text-align: center; font-weight: bold; padding: 4px 6px; }
+.tormenta13-chat .t13-template table { width: 100%; border-collapse: collapse; margin: 0; background: transparent; border: 0; }
+.tormenta13-chat .t13-template tr:nth-child(even) { background: #f1f1f1; }
+.tormenta13-chat .t13-template th { text-align: left; padding: 3px 6px; width: 45%; font-weight: bold; background: transparent; color: #111; }
+.tormenta13-chat .t13-template td { padding: 3px 6px; color: #111; }
+.tormenta13-chat .t13-rolagem {
+  display: inline-block; min-width: 1.6em; padding: 0 4px; text-align: center; font-weight: bold;
+  background: #fef6c5; border: 1px solid #e2c84f; border-radius: 3px; cursor: help;
+}
+.tormenta13-chat .t13-rolagem.critico { background: #d7f5d0; border-color: #3fb315; color: #1d6b07; }
+.tormenta13-chat .t13-rolagem.falha { background: #fbd9d9; border-color: #b31515; color: #8a0b0b; }
+.tormenta13-chat .t13-emote { font-style: italic; }

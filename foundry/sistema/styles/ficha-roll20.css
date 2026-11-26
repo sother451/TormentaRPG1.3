@@ -1,0 +1,363 @@
+/* Gerado por ferramentas/roll20/converter.py a partir da ficha do Roll20. Não edite à mão. */
+
+/* Os controles voltam ao estilo padrão do navegador (como no Roll20), sem o tema do Foundry. */
+.tormenta13-r20 .charsheet :is(input, select, textarea, button) { all: revert; font: inherit; box-sizing: border-box; }
+.tormenta13-r20 .window-content { padding: 0; background: black; color: black; }
+.tormenta13-r20 .charsheet { font-family: Arial, sans-serif; font-size: 13px; color: black; padding: 0 10px; min-height: 100%; }
+.tormenta13-r20 .charsheet input[type="text"], .tormenta13-r20 .charsheet input[type="number"],
+.tormenta13-r20 .charsheet select, .tormenta13-r20 .charsheet textarea { border: 1px solid #aaa; border-radius: 3px; padding: 1px 3px; }
+.tormenta13-r20 .charsheet input[readonly], .tormenta13-r20 .charsheet input[disabled] { background: #f1f1f1; }
+.tormenta13-r20 .charsheet button[data-action="rolar"], .tormenta13-r20 .charsheet button[data-action="repRolar"] { cursor: pointer; }
+.tormenta13-r20 .charsheet .sheet_completa { padding: 0 10px; }
+.tormenta13-r20 .charsheet .tab_group { top: 0; }
+
+/* Seções repetíveis (no Roll20 vinham prontas) */
+.tormenta13-r20 .charsheet .repitem { position: relative; padding-right: 22px; }
+.tormenta13-r20 .charsheet .itemcontrol { position: absolute; right: 0; top: 0; }
+.tormenta13-r20 .charsheet .repcontrol_del { border: 0; background: transparent; color: #b00; cursor: pointer; padding: 0 4px; }
+.tormenta13-r20 .charsheet .repcontrol { text-align: left; margin: 2px 0 6px; }
+.tormenta13-r20 .charsheet .repcontrol_add { font-size: 11px; padding: 0 6px; cursor: pointer; }
+.tormenta13-r20 .charsheet .repcontainer.solta-aqui { outline: 2px dashed #3366cc; }
+
+.tormenta13-r20 .charsheet .municao {
+	display:none
+}
+
+.tormenta13-r20 .charsheet .sheet-color-switch[value="@{ataque_dis}"] ~ .municao {
+	display: table-cell;
+}
+
+.tormenta13-r20 .charsheet input[type="number"] {
+    width:95% !important;
+	text-align: right;
+}
+
+.tormenta13-r20 .charsheet select {
+	padding-top:0px
+}
+
+.tormenta13-r20 .charsheet .tab_button {
+	border-radius: 7px;
+	border:none;
+}
+
+.tormenta13-r20 .charsheet .tab_group {
+	position: sticky;
+	top: 42px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	text-align: center;
+	background: black;
+	margin-left: -10px;
+	margin-right: -10px;
+	z-index: 19999;
+}
+
+.tormenta13-r20 .charsheet .tab_button:active {
+      background-color:aqua;
+}
+
+.tormenta13-r20 .charsheet .charactersheet {
+	background-color:black;
+}
+
+.tormenta13-r20 .charsheet input[type="hidden"].colorselector[value="0"]  ~ div.sheet_completa { 
+	background-color:  white;
+}
+
+.tormenta13-r20 .charsheet input[type="hidden"].colorselector[value="1"]  ~ div.sheet_completa { 
+    background-color: #8d8d8d;
+}
+
+.tormenta13-r20 .charsheet .tab_magias,
+.tormenta13-r20 .charsheet .tab_filtro {
+	vertical-align: top;
+	border-radius: 5px;
+	background: white;
+	border: 0;
+	border-top-width: 0px;
+	border-top-style: none;
+	border-bottom-width: 0px;
+	border-bottom-style: none;
+	color: black;
+	padding-left: 4px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	border-top-width: 0px;
+	border-top-style: solid;
+	border-bottom-width: 0px;
+	border-bottom-style: solid;
+	font-size: large;
+}
+
+.tormenta13-r20 .charsheet .button_filtrar {
+	vertical-align: top;
+	border-radius: 5px;
+	background: white;
+	border: 0;
+	border-top-width: 0px;
+	border-top-style: none;
+	border-bottom-width: 0px;
+	border-bottom-style: none;
+	color: black;
+	padding-left: 4px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	border-top-width: 0px;
+	border-top-style: solid;
+	border-bottom-width: 0px;
+	border-bottom-style: solid;
+}
+
+.tormenta13-r20 .charsheet .sheet-personagem,
+.tormenta13-r20 .charsheet .sheet-parametro,
+.tormenta13-r20 .charsheet .sheet-ataque,
+.tormenta13-r20 .charsheet .sheet-habilidade,
+.tormenta13-r20 .charsheet .sheet-magia,
+.tormenta13-r20 .charsheet .sheet-inventario,
+.tormenta13-r20 .charsheet .sheet-nota,
+.tormenta13-r20 .charsheet .sheet-configuracao,
+.tormenta13-r20 .charsheet div.sheet-grimorio,
+.tormenta13-r20 .charsheet div.sheet-preparadas,
+.tormenta13-r20 .charsheet div.sheet-section-filtro {
+    display: none;
+}
+
+.tormenta13-r20 .charsheet .sheet-grimorio {
+	display:none;
+}
+
+.tormenta13-r20 .charsheet .tab_magiastoggle[value="1"] ~div.sheet-grimorio,
+.tormenta13-r20 .charsheet .tab_magiastoggle[value="0"] ~div.sheet-preparadas,
+.tormenta13-r20 .charsheet .tab_filtrotoggle[value="1"] ~div.sheet-section-filtro {
+	display:block;
+}
+
+.tormenta13-r20 .charsheet .tab_magiastoggle[value="1"] ~button.tab_magias {
+	background:#a6bcf9 !important;
+}
+
+.tormenta13-r20 .charsheet .tab_filtrotoggle[value="1"] ~button.tab_filtro,
+.tormenta13-r20 .charsheet .filtro_cor[value="1"] ~button.button_filtrar {
+	background:#a6bcf9 !important;
+}
+
+.tormenta13-r20 .charsheet div.sheet-preparadas .repcontrol {
+  display: none;
+}
+
+.tormenta13-r20 .charsheet .sheet-grimorio .repcontainer .repitem .itemcontrol .repcontrol_del {
+	float:left !important;
+}
+
+.tormenta13-r20 .charsheet .section-magia {
+	display:block;
+}
+
+.tormenta13-r20 .charsheet .section-magia-show[value="0"] ~.section-magia {
+	display:none;
+}
+
+.tormenta13-r20 .charsheet .sheet-tabstoggle[value="personagem"] ~ div.sheet-personagem,
+.tormenta13-r20 .charsheet .sheet-tabstoggle[value="parametro"] ~ div.sheet-parametro,
+.tormenta13-r20 .charsheet .sheet-tabstoggle[value="ataque"] ~ div.sheet-ataque,
+.tormenta13-r20 .charsheet .sheet-tabstoggle[value="habilidade"] ~ div.sheet-habilidade,
+.tormenta13-r20 .charsheet .sheet-tabstoggle[value="magia"] ~ div.sheet-magia,
+.tormenta13-r20 .charsheet .sheet-tabstoggle[value="inventario"] ~ div.sheet-inventario,
+.tormenta13-r20 .charsheet .sheet-tabstoggle[value="nota"] ~ div.sheet-nota,
+.tormenta13-r20 .charsheet .sheet-tabstoggle[value="configuracao"] ~ div.sheet-configuracao {
+    display: block;
+}
+
+.tormenta13-r20 .charsheet .sheet-tabstoggle[value="personagem"] ~ 	button.tab_button[name="act_personagem"],
+.tormenta13-r20 .charsheet .sheet-tabstoggle[value="parametro"] ~ 	button.tab_button[name="act_parametro"],
+.tormenta13-r20 .charsheet .sheet-tabstoggle[value="ataque"] ~ 		button.tab_button[name="act_ataque"],
+.tormenta13-r20 .charsheet .sheet-tabstoggle[value="habilidade"] ~ 	button.tab_button[name="act_habilidade"],
+.tormenta13-r20 .charsheet .sheet-tabstoggle[value="magia"] ~ 		button.tab_button[name="act_magia"],
+.tormenta13-r20 .charsheet .sheet-tabstoggle[value="inventario"] ~ 	button.tab_button[name="act_inventario"],
+.tormenta13-r20 .charsheet .sheet-tabstoggle[value="nota"] ~ 		button.tab_button[name="act_nota"],
+.tormenta13-r20 .charsheet .sheet-tabstoggle[value="configuracao"] ~button.tab_button[name="act_configuracao"] {
+    background:#a6bcf9 !important;
+}
+
+.tormenta13-r20 .charsheet .sheet-isPC:checked~.sheet-npc,
+.tormenta13-r20 .charsheet .sheet-isNPC:checked~.sheet-pc,
+.tormenta13-r20 .charsheet .check-pericia-treinada-show:not(:checked)~.button-pericia-treinada,
+.tormenta13-r20 .charsheet .sheet-pc-pv-formula-show:not(:checked)~.sheet-pv-formula,
+.tormenta13-r20 .charsheet .sheet-section-show:not(:checked)~.sheet-section,
+.tormenta13-r20 .charsheet .sheet-section-macro-show:not(:checked)~.sheet-section-macro,
+.tormenta13-r20 .charsheet .sheet-section-usos-show:not(:checked)~.sheet-section-usos,
+.tormenta13-r20 .charsheet .sheet-section-magias0-show:not(:checked)~.sheet-section-magias0,
+.tormenta13-r20 .charsheet .sheet-section-magias1-show:not(:checked)~.sheet-section-magias1,
+.tormenta13-r20 .charsheet .sheet-section-magias2-show:not(:checked)~.sheet-section-magias2,
+.tormenta13-r20 .charsheet .sheet-section-magias3-show:not(:checked)~.sheet-section-magias3,
+.tormenta13-r20 .charsheet .sheet-section-magias4-show:not(:checked)~.sheet-section-magias4,
+.tormenta13-r20 .charsheet .sheet-section-magias5-show:not(:checked)~.sheet-section-magias5,
+.tormenta13-r20 .charsheet .sheet-section-magias6-show:not(:checked)~.sheet-section-magias6,
+.tormenta13-r20 .charsheet .sheet-section-magias7-show:not(:checked)~.sheet-section-magias7,
+.tormenta13-r20 .charsheet .sheet-section-magias8-show:not(:checked)~.sheet-section-magias8,
+.tormenta13-r20 .charsheet .sheet-section-magias9-show:not(:checked)~.sheet-section-magias9 {
+    display:none !important;
+}
+
+.tormenta13-r20 .charsheet button.xmagia_preparada {
+	background: transparent;
+	border: 0;
+	vertical-align: middle;
+}
+
+.tormenta13-r20 .charsheet .xmagia_check:checked~ button.xmagia_preparada {
+	color: #0b0691;
+	vertical-align: middle;
+	font-weight:bold;
+}
+
+.tormenta13-r20 .charsheet .xmagia_check:checked + button.xmagia_preparada:hover {
+	color: red;
+}
+
+.tormenta13-r20 .charsheet ul.nav-tabs.nav {
+    position:sticky;
+    top:0;
+    background-color:black;
+    z-index:9999;
+}
+
+.tormenta13-r20 .charsheet input[type="checkbox"] + span::before {
+    margin-right: 4px;
+    line-height: 14px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    
+	content: "►";
+    width: 14px;
+    height: 14px;
+    font-size: 12px;
+}
+
+.tormenta13-r20 .charsheet input[type="checkbox"]:checked + span::before {
+	content: "▼";
+}
+
+.tormenta13-r20 .charsheet hr {
+    border-color:black;
+}
+
+.tormenta13-r20 .charsheet .sheet-table {
+    display:table;
+    width:100%;
+}
+
+.tormenta13-r20 .charsheet .sheet-table-nome {
+    display:table-caption;
+    text-align:center;
+    font-weight:bold;
+    color:white;
+    background-color:black;
+    width:100%;
+}
+
+.tormenta13-r20 .charsheet .opt-group {
+	background:black;
+	font-weight:bold;
+	font-size:5px;
+}
+
+.tormenta13-r20 .charsheet .sheet-table-header {
+    display:table-cell;
+    text-align:center;
+    font-weight:bold;
+    vertical-align:bottom;
+}
+
+.tormenta13-r20 .charsheet .sheet-table-data-left {
+    display:table-cell;
+    text-align:left;
+    vertical-align:middle;
+}
+
+.tormenta13-r20 .charsheet .sheet-table-data-right {
+    display:table-cell;
+    text-align:right;
+    vertical-align:middle;
+}
+
+.tormenta13-r20 .charsheet .sheet-table-data-center {
+    display:table-cell;
+    text-align:center;
+    vertical-align:left;
+}
+
+.tormenta13-r20 .charsheet .input-habilidade {
+}
+
+.tormenta13-r20 .charsheet .sheet-table-data-center-habilidade {
+    display:table-cell;
+    text-align:center;
+    vertical-align:left;
+	width:min-content;
+}
+
+.tormenta13-r20 .charsheet .sheet-table-row {
+    display:table-row;
+    vertical-align:middle;
+    width:100%;
+}
+
+.tormenta13-r20 .charsheet .sheet-table-row-nome {
+    display:table-cell;
+    text-align:center;
+    vertical-align:middle;
+    color:white;
+    background-color:black;
+    font-weight:bold;
+}
+
+.tormenta13-r20 .charsheet input[type="text"],
+.tormenta13-r20 .charsheet select {
+	width:95%;
+    margin:1px;
+	text-align:left;
+}
+
+.tormenta13-r20 .charsheet input[type="text"][disabled],
+.tormenta13-r20 .charsheet input[type="text"][readonly],
+.tormenta13-r20 .charsheet select {
+	text-align:center;
+}
+
+.tormenta13-r20 .charsheet textarea {
+    width:98.6% !important
+}
+
+.tormenta13-r20 .charsheet .tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+.tormenta13-r20 .charsheet .tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+.tormenta13-r20 .charsheet .tab button:hover {
+  background-color: #ddd;
+}
+
+.tormenta13-r20 .charsheet .tab button.active {
+  background-color: #ccc;
+}
+
+.tormenta13-r20 .charsheet .tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}

@@ -1,0 +1,48 @@
+# Publica o sistema do Foundry (pasta foundry/sistema).
+#
+# Para publicar uma versão: suba "version" no system.json e crie a tag foundry-vX.Y.Z.
+# O GitHub monta os compêndios (LevelDB), gera o system.zip e anexa system.json + system.zip
+# na release. O link de instalação nunca muda:
+#   https://github.com/sother451/TormentaRPG1.3/releases/latest/download/system.json
+name: Foundry release
+
+on:
+  push:
+    tags: ["foundry-v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: foundry/sistema
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - name: Testes
+        run: npm test
+      - name: Montar compêndios
+        run: npm run pacotes
+      - name: Conferir versão e preencher o link de download
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          VERSAO=$(jq -r .version system.json)
+          [ "$TAG" = "foundry-v$VERSAO" ] || { echo "Tag $TAG não bate com version $VERSAO"; exit 1; }
+          jq --arg d "https://github.com/${GITHUB_REPOSITORY}/releases/download/$TAG/system.zip" \
+             --arg m "https://github.com/${GITHUB_REPOSITORY}/releases/latest/download/system.json" \
+             '.download=$d | .manifest=$m' system.json > s.json && mv s.json system.json
+      - name: Empacotar
+        run: |
+          zip -r system.zip system.json module templates styles lang packs data/condicoes.json \
+            -x "packs/_fonte/*"
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            foundry/sistema/system.json
+            foundry/sistema/system.zip

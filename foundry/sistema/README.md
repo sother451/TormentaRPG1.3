@@ -1,79 +1,91 @@
-# Tormenta RPG 1.3 para Foundry VTT (v14) — versão 0.2
+# Tormenta RPG 1.3 para Foundry VTT (v14) — versão 0.3
 
-Sistema com ficha completa de personagem e NPC, itens estruturados e **compêndios gerados do compendium Tormenta 1.3**
-(1.926 itens). **Ainda não foi testado dentro do Foundry**: ao instalar, abra o console (F12) e envie os erros que aparecerem.
+Sistema com **a ficha do Roll20 do grupo** (mesmo visual, mesmos campos, mesmas fórmulas e scripts),
+**compêndios prontos** (1.926 itens do compendium Tormenta 1.3) e **importação de personagens do Roll20**.
+
+> Ainda não foi testado dentro do Foundry. Ao instalar, abra o console (F12) e envie os erros que aparecerem.
 
 ## Como instalar
 
-**Pelo Foundry (recomendado):** na tela inicial, aba **Game Systems** → **Install System** → cole no campo **Manifest URL**:
+Quem administra o servidor (tela inicial do Foundry, com a senha de administrador):
+**Game Systems → Install System** → cole no campo **Manifest URL**:
 
 ```
-https://raw.githubusercontent.com/sother451/TormentaRPG1.3/main/foundry/sistema/system.json
+https://github.com/sother451/TormentaRPG1.3/releases/latest/download/system.json
 ```
 
-e clique em **Install**. Depois crie um mundo novo escolhendo "Tormenta RPG 1.3".
+Depois crie um mundo novo escolhendo "Tormenta RPG 1.3" (não dá para trocar o sistema de um mundo existente).
+Novas versões aparecem na mesma tela com o botão **Update**.
 
-**Manualmente (quem tem acesso ao servidor):** descompacte o `system.zip` numa pasta chamada `tormenta13` dentro de
-`Data/systems` (no seu servidor: `/home/ubuntu/foundrydata/Data/systems/tormenta13/system.json`) e reinicie o Foundry.
+## Como usar
 
-## Como importar os compêndios
+- **Ficha:** crie um ator do tipo Personagem (ou NPC). A ficha é a do Roll20: abas no topo, botões de rolagem,
+  seções com "+ Adicionar" e ✕ para apagar linhas. Os campos cinzas são calculados.
+- **Compêndios:** aba Compêndios → pasta "Tormenta RPG 1.3". Arraste para a ficha:
+  - arma → linha em Ataques; talento → Habilidades; magia → Magias (no nível do círculo);
+  - equipamento e item mágico → Inventário; classe → Informação de Classe;
+  - raça → campo Raça; armadura/escudo → Armadura e escudo (já equipado).
+- **Importar do Roll20:** no topo da ficha, menu da janela (⋮) → **Importar do Roll20**. Escolha o `.json`
+  exportado pelo VTT Enhancement Suite (botão Export do personagem no Roll20). Os dados atuais da ficha são substituídos.
+- **Chat:** os botões rolam as mesmas macros do Roll20, inclusive as que o jogador escreveu em "Mostrar Texto do Macro".
+  O resultado aparece como no template padrão do Roll20; passe o mouse no número para ver a fórmula.
+  Crítico fica verde, 1 natural no d20 fica vermelho.
+- **Token:** a barra mostra PV atual / PV máximo; mudar a barra muda o PV da ficha. Iniciativa = `1d20 + @iniciativa`.
+- **Fórmulas do Foundry:** todos os campos da ficha valem como `@nome` (minúsculas, `-` vira `_`): `@for_mod`, `@ca`,
+  `@acrobacia`, `@ataque_cac`...
 
-1. Entre no mundo como **Mestre**. Na primeira vez aparece a pergunta *"Importar agora os compêndios do sistema?"*. Clique em **Importar agora**.
-2. Aguarde alguns minutos, sem fechar o Foundry. No fim aparece "importação concluída".
-3. Abra a aba **Compêndios** (ícone de livros na barra lateral). Haverá 9 compêndios "Tormenta 1.3 · ...":
-   Raças (40), Classes (29), Talentos de Classe (330), Talentos (342), Magias (801), Armas (106),
-   Armaduras e Escudos (21), Equipamentos (12) e Itens Mágicos (245). Dentro deles os itens ficam em pastas
-   (grupo do talento, ciclo da magia, categoria da arma, aura do item mágico...).
+## Diferenças em relação ao Roll20
 
-Se você clicou em "Agora não", ou quiser refazer: **Configurações do jogo → Configurar opções → Tormenta RPG 1.3**,
-marque "Importar compêndios do Tormenta 1.3" e salve. Também funciona como macro (tipo Script):
-`game.tormenta13.importarCompendios()`. Itens já importados não são duplicados.
+- Os modificadores (aba Parâmetros) somam sempre como número. No script original, dois modificadores no mesmo alvo
+  podiam virar texto concatenado ("1" + "2" = "12").
+- Classes arrastadas do compêndio entram com BBA "1" (Tormenta 1.3: BBA = nível em todas as classes).
+- O botão de dado usa o ícone d20 do Foundry no lugar da fonte de dados do Roll20.
 
-## Como usar a ficha
+## Para desenvolver
 
-1. Crie um ator do tipo **Personagem** (ou **NPC**) e abra a ficha.
-2. Arraste do compêndio para a ficha: a **raça**, a **classe** (a primeira vira a classe inicial; ajuste o nível dela),
-   talentos, magias, armas, armaduras e itens.
-3. Na aba **Geral** preencha os valores de habilidade e escolha o **modificador de conjuração** (usado no PM).
-4. Marque **equipada** nas armaduras e escudos para entrarem na CA.
-5. Na aba **Perícias** marque as treinadas. Clique no nome da perícia para rolar.
-6. Na aba **Ajustes** crie **variáveis** (`@nome`) e preencha bônus gerais. Elas funcionam em qualquer fórmula
-   (bônus de ataque e dano das armas, dano das magias).
-7. As condições (Abalado, Caído, Cego etc.) aparecem no HUD do token, com a descrição do compendium.
+Requer Node 22+ e Python 3 (só para o conversor).
 
-## Regras implementadas (conforme o compendium)
+```
+npm install
+npm test                 # regras, compêndios, motor da ficha, importação
+npm run pacotes          # monta os compêndios em packs/ (LevelDB, com o CLI oficial do Foundry)
+npm run converter        # regera ficha, CSS e campos a partir da ficha do Roll20
+node ferramentas/roll20/previa.mjs previa.html ataque   # prévia da ficha no navegador, sem Foundry
+```
 
-- Modificador de habilidade = floor(total/2) − 5; MdN = metade do nível.
-- Ataque = 1d20 + **Nível** + modificador (For corpo a corpo, Des à distância, conjuração no toque).
-- Dano = arma + MdN + modificador; em ameaça de crítico os dados da arma são multiplicados; mínimo de 1.
-- CA = 10 + MdN + Des (limitada pela armadura) + armadura + escudo + tamanho.
-- PV: PV inicial da classe inicial + Con; depois PV/nível + Con (mínimo 1 por nível).
-- PM por classe = base + modificador de conjuração + PM/nível a partir do 2º.
-- Perícias: treinada = nível + 3; não treinada = metade do nível; penalidade de armadura e de tamanho (Furtividade).
-- Pontos de Ação: botão "Gastar" com dado extra, PV ou PM pela tabela do compendium.
-- Carga = 3 × Força (kg).
+**Publicar uma versão:** suba `version` no `system.json` e crie a tag `foundry-vX.Y.Z`. O GitHub Actions
+(`.github/workflows/foundry-release.yml`) roda os testes, monta os compêndios e publica `system.json` + `system.zip`.
+
+### Como a ficha é feita
+
+A ficha **não é escrita à mão**: `ferramentas/roll20/converter.py` lê `ferramentas/roll20/original/fichaTormenta.html`
+e `.css` (a ficha do Roll20) e gera:
+
+| Arquivo gerado | O quê |
+|---|---|
+| `templates/actor/ficha-roll20.hbs` | O HTML do Roll20 com os campos ligados ao Foundry (`attr_x` → `system.x`) |
+| `styles/ficha-roll20.css` | O CSS do Roll20, restrito à ficha |
+| `module/roll20/campos.mjs` | Campos salvos, campos calculados (com a fórmula original), seções e macros |
+
+Para mudar a ficha, mude o HTML/CSS original (ou o conversor) e rode `npm run converter`.
+
+| Código | O quê |
+|---|---|
+| `module/roll20/motor.mjs` | Avalia as fórmulas `@{campo}` como o Roll20 e roda os scripts da ficha (sheet workers) portados |
+| `module/roll20/macro.mjs` | Interpreta as macros do Roll20: `[[ ]]` aninhados, `$[[n]]`, `&{template:default}`, `/em` |
+| `module/roll20/importar.mjs` | Lê o JSON exportado do Roll20 |
+| `module/roll20/do-item.mjs` | Converte item do compêndio em linha da ficha |
+| `module/data/personagem.mjs` | Modelo de dados (gerado a partir de `campos.mjs`) |
+| `module/sheets/ficha-roll20.mjs` | A ficha no Foundry: abas, botões, seções, arrastar e soltar |
+| `module/documents/actor.mjs` | Rolagens no chat, gastos de munição/usos/PM, barra do token |
+| `ferramentas/montar-pacotes.mjs` | `data/*.json` → compêndios LevelDB (`_id` fixo por item) |
+| `data/*.json` | Itens dos compêndios (gerados do compendium) |
 
 ## O que os compêndios têm e não têm
 
-- **Magias:** catálogo-base com o overlay 1.3 aplicado (variantes consolidadas removidas, alterações aplicadas
-  e as 7 magias novas incluídas). **O custo em PM e o dano não estão nos dados do compendium como campos**:
-  ficam em 0 e vazio, e você preenche na magia (o dano é uma fórmula, ex.: `3d6`). O texto completo está na descrição.
-- **Classes:** PV, BBA e PM (base + por nível) foram lidos do texto da classe. Cada classe traz a tabela de progressão
-  e as habilidades na descrição. Classes de prestígio têm PV inicial 0.
-- **Armas:** o tipo de ataque (corpo a corpo ou à distância) foi deduzido das propriedades (Alcance, Munição, Recarga).
-  Confira as armas de arremesso. Dano e crítico vêm do compendium.
-- **Itens mágicos:** vêm do "cardápio" em texto, então o preço pode estar vazio em alguns (o texto original está na descrição).
+- **Magias:** catálogo-base com o overlay 1.3 aplicado. Custo em PM e dano não estão no compendium como campos:
+  ficam 0 e você preenche na ficha.
+- **Classes:** PV/nível lido do texto da classe.
+- **Armas:** corpo a corpo ou à distância deduzido das propriedades; confira as de arremesso.
+- **Itens mágicos:** vêm do "cardápio" em texto; o preço pode faltar em alguns.
 - **Não incluídos:** regras longas (diário), navios, encantamentos e o homebrew do compendium.
-
-## Estrutura do sistema
-
-| Caminho | O que faz |
-|---|---|
-| `system.json` | Manifesto (v14, tipos de documento, grade de 1,5 m) |
-| `module/rules.mjs` | Regras do compendium como funções puras (testadas em Node) |
-| `module/data/` | Modelos de dados do ator e dos itens |
-| `module/documents/` | Rolagens: testes, ataque/dano, magia, Pontos de Ação |
-| `module/sheets/`, `templates/`, `styles/` | Fichas de personagem e de item |
-| `module/importador.mjs` | Cria os compêndios dentro do mundo |
-| `data/*.json` | Itens dos compêndios (gerados do compendium) |
-| `tests/` | `node tests/rules.test.mjs`, `derivados.test.mjs`, `dados.test.mjs` |

@@ -1,0 +1,352 @@
+.municao{
+	display:none
+}
+
+.sheet-color-switch[value="@{ataque_dis}"] ~ .municao {
+	display: table-cell;
+}
+
+input[type="number"]{
+    width:95% !important;
+	text-align: right;
+}
+
+select{
+	padding-top:0px
+}
+
+.tab_button{
+	border-radius: 7px;
+	border:none;
+}
+
+.tab_group{
+	position: sticky;
+	top: 42px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	text-align: center;
+	background: black;
+	margin-left: -10px;
+	margin-right: -10px;
+	z-index: 19999;
+}
+
+
+.tab_button:active {
+      background-color:aqua;
+}
+
+.charactersheet {
+	background-color:black;
+}
+
+input[type="hidden"].colorselector[value="0"]  ~ div.sheet_completa { 
+	background-color:  white;
+}
+
+input[type="hidden"].colorselector[value="1"]  ~ div.sheet_completa { 
+    background-color: #8d8d8d;
+}
+
+.tab_magias, .tab_filtro{
+	vertical-align: top;
+	border-radius: 5px;
+	background: white;
+	border: 0;
+	border-top-width: 0px;
+	border-top-style: none;
+	border-bottom-width: 0px;
+	border-bottom-style: none;
+	color: black;
+	padding-left: 4px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	border-top-width: 0px;
+	border-top-style: solid;
+	border-bottom-width: 0px;
+	border-bottom-style: solid;
+	font-size: large;	
+}
+
+.button_filtrar{
+	vertical-align: top;
+	border-radius: 5px;
+	background: white;
+	border: 0;
+	border-top-width: 0px;
+	border-top-style: none;
+	border-bottom-width: 0px;
+	border-bottom-style: none;
+	color: black;
+	padding-left: 4px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	border-top-width: 0px;
+	border-top-style: solid;
+	border-bottom-width: 0px;
+	border-bottom-style: solid;
+	
+}
+
+/*Configure the tab buttons*/
+.charsheet .sheet-personagem,
+.charsheet .sheet-parametro,
+.charsheet .sheet-ataque,
+.charsheet .sheet-habilidade,
+.charsheet .sheet-magia,
+.charsheet .sheet-inventario,
+.charsheet .sheet-nota,
+.charsheet .sheet-configuracao,
+div.sheet-grimorio,
+div.sheet-preparadas,
+div.sheet-section-filtro {
+    display: none;
+}
+
+.sheet-grimorio{
+	display:none;
+}
+
+.tab_magiastoggle[value="1"] ~div.sheet-grimorio,
+.tab_magiastoggle[value="0"] ~div.sheet-preparadas,
+.tab_filtrotoggle[value="1"] ~div.sheet-section-filtro
+{
+	display:block;
+}
+
+.tab_magiastoggle[value="1"] ~button.tab_magias{
+	background:#a6bcf9; !important
+}
+
+.tab_filtrotoggle[value="1"] ~button.tab_filtro,
+.filtro_cor[value="1"] ~button.button_filtrar
+{
+	background:#a6bcf9; !important
+}
+
+div.sheet-preparadas .repcontrol {
+  display: none;
+}
+
+ .ui-dialog .charsheet .sheet-grimorio .repcontainer .repitem .itemcontrol .repcontrol_del{
+	float:left; !important
+}
+
+.section-magia{
+	display:block;
+}
+
+.section-magia-show[value="0"] ~.section-magia{
+	display:none;
+}
+
+
+
+/* show the selected tab */
+.charsheet .sheet-tabstoggle[value="personagem"] ~ div.sheet-personagem,
+.charsheet .sheet-tabstoggle[value="parametro"] ~ div.sheet-parametro,
+.charsheet .sheet-tabstoggle[value="ataque"] ~ div.sheet-ataque,
+.charsheet .sheet-tabstoggle[value="habilidade"] ~ div.sheet-habilidade,
+.charsheet .sheet-tabstoggle[value="magia"] ~ div.sheet-magia,
+.charsheet .sheet-tabstoggle[value="inventario"] ~ div.sheet-inventario,
+.charsheet .sheet-tabstoggle[value="nota"] ~ div.sheet-nota,
+.charsheet .sheet-tabstoggle[value="configuracao"] ~ div.sheet-configuracao {
+    display: block;
+}
+
+.charsheet .sheet-tabstoggle[value="personagem"] ~ 	button.tab_button[name="act_personagem"],
+.charsheet .sheet-tabstoggle[value="parametro"] ~ 	button.tab_button[name="act_parametro"],
+.charsheet .sheet-tabstoggle[value="ataque"] ~ 		button.tab_button[name="act_ataque"],
+.charsheet .sheet-tabstoggle[value="habilidade"] ~ 	button.tab_button[name="act_habilidade"],
+.charsheet .sheet-tabstoggle[value="magia"] ~ 		button.tab_button[name="act_magia"],
+.charsheet .sheet-tabstoggle[value="inventario"] ~ 	button.tab_button[name="act_inventario"],
+.charsheet .sheet-tabstoggle[value="nota"] ~ 		button.tab_button[name="act_nota"],
+.charsheet .sheet-tabstoggle[value="configuracao"] ~button.tab_button[name="act_configuracao"] {
+    background:#a6bcf9; !important
+}
+
+
+.sheet-isPC:checked~.sheet-npc,
+.sheet-isNPC:checked~.sheet-pc,
+.check-pericia-treinada-show:not(:checked)~.button-pericia-treinada,
+.sheet-pc-pv-formula-show:not(:checked)~.sheet-pv-formula,
+.sheet-section-show:not(:checked)~.sheet-section,
+.sheet-section-macro-show:not(:checked)~.sheet-section-macro,
+.sheet-section-usos-show:not(:checked)~.sheet-section-usos,
+.sheet-section-magias0-show:not(:checked)~.sheet-section-magias0,
+.sheet-section-magias1-show:not(:checked)~.sheet-section-magias1,
+.sheet-section-magias2-show:not(:checked)~.sheet-section-magias2,
+.sheet-section-magias3-show:not(:checked)~.sheet-section-magias3,
+.sheet-section-magias4-show:not(:checked)~.sheet-section-magias4,
+.sheet-section-magias5-show:not(:checked)~.sheet-section-magias5,
+.sheet-section-magias6-show:not(:checked)~.sheet-section-magias6,
+.sheet-section-magias7-show:not(:checked)~.sheet-section-magias7,
+.sheet-section-magias8-show:not(:checked)~.sheet-section-magias8,
+.sheet-section-magias9-show:not(:checked)~.sheet-section-magias9 {
+    display:none; !important
+}
+
+button.xmagia_preparada{
+	background: transparent;
+	border: 0;
+	vertical-align: middle;
+}
+
+.xmagia_check:checked~ button.xmagia_preparada{
+	color: #0b0691;
+	vertical-align: middle;
+	font-weight:bold;
+}
+
+.xmagia_check:checked + button.xmagia_preparada:hover{
+	color: red;
+}
+
+ul.nav-tabs.nav{
+    position:sticky;
+    top:0;
+    background-color:black;
+    z-index:9999;
+}
+
+	
+input[type="checkbox"] + span::before
+{
+    margin-right: 4px;
+    line-height: 14px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    
+	content: "►";
+    width: 14px;
+    height: 14px;
+    font-size: 12px;
+}
+input[type="checkbox"]:checked + span::before
+{
+	content: "▼";
+}
+
+hr {
+    border-color:black;
+}
+
+.sheet-table {
+    display:table;
+    width:100%;
+}
+
+.sheet-table-nome {
+    display:table-caption;
+    text-align:center;
+    font-weight:bold;
+    color:white;
+    background-color:black;
+    width:100%;
+}
+
+.opt-group{
+	background:black;
+	font-weight:bold;
+	font-size:5px;
+}
+.sheet-table-header {
+    display:table-cell;
+    text-align:center;
+    font-weight:bold;
+    vertical-align:bottom;
+}
+
+.sheet-table-data-left {
+    display:table-cell;
+    text-align:left;
+    vertical-align:middle;
+}
+
+.sheet-table-data-right {
+    display:table-cell;
+    text-align:right;
+    vertical-align:middle;
+}
+
+.sheet-table-data-center {
+    display:table-cell;
+    text-align:center;
+    vertical-align:left;
+}
+
+.input-habilidade {
+}
+.sheet-table-data-center-habilidade {
+    display:table-cell;
+    text-align:center;
+    vertical-align:left;
+	width:min-content;
+}
+.sheet-table-row {
+    display:table-row;
+    vertical-align:middle;
+    width:100%;
+}
+
+.sheet-table-row-nome {
+    display:table-cell;
+    text-align:center;
+    vertical-align:middle;
+    color:white;
+    background-color:black;
+    font-weight:bold;
+}
+
+
+input[type="text"], select{
+	width:95%;
+    margin:1px;
+	text-align:left;
+}
+
+input[type="text"][disabled],input[type="text"][readonly],select {
+	text-align:center;
+}
+
+textarea {
+    width:98.6% !important
+}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
