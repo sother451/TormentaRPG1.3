@@ -1274,7 +1274,7 @@
 				<span class="sheet-table-header" style="width:8%;">Máx</span>
 			</div>
 		</div>
-		<div class="repcontainer" data-secao="talento">{{#each @root.reps.talento}}<div class="repitem" data-linha="{{id}}"><div class="itemcontrol"><button type="button" class="repcontrol_del" data-action="repApagar" title="Apagar">✕</button></div>  
+		<div class="t13-recolher-todos"><button type="button" data-action="recolherTodos" data-abrir="1">Expandir tudo</button><button type="button" data-action="recolherTodos" data-abrir="0">Recolher tudo</button></div><div class="t13-grupo-talento" data-grupo="habilidades"><div class="sheet-table"><span class="sheet-table-nome t13-subtitulo">Habilidades de Classe (entram sozinhas conforme o nível da classe)</span></div>{{#unless @root.grupos_talento.habilidades.length}}<p class="t13-vazio">Nenhum.</p>{{/unless}}<div class="repcontainer" data-secao="talento">{{#each @root.grupos_talento.habilidades}}<div class="repitem" data-linha="{{id}}" data-recolhido="{{#if (lookup @root.ui.abertos id)}}nao{{else}}sim{{/if}}"><div class="itemcontrol"><button type="button" class="t13-recolher" data-action="recolher" title="Mostrar/esconder detalhes"></button><button type="button" class="repcontrol_del" data-action="repApagar" title="Apagar">✕</button></div>  
 			<div class="sheet-table">
 				<span class="sheet-table-data-center" style="width:5%">
 					<button style="font-family: &#x27;dicefontd20&#x27;; vertical-align: top;border-radius:5px" type="button" data-action="repRolar"><i class="fa-solid fa-dice-d20"></i></button>  
@@ -1352,7 +1352,163 @@
 				</div>
 				<hr>
 			</div>
-		</div>{{/each}}</div><div class="repcontrol"><button type="button" class="repcontrol_add" data-action="repAdicionar" data-secao="talento">+ Adicionar</button></div>
+		</div>{{/each}}</div></div><div class="t13-grupo-talento" data-grupo="classe"><div class="sheet-table"><span class="sheet-table-nome t13-subtitulo">Talentos de Classe</span></div>{{#unless @root.grupos_talento.classe.length}}<p class="t13-vazio">Nenhum.</p>{{/unless}}<div class="repcontainer" data-secao="talento">{{#each @root.grupos_talento.classe}}<div class="repitem" data-linha="{{id}}" data-recolhido="{{#if (lookup @root.ui.abertos id)}}nao{{else}}sim{{/if}}"><div class="itemcontrol"><button type="button" class="t13-recolher" data-action="recolher" title="Mostrar/esconder detalhes"></button><button type="button" class="repcontrol_del" data-action="repApagar" title="Apagar">✕</button></div>  
+			<div class="sheet-table">
+				<span class="sheet-table-data-center" style="width:5%">
+					<button style="font-family: &#x27;dicefontd20&#x27;; vertical-align: top;border-radius:5px" type="button" data-action="repRolar"><i class="fa-solid fa-dice-d20"></i></button>  
+				</span>
+				<span class="sheet-table-data-center" style="width:15%;">
+					<select title="repetindo_talento_X_tipo" name="system.rep_talento.{{id}}.tipo">
+						<option value="Nenhum" {{#if (eq v.tipo "Nenhum")}}selected{{/if}}>Nenhum</option>
+						<option value="Racial" {{#if (eq v.tipo "Racial")}}selected{{/if}}>Racial</option>
+						<option value="Classe" {{#if (eq v.tipo "Classe")}}selected{{/if}}>Classe</option>
+						<option value="Talento" {{#if (eq v.tipo "Talento")}}selected{{/if}}>Talento</option>
+						<option value="Outro" {{#if (eq v.tipo "Outro")}}selected{{/if}}>Outro</option>
+					</select>
+				</span>
+				<span class="sheet-table-data-center"><input type="text" name="system.rep_talento.{{id}}.nome" value="{{v.nome}}" title="{{v.nome}}" /></span>
+				<span class="sheet-table-data-center" style="width:8%;"><input title="repetindo_talento_X_usado" type="number" min="0" step="1" name="system.rep_talento.{{id}}.usos_atual" value="{{v.usos_atual}}" /></span>
+				<span class="sheet-table-data-center" style="width:2%;vertical-align:middle;font-size:150%;">/</span>
+				<span class="sheet-table-data-center" style="width:8%;"><input title="repetindo_talento_X_uso|max" type="number" disabled value="{{v.max_usos}}" /></span>
+			</div>
+
+			<div>
+				<b>Mostrar Detalhes?</b>
+				<input type="checkbox" class="sheet-section-show" title="repetindo_talento_X_descricao-show" style="opacity:0;width: 16px;height: 16px;position: relative;top: 5px;left: 6px;margin: -10px;cursor: pointer;z-index: 1;" name="system.rep_talento.{{id}}.descricao_show" {{#if v.descricao_show}}checked{{/if}} /><span></span>
+				<div class="sheet-section">
+					<div class="sheet-table"><span class="sheet-table-nome">Descrição</span></div>
+					<textarea style="height:50px;" title="repetindo_talento_X_descricao" name="system.rep_talento.{{id}}.descricao">{{v.descricao}}</textarea>
+					<div>
+						<b>Mostrar Formula de Usos?</b>
+						<input type="checkbox" class="sheet-section-usos-show" title="repetindo_talento_X_descricao-show" style="opacity:0;width: 16px;height: 16px;position: relative;top: 5px;left: 6px;margin: -10px;cursor: pointer;z-index: 1;" name="system.rep_talento.{{id}}.usos_formula_show" {{#if v.usos_formula_show}}checked{{/if}} /><span></span>
+						<div class="sheet-table sheet-section-usos">
+							<span class="sheet-table-nome">Formula Usos</span>
+							<div class="sheet-table-row">
+								<span class="sheet-table-header" style="width:20%;">Total</span>
+								<span class="sheet-table-header" style="width:5%;"></span>
+								<span class="sheet-table-header" style="width:15%;">Nivel</span>
+								<span class="sheet-table-header" style="width:15%;">Habilidade</span>
+								<span class="sheet-table-header" style="width:15%;">Mod</span>
+								<span class="sheet-table-header" style="width:10%;">Outros</span>
+								<span class="sheet-table-header" style="width:20%;">Temp</span>
+							</div>
+							<div class="sheet-table-row">
+								<span class="sheet-table-data-center" style="width:20%;"><input type="number" disabled value="{{v.usos_total}}" /></span>
+								<span class="sheet-table-data-center" style="width:5%;"> = </span>
+								<span class="sheet-table-data-center" style="width:15%;">
+									<select name="system.rep_talento.{{id}}.usos_nivel">
+										<option value="0" {{#if (eq v.usos_nivel "0")}}selected{{/if}}>Nenhum</option>
+										<option value="@{nivel}" {{#if (eq v.usos_nivel "@{nivel}")}}selected{{/if}}>1</option>
+										<option value="@{meio_nivel}" {{#if (eq v.usos_nivel "@{meio_nivel}")}}selected{{/if}}>1/2</option>
+									</select>
+								</span>
+								<span class="sheet-table-data-center" style="width:15%;">
+									<select name="system.rep_talento.{{id}}.usos_habilidade">
+										<option value="0" {{#if (eq v.usos_habilidade "0")}}selected{{/if}}>Nenhum</option>
+										<option value="@{for_mod}" {{#if (eq v.usos_habilidade "@{for_mod}")}}selected{{/if}}>FOR</option>
+										<option value="@{des_mod}" {{#if (eq v.usos_habilidade "@{des_mod}")}}selected{{/if}}>DES</option>
+										<option value="@{con_mod}" {{#if (eq v.usos_habilidade "@{con_mod}")}}selected{{/if}}>CON</option>
+										<option value="@{int_mod}" {{#if (eq v.usos_habilidade "@{int_mod}")}}selected{{/if}}>INT</option>
+										<option value="@{sab_mod}" {{#if (eq v.usos_habilidade "@{sab_mod}")}}selected{{/if}}>SAB</option>
+										<option value="@{car_mod}" {{#if (eq v.usos_habilidade "@{car_mod}")}}selected{{/if}}>CAR</option>
+									</select>
+								</span>
+								<span class="sheet-table-data-center" style="width:15%;"><input type="number" disabled value="{{v.usos_mod}}" /></span>
+								<span class="sheet-table-data-center" style="width:10%;"><input type="number" disabled value="{{v.xusos_outros}}" /></span>
+								<span class="sheet-table-data-center" style="width:20%;"><input type="number" name="system.rep_talento.{{id}}.usos_temp" value="{{v.usos_temp}}" /></span>
+							</div>
+						</div>
+					</div>
+					<div>
+						<b>Mostrar Macro?</b>
+						<input type="checkbox" class="sheet-section-macro-show" title="repetindo_talento_X_descricao-show" style="opacity:0;width: 16px;height: 16px;position: relative;top: 5px;left: 6px;margin: -10px;cursor: pointer;z-index: 1;" name="system.rep_talento.{{id}}.descricao_macro_show" {{#if v.descricao_macro_show}}checked{{/if}} /><span></span>
+						<div class="sheet-section-macro">
+							<div class="sheet-table"><span class="sheet-table-nome">Macro</span></div>
+							<textarea style="height:50px;" class="sheet-section-macro" title="repetindo_talento_X_descricao" name="system.rep_talento.{{id}}.macro">{{v.macro}}</textarea>
+						</div>
+					</div>
+				</div>
+				<hr>
+			</div>
+		</div>{{/each}}</div></div><div class="t13-grupo-talento" data-grupo="gerais"><div class="sheet-table"><span class="sheet-table-nome t13-subtitulo">Talentos</span></div>{{#unless @root.grupos_talento.gerais.length}}<p class="t13-vazio">Nenhum.</p>{{/unless}}<div class="repcontainer" data-secao="talento">{{#each @root.grupos_talento.gerais}}<div class="repitem" data-linha="{{id}}" data-recolhido="{{#if (lookup @root.ui.abertos id)}}nao{{else}}sim{{/if}}"><div class="itemcontrol"><button type="button" class="t13-recolher" data-action="recolher" title="Mostrar/esconder detalhes"></button><button type="button" class="repcontrol_del" data-action="repApagar" title="Apagar">✕</button></div>  
+			<div class="sheet-table">
+				<span class="sheet-table-data-center" style="width:5%">
+					<button style="font-family: &#x27;dicefontd20&#x27;; vertical-align: top;border-radius:5px" type="button" data-action="repRolar"><i class="fa-solid fa-dice-d20"></i></button>  
+				</span>
+				<span class="sheet-table-data-center" style="width:15%;">
+					<select title="repetindo_talento_X_tipo" name="system.rep_talento.{{id}}.tipo">
+						<option value="Nenhum" {{#if (eq v.tipo "Nenhum")}}selected{{/if}}>Nenhum</option>
+						<option value="Racial" {{#if (eq v.tipo "Racial")}}selected{{/if}}>Racial</option>
+						<option value="Classe" {{#if (eq v.tipo "Classe")}}selected{{/if}}>Classe</option>
+						<option value="Talento" {{#if (eq v.tipo "Talento")}}selected{{/if}}>Talento</option>
+						<option value="Outro" {{#if (eq v.tipo "Outro")}}selected{{/if}}>Outro</option>
+					</select>
+				</span>
+				<span class="sheet-table-data-center"><input type="text" name="system.rep_talento.{{id}}.nome" value="{{v.nome}}" title="{{v.nome}}" /></span>
+				<span class="sheet-table-data-center" style="width:8%;"><input title="repetindo_talento_X_usado" type="number" min="0" step="1" name="system.rep_talento.{{id}}.usos_atual" value="{{v.usos_atual}}" /></span>
+				<span class="sheet-table-data-center" style="width:2%;vertical-align:middle;font-size:150%;">/</span>
+				<span class="sheet-table-data-center" style="width:8%;"><input title="repetindo_talento_X_uso|max" type="number" disabled value="{{v.max_usos}}" /></span>
+			</div>
+
+			<div>
+				<b>Mostrar Detalhes?</b>
+				<input type="checkbox" class="sheet-section-show" title="repetindo_talento_X_descricao-show" style="opacity:0;width: 16px;height: 16px;position: relative;top: 5px;left: 6px;margin: -10px;cursor: pointer;z-index: 1;" name="system.rep_talento.{{id}}.descricao_show" {{#if v.descricao_show}}checked{{/if}} /><span></span>
+				<div class="sheet-section">
+					<div class="sheet-table"><span class="sheet-table-nome">Descrição</span></div>
+					<textarea style="height:50px;" title="repetindo_talento_X_descricao" name="system.rep_talento.{{id}}.descricao">{{v.descricao}}</textarea>
+					<div>
+						<b>Mostrar Formula de Usos?</b>
+						<input type="checkbox" class="sheet-section-usos-show" title="repetindo_talento_X_descricao-show" style="opacity:0;width: 16px;height: 16px;position: relative;top: 5px;left: 6px;margin: -10px;cursor: pointer;z-index: 1;" name="system.rep_talento.{{id}}.usos_formula_show" {{#if v.usos_formula_show}}checked{{/if}} /><span></span>
+						<div class="sheet-table sheet-section-usos">
+							<span class="sheet-table-nome">Formula Usos</span>
+							<div class="sheet-table-row">
+								<span class="sheet-table-header" style="width:20%;">Total</span>
+								<span class="sheet-table-header" style="width:5%;"></span>
+								<span class="sheet-table-header" style="width:15%;">Nivel</span>
+								<span class="sheet-table-header" style="width:15%;">Habilidade</span>
+								<span class="sheet-table-header" style="width:15%;">Mod</span>
+								<span class="sheet-table-header" style="width:10%;">Outros</span>
+								<span class="sheet-table-header" style="width:20%;">Temp</span>
+							</div>
+							<div class="sheet-table-row">
+								<span class="sheet-table-data-center" style="width:20%;"><input type="number" disabled value="{{v.usos_total}}" /></span>
+								<span class="sheet-table-data-center" style="width:5%;"> = </span>
+								<span class="sheet-table-data-center" style="width:15%;">
+									<select name="system.rep_talento.{{id}}.usos_nivel">
+										<option value="0" {{#if (eq v.usos_nivel "0")}}selected{{/if}}>Nenhum</option>
+										<option value="@{nivel}" {{#if (eq v.usos_nivel "@{nivel}")}}selected{{/if}}>1</option>
+										<option value="@{meio_nivel}" {{#if (eq v.usos_nivel "@{meio_nivel}")}}selected{{/if}}>1/2</option>
+									</select>
+								</span>
+								<span class="sheet-table-data-center" style="width:15%;">
+									<select name="system.rep_talento.{{id}}.usos_habilidade">
+										<option value="0" {{#if (eq v.usos_habilidade "0")}}selected{{/if}}>Nenhum</option>
+										<option value="@{for_mod}" {{#if (eq v.usos_habilidade "@{for_mod}")}}selected{{/if}}>FOR</option>
+										<option value="@{des_mod}" {{#if (eq v.usos_habilidade "@{des_mod}")}}selected{{/if}}>DES</option>
+										<option value="@{con_mod}" {{#if (eq v.usos_habilidade "@{con_mod}")}}selected{{/if}}>CON</option>
+										<option value="@{int_mod}" {{#if (eq v.usos_habilidade "@{int_mod}")}}selected{{/if}}>INT</option>
+										<option value="@{sab_mod}" {{#if (eq v.usos_habilidade "@{sab_mod}")}}selected{{/if}}>SAB</option>
+										<option value="@{car_mod}" {{#if (eq v.usos_habilidade "@{car_mod}")}}selected{{/if}}>CAR</option>
+									</select>
+								</span>
+								<span class="sheet-table-data-center" style="width:15%;"><input type="number" disabled value="{{v.usos_mod}}" /></span>
+								<span class="sheet-table-data-center" style="width:10%;"><input type="number" disabled value="{{v.xusos_outros}}" /></span>
+								<span class="sheet-table-data-center" style="width:20%;"><input type="number" name="system.rep_talento.{{id}}.usos_temp" value="{{v.usos_temp}}" /></span>
+							</div>
+						</div>
+					</div>
+					<div>
+						<b>Mostrar Macro?</b>
+						<input type="checkbox" class="sheet-section-macro-show" title="repetindo_talento_X_descricao-show" style="opacity:0;width: 16px;height: 16px;position: relative;top: 5px;left: 6px;margin: -10px;cursor: pointer;z-index: 1;" name="system.rep_talento.{{id}}.descricao_macro_show" {{#if v.descricao_macro_show}}checked{{/if}} /><span></span>
+						<div class="sheet-section-macro">
+							<div class="sheet-table"><span class="sheet-table-nome">Macro</span></div>
+							<textarea style="height:50px;" class="sheet-section-macro" title="repetindo_talento_X_descricao" name="system.rep_talento.{{id}}.macro">{{v.macro}}</textarea>
+						</div>
+					</div>
+				</div>
+				<hr>
+			</div>
+		</div>{{/each}}</div><div class="repcontrol"><button type="button" class="repcontrol_add" data-action="repAdicionar" data-secao="talento">+ Adicionar</button></div></div>
 	</div>
 	<br>
 </div>

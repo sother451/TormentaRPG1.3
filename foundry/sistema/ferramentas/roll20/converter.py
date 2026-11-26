@@ -489,6 +489,45 @@ def fim_do_div(template, inicio):
                 return i
 
 
+GRUPOS_DE_TALENTO = [
+    # (lista no contexto, título, mostra "+ Adicionar")
+    ("habilidades", "Habilidades de Classe (entram sozinhas conforme o nível da classe)", False),
+    ("classe", "Talentos de Classe", False),
+    ("gerais", "Talentos", True),
+]
+
+
+def grupos_de_talento(template):
+    """Aba Habilidades: a lista única do Roll20 vira três grupos, e cada linha pode ser recolhida
+    (fica só a primeira linha: rolar, tipo, nome e usos)."""
+    inicio = template.index('<div class="repcontainer" data-secao="talento">')
+    fim = fim_do_div(template, inicio)
+    controle = template.index('<div class="repcontrol">', fim)
+    fim_controle = fim_do_div(template, controle)
+    bloco = template[inicio:fim]
+    adicionar = template[controle:fim_controle]
+
+    # Linha recolhível: estado só da interface (ui.abertos), recolhida por padrão.
+    linha = '<div class="repitem" data-linha="{{id}}">'
+    assert bloco.count(linha) == 1
+    bloco = bloco.replace(linha, '<div class="repitem" data-linha="{{id}}" data-recolhido='
+                                 '"{{#if (lookup @root.ui.abertos id)}}nao{{else}}sim{{/if}}">')
+    apagar = '<div class="itemcontrol">'
+    bloco = bloco.replace(apagar, apagar + '<button type="button" class="t13-recolher" data-action="recolher" '
+                                           'title="Mostrar/esconder detalhes"></button>', 1)
+
+    partes = ['<div class="t13-recolher-todos"><button type="button" data-action="recolherTodos" data-abrir="1">'
+              'Expandir tudo</button><button type="button" data-action="recolherTodos" data-abrir="0">'
+              'Recolher tudo</button></div>']
+    for chave_grupo, titulo, com_adicionar in GRUPOS_DE_TALENTO:
+        lista = bloco.replace("{{#each @root.reps.talento}}", f"{{{{#each @root.grupos_talento.{chave_grupo}}}}}", 1)
+        partes.append(f'<div class="t13-grupo-talento" data-grupo="{chave_grupo}">'
+                      f'<div class="sheet-table"><span class="sheet-table-nome t13-subtitulo">{titulo}</span></div>'
+                      f'{{{{#unless @root.grupos_talento.{chave_grupo}.length}}}}<p class="t13-vazio">Nenhum.</p>{{{{/unless}}}}'
+                      f'{lista}{adicionar if com_adicionar else ""}</div>')
+    return template[:inicio] + "".join(partes) + template[fim_controle:]
+
+
 def abas_do_foundry(abas, template):
     for aba, rotulo, parcial in ABAS_FOUNDRY:
         fim = abas.rindex("</div>")
@@ -558,6 +597,7 @@ def main():
     template = coluna_equipar(template)
     abas, template = separar_abas(template)
     abas, template = abas_do_foundry(abas, template)
+    template = grupos_de_talento(template)
     aviso = "{{!-- Gerado por ferramentas/roll20/converter.py a partir da ficha do Roll20. Não edite à mão. --}}\n"
     (SISTEMA / "templates" / "actor" / "ficha-roll20.hbs").write_text(
         aviso + '<div class="charsheet">\n' + template.strip() + "\n</div>\n", encoding="utf-8")

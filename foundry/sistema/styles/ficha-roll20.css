@@ -400,6 +400,12 @@
 .tormenta13-r20 .charsheet input[type="checkbox"] {
   appearance: auto !important;
   -webkit-appearance: checkbox !important;
+  accent-color: #3366cc;
+  cursor: pointer;
+}
+/* As caixas invisíveis do Roll20 ("Mostrar Detalhes? ▼") ficam por cima da seta com posição e tamanho
+   próprios (style do original): só as outras recebem o tamanho e a posição normais. */
+.tormenta13-r20 .charsheet input[type="checkbox"]:not([style*="opacity"]) {
   position: static !important;
   width: 13px !important;
   height: 13px !important;
@@ -463,3 +469,15 @@
 .tormenta13-r20 .charsheet .t13-prog-tabela { width: 100%; border-collapse: collapse; margin-top: 4px; }
 .tormenta13-r20 .charsheet .t13-prog-tabela :is(th, td) { border: 1px solid #ccc; padding: 2px 6px; text-align: left; }
 .tormenta13-r20 .charsheet select.t13-atributo { width: auto; min-width: 120px; flex: 0 0 auto; }
+
+/* Aba Habilidades: grupos e linhas recolhíveis */
+.tormenta13-r20 .charsheet .t13-subtitulo { background: #333 !important; font-size: 12px; }
+.tormenta13-r20 .charsheet .t13-grupo-talento { margin-bottom: 8px; }
+.tormenta13-r20 .charsheet .t13-vazio { color: #666; font-style: italic; margin: 2px 6px; }
+.tormenta13-r20 .charsheet .t13-recolher-todos { text-align: right; margin: 2px 0; }
+.tormenta13-r20 .charsheet .t13-recolher-todos button { font-size: 11px; margin-left: 4px; }
+.tormenta13-r20 .charsheet .repitem[data-recolhido="sim"] > .sheet-table ~ * { display: none !important; }
+.tormenta13-r20 .charsheet .repitem[data-recolhido] { padding-right: 40px; }
+.tormenta13-r20 .charsheet .itemcontrol .t13-recolher { border: 0; background: transparent; padding: 0 5px; font-size: 15px; line-height: 1; color: #000; }
+.tormenta13-r20 .charsheet .repitem[data-recolhido="sim"] .t13-recolher::before { content: "▸"; }
+.tormenta13-r20 .charsheet .repitem[data-recolhido="nao"] .t13-recolher::before { content: "▾"; }

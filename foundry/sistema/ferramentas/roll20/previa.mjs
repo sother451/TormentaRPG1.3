@@ -9,7 +9,7 @@ import path from "node:path";
 import Handlebars from "handlebars";
 import { FichaRoll20 } from "../../module/roll20/motor.mjs";
 import { linhaDeInventario } from "../../module/roll20/inventario.mjs";
-import { montarCatalogo, montarProgressao, sincronizacaoDeHabilidades } from "../../module/roll20/progressao.mjs";
+import { montarCatalogo, montarProgressao, sincronizacaoDeHabilidades, gruposDeTalentos } from "../../module/roll20/progressao.mjs";
 
 const RAIZ = path.resolve(import.meta.dirname, "..", "..");
 const saida = process.argv[2] ?? path.join(RAIZ, "previa.html");
@@ -78,7 +78,10 @@ const prog = montarProgressao(fonte, catalogo);
 const ficha = new FichaRoll20(fonte, { nome: "Valen" });
 const { v, b, reps } = ficha.paraTemplate(fonte);
 const compilar = (arquivo) => Handlebars.compile(fs.readFileSync(path.join(RAIZ, "templates/actor", arquivo), "utf8"));
-const contexto = { actor: { name: "Valen" }, v, b, reps, prog, ui: { aba, tab_magias: 1, tab_filtro: 0, filtro_cor: 0 } };
+// Na prévia, a primeira habilidade de classe aparece aberta (as outras recolhidas, como no padrão)
+const abertos = { [gruposDeTalentos(reps.talento).habilidades[0]?.id]: true };
+const contexto = { actor: { name: "Valen" }, v, b, reps, prog, grupos_talento: gruposDeTalentos(reps.talento),
+  ui: { aba, tab_magias: 1, tab_filtro: 0, filtro_cor: 0, abertos } };
 const abas = compilar("ficha-roll20-abas.hbs")(contexto);
 const corpo = compilar("ficha-roll20.hbs")(contexto);
 const css = fs.readFileSync(path.join(RAIZ, "styles/ficha-roll20.css"), "utf8");
@@ -110,6 +113,10 @@ const caixasFoundry = `.application.theme-dark input[type="checkbox"] { appearan
 
 // Na prévia, as abas trocam por JavaScript (no Foundry quem faz isso é a ficha).
 const script = `document.addEventListener("click", (e) => {
+  const r = e.target.closest("[data-action=recolher]");
+  if (r) { const l = r.closest(".repitem"); l.dataset.recolhido = l.dataset.recolhido === "sim" ? "nao" : "sim"; return; }
+  const t = e.target.closest("[data-action=recolherTodos]");
+  if (t) { document.querySelectorAll(".repitem[data-recolhido]").forEach((l) => l.dataset.recolhido = t.dataset.abrir === "1" ? "nao" : "sim"); return; }
   const b = e.target.closest("[data-aba]"); if (!b) return;
   document.querySelectorAll(".sheet-tabstoggle").forEach((i) => i.setAttribute("value", b.dataset.aba));
 });`;

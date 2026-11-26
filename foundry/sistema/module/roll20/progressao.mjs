@@ -202,3 +202,18 @@ export function sincronizacaoDeHabilidades(system, catalogo, { novoId, apagar })
   }
   return update;
 }
+
+/**
+ * Aba Habilidades em três grupos: habilidades de classe (concedidas pelo nível), talentos de classe
+ * (tipo "Classe" escolhidos) e os demais talentos (gerais, raciais, outros).
+ * @param {Array<{id, v}>} linhas  reps.talento de FichaRoll20.paraTemplate
+ */
+export function gruposDeTalentos(linhas = []) {
+  const grupos = { habilidades: [], classe: [], gerais: [] };
+  for (const l of linhas) {
+    if (l.v.xtal_concedido) grupos.habilidades.push(l);
+    else if (l.v.tipo === "Classe") grupos.classe.push(l);
+    else grupos.gerais.push(l);
+  }
+  return grupos;
+}

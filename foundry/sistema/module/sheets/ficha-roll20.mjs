@@ -9,7 +9,7 @@ import { linhaDeItem } from "../roll20/do-item.mjs";
 import { linhaDeInventario, TIPOS_DE_INVENTARIO } from "../roll20/inventario.mjs";
 import { importarDoRoll20 } from "../roll20/importar.mjs";
 import { apagar } from "../documents/actor.mjs";
-import { montarProgressao } from "../roll20/progressao.mjs";
+import { montarProgressao, gruposDeTalentos } from "../roll20/progressao.mjs";
 import { carregarCatalogo } from "../roll20/catalogo.mjs";
 
 const { HandlebarsApplicationMixin, DialogV2 } = foundry.applications.api;
@@ -17,7 +17,7 @@ const { ActorSheetV2 } = foundry.applications.sheets;
 
 export class FichaRoll20Sheet extends HandlebarsApplicationMixin(ActorSheetV2) {
   /** Estado só da interface (no Roll20 eram atributos escondidos). */
-  ui = { aba: "personagem", tab_magias: 1, tab_filtro: 0, filtro_cor: 0 };
+  ui = { aba: "personagem", tab_magias: 1, tab_filtro: 0, filtro_cor: 0, abertos: {} };
 
   static DEFAULT_OPTIONS = {
     classes: ["tormenta13-r20"],
@@ -39,6 +39,8 @@ export class FichaRoll20Sheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       equipar: FichaRoll20Sheet.#equipar,
       preencherVaga: FichaRoll20Sheet.#preencherVaga,
       liberarVaga: FichaRoll20Sheet.#liberarVaga,
+      recolher: FichaRoll20Sheet.#recolher,
+      recolherTodos: FichaRoll20Sheet.#recolherTodos,
       importarRoll20: FichaRoll20Sheet.#importarRoll20
     }
   };
@@ -60,7 +62,7 @@ export class FichaRoll20Sheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     } catch (erro) {
       console.error("tormenta13 | progressão", erro);
     }
-    return Object.assign(contexto, { actor: this.actor, v, b, reps, prog, ui: this.ui, editavel: this.isEditable });
+    return Object.assign(contexto, { actor: this.actor, v, b, reps, prog, grupos_talento: gruposDeTalentos(reps.talento), ui: this.ui, editavel: this.isEditable });
   }
 
   /**
@@ -150,6 +152,24 @@ export class FichaRoll20Sheet extends HandlebarsApplicationMixin(ActorSheetV2) {
   static #liberarVaga(event, alvo) {
     if (!this.isEditable) return;
     return this.actor.apagarLinha("talento", alvo.dataset.linha);
+  }
+
+  /** Aba Habilidades: mostra/esconde os detalhes de uma linha (só na interface, sem salvar). */
+  static #recolher(event, alvo) {
+    const linha = alvo.closest(".repitem");
+    const abrir = linha.dataset.recolhido === "sim";
+    linha.dataset.recolhido = abrir ? "nao" : "sim";
+    if (abrir) this.ui.abertos[linha.dataset.linha] = true;
+    else delete this.ui.abertos[linha.dataset.linha];
+  }
+
+  static #recolherTodos(event, alvo) {
+    const abrir = alvo.dataset.abrir === "1";
+    for (const linha of this.element.querySelectorAll(".repitem[data-recolhido]")) {
+      linha.dataset.recolhido = abrir ? "nao" : "sim";
+      if (abrir) this.ui.abertos[linha.dataset.linha] = true;
+      else delete this.ui.abertos[linha.dataset.linha];
+    }
   }
 
   static #abrirGrimorio() {

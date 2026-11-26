@@ -1,4 +1,4 @@
-# Tormenta RPG 1.3 para Foundry VTT (v14) — versão 0.4.0
+# Tormenta RPG 1.3 para Foundry VTT (v14) — versão 0.4.1
 
 Sistema com **a ficha do Roll20 do grupo** (mesmo visual, mesmos campos, mesmas fórmulas e scripts),
 **compêndios prontos** (1.926 itens do compendium Tormenta 1.3) e **importação de personagens do Roll20**.
@@ -34,6 +34,8 @@ Novas versões aparecem na mesma tela com o botão **Update**.
 - **Chat:** os botões rolam as mesmas macros do Roll20, inclusive as que o jogador escreveu em "Mostrar Texto do Macro".
   O resultado aparece como no template padrão do Roll20; passe o mouse no número para ver a fórmula.
   Crítico fica verde, 1 natural no d20 fica vermelho.
+- **Habilidades:** três grupos (Habilidades de Classe, Talentos de Classe, Talentos); cada linha começa recolhida
+  (▸ abre os detalhes; "Expandir tudo"/"Recolher tudo" no topo).
 - **Progressão (aba nova):** vagas de talento por nível de personagem (talento nos níveis ímpares e um extra no 1º;
   combate/magia/Tormenta/poder no 4º e 12º; perícia no 6º e 14º; destino ou classe no 4º, 8º, 12º e 16º), o talento do
   20º da classe e o +1 de atributo nos níveis pares. Cada vaga lista só os talentos que cabem nela (pré-requisitos não
