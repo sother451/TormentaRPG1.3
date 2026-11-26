@@ -4,7 +4,7 @@
   "type": "module",
   "description": "Sistema Tormenta RPG 1.3 para Foundry VTT",
   "scripts": {
-    "test": "node tests/rules.test.mjs && node tests/dados.test.mjs && node tests/roll20.test.mjs && node tests/importar.test.mjs && node tests/progressao.test.mjs",
+    "test": "node tests/rules.test.mjs && node tests/dados.test.mjs && node tests/roll20.test.mjs && node tests/importar.test.mjs && node tests/progressao.test.mjs && node tests/bonus.test.mjs",
     "converter": "python ferramentas/roll20/converter.py",
     "pacotes": "node ferramentas/montar-pacotes.mjs"
   },

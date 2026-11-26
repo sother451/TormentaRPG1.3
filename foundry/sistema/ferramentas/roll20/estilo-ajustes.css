@@ -120,3 +120,10 @@
 .tormenta13-r20 .charsheet .itemcontrol .t13-recolher { border: 0; background: transparent; padding: 0 5px; font-size: 15px; line-height: 1; color: #000; }
 .tormenta13-r20 .charsheet .repitem[data-recolhido="sim"] .t13-recolher::before { content: "▸"; }
 .tormenta13-r20 .charsheet .repitem[data-recolhido="nao"] .t13-recolher::before { content: "▾"; }
+
+/* Bônus de talentos: caixas na linha da arma e linhas de Modificadores criadas por talentos */
+.tormenta13-r20 .charsheet .t13-arma-talentos { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; margin: 2px 0 2px 3%; font-size: 11px; }
+.tormenta13-r20 .charsheet .t13-arma-talentos label { display: inline-flex; align-items: center; gap: 2px; cursor: pointer; }
+.tormenta13-r20 .charsheet .t13-arma-bonus { color: #1b5e20; font-weight: bold; }
+.tormenta13-r20 .charsheet .repitem.t13-auto { border-left: 4px solid #3366cc; background: #eef3ff; }
+.tormenta13-r20 .charsheet .repitem.t13-auto:has(input[type="checkbox"]:not(:checked)) { border-left-color: #bbb; background: #f4f4f4; }

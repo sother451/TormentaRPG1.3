@@ -461,7 +461,15 @@ CAMPOS_EXTRAS = {
         "xitem_dados": {"original": "(foundry)", "tipo": "texto", "inicial": ""},
         "xitem_equipado": {"original": "(foundry)", "tipo": "marcado", "inicial": False, "valorMarcado": "1"},
     },
-    "arma": {"xarma_origem": {"original": "(foundry)", "tipo": "texto", "inicial": ""}},
+    "arma": {
+        "xarma_origem": {"original": "(foundry)", "tipo": "texto", "inicial": ""},
+        # Talentos que valem só nesta arma (module/roll20/bonus-talentos.mjs)
+        "xarma_especializada": {"original": "(foundry)", "tipo": "marcado", "inicial": False, "valorMarcado": "1"},
+        "xarma_mestre": {"original": "(foundry)", "tipo": "marcado", "inicial": False, "valorMarcado": "1"},
+        "xarma_racial": {"original": "(foundry)", "tipo": "marcado", "inicial": False, "valorMarcado": "1"},
+    },
+    # Linha de Modificadores criada por um talento ("<linha do talento>#<n>")
+    "mods": {"xmod_origem": {"original": "(foundry)", "tipo": "texto", "inicial": ""}},
     # Progressão: vaga que o talento ocupa / habilidade de classe concedida pelo nível
     "talento": {
         "xtal_vaga": {"original": "(foundry)", "tipo": "texto", "inicial": ""},
@@ -495,6 +503,32 @@ GRUPOS_DE_TALENTO = [
     ("classe", "Talentos de Classe", False),
     ("gerais", "Talentos", True),
 ]
+
+
+def talentos_nas_armas(template):
+    """Armas: caixas dos talentos que valem numa arma só e o bônus que eles dão; Modificadores: marca as linhas
+    criadas por talentos."""
+    i = template.index('<div class="repcontainer" data-secao="arma">')
+    j = template.index("{{/each}}", i)
+    trecho = template[i:j]
+    rotulo = "<b>Mostrar Texto do Macro?</b>"
+    assert trecho.count(rotulo) == 1, "linha da arma não encontrada"
+    caixa = ('<label title="{rotulo}"><input type="checkbox" name="system.rep_arma.{{{{../id}}}}.{campo}" '
+             '{{{{#if ../v.{campo}}}}}checked{{{{/if}}}} /> {rotulo}</label>')
+    bloco = ('{{#with (lookup @root.bonus_armas id) as |ba|}}{{#if ba.algum}}<div class="t13-arma-talentos">Talentos nesta arma: '
+             '{{#if ba.xarma_especializada}}' + caixa.format(campo="xarma_especializada", rotulo="Especialização em Arma") + '{{/if}}'
+             '{{#if ba.xarma_mestre}}' + caixa.format(campo="xarma_mestre", rotulo="Mestre em Arma") + '{{/if}}'
+             '{{#if ba.xarma_racial}}' + caixa.format(campo="xarma_racial", rotulo="Arma racial") + '{{/if}}'
+             '{{#if ba.resumo}}<span class="t13-arma-bonus" title="{{ba.fontes}}">{{ba.resumo}} na rolagem</span>{{/if}}'
+             '</div>{{/if}}{{/with}}\n\t\t\t\t')
+    trecho = trecho.replace(rotulo, bloco + rotulo)
+    template = template[:i] + trecho + template[j:]
+    linha_mods = '<div class="repcontainer" data-secao="mods">{{#each @root.reps.mods}}<div class="repitem" data-linha="{{id}}">'
+    assert template.count(linha_mods) == 1, "linha de Modificadores não encontrada"
+    return template.replace(linha_mods, linha_mods.replace(
+        '<div class="repitem" data-linha="{{id}}">',
+        '<div class="repitem{{#if v.xmod_origem}} t13-auto{{/if}}" data-linha="{{id}}"'
+        '{{#if v.xmod_origem}} title="Criada pelo talento: o valor acompanha o nível. Desmarque a caixa para não somar."{{/if}}>'))
 
 
 def grupos_de_talento(template):
@@ -598,6 +632,7 @@ def main():
     abas, template = separar_abas(template)
     abas, template = abas_do_foundry(abas, template)
     template = grupos_de_talento(template)
+    template = talentos_nas_armas(template)
     aviso = "{{!-- Gerado por ferramentas/roll20/converter.py a partir da ficha do Roll20. Não edite à mão. --}}\n"
     (SISTEMA / "templates" / "actor" / "ficha-roll20.hbs").write_text(
         aviso + '<div class="charsheet">\n' + template.strip() + "\n</div>\n", encoding="utf-8")

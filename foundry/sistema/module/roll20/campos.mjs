@@ -1375,6 +1375,24 @@ export const FICHA = {
      "original": "(foundry)",
      "tipo": "texto",
      "inicial": ""
+    },
+    "xarma_especializada": {
+     "original": "(foundry)",
+     "tipo": "marcado",
+     "inicial": false,
+     "valorMarcado": "1"
+    },
+    "xarma_mestre": {
+     "original": "(foundry)",
+     "tipo": "marcado",
+     "inicial": false,
+     "valorMarcado": "1"
+    },
+    "xarma_racial": {
+     "original": "(foundry)",
+     "tipo": "marcado",
+     "inicial": false,
+     "valorMarcado": "1"
     }
    },
    "calculados": {}
@@ -3110,6 +3128,11 @@ export const FICHA = {
      "original": "xmod_extra",
      "tipo": "numero",
      "inicial": 0
+    },
+    "xmod_origem": {
+     "original": "(foundry)",
+     "tipo": "texto",
+     "inicial": ""
     }
    },
    "calculados": {

@@ -4,6 +4,7 @@ import { inteiro } from "../roll20/motor.mjs";
 import { atualizacaoDeEquipar } from "../roll20/inventario.mjs";
 import { linhaDeTalento, montarProgressao, sincronizacaoDeHabilidades } from "../roll20/progressao.mjs";
 import { carregarCatalogo } from "../roll20/catalogo.mjs";
+import { bonusDeArma, sincronizacaoDeModificadores } from "../roll20/bonus-talentos.mjs";
 
 /** Rola uma fórmula com os dados do Foundry (para o interpretador de macros). */
 async function rolarNoFoundry(formula) {
@@ -90,11 +91,28 @@ export class TormentaActor extends foundry.documents.Actor {
     if (Object.keys(update).length) await this.update(update, { tormenta13Sincronizacao: true });
   }
 
-  /** Quando o nível de alguma classe muda: sincroniza habilidades e avisa das escolhas novas. */
+  /**
+   * Bônus numéricos dos talentos na tabela Modificadores (module/roll20/bonus-talentos.mjs).
+   * As chamadas entram numa fila: duas sincronizações ao mesmo tempo criariam linhas repetidas.
+   */
+  sincronizarBonusDeTalentos() {
+    this._tormenta13Fila = (this._tormenta13Fila ?? Promise.resolve()).then(async () => {
+      if (!this.isOwner) return;
+      const update = sincronizacaoDeModificadores(this.system._source, { novoId: () => foundry.utils.randomID(), apagar });
+      if (Object.keys(update).length) await this.update(update, { tormenta13Sincronizacao: true });
+    }).catch((erro) => console.error("tormenta13 | bônus de talentos", erro));
+    return this._tormenta13Fila;
+  }
+
+  /** Classe ou talento mudou: sincroniza habilidades de classe e bônus de talentos; avisa das escolhas novas. */
   async _onUpdate(changed, options, userId) {
     await super._onUpdate(changed, options, userId);
-    if (userId !== game.user.id || options.tormenta13Sincronizacao || !changed.system) return;
-    if (!Object.keys(foundry.utils.flattenObject(changed.system)).some((k) => k.startsWith("rep_class"))) return;
+    if (userId !== game.user.id || !changed.system) return;
+    const chaves = Object.keys(foundry.utils.flattenObject(changed.system));
+    const mudouClasse = chaves.some((k) => k.startsWith("rep_class"));
+    const mudouTalento = chaves.some((k) => k.startsWith("rep_talento"));
+    if (mudouClasse || mudouTalento) this.sincronizarBonusDeTalentos();
+    if (!mudouClasse || options.tormenta13Sincronizacao) return;
     try {
       await this.sincronizarHabilidadesDeClasse();
       const nivel = this.system.ficha?.numero("nivel") ?? 0;
@@ -163,7 +181,8 @@ export class TormentaActor extends foundry.documents.Actor {
     if (secao === "arma") {
       const atual = inteiro(dados.xarma_municao);
       if (atual !== 0 && dados.xarma_tipo === "@{ataque_dis}") await this.update({ [`${caminho}.xarma_municao`]: String(atual - 1) });
-      return this.executarMacro(macroDeArma(dados.macro_texto ?? "", dados.xarma_tipo), this.linha(secao, id));
+      const ajuste = { ...bonusDeArma(this.system._source, dados), critico: inteiro(dados.xarma_critico) || 20 };
+      return this.executarMacro(macroDeArma(dados.macro_texto ?? "", dados.xarma_tipo, ajuste), this.linha(secao, id));
     }
     if (secao === "talento") {
       const atual = inteiro(dados.usos_atual);

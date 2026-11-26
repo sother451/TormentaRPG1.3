@@ -1,4 +1,4 @@
-# Tormenta RPG 1.3 para Foundry VTT (v14) — versão 0.4.1
+# Tormenta RPG 1.3 para Foundry VTT (v14) — versão 0.5.0
 
 Sistema com **a ficha do Roll20 do grupo** (mesmo visual, mesmos campos, mesmas fórmulas e scripts),
 **compêndios prontos** (1.926 itens do compendium Tormenta 1.3) e **importação de personagens do Roll20**.
@@ -40,6 +40,11 @@ Novas versões aparecem na mesma tela com o botão **Update**.
   combate/magia/Tormenta/poder no 4º e 12º; perícia no 6º e 14º; destino ou classe no 4º, 8º, 12º e 16º), o talento do
   20º da classe e o +1 de atributo nos níveis pares. Cada vaga lista só os talentos que cabem nela (pré-requisitos não
   são bloqueados). As habilidades da tabela da classe entram e saem sozinhas em Habilidades conforme o nível da classe.
+- **Bônus de talentos:** talentos com bônus numérico simples (Vitalidade, Resistência Aprimorada, Foco em Perícia,
+  Poder Mágico, Heranças Moreau, Carapaça…) criam sozinhos uma linha em Modificadores (borda azul), que acompanha o
+  nível e some se o talento sair. Os situacionais (Torcida, Fúria Guerreira…) entram desmarcados. Talentos de escolha
+  usam o que está entre parênteses no nome — "Foco em Perícia (Percepção)" — ou ficam "Nenhum" para escolher na tabela.
+  Na linha da arma, as caixas Especialização / Mestre / Arma racial aplicam ataque, dano e margem de ameaça na rolagem.
 - **Token:** a barra mostra PV atual / PV máximo; mudar a barra muda o PV da ficha. Iniciativa = `1d20 + @iniciativa`.
 - **Fórmulas do Foundry:** todos os campos da ficha valem como `@nome` (minúsculas, `-` vira `_`): `@for_mod`, `@ca`,
   `@acrobacia`, `@ataque_cac`...

@@ -109,11 +109,17 @@ export async function executarMacro(texto, ficha, linha, rolar) {
   return { emote, html, rolagens };
 }
 
-/** clicked:repeating_arma: soma os "outros" de dano conforme o tipo de ataque. */
-export function macroDeArma(macro, tipo) {
-  if (tipo === "@{ataque_dis}") return macro.replace("@{xarma_dano}", "@{xarma_dano}+@{dano_dis_outros}");
-  if (tipo === "@{ataque_cac}") return macro.replace("@{xarma_dano}", "@{xarma_dano}+@{dano_cac_outros}");
-  return macro.replace("@{xarma_dano}", "@{xarma_dano}+@{danos_outros}");
+/**
+ * clicked:repeating_arma: soma os "outros" de dano conforme o tipo de ataque.
+ * Foundry: `ajuste` traz os talentos da arma (bonus-talentos.mjs → bonusDeArma): bônus de ataque e de dano
+ * e a margem de ameaça (o crítico vira um número: crítico da arma − margem).
+ */
+export function macroDeArma(macro, tipo, ajuste = null) {
+  const outros = tipo === "@{ataque_dis}" ? "@{dano_dis_outros}" : tipo === "@{ataque_cac}" ? "@{dano_cac_outros}" : "@{danos_outros}";
+  let texto = macro.replace("@{xarma_dano}", `@{xarma_dano}+${outros}${ajuste?.dano ? `+${ajuste.dano}` : ""}`);
+  if (ajuste?.ataque) texto = texto.replaceAll("@{xarma_ataque}", `(@{xarma_ataque}+${ajuste.ataque})`);
+  if (ajuste?.margem) texto = texto.replaceAll("@{xarma_critico}", String(Math.max(2, ajuste.critico - ajuste.margem)));
+  return texto;
 }
 
 /** clicked:repeating_itens: "1 usos restantes" vira "1 uso restante". */

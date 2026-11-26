@@ -11,9 +11,21 @@ import { importarDoRoll20 } from "../roll20/importar.mjs";
 import { apagar } from "../documents/actor.mjs";
 import { montarProgressao, gruposDeTalentos } from "../roll20/progressao.mjs";
 import { carregarCatalogo } from "../roll20/catalogo.mjs";
+import { bonusDeArma, resumoDeArma } from "../roll20/bonus-talentos.mjs";
 
 const { HandlebarsApplicationMixin, DialogV2 } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets;
+
+/** Linha de cada arma: quais caixas de talento mostrar e o resumo do bônus (para o template). */
+export function bonusDasArmas(fonte) {
+  const saida = {};
+  for (const [id, arma] of Object.entries(fonte.rep_arma ?? {})) {
+    const bonus = bonusDeArma(fonte, arma);
+    const { disponiveis } = bonus;
+    saida[id] = { ...disponiveis, algum: Object.values(disponiveis).some(Boolean), resumo: resumoDeArma(bonus), fontes: bonus.fontes.join(", ") };
+  }
+  return saida;
+}
 
 export class FichaRoll20Sheet extends HandlebarsApplicationMixin(ActorSheetV2) {
   /** Estado só da interface (no Roll20 eram atributos escondidos). */
@@ -62,7 +74,16 @@ export class FichaRoll20Sheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     } catch (erro) {
       console.error("tormenta13 | progressão", erro);
     }
-    return Object.assign(contexto, { actor: this.actor, v, b, reps, prog, grupos_talento: gruposDeTalentos(reps.talento), ui: this.ui, editavel: this.isEditable });
+    return Object.assign(contexto, {
+      actor: this.actor, v, b, reps, prog, grupos_talento: gruposDeTalentos(reps.talento), bonus_armas: bonusDasArmas(fonte),
+      ui: this.ui, editavel: this.isEditable
+    });
+  }
+
+  /** Personagens criados antes dos bônus automáticos: a tabela Modificadores é acertada ao abrir a ficha. */
+  async _onFirstRender(context, options) {
+    await super._onFirstRender(context, options);
+    if (this.isEditable) this.actor.sincronizarBonusDeTalentos();
   }
 
   /**

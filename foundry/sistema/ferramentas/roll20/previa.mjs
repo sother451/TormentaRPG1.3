@@ -9,6 +9,7 @@ import path from "node:path";
 import Handlebars from "handlebars";
 import { FichaRoll20 } from "../../module/roll20/motor.mjs";
 import { linhaDeInventario } from "../../module/roll20/inventario.mjs";
+import { sincronizacaoDeModificadores, bonusDeArma, resumoDeArma } from "../../module/roll20/bonus-talentos.mjs";
 import { montarCatalogo, montarProgressao, sincronizacaoDeHabilidades, gruposDeTalentos } from "../../module/roll20/progressao.mjs";
 
 const RAIZ = path.resolve(import.meta.dirname, "..", "..");
@@ -46,13 +47,19 @@ const fonte = {
   atletismo_treinada: true, percepcao_treinada: true, iniciativa_treinada: true, conhecimento_treinada: true,
   rep_class: { a: { ordem: 1, xclass_nome: "Guerreiro", xclasse_nivel: 8, xclasse_bba: "1", xclasse_pv: "5" } },
   rep_arma: {
-    e: { ordem: 1, xarma_nome: "Espada Longa", xarma_tipo: "@{ataque_cac}", xarma_dano: "1d8", xarma_habilidade: "@{for_mod}", xarma_critico: 19, xarma_multiplicador: 2 },
+    e: { ordem: 1, xarma_nome: "Espada Longa", xarma_tipo: "@{ataque_cac}", xarma_dano: "1d8", xarma_habilidade: "@{for_mod}", xarma_critico: 19, xarma_multiplicador: 2, xarma_especializada: true },
     b: { ordem: 2, xarma_nome: "Arco Curto", xarma_tipo: "@{ataque_dis}", xarma_dano: "1d6", xarma_habilidade: "0", xarma_critico: 20, xarma_multiplicador: 3, xarma_municao: "20" }
   },
   // Vagas já preenchidas na aba Progressão (1º nível e o de classe do 4º)
   rep_talento: {
     t: { ordem: 1, nome: "Ataque Poderoso", tipo: "Talento", descricao: "Troca ataque por dano.", xtal_vaga: "n1-geral" },
-    v: { ordem: 2, nome: "Vanguarda", tipo: "Classe", descricao: "", xtal_vaga: "n4-classe" }
+    v: { ordem: 2, nome: "Vanguarda", tipo: "Classe", descricao: "", xtal_vaga: "n4-classe" },
+    // Talentos com bônus automáticos (tabela Modificadores e linha da arma)
+    x: { ordem: 3, nome: "Vitalidade", tipo: "Talento", descricao: "", xtal_vaga: "n3-geral" },
+    y: { ordem: 4, nome: "Resistência Aprimorada (Vontade)", tipo: "Talento", descricao: "", xtal_vaga: "n5-geral" },
+    z: { ordem: 5, nome: "Torcida", tipo: "Talento", descricao: "", xtal_vaga: "n7-geral" },
+    w: { ordem: 6, nome: "Especialização em Arma (Espada Longa, Arco Curto, Adaga)", tipo: "Talento", descricao: "", xtal_vaga: "n4-combate" },
+    k: { ordem: 7, nome: "Acerto Crítico Aprimorado", tipo: "Talento", descricao: "", xtal_vaga: "n8-classe" }
   },
   xprog_atributos: JSON.stringify({ 2: "FOR", 4: "CON" }),
   rep_mods: { m: { ordem: 1, xmod_equip: true, xmod_nome: "Anel de Proteção", xmod_tipo: "CA", xmod_habilidade: "0", xmod_extra: 1 } },
@@ -73,14 +80,22 @@ let contadorIds = 0;
 aplicar(fonte, sincronizacaoDeHabilidades(fonte, catalogo, {
   novoId: () => `h${++contadorIds}`, apagar: (caminho, chave) => ({ [`${caminho}.-=${chave}`]: null })
 }));
+aplicar(fonte, sincronizacaoDeModificadores(fonte, {
+  novoId: () => `b${++contadorIds}`, apagar: (caminho, chave) => ({ [`${caminho}.-=${chave}`]: null })
+}));
 const prog = montarProgressao(fonte, catalogo);
+// Igual a bonusDasArmas (module/sheets/ficha-roll20.mjs, que depende do Foundry)
+const bonus_armas = Object.fromEntries(Object.entries(fonte.rep_arma).map(([id, arma]) => {
+  const bonus = bonusDeArma(fonte, arma);
+  return [id, { ...bonus.disponiveis, algum: Object.values(bonus.disponiveis).some(Boolean), resumo: resumoDeArma(bonus), fontes: bonus.fontes.join(", ") }];
+}));
 
 const ficha = new FichaRoll20(fonte, { nome: "Valen" });
 const { v, b, reps } = ficha.paraTemplate(fonte);
 const compilar = (arquivo) => Handlebars.compile(fs.readFileSync(path.join(RAIZ, "templates/actor", arquivo), "utf8"));
 // Na prévia, a primeira habilidade de classe aparece aberta (as outras recolhidas, como no padrão)
 const abertos = { [gruposDeTalentos(reps.talento).habilidades[0]?.id]: true };
-const contexto = { actor: { name: "Valen" }, v, b, reps, prog, grupos_talento: gruposDeTalentos(reps.talento),
+const contexto = { actor: { name: "Valen" }, v, b, reps, prog, grupos_talento: gruposDeTalentos(reps.talento), bonus_armas,
   ui: { aba, tab_magias: 1, tab_filtro: 0, filtro_cor: 0, abertos } };
 const abas = compilar("ficha-roll20-abas.hbs")(contexto);
 const corpo = compilar("ficha-roll20.hbs")(contexto);
