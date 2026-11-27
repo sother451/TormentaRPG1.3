@@ -12,6 +12,7 @@ import { apagar } from "../documents/actor.mjs";
 import { montarProgressao, gruposDeTalentos } from "../roll20/progressao.mjs";
 import { carregarCatalogo } from "../roll20/catalogo.mjs";
 import { bonusDeArma, resumoDeArma } from "../roll20/bonus-talentos.mjs";
+import { faixaDeCondicoes } from "../roll20/condicoes.mjs";
 
 const { HandlebarsApplicationMixin, DialogV2 } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets;
@@ -27,6 +28,12 @@ export function bonusDasArmas(fonte) {
   return saida;
 }
 
+/** Linhas automáticas de Modificadores: marca as de condição (outra cor e outra dica no template). */
+export function marcarModificadores(reps) {
+  for (const linha of reps.mods ?? []) linha.cond = String(linha.v?.xmod_origem ?? "").startsWith("cond:");
+  return reps;
+}
+
 export class FichaRoll20Sheet extends HandlebarsApplicationMixin(ActorSheetV2) {
   /** Estado só da interface (no Roll20 eram atributos escondidos). */
   ui = { aba: "personagem", tab_magias: 1, tab_filtro: 0, filtro_cor: 0, abertos: {} };
@@ -36,7 +43,11 @@ export class FichaRoll20Sheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     position: { width: 900, height: 860 },
     window: {
       resizable: true,
-      controls: [{ action: "importarRoll20", icon: "fa-solid fa-file-import", label: "Importar do Roll20", ownership: "OWNER" }]
+      controls: [
+        { action: "descansoRapido", icon: "fa-solid fa-mug-hot", label: "Descanso rápido (1 hora)", ownership: "OWNER" },
+        { action: "descansoLongo", icon: "fa-solid fa-bed", label: "Descanso longo (8 horas)", ownership: "OWNER" },
+        { action: "importarRoll20", icon: "fa-solid fa-file-import", label: "Importar do Roll20", ownership: "OWNER" }
+      ]
     },
     form: { submitOnChange: true, closeOnSubmit: false },
     actions: {
@@ -53,7 +64,9 @@ export class FichaRoll20Sheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       liberarVaga: FichaRoll20Sheet.#liberarVaga,
       recolher: FichaRoll20Sheet.#recolher,
       recolherTodos: FichaRoll20Sheet.#recolherTodos,
-      importarRoll20: FichaRoll20Sheet.#importarRoll20
+      importarRoll20: FichaRoll20Sheet.#importarRoll20,
+      descansoRapido: FichaRoll20Sheet.#descansoRapido,
+      descansoLongo: FichaRoll20Sheet.#descansoLongo
     }
   };
 
@@ -75,7 +88,7 @@ export class FichaRoll20Sheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       console.error("tormenta13 | progressão", erro);
     }
     return Object.assign(contexto, {
-      actor: this.actor, v, b, reps, prog, grupos_talento: gruposDeTalentos(reps.talento), bonus_armas: bonusDasArmas(fonte),
+      actor: this.actor, v, b, reps: marcarModificadores(reps), prog, condicoes: faixaDeCondicoes(this.actor.condicoesAtivas()), grupos_talento: gruposDeTalentos(reps.talento), bonus_armas: bonusDasArmas(fonte),
       ui: this.ui, editavel: this.isEditable
     });
   }
@@ -229,6 +242,20 @@ export class FichaRoll20Sheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     }
     ui.notifications.info(`${item.name} adicionado à ficha.`);
     return null;
+  }
+
+  static #descansoRapido() {
+    if (this.isEditable) return this.actor.descansoRapido();
+  }
+
+  /** Descanso longo: pede confirmação (mexe em PV, PM e usos de uma vez). */
+  static async #descansoLongo() {
+    if (!this.isEditable) return;
+    const ok = await DialogV2.confirm({
+      window: { title: `Descanso longo: ${this.actor.name}` },
+      content: "<p>Recupera todos os PV e PM, os usos diários e 1 ponto de dano de habilidade (Temp negativo). Continuar?</p>"
+    });
+    if (ok) return this.actor.descansoLongo();
   }
 
   /** Importa um personagem exportado do Roll20 (JSON), substituindo os dados desta ficha. */

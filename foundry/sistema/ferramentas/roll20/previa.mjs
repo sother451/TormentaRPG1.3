@@ -10,6 +10,7 @@ import Handlebars from "handlebars";
 import { FichaRoll20 } from "../../module/roll20/motor.mjs";
 import { linhaDeInventario } from "../../module/roll20/inventario.mjs";
 import { sincronizacaoDeModificadores, bonusDeArma, resumoDeArma } from "../../module/roll20/bonus-talentos.mjs";
+import { faixaDeCondicoes } from "../../module/roll20/condicoes.mjs";
 import { montarCatalogo, montarProgressao, sincronizacaoDeHabilidades, gruposDeTalentos } from "../../module/roll20/progressao.mjs";
 
 const RAIZ = path.resolve(import.meta.dirname, "..", "..");
@@ -80,9 +81,11 @@ let contadorIds = 0;
 aplicar(fonte, sincronizacaoDeHabilidades(fonte, catalogo, {
   novoId: () => `h${++contadorIds}`, apagar: (caminho, chave) => ({ [`${caminho}.-=${chave}`]: null })
 }));
+// Condições no token da prévia: Abalado e Cego (que traz Desprevenido)
+const condicoes = ["abalado", "cego"];
 aplicar(fonte, sincronizacaoDeModificadores(fonte, {
   novoId: () => `b${++contadorIds}`, apagar: (caminho, chave) => ({ [`${caminho}.-=${chave}`]: null })
-}));
+}, condicoes));
 const prog = montarProgressao(fonte, catalogo);
 // Igual a bonusDasArmas (module/sheets/ficha-roll20.mjs, que depende do Foundry)
 const bonus_armas = Object.fromEntries(Object.entries(fonte.rep_arma).map(([id, arma]) => {
@@ -92,10 +95,12 @@ const bonus_armas = Object.fromEntries(Object.entries(fonte.rep_arma).map(([id, 
 
 const ficha = new FichaRoll20(fonte, { nome: "Valen" });
 const { v, b, reps } = ficha.paraTemplate(fonte);
+for (const linha of reps.mods ?? []) linha.cond = String(linha.v?.xmod_origem ?? "").startsWith("cond:");
 const compilar = (arquivo) => Handlebars.compile(fs.readFileSync(path.join(RAIZ, "templates/actor", arquivo), "utf8"));
 // Na prévia, a primeira habilidade de classe aparece aberta (as outras recolhidas, como no padrão)
 const abertos = { [gruposDeTalentos(reps.talento).habilidades[0]?.id]: true };
 const contexto = { actor: { name: "Valen" }, v, b, reps, prog, grupos_talento: gruposDeTalentos(reps.talento), bonus_armas,
+  condicoes: faixaDeCondicoes(condicoes), editavel: true,
   ui: { aba, tab_magias: 1, tab_filtro: 0, filtro_cor: 0, abertos } };
 const abas = compilar("ficha-roll20-abas.hbs")(contexto);
 const corpo = compilar("ficha-roll20.hbs")(contexto);

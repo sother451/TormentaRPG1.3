@@ -228,6 +228,7 @@
 							<span class="sheet-table-data-center"><input type="number" title="PV-temp" min="0" name="system.pv_temp" value="{{v.pv_temp}}" /></span>
 						</div>
 					</div>
+					{{#if @root.editavel}}<div class="t13-descanso"><button type="button" data-action="descansoRapido" title="Teste de Constituição: recupera o resultado em PV (dobro no 5º nível, triplo no 10º, quádruplo no 15º)"><i class="fa-solid fa-mug-hot"></i> Descanso rápido</button><button type="button" data-action="descansoLongo" title="Recupera todos os PV e PM, os usos diários e 1 ponto de dano de habilidade"><i class="fa-solid fa-bed"></i> Descanso longo</button></div>{{/if}}
 					<br>
 					<div style="text-align: justify" class="sheet-table-row">
 						<b>Mostrar formula de PV?</b>
@@ -456,7 +457,7 @@
 						</div>
 					</div>				
 					<div style="text-align:justify;">
-						<div class="repcontainer" data-secao="mods">{{#each @root.reps.mods}}<div class="repitem{{#if v.xmod_origem}} t13-auto{{/if}}" data-linha="{{id}}"{{#if v.xmod_origem}} title="Criada pelo talento: o valor acompanha o nível. Desmarque a caixa para não somar."{{/if}}><div class="itemcontrol"><button type="button" class="repcontrol_del" data-action="repApagar" title="Apagar">✕</button></div>
+						<div class="repcontainer" data-secao="mods">{{#each @root.reps.mods}}<div class="repitem{{#if v.xmod_origem}} t13-auto{{/if}}{{#if cond}} t13-cond{{/if}}" data-linha="{{id}}"{{#if cond}} title="Criada pela condição do token: sai quando a condição sai. Desmarque a caixa para não somar."{{else if v.xmod_origem}} title="Criada pelo talento: o valor acompanha o nível. Desmarque a caixa para não somar."{{/if}}><div class="itemcontrol"><button type="button" class="repcontrol_del" data-action="repApagar" title="Apagar">✕</button></div>
 							<div class="sheet-table-row">
 								<span class="sheet-table-data-center" style="width:5% ">
 									<input type="checkbox" name="system.rep_mods.{{id}}.xmod_equip" {{#if v.xmod_equip}}checked{{/if}} />

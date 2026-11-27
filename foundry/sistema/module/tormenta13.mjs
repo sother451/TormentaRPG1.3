@@ -70,3 +70,15 @@ Hooks.once("setup", async () => {
     console.warn(`${SYSTEM_ID} | Não foi possível carregar as condições`, erro);
   }
 });
+
+/**
+ * Condição colocada ou tirada do token (efeito de status): as penalidades entram/saem da tabela Modificadores
+ * (module/roll20/condicoes.mjs). Só no cliente de quem fez a mudança.
+ */
+for (const evento of ["createActiveEffect", "updateActiveEffect", "deleteActiveEffect"]) {
+  Hooks.on(evento, (efeito, _opcoes, userId) => {
+    if (userId !== game.user.id) return;
+    const ator = efeito.parent;
+    if (ator instanceof foundry.documents.Actor) ator.sincronizarBonusDeTalentos?.();
+  });
+}

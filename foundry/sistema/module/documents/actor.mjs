@@ -5,6 +5,7 @@ import { atualizacaoDeEquipar } from "../roll20/inventario.mjs";
 import { linhaDeTalento, montarProgressao, sincronizacaoDeHabilidades } from "../roll20/progressao.mjs";
 import { carregarCatalogo } from "../roll20/catalogo.mjs";
 import { bonusDeArma, sincronizacaoDeModificadores } from "../roll20/bonus-talentos.mjs";
+import { descansoLongo, descansoRapido } from "../roll20/descanso.mjs";
 
 /** Rola uma fórmula com os dados do Foundry (para o interpretador de macros). */
 async function rolarNoFoundry(formula) {
@@ -98,10 +99,55 @@ export class TormentaActor extends foundry.documents.Actor {
   sincronizarBonusDeTalentos() {
     this._tormenta13Fila = (this._tormenta13Fila ?? Promise.resolve()).then(async () => {
       if (!this.isOwner) return;
-      const update = sincronizacaoDeModificadores(this.system._source, { novoId: () => foundry.utils.randomID(), apagar });
+      const update = sincronizacaoDeModificadores(this.system._source, { novoId: () => foundry.utils.randomID(), apagar },
+        this.condicoesAtivas());
       if (Object.keys(update).length) await this.update(update, { tormenta13Sincronizacao: true });
     }).catch((erro) => console.error("tormenta13 | bônus de talentos", erro));
     return this._tormenta13Fila;
+  }
+
+  /** Efeitos de status ativos (condições do token), lidos direto dos efeitos para não depender do prepareData. */
+  condicoesAtivas() {
+    const ids = new Set();
+    for (const efeito of this.effects ?? []) {
+      if (efeito.disabled || efeito.isSuppressed) continue;
+      for (const s of efeito.statuses ?? []) ids.add(s);
+    }
+    return ids;
+  }
+
+  /* ------------------------------------------------------------------------------------------ */
+  /*  Descanso (module/roll20/descanso.mjs)                                                       */
+  /* ------------------------------------------------------------------------------------------ */
+
+  async #mensagem(titulo, linhas, rolls = []) {
+    const corpo = linhas.map((l) => `<tr><td colspan="2">${l}</td></tr>`).join("");
+    return ChatMessage.implementation.create({
+      speaker: ChatMessage.getSpeaker({ actor: this }),
+      content: `<div class="tormenta13-chat"><div class="t13-template"><div class="t13-titulo">${escapar(titulo)}</div><table>${corpo}</table></div></div>`,
+      rolls, ...(rolls.length ? { sound: CONFIG.sounds.dice } : {})
+    });
+  }
+
+  /** Descanso rápido: teste de Constituição, recupera o resultado (× nível/5) em PV. */
+  async descansoRapido() {
+    const ficha = this.system.ficha;
+    const roll = await new Roll("1d20 + @con_mod", { con_mod: ficha.numero("con_mod") }).evaluate();
+    const { update, cura, multiplicador } = descansoRapido(this.system._source, ficha, roll.total);
+    if (Object.keys(update).length) await this.update(update);
+    const conta = multiplicador > 1 ? `${roll.total} × ${multiplicador}` : `${roll.total}`;
+    return this.#mensagem(`${this.name}: descanso rápido`, [
+      `Teste de Constituição: <span class="t13-rolagem" title="${escapar(roll.formula)}">${roll.total}</span>`,
+      cura ? `Recupera <strong>${cura} PV</strong> (${conta}, até o máximo).` : "Já está com os PV no máximo."
+    ], [roll]);
+  }
+
+  /** Descanso longo: todos os PV e PM, usos diários, 1 ponto de dano de habilidade. */
+  async descansoLongo() {
+    const { update, partes } = descansoLongo(this.system._source, this.system.ficha);
+    if (Object.keys(update).length) await this.update(update);
+    return this.#mensagem(`${this.name}: descanso longo`,
+      partes.length ? ["Recupera:", ...partes.map((p) => `• ${escapar(p)}`)] : ["Nada a recuperar: tudo já estava no máximo."]);
   }
 
   /** Classe ou talento mudou: sincroniza habilidades de classe e bônus de talentos; avisa das escolhas novas. */

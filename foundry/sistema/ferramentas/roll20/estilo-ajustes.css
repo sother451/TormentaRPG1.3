@@ -127,3 +127,13 @@
 .tormenta13-r20 .charsheet .t13-arma-bonus { color: #1b5e20; font-weight: bold; }
 .tormenta13-r20 .charsheet .repitem.t13-auto { border-left: 4px solid #3366cc; background: #eef3ff; }
 .tormenta13-r20 .charsheet .repitem.t13-auto:has(input[type="checkbox"]:not(:checked)) { border-left-color: #bbb; background: #f4f4f4; }
+
+/* Condições ativas (faixa abaixo das abas) e linhas de condição em Modificadores */
+.tormenta13-r20 .t13-condicoes { display: flex; flex-wrap: wrap; gap: 4px; padding: 4px 6px 6px; font-size: 12px; }
+.tormenta13-r20 .t13-condicao { background: #fbe9e7; border: 1px solid #d84315; border-radius: 4px; padding: 1px 6px; color: #4e1a0d; }
+.tormenta13-r20 .t13-condicao.substituida { opacity: 0.55; text-decoration: line-through; }
+.tormenta13-r20 .repitem.t13-auto.t13-cond { border-left-color: #d84315; background: #fbe9e7; }
+
+/* Botões de descanso abaixo do quadro de PV */
+.tormenta13-r20 .t13-descanso { display: flex; gap: 6px; justify-content: center; margin-top: 6px; }
+.tormenta13-r20 .t13-descanso button { width: auto; padding: 2px 10px; font-size: 12px; line-height: 20px; }

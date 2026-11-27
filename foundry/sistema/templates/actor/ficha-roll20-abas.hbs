@@ -12,4 +12,5 @@
 	<button class="tab_button" type="button" data-action="aba" data-aba="configuracao" name="act_configuracao">Configurações</button>
     <button class="tab_button" type="button" data-action="aba" data-aba="progressao" name="act_progressao">Progressão</button>
 </div>
+{{#if @root.condicoes.length}}<div class="t13-condicoes">{{#each @root.condicoes}}<span class="t13-condicao{{#if substituida}} substituida{{/if}}"><b>{{nome}}</b>{{#if via}} <i>(por {{via}})</i>{{/if}}: {{texto}}</span>{{/each}}</div>{{/if}}
 </div>

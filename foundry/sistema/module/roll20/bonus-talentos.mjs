@@ -18,6 +18,7 @@
  * Puro (testável em Node).
  */
 import { slug } from "./progressao.mjs";
+import { modificadoresDasCondicoes } from "./condicoes.mjs";
 
 const inteiro = (v) => {
   const n = parseInt(v, 10);
@@ -186,16 +187,20 @@ const TORMENTA = new Set(["anatomia-insana", "anular-individuo", "armamento-da-t
   "toque-da-destruicao", "toque-da-erosao", "visao-ampla", "visao-no-escuro", "visco-rubro"]);
 
 /**
- * Update que deixa a tabela Modificadores de acordo com os talentos.
+ * Update que deixa a tabela Modificadores de acordo com os talentos e as condições.
  * @param {object} system  system._source do ator
  * @param {{novoId: () => string, apagar: (caminho, chave) => object}} op
+ * @param {Iterable<string>|null} condicoes  efeitos de status do ator (condicoes.mjs); null = não mexe nas
+ *   linhas de condição
  */
-export function sincronizacaoDeModificadores(system, { novoId, apagar }) {
+export function sincronizacaoDeModificadores(system, { novoId, apagar }, condicoes = null) {
   const desejadas = modificadoresDosTalentos(system);
+  if (condicoes) for (const [k, d] of modificadoresDasCondicoes(condicoes)) desejadas.set(k, d);
   const update = {};
   const existentes = new Set();
   for (const [id, m] of Object.entries(system.rep_mods ?? {})) {
     if (!m.xmod_origem) continue;
+    if (!condicoes && String(m.xmod_origem).startsWith("cond:")) continue;
     const d = desejadas.get(m.xmod_origem);
     if (!d || existentes.has(m.xmod_origem)) {
       Object.assign(update, apagar("system.rep_mods", id));

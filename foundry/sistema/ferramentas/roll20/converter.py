@@ -527,8 +527,26 @@ def talentos_nas_armas(template):
     assert template.count(linha_mods) == 1, "linha de Modificadores não encontrada"
     return template.replace(linha_mods, linha_mods.replace(
         '<div class="repitem" data-linha="{{id}}">',
-        '<div class="repitem{{#if v.xmod_origem}} t13-auto{{/if}}" data-linha="{{id}}"'
-        '{{#if v.xmod_origem}} title="Criada pelo talento: o valor acompanha o nível. Desmarque a caixa para não somar."{{/if}}>'))
+        '<div class="repitem{{#if v.xmod_origem}} t13-auto{{/if}}{{#if cond}} t13-cond{{/if}}" data-linha="{{id}}"'
+        '{{#if cond}} title="Criada pela condição do token: sai quando a condição sai. Desmarque a caixa para não somar."'
+        '{{else if v.xmod_origem}} title="Criada pelo talento: o valor acompanha o nível. Desmarque a caixa para não somar."{{/if}}>'))
+
+
+def condicoes_e_descanso(abas, template):
+    """Faixa das condições ativas (fixa, abaixo das abas) e botões de descanso abaixo do quadro de PV."""
+    faixa = ('{{#if @root.condicoes.length}}<div class="t13-condicoes">'
+             '{{#each @root.condicoes}}<span class="t13-condicao{{#if substituida}} substituida{{/if}}">'
+             '<b>{{nome}}</b>{{#if via}} <i>(por {{via}})</i>{{/if}}: {{texto}}</span>{{/each}}</div>{{/if}}\n')
+    abas = abas.rstrip() + "\n" + faixa
+    pv = ('<input type="number" title="PV-temp" min="0" name="system.pv_temp" value="{{v.pv_temp}}" /></span>'
+          '\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>')
+    assert template.count(pv) == 1, "quadro de PV não encontrado"
+    botoes = ('\n\t\t\t\t\t{{#if @root.editavel}}<div class="t13-descanso">'
+              '<button type="button" data-action="descansoRapido" title="Teste de Constituição: recupera o resultado em PV '
+              '(dobro no 5º nível, triplo no 10º, quádruplo no 15º)"><i class="fa-solid fa-mug-hot"></i> Descanso rápido</button>'
+              '<button type="button" data-action="descansoLongo" title="Recupera todos os PV e PM, os usos diários e 1 ponto '
+              'de dano de habilidade"><i class="fa-solid fa-bed"></i> Descanso longo</button></div>{{/if}}')
+    return abas, template.replace(pv, pv + botoes)
 
 
 def grupos_de_talento(template):
@@ -633,6 +651,7 @@ def main():
     abas, template = abas_do_foundry(abas, template)
     template = grupos_de_talento(template)
     template = talentos_nas_armas(template)
+    abas, template = condicoes_e_descanso(abas, template)
     aviso = "{{!-- Gerado por ferramentas/roll20/converter.py a partir da ficha do Roll20. Não edite à mão. --}}\n"
     (SISTEMA / "templates" / "actor" / "ficha-roll20.hbs").write_text(
         aviso + '<div class="charsheet">\n' + template.strip() + "\n</div>\n", encoding="utf-8")
