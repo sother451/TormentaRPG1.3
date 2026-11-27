@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs";
 import { FichaRoll20 } from "../module/roll20/motor.mjs";
 import { FICHA } from "../module/roll20/campos.mjs";
 import { CONDICOES, condicoesEfetivas, faixaDeCondicoes } from "../module/roll20/condicoes.mjs";
-import { sincronizacaoDeModificadores } from "../module/roll20/bonus-talentos.mjs";
+import { sincronizacaoDeModificadores, marcarModificadoresIguais } from "../module/roll20/bonus-talentos.mjs";
 import { descansoLongo, descansoRapido, multiplicadorDeDescanso } from "../module/roll20/descanso.mjs";
 
 /* Toda condição do compêndio está na tabela, e todo parâmetro é uma opção de Modificadores */
@@ -96,5 +96,18 @@ assert.equal(longo.update["system.for_temp"], -1, "dano de habilidade volta 1");
 assert.ok(!("system.sab_temp" in longo.update), "bônus temporário não mexe");
 aplicar(sys, longo.update);
 assert.deepEqual(descansoLongo(sys, new FichaRoll20(structuredClone(sys))).update, { "system.for_temp": 0 });
+
+/* Caixas de Modificadores com o mesmo nome ligam juntas */
+const iguais = { rep_mods: { a: { xmod_nome: "Torcida (situacional)" }, b: { xmod_nome: "Torcida (situacional)" },
+  c: { xmod_nome: "Anel" }, d: { xmod_nome: "" }, e: { xmod_nome: "" } } };
+assert.deepEqual(marcarModificadoresIguais(iguais, "a", true),
+  { "system.rep_mods.a.xmod_equip": true, "system.rep_mods.b.xmod_equip": true });
+assert.deepEqual(marcarModificadoresIguais(iguais, "d", false), { "system.rep_mods.d.xmod_equip": false }, "sem nome: só a linha");
+
+/* +1 de atributo da Progressão soma em Outros (só nos níveis já alcançados) */
+const prog = { for_valor: 14, rep_class: { a: { ordem: 1, xclasse_nivel: 4, xclasse_bba: "1", xclasse_pv: "5" } },
+  xprog_atributos: JSON.stringify({ 2: "FOR", 4: "CON", 6: "FOR" }) };
+const fp = new FichaRoll20(structuredClone(prog));
+assert.deepEqual([fp.numero("for_outros"), fp.numero("for"), fp.numero("con_outros")], [1, 15, 1], "nível 6 ainda não alcançado");
 
 console.log("condicoes.test.mjs: todos os testes passaram");

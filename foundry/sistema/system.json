@@ -2,7 +2,7 @@
   "id": "tormenta13",
   "title": "Tormenta RPG 1.3",
   "description": "Sistema de Tormenta RPG 1.3 para Foundry VTT: a ficha do Roll20 do grupo (mesmo visual, campos e fórmulas), compêndios prontos e importação de personagens do Roll20.",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "authors": [
     {
       "name": "sother451"
@@ -10,7 +10,7 @@
   ],
   "url": "https://github.com/sother451/TormentaRPG1.3",
   "manifest": "https://github.com/sother451/TormentaRPG1.3/releases/latest/download/system.json",
-  "download": "https://github.com/sother451/TormentaRPG1.3/releases/download/foundry-v0.6.0/system.zip",
+  "download": "https://github.com/sother451/TormentaRPG1.3/releases/download/foundry-v0.6.1/system.zip",
   "compatibility": {
     "minimum": "14",
     "verified": "14"

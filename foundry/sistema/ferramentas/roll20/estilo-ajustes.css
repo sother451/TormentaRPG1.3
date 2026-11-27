@@ -116,10 +116,12 @@
 .tormenta13-r20 .charsheet .t13-recolher-todos { text-align: right; margin: 2px 0; }
 .tormenta13-r20 .charsheet .t13-recolher-todos button { font-size: 11px; margin-left: 4px; }
 .tormenta13-r20 .charsheet .repitem[data-recolhido="sim"] > .sheet-table ~ * { display: none !important; }
-.tormenta13-r20 .charsheet .repitem[data-recolhido] { padding-right: 40px; }
-.tormenta13-r20 .charsheet .itemcontrol .t13-recolher { border: 0; background: transparent; padding: 0 5px; font-size: 15px; line-height: 1; color: #000; }
-.tormenta13-r20 .charsheet .repitem[data-recolhido="sim"] .t13-recolher::before { content: "▸"; }
-.tormenta13-r20 .charsheet .repitem[data-recolhido="nao"] .t13-recolher::before { content: "▾"; }
+.tormenta13-r20 .charsheet .repitem[data-recolhido] { padding-right: 110px; }
+.tormenta13-r20 .charsheet .itemcontrol .t13-recolher { border: 1px solid #777; border-radius: 3px; background: #e6e6e6;
+  padding: 1px 6px; margin-right: 4px; font-size: 12px; font-weight: bold; line-height: 18px; color: #000; white-space: nowrap; width: auto; height: auto; }
+.tormenta13-r20 .charsheet .itemcontrol .t13-recolher:hover { background: #d0d0d0; }
+.tormenta13-r20 .charsheet .repitem[data-recolhido="sim"] .t13-recolher::before { content: "▸ Detalhes"; }
+.tormenta13-r20 .charsheet .repitem[data-recolhido="nao"] .t13-recolher::before { content: "▾ Recolher"; }
 
 /* Bônus de talentos: caixas na linha da arma e linhas de Modificadores criadas por talentos */
 .tormenta13-r20 .charsheet .t13-arma-talentos { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; margin: 2px 0 2px 3%; font-size: 11px; }

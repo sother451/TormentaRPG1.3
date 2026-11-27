@@ -249,7 +249,8 @@ export class FichaRoll20 {
     }
     const { testes_outros: testes, habilidades_outros: habilidades, ataques_outros: ataques,
       toques_outros: toques, danos_outros: danos, resistencias_outros: resistencias, pericias_outros: pericias } = lista;
-    for (const a of ATRIBUTOS) lista[`${a}_outros`] += habilidades;
+    const progressao = this.atributosDaProgressao();
+    for (const a of ATRIBUTOS) lista[`${a}_outros`] += habilidades + (progressao[a] ?? 0);
     lista.ataque_cac_outros += ataques + testes;
     lista.ataque_dis_outros += ataques + testes;
     lista.toque_cac_outros += toques + testes;
@@ -265,6 +266,22 @@ export class FichaRoll20 {
     }
     Object.assign(this.script, lista);
     this._cache.clear();
+  }
+
+  /**
+   * Foundry (aba Progressão): +1 no atributo escolhido em cada nível par já alcançado.
+   * @returns {Record<string, number>} chave = atributo em minúsculas ("for")
+   */
+  atributosDaProgressao() {
+    let escolhas = {};
+    try { escolhas = JSON.parse(this.salvos.xprog_atributos || "{}") ?? {}; } catch { escolhas = {}; }
+    const nivel = inteiro(this.script.nivel);
+    const soma = {};
+    for (const [n, atributo] of Object.entries(escolhas)) {
+      const a = String(atributo ?? "").toLowerCase();
+      if (ATRIBUTOS.includes(a) && Number(n) <= nivel) soma[a] = (soma[a] ?? 0) + 1;
+    }
+    return soma;
   }
 
   /** on("change:armadura_max_des ..."): Des na CA limitada pela armadura equipada. */

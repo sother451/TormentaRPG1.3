@@ -11,7 +11,7 @@ import { importarDoRoll20 } from "../roll20/importar.mjs";
 import { apagar } from "../documents/actor.mjs";
 import { montarProgressao, gruposDeTalentos } from "../roll20/progressao.mjs";
 import { carregarCatalogo } from "../roll20/catalogo.mjs";
-import { bonusDeArma, resumoDeArma } from "../roll20/bonus-talentos.mjs";
+import { bonusDeArma, resumoDeArma, marcarModificadoresIguais } from "../roll20/bonus-talentos.mjs";
 import { faixaDeCondicoes } from "../roll20/condicoes.mjs";
 
 const { HandlebarsApplicationMixin, DialogV2 } = foundry.applications.api;
@@ -111,6 +111,15 @@ export class FichaRoll20Sheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       campo.addEventListener("change", (event) => {
         event.stopPropagation();
         if (this.isEditable) this.actor.escolherAtributo(campo.dataset.atributoNivel, campo.value);
+      });
+    }
+    // Modificadores: linhas com o mesmo nome (ex.: as três de Torcida) ligam e desligam juntas.
+    for (const caixa of this.element.querySelectorAll('[data-secao="mods"] input[type="checkbox"][name$=".xmod_equip"]')) {
+      caixa.addEventListener("change", (event) => {
+        event.stopPropagation();
+        if (!this.isEditable) return;
+        const id = caixa.closest(".repitem")?.dataset.linha;
+        if (id) this.actor.update(marcarModificadoresIguais(this.actor.system._source, id, caixa.checked));
       });
     }
     for (const campo of this.element.querySelectorAll(".t13-vaga-select")) {

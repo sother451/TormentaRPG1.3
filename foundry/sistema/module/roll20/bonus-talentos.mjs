@@ -266,3 +266,18 @@ export function resumoDeArma({ ataque, dano, margem }) {
   if (margem) partes.push(`margem de ameaça +${margem}`);
   return partes.join(", ");
 }
+
+/**
+ * Caixa de uma linha de Modificadores: as linhas com o mesmo nome (ex.: as três de Torcida) ligam e desligam juntas.
+ * @returns {object} update
+ */
+export function marcarModificadoresIguais(system, id, marcado) {
+  const mods = system.rep_mods ?? {};
+  const nome = String(mods[id]?.xmod_nome ?? "").trim();
+  const update = { [`system.rep_mods.${id}.xmod_equip`]: marcado };
+  if (!nome) return update;
+  for (const [outro, m] of Object.entries(mods)) {
+    if (outro !== id && String(m.xmod_nome ?? "").trim() === nome) update[`system.rep_mods.${outro}.xmod_equip`] = marcado;
+  }
+  return update;
+}

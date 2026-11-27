@@ -76,7 +76,7 @@ export class TormentaActor extends foundry.documents.Actor {
     return this.adicionarLinha("talento", linhaDeTalento(talento, vagaId));
   }
 
-  /** +1 em atributo escolhido num nível par (só registra; o jogador soma no Valor). */
+  /** +1 em atributo escolhido num nível par (o motor soma em Outros: FichaRoll20.atributosDaProgressao). */
   escolherAtributo(nivel, atributo) {
     let atual = {};
     try { atual = JSON.parse(this.system._source.xprog_atributos || "{}") ?? {}; } catch { atual = {}; }
@@ -169,6 +169,14 @@ export class TormentaActor extends foundry.documents.Actor {
       this._tormenta13Nivel = nivel;
     } catch (erro) {
       console.error("tormenta13 | progressão", erro);
+    }
+  }
+
+  /** Personagem novo: token vinculado à ficha (condições e PV do token valem na ficha da barra lateral). */
+  async _preCreate(data, options, user) {
+    if ((await super._preCreate(data, options, user)) === false) return false;
+    if (this.type === "character" && foundry.utils.getProperty(data, "prototypeToken.actorLink") === undefined) {
+      this.updateSource({ "prototypeToken.actorLink": true });
     }
   }
 
